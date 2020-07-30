@@ -30,6 +30,11 @@ void Comment::setDescription(const QString &description)
     this->description=description;
 }
 
+QString Comment::getSenderId()
+{
+    return this->sender_id;
+}
+
 QString Comment::getQuality()
 {
     return this->quality_grad;
@@ -45,8 +50,9 @@ QString Comment::getDescription()
     return this->description;
 }
 
-Comment::Comment(const QString &quality, const QString &price, const QString &description)
+Comment::Comment(const QString& sender_id,const QString &quality, const QString &price, const QString &description)
 {
+    this->sender_id=sender_id;
     this->setQuality(quality);
     this->setPrice(price);
     this->setDescription(description);
