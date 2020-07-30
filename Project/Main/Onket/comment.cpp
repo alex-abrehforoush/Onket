@@ -1,6 +1,6 @@
 #include "comment.h"
 const QVector<QString> Comment::grades={"very bad","bad","mediom","good","excellent"};
-
+/////
 void Comment::setQuality(const QString &quality)
 {
     for(auto it :grades)
@@ -54,6 +54,7 @@ Comment::Comment(const QString &quality, const QString &price, const QString &de
 
 Comment::~Comment()
 {
+
 
 }
 

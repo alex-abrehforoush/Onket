@@ -16,9 +16,10 @@ public:
     QString getQuality();
     QString getPrice();
     QString getDescription();
-
+    /////
     Comment(const QString& quality,const QString& price,const QString & description);
     ~Comment();
+
 };
 
 #endif // COMMENT_H
