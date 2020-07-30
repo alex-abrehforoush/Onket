@@ -1,7 +1,7 @@
 #include "comment.h"
-const QVector<QString> Comment::grades={"very bad","bad","mediom","good","excellent"};
+const QVector<double> Comment::grades={0.0,0.25,0.5,0.75,1.0};
 /////
-void Comment::setQuality(const QString &quality)
+void Comment::setQuality(const double &quality)
 {
     for(auto it :grades)
     {
@@ -13,7 +13,7 @@ void Comment::setQuality(const QString &quality)
     }
 }
 
-void Comment::setPrice(const QString &price)
+void Comment::setPrice(const double &price)
 {
     for(auto it : grades)
     {
@@ -35,12 +35,12 @@ QString Comment::getSenderId()
     return this->sender_id;
 }
 
-QString Comment::getQuality()
+double Comment::getQuality()
 {
     return this->quality_grad;
 }
 
-QString Comment::getPrice()
+double Comment::getPrice()
 {
     return this->price_grade;
 }
@@ -50,7 +50,7 @@ QString Comment::getDescription()
     return this->description;
 }
 
-Comment::Comment(const QString& sender_id,const QString &quality, const QString &price, const QString &description)
+Comment::Comment(const QString& sender_id,const double &quality, const double &price, const QString &description)
 {
     this->sender_id=sender_id;
     this->setQuality(quality);
@@ -68,8 +68,8 @@ void Comment::addToFile(QXmlStreamWriter &xml_writer)
 {
     xml_writer.writeStartElement("comment");
 
-        xml_writer.writeAttribute("quality_grade",this->quality_grad);
-        xml_writer.writeAttribute("price_grade",this->price_grade);
+        xml_writer.writeAttribute("quality_grade",QString:: number(this->quality_grad));
+        xml_writer.writeAttribute("price_grade",QString::number(this->price_grade));
 
        xml_writer.writeTextElement("sender_id",this->sender_id);
 

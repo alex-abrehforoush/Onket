@@ -6,21 +6,21 @@
 
 class Comment
 {
-    static const QVector<QString> grades;
+    static const QVector<double> grades;
     QString sender_id;
-     QString quality_grad="mediom",price_grade="mediom";
-     QString description;
+    double quality_grad=0.5,price_grade=0.5;
+    QString description;
 public:
-    void setQuality(const QString& quality);
-    void setPrice(const QString& price);
+    void setQuality(const double& quality);
+    void setPrice(const double& price);
     void setDescription(const QString& description);
 
     QString getSenderId();
-    QString getQuality();
-    QString getPrice();
+    double getQuality();
+    double getPrice();
     QString getDescription();
 
-    Comment(const QString& sender_id,const QString& quality,const QString& price,const QString & description);
+    Comment(const QString& sender_id,const double& quality,const double& price,const QString & description);
     ~Comment();
 
     void addToFile(QXmlStreamWriter & xml_writer);
