@@ -2,6 +2,7 @@
 #define COMMENT_H
 #include <QString>
 #include <QVector>
+#include <QXmlStreamWriter>
 
 class Comment
 {
@@ -21,6 +22,8 @@ public:
 
     Comment(const QString& sender_id,const QString& quality,const QString& price,const QString & description);
     ~Comment();
+
+    void addToFile(QXmlStreamWriter & xml_writer);
 
 };
 

@@ -64,4 +64,17 @@ Comment::~Comment()
 
 }
 
+void Comment::addToFile(QXmlStreamWriter &xml_writer)
+{
+    xml_writer.writeStartElement("comment");
+
+        xml_writer.writeAttribute("quality_grade",this->quality_grad);
+        xml_writer.writeAttribute("price_grade",this->price_grade);
+
+       xml_writer.writeTextElement("sender_id",this->sender_id);
+
+       xml_writer.writeTextElement("description",this->description);
+    xml_writer.writeEndElement();
+}
+
 
