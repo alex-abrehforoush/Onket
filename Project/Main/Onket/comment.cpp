@@ -2,6 +2,16 @@
 const QVector<double> Comment::grades={0.0,0.25,0.5,0.75,1.0};
 /////
 
+void Comment::setAdvantages(const QString & advantages)
+{
+    this->advantages=advantages;
+}
+
+void Comment::setDisAdvantages(const QString &disadvantages)
+{
+    this->disadvantages=disadvantages;
+}
+
 void Comment::setDescription(const QString &description)
 {
     this->description=description;
@@ -10,6 +20,16 @@ void Comment::setDescription(const QString &description)
 QString Comment::getSenderId()
 {
     return this->sender_id;
+}
+
+QString Comment::getAdvantages()
+{
+    return this->advantages;
+}
+
+QString Comment::getDisadvantages()
+{
+    return this->disadvantages;
 }
 
 
@@ -86,10 +106,11 @@ bool Comment::setItemValue(const QString &item_name, double item_value)
 
 
 
-Comment::Comment(const QString& sender_id, const QString &description)
+Comment::Comment(const QString& sender_id,const QString& advantages,const QString& disadvatages, const QString &description)
 {
     this->sender_id=sender_id;
-
+    this->setAdvantages(advantages);
+    this->setDisAdvantages(disadvatages);
     this->setDescription(description);
 
     map_items.insert("قیمت",0.5);
@@ -111,7 +132,8 @@ void Comment::addToFile(QXmlStreamWriter &xml_writer)
         }
 
        xml_writer.writeTextElement("sender_id",this->sender_id);
-
+        xml_writer.writeTextElement("advantages",this->advantages);
+         xml_writer.writeTextElement("disadvantages",this->disadvantages);
        xml_writer.writeTextElement("description",this->description);
     xml_writer.writeEndElement();
 }
