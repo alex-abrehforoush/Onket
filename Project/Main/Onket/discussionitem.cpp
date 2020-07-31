@@ -1,5 +1,6 @@
 #include "discussionitem.h"
 
+
 QString DiscussionItem::toQString(const QDate& input)
 {
     QString resault=QString::number(input.year());

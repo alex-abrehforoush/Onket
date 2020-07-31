@@ -13,6 +13,7 @@ protected:
     QDate date_create;
 
 
+
 public:
     static QString toQString(const QDate& input);
     static QDate toQDate(const QString& input);
