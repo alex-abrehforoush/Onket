@@ -3,10 +3,15 @@
 
 QString Question::toQString(const QVector<QString> &replys_id)
 {
+    if(replys_id.isEmpty()==true)
+    {
+        return QString("");
+    }
     QString resualt;
     auto it=replys_id.cbegin();
     resualt=*it;
-    it++;
+    if(it != replys_id.cend())
+     it++;
     for(;it != replys_id.cend();it++)
     {
         resualt.append(",");
@@ -36,6 +41,11 @@ QVector<QString> Question::toVector(const QString &input)
     return  resualt;
 }
 
+QVector<QString> Question::getReplysId()
+{
+    return this->replys_id;
+}
+
 Question::Question(const QDate &date_create, const QString &id, const QString &sender_id, const QString &content)
     :DiscussionItem(date_create,id,sender_id,content)
 {
@@ -47,7 +57,7 @@ Question::~Question()
 
 }
 
-bool Question::addView(const QString &reply_id, bool)
+bool Question::addReply(const QString &reply_id)
 {
 
     int index=this->replys_id.indexOf(reply_id);
