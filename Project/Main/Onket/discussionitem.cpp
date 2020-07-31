@@ -20,7 +20,15 @@ QString DiscussionItem::getContent()
     return  this->content;
 }
 
-DiscussionItem::DiscussionItem(const QString &id, const QString &sender_id, const QString &content)
+QDate DiscussionItem::getDateCreate()
+{
+    return this->date_create;
+}
+
+
+
+DiscussionItem::DiscussionItem(const QDate& date_create, const QString &id, const QString &sender_id, const QString &content)
+    :date_create(date_create)
 {
     this->id=id;
     this->sender_id=sender_id;
