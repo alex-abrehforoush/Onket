@@ -20,13 +20,15 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     comment.cpp \
-    question.cpp
+    question.cpp \
+    reply.cpp
 
 HEADERS += \
     discussionitem.h \
     mainwindow.h \
     comment.h \
-    question.h
+    question.h \
+    reply.h
 
 FORMS += \
     mainwindow.ui
