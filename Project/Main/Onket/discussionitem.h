@@ -12,14 +12,14 @@ protected:
     QString content;
     QDate date_create;
 
-
-
+protected:
+    bool isValidInXml(const QString & input);
 public:
     static QString toQString(const QDate& input);
     static QDate toQDate(const QString& input);
 
 
-    void setContent(const QString& content);
+    bool setContent(const QString& content);
 
     QString getId();
     QString getSenderId();

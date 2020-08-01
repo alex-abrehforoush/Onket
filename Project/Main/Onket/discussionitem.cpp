@@ -1,6 +1,21 @@
 #include "discussionitem.h"
 
 
+bool DiscussionItem::isValidInXml(const QString &input)
+{
+
+    for(auto it=input.cbegin();it != input.cend();it++)
+    {
+        if(*it=='<'||*it== '>')
+        {
+            return false;
+        }
+    }
+
+
+        return true;
+}
+
 QString DiscussionItem::toQString(const QDate& input)
 {
     QString resault=QString::number(input.year());
@@ -24,9 +39,14 @@ QDate DiscussionItem::toQDate(const QString &input)
 }
 
 
-void DiscussionItem::setContent(const QString &content)
+bool DiscussionItem::setContent(const QString &content)
 {
+    if(this->isValidInXml(content) == false)
+    {
+        return false;
+    }
     this->content=content;
+    return true;
 }
 
 QString DiscussionItem::getId()
@@ -57,12 +77,15 @@ DiscussionItem::DiscussionItem(const QDate& date_create, const QString &id, cons
 {
     this->id=id;
     this->sender_id=sender_id;
-    this->content=content;
+    this->setContent(content);
 }
 
 DiscussionItem::~DiscussionItem()
 {
 
 }
+
+
+
 
 
