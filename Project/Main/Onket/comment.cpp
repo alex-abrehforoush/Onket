@@ -19,6 +19,20 @@ QString Comment::itemToXml(const QString &item_name)
    return  resualt;
 }
 
+bool Comment::isValidInxml(const QString &input)
+{
+    for(auto it=input.cbegin();it != input.cend();it++)
+    {
+        if(*it=='<'||*it== '>')
+        {
+            return false;
+        }
+    }
+
+
+        return true;
+}
+
 QString Comment::xmlToItem(const QString &xml)
 {
     QString resualt;
@@ -90,19 +104,33 @@ QMap<QString, bool> Comment::toQMap(const QString &input)
     return resualt;
 }
 
-void Comment::setAdvantages(const QString & advantages)
+bool Comment::setAdvantages(const QString & advantages)
 {
+    if(this->isValidInxml(advantages)==false)
+    {
+        return false;
+    }
     this->advantages=advantages;
+    return true;
 }
 
-void Comment::setDisAdvantages(const QString &disadvantages)
+bool Comment::setDisAdvantages(const QString &disadvantages)
 {
+    if(this->isValidInxml(disadvantages)==false)
+    {
+        return false;
+    }
     this->disadvantages=disadvantages;
+    return true;
 }
 
-void Comment::setDescription(const QString &description)
-{
+bool Comment::setDescription(const QString &description)
+{   if(this->isValidInxml(description)==false)
+    {
+        return false;
+    }
     this->description=description;
+    return true;
 }
 
 QString Comment::getSenderId()
@@ -182,7 +210,7 @@ bool Comment::insertItem(const QString &item_name)
     {
         foreach(QChar ch,item_name)
         {
-            if(ch=='-' || ch=='\n')
+            if(ch=='-' || ch=='\n' || ch=='*' ||ch=='~' || ch=='$' || ch=='<' || ch=='>')
                 return false;
 
 

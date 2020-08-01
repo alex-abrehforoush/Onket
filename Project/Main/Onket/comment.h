@@ -14,16 +14,18 @@ class Comment
     QMap<QString,bool>users_like;
     QString advantages,disadvantages;
     QString description;
+
     QString itemToXml(const QString& item_name);
-    static QString toQString(const QMap<QString,bool>& input);
+    bool isValidInxml(const QString& input);
 public:
+    static QString toQString(const QMap<QString,bool>& input);
     static QString xmlToItem(const QString& xml);
 
     static QMap<QString,bool> toQMap(const QString & input);
 
-    void setAdvantages(const QString &advantages);
-    void setDisAdvantages(const QString & disadvantages);
-    void setDescription(const QString& description);
+    bool setAdvantages(const QString &advantages);
+    bool setDisAdvantages(const QString & disadvantages);
+    bool setDescription(const QString& description);
 
     QString getSenderId();
 
