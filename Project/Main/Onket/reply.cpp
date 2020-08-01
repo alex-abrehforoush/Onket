@@ -54,12 +54,12 @@ QMap<QString, bool> Reply::toQMap(const QString &input)
     return resualt;
 }
 
-unsigned int Reply::getLike()
+unsigned int Reply::getLikeNumber()
 {
     return this->like;
 }
 
-unsigned int Reply::getDisLike()
+unsigned int Reply::getDisLikeNumber()
 {
     return this->dislike;
 }
@@ -70,28 +70,72 @@ Reply::Reply(const QDate &date_create, const QString &id, const QString &sender_
 
 }
 
-bool Reply::addBoolianComment(const QString &sender_id, bool like)
+void Reply::addLike(const QString &sender_id)
 {
-    auto it=users_like.find(sender_id);
+    auto it= users_like.find(sender_id);
     if(it != users_like.end())
     {
-        return false;
+        if(users_like[sender_id]==false)
+        {
+            this->dislike--;
+            this->like++;
+        }
+        users_like[sender_id]=true;
     }
     else
     {
-        users_like.insert(sender_id,like);
-        if(like==true)
+        users_like.insert(sender_id,true);
+        this->like++;
+    }
+}
+
+void Reply::addDisLike(const QString &sender_id)
+{
+    auto it= users_like.find(sender_id);
+    if(it != users_like.end())
+    {
+        if(users_like[sender_id] == true)
         {
-            this->like++;
-        }
-        else
-        {
+            this->like--;
             this->dislike++;
         }
-        return  true;
+        users_like[sender_id]=false;
     }
-
+    else
+    {
+        users_like.insert(sender_id,false);
+        this->dislike++;
+    }
 }
+
+bool Reply::find(const QString &sender_id)
+{
+    auto it=users_like.find(sender_id);
+    if(it != users_like.cend())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool Reply::getLikeMode(const QString &sender_id)
+{
+    if(this->find(sender_id)==true)
+    {
+        return users_like[sender_id];
+    }
+    else
+    {
+        return true;
+    }
+}
+
+
+
+
 
 void Reply::addToFile(QXmlStreamWriter &xml_writer)
 {
