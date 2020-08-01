@@ -38,5 +38,4 @@ void LoginPage::on_checkBox_stateChanged()
     {
         ui->lineEdit_2->setEchoMode(QLineEdit::Normal);
     }
-
 }

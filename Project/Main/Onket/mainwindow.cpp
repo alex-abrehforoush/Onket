@@ -4,13 +4,11 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     ,ui(new Ui::MainWindow)
+    ,login_page(nullptr)
 {
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
     setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
-
-    login_page = new LoginPage(this);
-    login_page->close();
 }
 
 MainWindow::~MainWindow()
@@ -24,5 +22,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_action_10_triggered()
 {
+    if(login_page == nullptr) login_page = new LoginPage(this);
     login_page->show();
 }
