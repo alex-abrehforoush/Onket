@@ -104,8 +104,6 @@ bool Comment::setItemValue(const QString &item_name, double item_value)
   }
 }
 
-
-
 Comment::Comment(const QString& sender_id,const QString& advantages,const QString& disadvatages, const QString &description)
 {
     this->sender_id=sender_id;
@@ -119,22 +117,21 @@ Comment::Comment(const QString& sender_id,const QString& advantages,const QStrin
 Comment::~Comment()
 {
 
-
 }
 
 void Comment::addToFile(QXmlStreamWriter &xml_writer)
 {
     xml_writer.writeStartElement("comment");
 
-        for(auto it=map_items.begin();it != map_items.end();it++)
-        {
-            xml_writer.writeAttribute(it.key(),QString::number(it.value()));
-        }
+    for(auto it=map_items.begin();it != map_items.end();it++)
+    {
+        xml_writer.writeAttribute(it.key(),QString::number(it.value()));
+    }
 
-       xml_writer.writeTextElement("sender_id",this->sender_id);
-        xml_writer.writeTextElement("advantages",this->advantages);
-         xml_writer.writeTextElement("disadvantages",this->disadvantages);
-       xml_writer.writeTextElement("description",this->description);
+    xml_writer.writeTextElement("sender_id",this->sender_id);
+    xml_writer.writeTextElement("advantages",this->advantages);
+    xml_writer.writeTextElement("disadvantages",this->disadvantages);
+    xml_writer.writeTextElement("description",this->description);
     xml_writer.writeEndElement();
 }
 
