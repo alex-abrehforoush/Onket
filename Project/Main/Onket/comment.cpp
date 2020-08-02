@@ -30,8 +30,10 @@ bool Comment::isValidInxml(const QString &input)
     }
 
 
-        return true;
+    return true;
 }
+
+
 
 QString Comment::xmlToItem(const QString &xml)
 {
@@ -50,59 +52,9 @@ QString Comment::xmlToItem(const QString &xml)
    return  resualt;
 }
 
-QString Comment::toQString(const QMap<QString, bool> &input)
-{
-    if(input.isEmpty()==true)
-    {
-        return QString("");
-    }
 
-    auto it=input.cbegin();
-    QString resault=it.key();
-    resault.append("_");
-    resault.append(QString::number(*it));
 
-    if(it != input.cend())
-        it++;
-    for(;it !=  input.cend();it++)
-    { resault.append(",");
-        resault.append(it.key());
-        resault.append("_");
-        resault.append(QString::number(*it));
 
-    }
-    return resault;
-}
-
-QMap<QString, bool> Comment::toQMap(const QString &input)
-{
-    QMap<QString,bool>resualt;
-    QString sender;
-    for(auto it=input.cbegin();it != input.cend(); it++)
-    {
-        if(*it == '_')
-        {
-            it++;
-            bool mode;
-            if(*it=='0')
-            {
-                mode=false;
-            }
-            else
-            {
-                mode=true;
-            }
-            it++;
-            resualt.insert(sender,mode);
-            sender.clear();
-        }
-        else
-        {
-         sender.append(*it);
-        }
-    }
-    return resualt;
-}
 
 bool Comment::setAdvantages(const QString & advantages)
 {
@@ -138,6 +90,11 @@ QString Comment::getSenderId()
     return this->sender_id;
 }
 
+QDate Comment::getDateCreate()
+{
+    return this->date_create;
+}
+
 QString Comment::getAdvantages()
 {
     return this->advantages;
@@ -152,6 +109,21 @@ QString Comment::getDisadvantages()
 QString Comment::getDescription()
 {
     return this->description;
+}
+
+unsigned int Comment::getLikeNumber()
+{
+    return this->like;
+}
+
+unsigned int Comment::getDisLikeNumber()
+{
+    return this->dislike;
+}
+
+unsigned int Comment::getViewNumber()
+{
+    return this->like+this->dislike;
 }
 
 bool Comment::find(const QString &sender_id)
@@ -169,11 +141,17 @@ void Comment::addLike(const QString &sender_id)
     auto it=users_like.find(sender_id);
     if (it != users_like.end())
     {
+        if(users_like[sender_id]==false)
+        {
+            this->dislike--;
+            this->like++;
+        }
         users_like[sender_id]=true;
     }
     else
     {
         users_like.insert(sender_id,true);
+        this->like++;
     }
 }
 
@@ -182,11 +160,17 @@ void Comment::addDisLike(const QString &sender_id)
     auto it=users_like.find(sender_id);
     if (it != users_like.end())
     {
+        if(users_like[sender_id]== true)
+        {
+            this->like--;
+            this->dislike++;
+        }
         users_like[sender_id]=false;
     }
     else
     {
         users_like.insert(sender_id,false);
+        this->dislike++;
     }
 }
 
@@ -210,7 +194,7 @@ bool Comment::insertItem(const QString &item_name)
     {
         foreach(QChar ch,item_name)
         {
-            if(ch=='-' || ch=='\n' || ch=='*' ||ch=='~' || ch=='$' || ch=='<' || ch=='>')
+            if(ch=='-' || ch=='\n' || ch=='*' ||ch=='~' || ch=='$' || ch=='<' || ch=='>' || ch=='&')
                 return false;
 
 
@@ -270,8 +254,11 @@ bool Comment::setItemValue(const QString &item_name, double item_value)
   }
 }
 
-Comment::Comment(const QString& sender_id,const QString& advantages,const QString& disadvatages, const QString &description)
+
+
+Comment::Comment(const QDate& date_create,const QString& sender_id,const QString& advantages,const QString& disadvatages, const QString &description)
 {
+    this->date_create=date_create;
     this->sender_id=sender_id;
     this->setAdvantages(advantages);
     this->setDisAdvantages(disadvatages);
@@ -283,19 +270,23 @@ Comment::Comment(const QString& sender_id,const QString& advantages,const QStrin
 Comment::~Comment()
 {
 
+
 }
 
 void Comment::addToFile(QXmlStreamWriter &xml_writer)
 {
     xml_writer.writeStartElement("comment");
-    for(auto it=map_items.begin();it != map_items.end();it++)
-    {
-        xml_writer.writeAttribute(it.key(),QString::number(it.value()));
-    }
-    xml_writer.writeTextElement("sender_id",this->sender_id);
-    xml_writer.writeTextElement("advantages",this->advantages);
-    xml_writer.writeTextElement("disadvantages",this->disadvantages);
-    xml_writer.writeTextElement("description",this->description);
+
+        for(auto it=map_items.begin();it != map_items.end();it++)
+        {
+            xml_writer.writeAttribute(itemToXml(it.key()),QString::number(it.value()));
+        }
+
+       xml_writer.writeTextElement("sender_id",this->sender_id);
+        xml_writer.writeTextElement("advantages",this->advantages);
+         xml_writer.writeTextElement("disadvantages",this->disadvantages);
+       xml_writer.writeTextElement("description",this->description);
+        xml_writer.writeTextElement("users_like",xml_QMap::toQString(this->users_like));
     xml_writer.writeEndElement();
 }
 

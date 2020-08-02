@@ -1,38 +1,53 @@
 #ifndef COMMENT_H
 #define COMMENT_H
+
+
 #include <QString>
+#include <QDate>
+
 #include <QVector>
 #include <QMap>
+
 #include <QXmlStreamWriter>
+
+#include "xmlfunctions.h"
+
 
 
 class Comment
 {
     static const QVector<double> grades;
     QString sender_id;
+    QDate date_create;
     QMap<QString,double>map_items;//the key is item name & the value is item value
     QMap<QString,bool>users_like;
+    unsigned int like=0,dislike=0;
     QString advantages,disadvantages;
     QString description;
 
     QString itemToXml(const QString& item_name);
     bool isValidInxml(const QString& input);
 public:
-    static QString toQString(const QMap<QString,bool>& input);
+
+
     static QString xmlToItem(const QString& xml);
 
-    static QMap<QString,bool> toQMap(const QString & input);
+
 
     bool setAdvantages(const QString &advantages);
     bool setDisAdvantages(const QString & disadvantages);
     bool setDescription(const QString& description);
 
     QString getSenderId();
+    QDate getDateCreate();
 
     QString getAdvantages();
     QString getDisadvantages();
     QString getDescription();
 
+    unsigned int getLikeNumber();
+    unsigned int getDisLikeNumber();
+    unsigned int getViewNumber();
     bool find(const QString& sender_id);
     void addLike(const QString& sender_id);
     void addDisLike(const QString& sender_id);
@@ -42,7 +57,7 @@ public:
     bool removeItem(const QString& item_name);
     bool setItemValue(const QString& item_name,double item_value);
 
-    Comment(const QString& sender_id,const QString& advantages,const QString& disadvatages,const QString & description);
+    explicit Comment(const QDate& date_create,const QString& sender_id,const QString& advantages,const QString& disadvatages,const QString & description);
     ~Comment();
 
     void addToFile(QXmlStreamWriter & xml_writer);
