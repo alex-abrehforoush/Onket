@@ -1,4 +1,4 @@
-#include "xmlfuncitions.h"
+#include "xmlfunctions.h"
 
 QString xml_QDate::toQString(const QDate& input)
 {
