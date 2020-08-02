@@ -6,16 +6,286 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1500</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="layoutDirection">
+   <enum>Qt::RightToLeft</enum>
+  </property>
   <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1500</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>دسته بندی کالاها</string>
+    </property>
+    <widget class="QMenu" name="menu_8">
+     <property name="title">
+      <string>کالای دیجیتال</string>
+     </property>
+     <addaction name="action_12"/>
+     <addaction name="action_13"/>
+     <addaction name="action_14"/>
+     <addaction name="action_15"/>
+     <addaction name="action_16"/>
+     <addaction name="action_17"/>
+     <addaction name="action_SSD"/>
+     <addaction name="action_18"/>
+     <addaction name="action_19"/>
+     <addaction name="action_20"/>
+     <addaction name="action_21"/>
+     <addaction name="actionPS4_XBox"/>
+     <addaction name="action_22"/>
+     <addaction name="action_23"/>
+     <addaction name="action_24"/>
+     <addaction name="action_25"/>
+     <addaction name="action_26"/>
+     <addaction name="action_27"/>
+     <addaction name="action_28"/>
+     <addaction name="action_29"/>
+     <addaction name="action_30"/>
+     <addaction name="action_31"/>
+     <addaction name="action_32"/>
+     <addaction name="action_33"/>
+     <addaction name="action_34"/>
+    </widget>
+    <addaction name="menu_8"/>
+    <addaction name="action_2"/>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+    <addaction name="action_5"/>
+    <addaction name="action_6"/>
+    <addaction name="action_7"/>
+    <addaction name="action_8"/>
+    <addaction name="action_9"/>
+   </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>سوپرمارکت</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>تخفیف ها و پیشنهادها</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>آنکت من</string>
+    </property>
+    <addaction name="action_10"/>
+    <addaction name="action_11"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>آنکت کلاب</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>سوال دارید؟</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_7">
+    <property name="title">
+     <string>فروشنده شوید</string>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_2"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_6"/>
+   <addaction name="menu_7"/>
+  </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_2">
+   <property name="text">
+    <string>آرایشی، بهداشتی و سلامت</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>خودرو، ابزار و اداری</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>مد و پوشاک</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>خانه و آشپزخانه</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>کتاب، لوازم تحریر و هنر</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>اسباب بازی، کودک و نوزاد</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>ورزش و سفر</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>خوردنی و آشامیدنی</string>
+   </property>
+  </action>
+  <action name="action_10">
+   <property name="text">
+    <string>ورود</string>
+   </property>
+  </action>
+  <action name="action_11">
+   <property name="text">
+    <string>ثبت نام</string>
+   </property>
+  </action>
+  <action name="action_12">
+   <property name="text">
+    <string>لوازم جانبی گوشی</string>
+   </property>
+  </action>
+  <action name="action_13">
+   <property name="text">
+    <string>گوشی موبایل</string>
+   </property>
+  </action>
+  <action name="action_14">
+   <property name="text">
+    <string>واقعیت مجازی</string>
+   </property>
+  </action>
+  <action name="action_15">
+   <property name="text">
+    <string>مچ بند و ساعت هوشمند</string>
+   </property>
+  </action>
+  <action name="action_16">
+   <property name="text">
+    <string>هدفون، هدست و هندزفری</string>
+   </property>
+  </action>
+  <action name="action_17">
+   <property name="text">
+    <string>اسپیکر بلوتوث و باسیم</string>
+   </property>
+  </action>
+  <action name="action_SSD">
+   <property name="text">
+    <string>SSD هارد، فلش و</string>
+   </property>
+  </action>
+  <action name="action_18">
+   <property name="text">
+    <string>دوربین</string>
+   </property>
+  </action>
+  <action name="action_19">
+   <property name="text">
+    <string>لوازم جانبی دوربین</string>
+   </property>
+  </action>
+  <action name="action_20">
+   <property name="text">
+    <string>دوربین دوچشمی و شکاری</string>
+   </property>
+  </action>
+  <action name="action_21">
+   <property name="text">
+    <string>تلسکوپ</string>
+   </property>
+  </action>
+  <action name="actionPS4_XBox">
+   <property name="text">
+    <string>و بازی XBox ،PS4</string>
+   </property>
+  </action>
+  <action name="action_22">
+   <property name="text">
+    <string>کامپیوتر و تجهیزات جانبی</string>
+   </property>
+  </action>
+  <action name="action_23">
+   <property name="text">
+    <string>لپ تاپ</string>
+   </property>
+  </action>
+  <action name="action_24">
+   <property name="text">
+    <string>لوازم جانبی لپ تاپ</string>
+   </property>
+  </action>
+  <action name="action_25">
+   <property name="text">
+    <string>تبلت</string>
+   </property>
+  </action>
+  <action name="action_26">
+   <property name="text">
+    <string>شارژر تبلت و موبایل</string>
+   </property>
+  </action>
+  <action name="action_27">
+   <property name="text">
+    <string>کیف، کاور، لوازم جانبی تبلت</string>
+   </property>
+  </action>
+  <action name="action_28">
+   <property name="text">
+    <string>باتری</string>
+   </property>
+  </action>
+  <action name="action_29">
+   <property name="text">
+    <string>دوربین های تحت شبکه</string>
+   </property>
+  </action>
+  <action name="action_30">
+   <property name="text">
+    <string>مودم و تجهیزات شبکه</string>
+   </property>
+  </action>
+  <action name="action_31">
+   <property name="text">
+    <string>ماشین های اداری</string>
+   </property>
+  </action>
+  <action name="action_32">
+   <property name="text">
+    <string>کتابخوان فیدیبوک</string>
+   </property>
+  </action>
+  <action name="action_33">
+   <property name="text">
+    <string>کارت هدیه خرید از آنکت</string>
+   </property>
+  </action>
+  <action name="action_34">
+   <property name="text">
+    <string>خرید شارژ و بستۀ اینترنت</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
