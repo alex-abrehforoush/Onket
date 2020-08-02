@@ -4,7 +4,7 @@
 #include <QDate>
 #include <QXmlStreamWriter>
 
-#include "xmlfuncitions.h"
+#include "xmlfunctions.h"
 class DiscussionItem
 {
 protected:

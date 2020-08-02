@@ -41,7 +41,7 @@ QVector<QString> Question::toVector(const QString &input)
     return  resualt;
 }
 
-QVector<QString> Question::getReplysId()
+const  QVector<QString>& Question::getReplysId()
 {
     return this->replys_id;
 }
@@ -61,7 +61,7 @@ bool Question::addReply(const QString &reply_id)
 {
 
     int index=this->replys_id.indexOf(reply_id);
-    if(index <= this->replys_id.size() && index>0)
+    if(index <= this->replys_id.size() && index>=0)
         return false;
 
     else
@@ -79,7 +79,7 @@ void Question::addToFile(QXmlStreamWriter &xml_writer)
     xml_writer.writeStartElement("question");
        xml_writer.writeTextElement("id",this->id);
        xml_writer.writeTextElement("sender_id",this->sender_id);
-       xml_writer.writeTextElement("date",DiscussionItem::toQString(this->date_create));
+       xml_writer.writeTextElement("date",xml_QDate::toQString(this->date_create));
        xml_writer.writeTextElement("content",this->content);
        xml_writer.writeTextElement("replys_id",Question::toQString(this->replys_id));
     xml_writer.writeEndElement();

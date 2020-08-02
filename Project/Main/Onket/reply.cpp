@@ -1,58 +1,8 @@
 #include "reply.h"
 
-QString Reply::toQString(const QMap<QString, bool>& input)
-{
-    if(input.isEmpty()==true)
-    {
-        return QString("");
-    }
 
-    auto it=input.cbegin();
-    QString resault=it.key();
-    resault.append("_");
-    resault.append(QString::number(*it));
 
-    if(it != input.cend())
-        it++;
-    for(;it !=  input.cend();it++)
-    { resault.append(",");
-        resault.append(it.key());
-        resault.append("_");
-        resault.append(QString::number(*it));
 
-    }
-    return resault;
-}
-
-QMap<QString, bool> Reply::toQMap(const QString &input)
-{
-    QMap<QString,bool>resualt;
-    QString sender;
-    for(auto it=input.cbegin();it != input.cend(); it++)
-    {
-        if(*it == '_')
-        {
-            it++;
-            bool mode;
-            if(*it=='0')
-            {
-                mode=false;
-            }
-            else
-            {
-                mode=true;
-            }
-            it++;
-            resualt.insert(sender,mode);
-            sender.clear();
-        }
-        else
-        {
-         sender.append(*it);
-        }
-    }
-    return resualt;
-}
 
 unsigned int Reply::getLikeNumber()
 {
@@ -144,9 +94,9 @@ void Reply::addToFile(QXmlStreamWriter &xml_writer)
         xml_writer.writeAttribute("dislike",QString::number(this->dislike));
         xml_writer.writeTextElement("id",this->id);
         xml_writer.writeTextElement("sender_id",this->sender_id);
-        xml_writer.writeTextElement("date",DiscussionItem::toQString(this->date_create));
+        xml_writer.writeTextElement("date",xml_QDate::toQString(this->date_create));
         xml_writer.writeTextElement("content",this->content);
-        xml_writer.writeTextElement("users_like",Reply::toQString(this->users_like));
+        xml_writer.writeTextElement("users_like",xml_QMap::toQString(this->users_like));
     xml_writer.writeEndElement();
 }
 
