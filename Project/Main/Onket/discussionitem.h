@@ -21,10 +21,10 @@ public:
 
     bool setContent(const QString& content);
 
-    QString getId();
-    QString getSenderId();
-    QString getContent();
-    QDate getDateCreate();
+    QString getId()const;
+    QString getSenderId()const;
+    QString getContent()const;
+    QDate getDateCreate()const;
     DiscussionItem(const QDate& date_create, const QString& id,const QString& sender_id,const QString& content );
     ~DiscussionItem();
     virtual void addToFile(QXmlStreamWriter & xml_writer)=0;

@@ -28,23 +28,23 @@ bool DiscussionItem::setContent(const QString &content)
     return true;
 }
 
-QString DiscussionItem::getId()
+QString DiscussionItem::getId()const
 {
     return this->id;
 
 }
 
-QString DiscussionItem::getSenderId()
+QString DiscussionItem::getSenderId()const
 {
     return  this->sender_id;
 }
 
-QString DiscussionItem::getContent()
+QString DiscussionItem::getContent()const
 {
     return  this->content;
 }
 
-QDate DiscussionItem::getDateCreate()
+QDate DiscussionItem::getDateCreate()const
 {
     return this->date_create;
 }

@@ -12,8 +12,8 @@ class Reply: public DiscussionItem
 public:
 
 
-    unsigned int getLikeNumber();
-    unsigned int getDisLikeNumber();
+    unsigned int getLikeNumber()const;
+    unsigned int getDisLikeNumber()const;
 
 
 
@@ -21,7 +21,7 @@ public:
     void addLike(const QString& sender_id);
     void addDisLike(const QString& sender_id);
     bool exist(const QString& sender_id);
-    bool getLikeMode(const QString& sender_id);
+    bool getLikeMode(const QString& sender_id)const;
 
     virtual void addToFile(QXmlStreamWriter &xml_writer) override;
 };

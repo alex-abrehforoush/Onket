@@ -41,7 +41,7 @@ QVector<QString> Question::toVector(const QString &input)
     return  resualt;
 }
 
-const  QVector<QString>& Question::getReplysId()
+const  QVector<QString>& Question::getReplysId()const
 {
     return this->replys_id;
 }

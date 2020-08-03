@@ -4,12 +4,12 @@
 
 
 
-unsigned int Reply::getLikeNumber()
+unsigned int Reply::getLikeNumber()const
 {
     return this->like;
 }
 
-unsigned int Reply::getDisLikeNumber()
+unsigned int Reply::getDisLikeNumber()const
 {
     return this->dislike;
 }
@@ -71,7 +71,7 @@ bool Reply::exist(const QString &sender_id)
     }
 }
 
-bool Reply::getLikeMode(const QString &sender_id)
+bool Reply::getLikeMode(const QString &sender_id)const
 {
     if(this->exist(sender_id)==true)
     {
