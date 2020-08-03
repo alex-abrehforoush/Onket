@@ -58,7 +58,7 @@ void Reply::addDisLike(const QString &sender_id)
     }
 }
 
-bool Reply::exist(const QString &sender_id)
+bool Reply::exist(const QString &sender_id)const
 {
     auto it=users_like.find(sender_id);
     if(it != users_like.cend())
