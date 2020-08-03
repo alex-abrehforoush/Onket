@@ -37,16 +37,16 @@ public:
     bool setDisAdvantages(const QString & disadvantages);
     bool setDescription(const QString& description);
 
-    QString getSenderId();
-    QDate getDateCreate();
+    QString getSenderId()const ;
+    QDate getDateCreate()const ;
 
-    QString getAdvantages();
-    QString getDisadvantages();
-    QString getDescription();
+    QString getAdvantages()const;
+    QString getDisadvantages()const;
+    QString getDescription()const;
 
-    unsigned int getLikeNumber();
-    unsigned int getDisLikeNumber();
-    unsigned int getViewNumber();
+    unsigned int getLikeNumber()const;
+    unsigned int getDisLikeNumber()const;
+    unsigned int getViewNumber()const;
     bool exist(const QString& sender_id);
     void addLike(const QString& sender_id);
     void addDisLike(const QString& sender_id);

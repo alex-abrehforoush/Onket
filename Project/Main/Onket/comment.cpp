@@ -85,43 +85,43 @@ bool Comment::setDescription(const QString &description)
     return true;
 }
 
-QString Comment::getSenderId()
+QString Comment::getSenderId()const
 {
     return this->sender_id;
 }
 
-QDate Comment::getDateCreate()
+QDate Comment::getDateCreate()const
 {
     return this->date_create;
 }
 
-QString Comment::getAdvantages()
+QString Comment::getAdvantages()const
 {
     return this->advantages;
 }
 
-QString Comment::getDisadvantages()
+QString Comment::getDisadvantages()const
 {
     return this->disadvantages;
 }
 
 
-QString Comment::getDescription()
+QString Comment::getDescription()const
 {
     return this->description;
 }
 
-unsigned int Comment::getLikeNumber()
+unsigned int Comment::getLikeNumber()const
 {
     return this->like;
 }
 
-unsigned int Comment::getDisLikeNumber()
+unsigned int Comment::getDisLikeNumber()const
 {
     return this->dislike;
 }
 
-unsigned int Comment::getViewNumber()
+unsigned int Comment::getViewNumber()const
 {
     return this->like+this->dislike;
 }
