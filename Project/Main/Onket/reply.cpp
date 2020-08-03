@@ -58,7 +58,7 @@ void Reply::addDisLike(const QString &sender_id)
     }
 }
 
-bool Reply::find(const QString &sender_id)
+bool Reply::exist(const QString &sender_id)
 {
     auto it=users_like.find(sender_id);
     if(it != users_like.cend())
@@ -73,7 +73,7 @@ bool Reply::find(const QString &sender_id)
 
 bool Reply::getLikeMode(const QString &sender_id)
 {
-    if(this->find(sender_id)==true)
+    if(this->exist(sender_id)==true)
     {
         return users_like[sender_id];
     }

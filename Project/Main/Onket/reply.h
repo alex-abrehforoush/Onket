@@ -20,7 +20,7 @@ public:
     explicit Reply(const QDate& date_create, const QString& id,const QString& sender_id,const QString& content);
     void addLike(const QString& sender_id);
     void addDisLike(const QString& sender_id);
-    bool find(const QString& sender_id);
+    bool exist(const QString& sender_id);
     bool getLikeMode(const QString& sender_id);
 
     virtual void addToFile(QXmlStreamWriter &xml_writer) override;

@@ -10,7 +10,6 @@
 
 #include <QXmlStreamWriter>
 
-#include "xmlfunctions.h"
 #include "filefunctions.h"
 
 
@@ -48,7 +47,7 @@ public:
     unsigned int getLikeNumber();
     unsigned int getDisLikeNumber();
     unsigned int getViewNumber();
-    bool find(const QString& sender_id);
+    bool exist(const QString& sender_id);
     void addLike(const QString& sender_id);
     void addDisLike(const QString& sender_id);
     bool getLikeMode(const QString& sender_id);

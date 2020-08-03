@@ -126,7 +126,7 @@ unsigned int Comment::getViewNumber()
     return this->like+this->dislike;
 }
 
-bool Comment::find(const QString &sender_id)
+bool Comment::exist(const QString &sender_id)
 {
     auto it=users_like.find(sender_id);
     if (it != users_like.end())
@@ -176,7 +176,7 @@ void Comment::addDisLike(const QString &sender_id)
 
 bool Comment::getLikeMode(const QString &sender_id)
 {
-    if(this->find(sender_id)==true)
+    if(this->exist(sender_id)==true)
     {
         return users_like[sender_id];
     }
