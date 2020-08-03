@@ -17,6 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     discussionitem.cpp \
+    filefunctions.cpp \
+    good.cpp \
     main.cpp \
     mainwindow.cpp \
     comment.cpp \
@@ -27,6 +29,8 @@ SOURCES += \
 
 HEADERS += \
     discussionitem.h \
+    filefunctions.h \
+    good.h \
     mainwindow.h \
     comment.h \
     question.h \

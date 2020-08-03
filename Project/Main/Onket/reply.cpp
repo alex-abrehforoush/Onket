@@ -94,7 +94,7 @@ void Reply::addToFile(QXmlStreamWriter &xml_writer)
         xml_writer.writeAttribute("dislike",QString::number(this->dislike));
         xml_writer.writeTextElement("id",this->id);
         xml_writer.writeTextElement("sender_id",this->sender_id);
-        xml_writer.writeTextElement("date",xml_QDate::toQString(this->date_create));
+        xml_writer.writeTextElement("date",file_QDate::toQString(this->date_create));
         xml_writer.writeTextElement("content",this->content);
         xml_writer.writeTextElement("users_like",xml_QMap::toQString(this->users_like));
     xml_writer.writeEndElement();

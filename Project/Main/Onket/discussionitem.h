@@ -5,6 +5,7 @@
 #include <QXmlStreamWriter>
 
 #include "xmlfunctions.h"
+#include "filefunctions.h"
 class DiscussionItem
 {
 protected:

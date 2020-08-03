@@ -283,7 +283,7 @@ void Comment::addToFile(QXmlStreamWriter &xml_writer)
         }
 
        xml_writer.writeTextElement("sender_id",this->sender_id);
-       xml_writer.writeTextElement("date",xml_QDate::toQString(this->date_create));
+       xml_writer.writeTextElement("date",file_QDate::toQString(this->date_create));
         xml_writer.writeTextElement("advantages",this->advantages);
          xml_writer.writeTextElement("disadvantages",this->disadvantages);
        xml_writer.writeTextElement("description",this->description);
