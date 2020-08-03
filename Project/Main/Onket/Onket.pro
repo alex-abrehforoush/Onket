@@ -24,8 +24,7 @@ SOURCES += \
     comment.cpp \
     question.cpp \
     reply.cpp \
-    loginpage.cpp \
-    xmlfunctions.cpp
+    loginpage.cpp
 
 HEADERS += \
     discussionitem.h \
@@ -35,8 +34,7 @@ HEADERS += \
     comment.h \
     question.h \
     reply.h \
-    loginpage.h \
-    xmlfunctions.h
+    loginpage.h
 
 FORMS += \
     mainwindow.ui \

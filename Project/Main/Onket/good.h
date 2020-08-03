@@ -2,10 +2,14 @@
 #define GOOD_H
 
 #include <QMultiMap>
+#include <QMap>
+
+#include "filefunctions.h"
 
 #include "comment.h"
 #include "question.h"
 #include "reply.h"
+#
 
 class Good
 {
@@ -15,6 +19,9 @@ class Good
 
     unsigned  int price;
     double discount_percent=0.0;
+    QMap<QString,QString> properties;
+
+
 
 
 public:
@@ -24,7 +31,9 @@ public:
     unsigned int getPrice();
     unsigned int getFinalPrice();
     double getFinalDiscountPrice();
-
+    bool existProperty(const QString& property_name);
+    bool insertProperty(const QString& property_name);
+    bool setPropertyValue(const QString& property_name,const QString& property_value);
     Good();
 };
 
