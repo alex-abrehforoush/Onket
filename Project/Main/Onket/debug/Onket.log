@@ -1,7 +1,7 @@
-﻿  Generate moc_predefs.h
-  Uic'ing mainwindow.ui...
-  Moc'ing mainwindow.h...
-  main.cpp
-  mainwindow.cpp
-  moc_mainwindow.cpp
+﻿  comment.cpp
+  discussionitem.cpp
+  good.cpp
+  question.cpp
+  reply.cpp
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\good.cpp(245): warning C4715: 'Good::getQuestion': not all control paths return a value
   Onket.vcxproj -> C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\debug\Onket.exe
