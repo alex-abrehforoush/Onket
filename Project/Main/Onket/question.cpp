@@ -20,6 +20,36 @@ QString Question::toQString(const QVector<QString> &replys_id)
     return  resualt;
 }
 
+QString Question::readReply()
+{
+    QString* res=&(*this->replys_it);
+    if(this->replys_it != this->replys_id.end())
+    {
+        this->replys_it++;
+    }
+
+    return (*res);
+}
+
+void Question::setReplySeekBegin()
+{
+    this->replys_it=this->replys_id.begin();
+}
+
+bool Question::replySeekAtEnd()
+{
+    if(this->replys_it == this->replys_id.end())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+
 QVector<QString> Question::toVector(const QString &input)
 {
     QVector<QString>resualt;
