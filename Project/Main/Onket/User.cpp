@@ -51,3 +51,9 @@ QString User::decryptPassword(QString password)
 	}
 	return temp1;
 }
+
+void User::addActivity(QDateTime new_login)
+{
+	this->last_activities.push_back(new_login);
+	return;
+}

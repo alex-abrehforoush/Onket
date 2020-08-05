@@ -187,6 +187,7 @@
     </QtUic>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Admin.cpp" />
     <ClCompile Include="comment.cpp" />
     <ClCompile Include="discussionitem.cpp" />
     <ClCompile Include="filefunctions.cpp" />
@@ -226,6 +227,7 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Admin.h" />
     <ClInclude Include="comment.h" />
     <ClInclude Include="discussionitem.h" />
     <ClInclude Include="filefunctions.h" />
