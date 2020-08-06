@@ -13,6 +13,7 @@ class Reply: public DiscussionItem
 public:
 
 
+
     QString getQuestionId();
     unsigned int getLikeNumber()const;
     unsigned int getDisLikeNumber()const;

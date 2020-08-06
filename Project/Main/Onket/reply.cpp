@@ -21,6 +21,7 @@ unsigned int Reply::getDisLikeNumber()const
 
 
 
+
 Reply::Reply(const QDate &date_create, const QString &id, const QString &sender_id,const QString& question_id, const QString &content)
     :DiscussionItem(date_create,id,sender_id,content)
 {
