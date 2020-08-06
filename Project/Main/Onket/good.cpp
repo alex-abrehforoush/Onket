@@ -1,4 +1,37 @@
+
 #include "good.h"
+
+Question &Good::getQuestionPrivate(const QString &question_id)
+{
+    auto it=this->questions_id.find(question_id);
+    //if this question id not found
+    if(it == this->questions_id.end())
+    {
+        return (*this->questions.end());
+    }
+    ////if question id found
+    else
+    {
+       for(auto it= this->questions.begin(); it != this->questions.end();it++)
+       {
+           if((*it).getId() == question_id)
+           {
+               return (*it);
+           }
+       }
+    }
+}
+
+QString Good::toQString(unsigned int input)
+{
+    QString temp=QString::number(input);
+    int size=temp.size();
+    QString res=QString::number(size);
+    res.append(temp);
+    return  res;
+}
+
+
 
 void Good::setPrice(unsigned int  price)
 {
@@ -42,7 +75,7 @@ double Good::getFinalDiscountPrice()
     return this->discount_percent;
 }
 
-bool Good::existProperty(const QString &property_name)
+bool Good::existProperty(const QString &property_name)const
 {
     auto it=this->properties.find(property_name);
     if(it== this->properties.end())
@@ -56,7 +89,7 @@ bool Good::existProperty(const QString &property_name)
     }
 }
 
-bool Good::insertProperty(const QString &property_name)
+bool Good::addProperty(const QString &property_name)
 {
     if(this->existProperty(property_name)==true)
     {
@@ -86,6 +119,51 @@ bool Good::setPropertyValue(const QString &property_name, const QString &propert
 
     }
 }
+
+QString Good::getPropertyValue(const QString &property_name)const
+{
+    if(this->existProperty(property_name)==false)
+    {
+        return "";
+    }
+    else
+    {
+        auto it=this->properties.find(property_name);
+        return it.value();
+    }
+}
+
+void Good::setPropertySeekBegin() const
+{
+    this->property_it=this->properties.begin();
+}
+
+QString Good::readPropertyName() const
+{
+   if(this->property_it!=this->properties.end())
+   {
+      QString res=property_it.key();
+      property_it++;
+      return res;
+   }
+   else
+   {
+       return "";
+   }
+}
+
+bool Good::propertySeekAtEnd() const
+{
+    if(this->property_it==this->properties.end())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 bool Good::existCommentSender(const QString &sender_id)
 {
@@ -118,25 +196,28 @@ bool Good::existCommentSender(const QString &sender_id)
 
  Comment &Good::readComment()
  {
-     Comment* res=&(comments_it.value());
-     if(comments_it == this->comments.end());
+     if(this->comments.isEmpty()==true || this->comments_it==this->comments.begin())
+     {
+
+         return this->comments.end().value();
+     }
+
      else
      {
-         this->comments_it++;
+         this->comments_it--;
+         return this->comments_it.value();
      }
-     return *res;
-
 
  }
 
  void Good::setCommentSeekBegin()
  {
-     this->comments_it=this->comments.begin();
+     this->comments_it=this->comments.end();
  }
 
  bool Good::commentSeekAtEnd()
  {
-     if(this->comments_it == this->comments.end())
+     if(this->comments_it == this->comments.begin()|| this->comments.isEmpty())
          return true;
      else
          return false;
@@ -157,11 +238,11 @@ bool Good::addComment(const Comment &new_comment)
         }
         else if(this->comments_sort_by== "like_number")
         {
-          this->comments.insert(QString::number(new_comment.getLikeNumber()),new_comment);
+          this->comments.insert(Good::toQString(new_comment.getLikeNumber()),new_comment);
         }
         else if(this->comments_sort_by == "view_number")
         {
-            this->comments.insert(QString( new_comment.getViewNumber()),new_comment);
+            this->comments.insert( Good::toQString(new_comment.getViewNumber()),new_comment);
 
         }
         else;
@@ -190,7 +271,7 @@ bool Good::changeComment(const Comment &input_comment)
      }
 }
 
-bool Good::existQuestion(const QString &content)
+bool Good::existQuestionContent(const QString &content)
 {
     for(auto it = this->questions.begin(); it != this->questions.end();it++)
     {
@@ -203,9 +284,18 @@ bool Good::existQuestion(const QString &content)
 
 }
 
+bool Good::existQuestionId(const QString &question_id)
+{
+ auto it=this->questions_id.find(question_id);
+ if(it == this->questions_id.end())
+     return false;
+ else
+     return true;
+}
+
 QString Good::getIdQustion(const QString &content)
 {
-    if(this->existQuestion(content) == false)
+    if(this->existQuestionId(content) == false)
     {
         return "";
     }
@@ -223,7 +313,7 @@ QString Good::getIdQustion(const QString &content)
     }
 }
 
-Question &Good::getQuestion(const QString &question_id)
+const Question &Good::getQuestion(const QString &question_id)
 {
     auto it=this->questions_id.find(question_id);
     //if this question id not found
@@ -244,24 +334,27 @@ Question &Good::getQuestion(const QString &question_id)
     }
 }
 
-Question &Good::readQuestion()
+const Question &Good::readQuestion()
 {
-    Question* res=&(this->question_it.value());
-    if(this->question_it != this->questions.end())
-    {
-        this->question_it++;
-    }
-    return  (*res);
+  if(this->questions.isEmpty()==true || this->question_it== this->questions.begin())
+  {
+      return this->questions.end().value();
+  }
+  else
+  {
+      this->question_it--;
+      return question_it.value();
+  }
 }
 
 void Good::setQuestionSeekBegin()
 {
-    this->question_it=this->questions.begin();
+    this->question_it=this->questions.end();
 }
 
 bool Good::QuestionSeekAtEnd()
 {
-    if(this->question_it == this->questions.end())
+    if(this->questions.isEmpty()==true ||this->question_it == this->questions.begin())
     {
         return true;
     }
@@ -269,6 +362,7 @@ bool Good::QuestionSeekAtEnd()
     {
         return false;
     }
+
 }
 
 //bool Good::existQuestion(const QString &question_id)
@@ -310,12 +404,13 @@ bool Good::QuestionSeekAtEnd()
 
 QString Good::addQuestion(const QDate &date_create, const QString &sender_id, const QString &content)
 {
-    if(this->existQuestion(content)== true)
+    if(this->existQuestionContent(content)== true)
     {
         return "";
     }
     QString id="question";
     id.append(QString::number(this->questions.size()+1));
+
 
     Question q(date_create,id,sender_id,content);
 
@@ -323,14 +418,28 @@ QString Good::addQuestion(const QDate &date_create, const QString &sender_id, co
     {
         this->questions.insert(file_QDate::toQString(q.getDateCreate()),q);
     }
+    else if(this->question_sort_by== "reply_number")
+    {
+        this->questions.insert(Good::toQString(q.getReplyNumber()),q);
+    }
+    else;
 
     this->questions_id.insert(q.getId(),true);
+
+
 
     return  q.getId();
 
 }
 
-Reply &Good::getReply(const QString &reply_id)
+const Reply &Good::getReply(const QString &reply_id)
+{
+    auto it=this->replys.find(reply_id);
+
+    return it.value();
+}
+
+Reply &Good::getReplyPrivate(const QString &reply_id)
 {
     auto it=this->replys.find(reply_id);
 
@@ -347,7 +456,7 @@ bool Good::existReply(const QString &sender_id, const QString &question_id)
     }
     else
     {
-      Question* q=& (this->getQuestion(question_id));
+     const Question* q=& (this->getQuestion(question_id));
 
       for(q->setReplySeekBegin();q->replySeekAtEnd()==false;)
       {
@@ -365,10 +474,19 @@ bool Good::existReply(const QString &sender_id, const QString &question_id)
 
 }
 
+bool Good::existReply(const QString &reply_id)
+{
+ auto it=this->replys.find(reply_id);
+ if(it == this->replys.end())
+     return false;
+ else
+     return true;
+}
+
 QString Good::addReply(const QString &question_id, const QDate &date_create, const QString &sender_id, const QString &content)
 {
 
-    if(this->existQuestion(question_id)==true || this->existReply(sender_id,question_id)==true)
+    if(this->existQuestionId(question_id)==false || this->existReply(sender_id,question_id)==true)
     {
         return "";
     }
@@ -377,18 +495,143 @@ QString Good::addReply(const QString &question_id, const QDate &date_create, con
         QString id="reply";
         id.append(QString::number(this->replys.size()+1));
 
-        Reply r(date_create,id,sender_id,content);
+        Reply r(date_create,id,sender_id,question_id,content);
 
         this->replys.insert(r.getId(),r);
-        this->getQuestion(question_id).addReply(r.getId());
+        this->getQuestionPrivate(question_id).addReply(r.getId());
 
         return r.getId();
     }
 }
 
+bool Good::addReplyLike(const QString &reply_id, const QString &sender_id)
+{
+    if(this->existReply(reply_id)==false)
+    {
+        return false;
+    }
+    else
+    {
+
+        Reply* r=&(this->getReplyPrivate(reply_id));
+        r->addLike(sender_id);
+        this->getQuestionPrivate(r->getQuestionId()).changeReplyLike(r->getId(),r->getLikeNumber());
+
+        return true;
+    }
+
+}
+
+bool Good::addReplyDisLike(const QString &reply_id, const QString &sender_id)
+{
+    if(this->existReply(reply_id)==false)
+    {
+        return false;
+    }
+    else
+    {
+
+        Reply* r=&(this->getReplyPrivate(reply_id));
+        r->addDisLike(sender_id);
+        this->getQuestionPrivate(r->getQuestionId()).changeReplyLike(r->getId(),r->getLikeNumber());
+
+        return true;
+
+    }
+
+}
+
+
+
+void Good::commentSortByDate()
+{
+    if(this->comments_sort_by=="date")
+    {
+        return;
+    }
+    QMultiMap<QString,Comment> temp;
+    for(auto it=this->comments.begin(); it!=this->comments.end();it++)
+    {
+        temp.insert(file_QDate::toQString((*it).getDateCreate()),(*it));
+
+    }
+    this->comments=temp;
+    this->comments_sort_by="date";
+    this->setCommentSeekBegin();
+}
+
+void Good::commentSortByLike()
+{
+    if(this->comments_sort_by=="like_number")
+    {
+        return;
+    }
+   QMultiMap<QString,Comment>temp;
+   for(auto it=this->comments.begin(); it!= this->comments.end();it++)
+   {
+       temp.insert(Good::toQString((*it).getLikeNumber()),(*it));
+   }
+   this->comments=temp;
+   this->comments_sort_by="like_number";
+   this->setCommentSeekBegin();
+}
+
+void Good::commentSortByView()
+{
+    if(this->comments_sort_by=="view_number")
+    {
+        return;
+    }
+   QMultiMap<QString,Comment>temp;
+   for(auto it=this->comments.begin(); it!= this->comments.end();it++)
+   {
+       temp.insert(Good::toQString((*it).getViewNumber()),(*it));
+   }
+   this->comments=temp;
+   this->comments_sort_by="view_number";
+   this->setCommentSeekBegin();
+}
+
+void Good::QuestionSortByDate()
+{
+    if(this->question_sort_by== "date")
+    {
+        return;
+    }
+    QMultiMap<QString,Question>temp;
+    for(auto it=this->questions.begin(); it!= this->questions.end();it++)
+    {
+        temp.insert(file_QDate::toQString((*it).getDateCreate()),(*it));
+
+    }
+    this->questions=temp;
+
+    this->question_sort_by="date";
+
+}
+
+void Good::QuestionSortyByReplyNumber()
+{
+    if(this->question_sort_by== "reply_number")
+    {
+        return;
+    }
+    QMultiMap<QString,Question>temp;
+    for(auto it=this->questions.begin();it != this->questions.end();it++)
+    {
+        temp.insert(Good::toQString((*it).getReplyNumber()),*it);
+    }
+    this->questions=temp;
+    this->question_sort_by="reply_number";
+}
+
 
 
 Good::Good()
+
 {
 
+
 }
+
+

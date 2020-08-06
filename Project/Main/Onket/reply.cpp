@@ -4,6 +4,11 @@
 
 
 
+QString Reply::getQuestionId()
+{
+    return  this->question_id;
+}
+
 unsigned int Reply::getLikeNumber()const
 {
     return this->like;
@@ -14,10 +19,13 @@ unsigned int Reply::getDisLikeNumber()const
     return this->dislike;
 }
 
-Reply::Reply(const QDate &date_create, const QString &id, const QString &sender_id, const QString &content)
+
+
+
+Reply::Reply(const QDate &date_create, const QString &id, const QString &sender_id,const QString& question_id, const QString &content)
     :DiscussionItem(date_create,id,sender_id,content)
 {
-
+    this->question_id=question_id;
 }
 
 void Reply::addLike(const QString &sender_id)
