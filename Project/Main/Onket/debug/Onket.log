@@ -1,7 +1,8 @@
-﻿  Generate moc_predefs.h
-  Uic'ing mainwindow.ui...
-  Moc'ing mainwindow.h...
+﻿  Reading Qt configuration (C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\bin\qmake.exe)
+  Admin.cpp
   main.cpp
-  mainwindow.cpp
-  moc_mainwindow.cpp
-  Onket.vcxproj -> C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\debug\Onket.exe
+  User.cpp
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\User.h(12,10): error C2955: 'QVector': use of class template requires template argument list (compiling source file User.cpp)
+C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore\qlist.h(71): message : see declaration of 'QVector' (compiling source file User.cpp)
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\User.h(12,10): error C2955: 'QVector': use of class template requires template argument list (compiling source file Admin.cpp)
+C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\include\QtCore\qlist.h(71): message : see declaration of 'QVector' (compiling source file Admin.cpp)
