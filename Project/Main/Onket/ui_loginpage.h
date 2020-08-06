@@ -52,11 +52,12 @@ public:
         QFont font;
         font.setPointSize(11);
         pushButton->setFont(font);
+        pushButton->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 47, 47);"));
         pushButton_2 = new QPushButton(LoginPage);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(600, 620, 150, 50));
         pushButton_2->setFont(font);
-        pushButton_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 47, 47);"));
+        pushButton_2->setStyleSheet(QString::fromUtf8(""));
         lineEdit = new QLineEdit(LoginPage);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         lineEdit->setGeometry(QRect(510, 393, 441, 51));
@@ -129,11 +130,11 @@ public:
 "font: 26pt \"Pristina\";"));
         commandLinkButton = new QCommandLinkButton(LoginPage);
         commandLinkButton->setObjectName(QString::fromUtf8("commandLinkButton"));
-        commandLinkButton->setGeometry(QRect(10, 30, 30, 40));
+        commandLinkButton->setGeometry(QRect(10, 30, 80, 40));
         QFont font4;
         font4.setPointSize(7);
         commandLinkButton->setFont(font4);
-        commandLinkButton->setStyleSheet(QString::fromUtf8("color: rgb(255, 0, 0);"));
+        commandLinkButton->setStyleSheet(QString::fromUtf8(""));
         layoutWidget1 = new QWidget(LoginPage);
         layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(707, 540, 241, 52));
@@ -170,7 +171,7 @@ public:
         label_5->setText(QCoreApplication::translate("LoginPage", "\331\210\330\261\331\210\330\257 / \330\253\330\250\330\252 \331\206\330\247\331\205", nullptr));
         label_3->setText(QCoreApplication::translate("LoginPage", "\330\242\331\206\332\251\330\252", nullptr));
         label_4->setText(QCoreApplication::translate("LoginPage", "Onket", nullptr));
-        commandLinkButton->setText(QString());
+        commandLinkButton->setText(QCoreApplication::translate("LoginPage", "\330\250\330\247\330\262\332\257\330\264\330\252", nullptr));
         checkBox->setText(QCoreApplication::translate("LoginPage", "\331\206\331\205\330\247\333\214\330\264 \332\251\331\204\331\205\331\207 \330\271\330\250\331\210\330\261", nullptr));
         checkBox_2->setText(QCoreApplication::translate("LoginPage", "\330\260\330\256\333\214\330\261\331\207 \330\247\330\267\331\204\330\247\330\271\330\247\330\252 \332\251\330\247\330\261\330\250\330\261", nullptr));
     } // retranslateUi
