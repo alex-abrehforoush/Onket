@@ -25,3 +25,9 @@ void MainWindow::on_action_10_triggered()
     if(login_page == nullptr) login_page = new LoginPage(this);
     login_page->show();
 }
+
+void MainWindow::on_action_11_triggered()
+{
+    if(signup_page == nullptr) signup_page = new signup(this);
+    signup_page->show();
+}

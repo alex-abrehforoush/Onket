@@ -24,7 +24,8 @@ SOURCES += \
     comment.cpp \
     question.cpp \
     reply.cpp \
-    loginpage.cpp
+    loginpage.cpp \
+    signup.cpp
 
 HEADERS += \
     discussionitem.h \
@@ -34,11 +35,13 @@ HEADERS += \
     comment.h \
     question.h \
     reply.h \
-    loginpage.h
+    loginpage.h \
+    signup.h
 
 FORMS += \
     mainwindow.ui \
-    loginpage.ui
+    loginpage.ui \
+    signup.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
