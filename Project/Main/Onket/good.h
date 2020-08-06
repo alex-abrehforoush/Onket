@@ -3,6 +3,7 @@
 
 #include <QMultiMap>
 #include <QMap>
+#include <map>
 
 
 #include "filefunctions.h"
@@ -22,19 +23,23 @@ class Good
     double discount_percent=0.0;
     QMap<QString,QString> properties;
 
-    QMultiMap<QString,Comment> comments;//first field is sort part name
+
+    QMultiMap<QString,Comment>comments;//first field is sort part name
     QMap<QString,bool>comments_id;//save comment sender_id  the secend part igonre
-    QMap<QString,Comment>::iterator comments_it=comments.begin();
+    QMultiMap<QString,Comment>::iterator comments_it=comments.end();
     QString comments_sort_by = "date";
 
     QMultiMap<QString,Question> questions;//first field is sort part name
     QMap<QString,bool> questions_id;//save question id  the secend part igonre
-    QMap<QString,Question>::iterator question_it=questions.begin();
+    QMultiMap<QString,Question>::iterator question_it=questions.end();
     QString question_sort_by = "date";
 
     QMap<QString,Reply> replys;
 
 
+    Question& getQuestionPrivate(const QString& question_id);
+     Reply &getReplyPrivate(const QString& reply_id);
+    static QString toQString(unsigned int input);
 
 public:
     void setPrice(unsigned int price);
@@ -58,16 +63,29 @@ public:
 
 //    bool existQuestion(const QString& question_id);
 //    const Question& getQuestion(const QString & question_id);
-    bool existQuestion(const QString& content);
+    bool existQuestionContent(const QString& content);
+    bool existQuestionId(const QString& question_id);
     QString getIdQustion(const QString& content);
-    Question& getQuestion(const QString& question_id);
-    Question& readQuestion();
+    const Question& getQuestion(const QString& question_id);
+    const Question& readQuestion();
     void setQuestionSeekBegin();
     bool QuestionSeekAtEnd();
     QString addQuestion(const QDate& date_create,const QString& sender_id, const QString& content);//return question_id
-    Reply& getReply(const QString& reply_id);
+   const Reply& getReply(const QString& reply_id);
+
     bool existReply(const QString& sender_id,const QString& question_id);
+    bool existReply(const QString& reply_id);
     QString addReply(const QString& question_id,const QDate& date_create,const QString& sender_id,const QString& content);
+    bool addReplyLike(const QString& reply_id,const QString& sender_id);
+    bool addReplyDisLike(const QString& reply_id,const QString& sender_id);
+
+    void commentSortByDate();
+    void commentSortByLike();
+    void commentSortByView();
+
+    void QuestionSortByDate();
+    void QuestionSortyByReplyNumber();
+
     Good();
 };
 
