@@ -20,25 +20,29 @@ QString Question::toQString(const QVector<QString> &replys_id)
     return  resualt;
 }
 
-QString Question::readReply()
+QString Question::readReply()const
 {
-    QString* res=&(*this->replys_it);
-    if(this->replys_it != this->replys_id.end())
-    {
-        this->replys_it++;
-    }
+  if(this->replys_it == this->replys.begin() || this->replys.isEmpty()==true )
+  {
+      return  "";
+  }
+  else
+  {
+      this->replys_it--;
+      return replys_it.value();
 
-    return (*res);
+  }
 }
 
-void Question::setReplySeekBegin()
+void Question::setReplySeekBegin()const
 {
-    this->replys_it=this->replys_id.begin();
+   this->replys_it=this->replys.end();
+
 }
 
-bool Question::replySeekAtEnd()
+bool Question::replySeekAtEnd()const
 {
-    if(this->replys_it == this->replys_id.end())
+    if(this->replys_it == this->replys.begin())
     {
         return true;
     }
@@ -50,31 +54,7 @@ bool Question::replySeekAtEnd()
 
 
 
-QVector<QString> Question::toVector(const QString &input)
-{
-    QVector<QString>resualt;
-    QString str;
-    for(auto it=input.cbegin();it!=input.cend();it++)
-    {
-        if(*it==',')
-        {
-            resualt.push_back(str);
-            str.clear();
 
-        }
-        else
-        {
-            str.append(*it);
-        }
-
-    }
-    return  resualt;
-}
-
-const  QVector<QString>& Question::getReplysId()const
-{
-    return this->replys_id;
-}
 
 Question::Question(const QDate &date_create, const QString &id, const QString &sender_id, const QString &content)
     :DiscussionItem(date_create,id,sender_id,content)
@@ -87,21 +67,72 @@ Question::~Question()
 
 }
 
+bool Question::existReply(const QString &reply_id)
+{
+    auto it=replys_id.find(reply_id);
+    if(it != this->replys_id.end())
+    {
+        return true;
+    }
+    return false;
+}
+
 bool Question::addReply(const QString &reply_id)
 {
 
-    int index=this->replys_id.indexOf(reply_id);
-    if(index <= this->replys_id.size() && index>=0)
+    if(this->existReply(reply_id)==true)
+    {
         return false;
-
+    }
     else
     {
-        this->replys_id.push_back(reply_id);
-
+        this->replys_id.insert(reply_id,true);
+        this->replys.insert(0,reply_id);
         return true;
     }
 
+}
 
+bool Question::changeReplyLike(const QString &reply_id, unsigned int reply_like_number)
+{
+ if(this->existReply(reply_id)==false)
+     return false;
+ else
+ {
+     auto it=this->replys.begin();
+     for(;it != this->replys.end();it++)
+     {
+         if(it.value()==reply_id)
+             break;
+     }
+     ////
+     /// Creat key & value varible because when you want to remove a elemnt form QMultiMap check and remove all
+     /// elemnt with this key and value so when you send it.value as an arg in function remove it and then want to compare this content by itself iterator
+     ///
+
+     unsigned int key=it.key();
+     QString value=it.value();
+
+
+     if(it.key()==reply_like_number)
+     {
+        ;
+     }
+     else
+     {
+
+        this->replys.remove(key,value);
+         this->replys.insert(reply_like_number,value);
+         this->setReplySeekBegin();
+     }
+
+     return true;
+ }
+}
+
+unsigned int Question::getReplyNumber()const
+{
+    return this->replys_id.size();
 }
 
 void Question::addToFile(QXmlStreamWriter &xml_writer)
@@ -111,6 +142,6 @@ void Question::addToFile(QXmlStreamWriter &xml_writer)
        xml_writer.writeTextElement("sender_id",this->sender_id);
        xml_writer.writeTextElement("date",file_QDate::toQString(this->date_create));
        xml_writer.writeTextElement("content",this->content);
-       xml_writer.writeTextElement("replys_id",Question::toQString(this->replys_id));
+      // xml_writer.writeTextElement("replys_id",Question::toQString(this->replys_id));
     xml_writer.writeEndElement();
 }
