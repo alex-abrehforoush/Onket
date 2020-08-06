@@ -22,7 +22,7 @@ class Good
     unsigned  int price;
     double discount_percent=0.0;
     QMap<QString,QString> properties;
-
+    mutable QMap<QString,QString>::const_iterator property_it=properties.begin();
 
     QMultiMap<QString,Comment>comments;//first field is sort part name
     QMap<QString,bool>comments_id;//save comment sender_id  the secend part igonre
@@ -49,9 +49,14 @@ public:
     unsigned int getFinalPrice();
     double getFinalDiscountPrice();
 
-    bool existProperty(const QString& property_name);
-    bool insertProperty(const QString& property_name);
+    bool existProperty(const QString& property_name)const;
+    bool addProperty(const QString& property_name);
     bool setPropertyValue(const QString& property_name,const QString& property_value);
+    QString getPropertyValue(const QString& property_name)const;
+    void setPropertySeekBegin()const;
+    QString readPropertyName()const;
+    bool propertySeekAtEnd()const;
+
 
     bool existCommentSender(const QString& sender_id);
     Comment& getComment(const QString& sender_id);

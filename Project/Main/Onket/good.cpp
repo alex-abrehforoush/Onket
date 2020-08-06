@@ -75,7 +75,7 @@ double Good::getFinalDiscountPrice()
     return this->discount_percent;
 }
 
-bool Good::existProperty(const QString &property_name)
+bool Good::existProperty(const QString &property_name)const
 {
     auto it=this->properties.find(property_name);
     if(it== this->properties.end())
@@ -89,7 +89,7 @@ bool Good::existProperty(const QString &property_name)
     }
 }
 
-bool Good::insertProperty(const QString &property_name)
+bool Good::addProperty(const QString &property_name)
 {
     if(this->existProperty(property_name)==true)
     {
@@ -119,6 +119,51 @@ bool Good::setPropertyValue(const QString &property_name, const QString &propert
 
     }
 }
+
+QString Good::getPropertyValue(const QString &property_name)const
+{
+    if(this->existProperty(property_name)==false)
+    {
+        return "";
+    }
+    else
+    {
+        auto it=this->properties.find(property_name);
+        return it.value();
+    }
+}
+
+void Good::setPropertySeekBegin() const
+{
+    this->property_it=this->properties.begin();
+}
+
+QString Good::readPropertyName() const
+{
+   if(this->property_it!=this->properties.end())
+   {
+      QString res=property_it.key();
+      property_it++;
+      return res;
+   }
+   else
+   {
+       return "";
+   }
+}
+
+bool Good::propertySeekAtEnd() const
+{
+    if(this->property_it==this->properties.end())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 
 bool Good::existCommentSender(const QString &sender_id)
 {
