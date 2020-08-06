@@ -7,6 +7,7 @@ protected:
 private:
 	QString id_of_good;
 	QMap<QString, unsigned int> color;
+
 public:
 	Commodity(QString id_of_good = 0);
 	void add(QString color, unsigned int number = 1);

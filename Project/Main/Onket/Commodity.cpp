@@ -22,7 +22,7 @@ void Commodity::remove(QString color, unsigned int number)
 unsigned long long int Commodity::inventory()
 {
 	unsigned long long int temp = 0;
-	for each (int value in this->color)
+    foreach (int value , this->color)
 	{
 		temp += value;
 	}

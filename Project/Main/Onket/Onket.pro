@@ -23,6 +23,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     comment.cpp \
+    Commodity.cpp \
     question.cpp \
     reply.cpp \
     loginpage.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     good.h \
     mainwindow.h \
     comment.h \
+    Commity.h \
     question.h \
     reply.h \
     loginpage.h \
