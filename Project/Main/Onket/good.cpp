@@ -973,6 +973,25 @@ Good::Good(const QString &id, const QString &type_id, const QString &maker_id, u
     this->type_id=type_id;
     this->maker_id=maker_id;
     this->price=price;
+
+    if(Type::existTypeId(type_id)==false)
+    {
+        return;
+    }
+    else
+    {
+        Type* type=& Type::getType(type_id);
+
+        type->addGood(this->id);
+
+        for(type->setPropertySeekBegin();type->PropertySeekAtEnd()==false;)
+        {
+            this->addProperty(type->readPropertyName());
+        }
+
+
+    }
+
 }
 
 

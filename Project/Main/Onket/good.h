@@ -15,6 +15,8 @@
 #include "question.h"
 #include "reply.h"
 
+#include "type.h"
+
 
 class Good
 {
