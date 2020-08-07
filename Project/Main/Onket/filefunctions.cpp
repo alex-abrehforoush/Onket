@@ -35,7 +35,7 @@ bool csv_validator::isValidInCsv(const QString &input)
 
 
 
-QString xml_QMap::toQString(const QMap<QString,bool>& input)
+QString xml_QMap::toQString(const QMap<QString,double>& input)
 {
     if(input.isEmpty()==true)
     {
@@ -60,33 +60,55 @@ QString xml_QMap::toQString(const QMap<QString,bool>& input)
 }
 
 
-QMap<QString,bool> xml_QMap:: toQMap(const QString& input)
+QMap<QString,double> xml_QMap:: toDoubleQMap(const QString& input)
 {
-    QMap<QString,bool>resualt;
-    QString sender;
-    for(auto it=input.cbegin();it != input.cend(); it++)
-    {
-        if(*it == '_')
-        {
-            it++;
-            bool mode;
-            if(*it=='0')
-            {
-                mode=false;
-            }
-            else
-            {
-                mode=true;
-            }
-            it++;
-            resualt.insert(sender,mode);
-            sender.clear();
-        }
-        else
-        {
-         sender.append(*it);
-        }
-    }
-    return resualt;
+  QMap<QString,double>res;
+  QStringList str_list=input.split(",");
+  for(int cnt=0;cnt<str_list.size();cnt++)
+  {
+     QString key,value;
+     QStringList field=str_list[cnt].split("_");
+     key=field[0],value=field[1];
+     res.insert(key,value.toDouble());
+  }
+  return res;
 }
 
+
+QString xml_QMap::toQString(const QMap<QString, bool> &input)
+{
+    if(input.isEmpty()==true)
+    {
+        return QString("");
+    }
+
+    auto it=input.cbegin();
+    QString resault=it.key();
+    resault.append("_");
+    resault.append(QString::number(*it));
+
+    if(it != input.cend())
+        it++;
+    for(;it !=  input.cend();it++)
+    { resault.append(",");
+        resault.append(it.key());
+        resault.append("_");
+        resault.append(QString::number(*it));
+
+    }
+    return resault;
+}
+
+QMap<QString, bool> xml_QMap::toBoolQMap(const QString &input)
+{
+    QMap<QString,bool>res;
+    QStringList str_list=input.split(",");
+    for(int cnt=0;cnt<str_list.size();cnt++)
+    {
+       QString key,value;
+       QStringList field=str_list[cnt].split("_");
+       key=field[0],value=field[1];
+       res.insert(key,value.toInt());
+    }
+    return res;
+}

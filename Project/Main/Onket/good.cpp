@@ -625,6 +625,158 @@ void Good::QuestionSortyByReplyNumber()
     this->question_sort_by="reply_number";
 }
 
+void Good::commentsReadFile()
+{
+    this->commentSortByDate();
+    QString path="D:/HelpMemory/OnketFile";
+    path.append("/Comments/");
+    QDir d(path);
+    if(d.exists()==false)
+    {
+        d.mkdir(path);
+    }
+    path.append(this->id);
+    path.append(".xml");
+    QFile file(path);
+
+    if(file.open(QFile::ReadOnly | QFile::Text)==true)
+    {
+        QXmlStreamReader xml_reader;
+        xml_reader.setDevice(& file);
+        QString sender_id,advantages,disadvantages,description;
+        QMap<QString,double> items;
+        QMap<QString,bool> user_like;
+        QDate date_create;
+       while(xml_reader.atEnd()==false)
+       {
+
+          if(xml_reader.isStartElement()==true)
+          {
+
+             if(xml_reader.name()=="sender_id")
+             {
+               sender_id=xml_reader.readElementText();
+
+             }
+             else if(xml_reader.name()=="date")
+             {
+                 date_create=file_QDate::toQDate(xml_reader.readElementText());
+
+
+             }
+             else if(xml_reader.name()=="advantages")
+             {
+                 advantages=xml_reader.readElementText();
+
+
+             }
+             else if(xml_reader.name()=="disadvantages")
+             {
+                 disadvantages=xml_reader.readElementText();
+
+
+             }
+             else if(xml_reader.name()=="description")
+             {
+               description=xml_reader.readElementText();
+
+             }
+             else if(xml_reader.name()=="items")
+             {
+                items=xml_QMap::toDoubleQMap(xml_reader.readElementText());
+
+             }
+             else if(xml_reader.name()=="users_like")
+             {
+                 user_like=xml_QMap::toBoolQMap(xml_reader.readElementText());
+                 Comment c(date_create,sender_id,advantages,disadvantages,description);
+
+                 this->addComment(c);
+
+                 for(auto it=items.cbegin();it != items.cend();it++)
+                 {
+                     this->getComment(c.getSenderId()).insertItem(it.key());
+                     this->getComment(c.getSenderId()).setItemValue(it.key(),it.value());
+                 }
+
+                 for(auto it=user_like.cbegin();it != user_like.cend();it++)
+                 {
+                     if(it.value()==true)
+                     {
+                         this->getComment(c.getSenderId()).addLike(it.key());
+
+                     }
+                     else
+                     {
+                          this->getComment(c.getSenderId()).addDisLike(it.key());
+                     }
+                 }
+
+
+             }
+             else;
+
+
+
+
+
+
+       }
+        xml_reader.readNext();
+    }
+    file.flush();
+    file.close();
+   }
+}
+
+void Good::commentsWriteToFile()
+{
+    this->commentSortByDate();
+    QString path="D:/HelpMemory/OnketFile";
+    path.append("/Comments/");
+    QDir d(path);
+    if(d.exists()==false)
+    {
+        d.mkdir(path);
+    }
+    path.append(this->id);
+    path.append(".xml");
+    QFile file(path);
+
+    if(file.open(QFile::WriteOnly | QFile::Text)== true)
+    {
+        QXmlStreamWriter xml_writer;
+        xml_writer.setDevice(& file);
+        xml_writer.setAutoFormatting(true);
+        xml_writer.writeStartDocument();
+        xml_writer.writeStartElement("comment_list");
+
+        for(auto it=this->comments.begin();it != this->comments.end();it++)
+        {
+            (*it).addToFile(xml_writer);
+        }
+        xml_writer.writeEndElement();
+        xml_writer.writeEndDocument();
+
+        file.flush();
+        file.close();
+    }
+
+
+    if(this->comments_sort_by=="like_number")
+    {
+        this->commentSortByLike();
+    }
+    else if(this->comments_sort_by=="veiw_number")
+    {
+        this->commentSortByView();
+    }
+    else;
+
+}
+
+
+
 
 
 Good::Good()

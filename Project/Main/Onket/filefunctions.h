@@ -17,8 +17,11 @@ bool isValidInCsv(const QString& input);
 }
 namespace xml_QMap
 {
-    QString toQString(const QMap<QString,bool> & input);
-     QMap<QString,bool> toQMap(const QString& input);
+    QString toQString(const QMap<QString,double> & input);
+    QString toQString(const QMap<QString,bool>& input);
+
+     QMap<QString,double> toDoubleQMap(const QString& input);
+     QMap<QString,bool> toBoolQMap(const QString& input);
 };
 
 

@@ -4,6 +4,9 @@
 #include <QMultiMap>
 #include <QMap>
 #include <map>
+#include <QFile>
+#include <QDir>
+
 
 
 #include "filefunctions.h"
@@ -90,6 +93,9 @@ public:
 
     void QuestionSortByDate();
     void QuestionSortyByReplyNumber();
+
+    void commentsReadFile();
+    void commentsWriteToFile();
 
     Good();
 };

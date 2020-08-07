@@ -277,16 +277,13 @@ void Comment::addToFile(QXmlStreamWriter &xml_writer)
 {
     xml_writer.writeStartElement("comment");
 
-        for(auto it=map_items.begin();it != map_items.end();it++)
-        {
-            xml_writer.writeAttribute(itemToXml(it.key()),QString::number(it.value()));
-        }
 
        xml_writer.writeTextElement("sender_id",this->sender_id);
        xml_writer.writeTextElement("date",file_QDate::toQString(this->date_create));
         xml_writer.writeTextElement("advantages",this->advantages);
          xml_writer.writeTextElement("disadvantages",this->disadvantages);
        xml_writer.writeTextElement("description",this->description);
+        xml_writer.writeTextElement("items",xml_QMap::toQString(this->map_items));
         xml_writer.writeTextElement("users_like",xml_QMap::toQString(this->users_like));
     xml_writer.writeEndElement();
 }
