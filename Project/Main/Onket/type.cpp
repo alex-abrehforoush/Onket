@@ -250,3 +250,127 @@ bool Type::removeCommentItem(const QString &item_name)
     }
 }
 
+void Type::setBranchSeekBegin() const
+{
+    this->branches_it=this->branches_id.cbegin();
+}
+
+QString Type::readBranchId() const
+{
+    if(this->goods_it==this->goods_id.cend())
+    {
+        return "";
+    }
+    QString res=(*this->branches_it);
+    if(this->branches_it !=this->branches_id.cend())
+    {
+        this->branches_it++;
+    }
+    return res;
+}
+
+bool Type::BranchSeekAtEnd() const
+{
+    if(this->branches_it==this->branches_id.cend())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void Type::setGoodSeekBegin() const
+{
+    this->goods_it=this->goods_id.cbegin();
+}
+
+QString Type::readGoodId() const
+{
+    if(this->goods_it==this->goods_id.cend())
+    {
+        return "";
+    }
+    QString res=(*this->goods_it);
+    if(this->goods_it !=this->goods_id.cend())
+    {
+        this->goods_it++;
+    }
+    return res;
+}
+
+bool Type::GoodSeekAtEnd() const
+{
+    if(this->goods_it==this->goods_id.cend())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void Type::setPropertySeekBegin() const
+{
+    this->property_it=this->property_name.cbegin();
+}
+
+QString Type::readPropertyName() const
+{
+    if(this->property_it==this->property_name.cend())
+    {
+        return "";
+    }
+    QString res=(*this->property_it);
+    if(this->property_it !=this->property_name.cend())
+    {
+        this->property_it++;
+    }
+    return res;
+}
+
+bool Type::PropertySeekAtEnd() const
+{
+    if(this->property_it==this->property_name.cend())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void Type::setCommentSeekBegin() const
+{
+    this->comment_item_it=this->comment_item.cbegin();
+}
+
+QString Type::readCommentId() const
+{
+    if(this->comment_item_it==this->comment_item.cend())
+    {
+        return "";
+    }
+    QString res=(*this->comment_item_it);
+    if(this->comment_item_it !=this->comment_item.cend())
+    {
+        this->comment_item_it++;
+    }
+    return res;
+}
+
+bool Type::CommentSeekAtEnd() const
+{
+    if(this->comment_item_it==this->comment_item.cend())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
