@@ -68,6 +68,10 @@ QMap<QString,double> xml_QMap:: toDoubleQMap(const QString& input)
   {
      QString key,value;
      QStringList field=str_list[cnt].split("_");
+     if(field.size()!=2)
+     {
+         break;
+     }
      key=field[0],value=field[1];
      res.insert(key,value.toDouble());
   }
@@ -107,8 +111,59 @@ QMap<QString, bool> xml_QMap::toBoolQMap(const QString &input)
     {
        QString key,value;
        QStringList field=str_list[cnt].split("_");
+       if(field.size()!=2)
+       {
+           break;
+       }
+
        key=field[0],value=field[1];
        res.insert(key,value.toInt());
     }
     return res;
 }
+
+QString xml_QMap::toQString(const QMap< unsigned int,QString> &input)
+{
+    if(input.isEmpty()==true)
+    {
+        return QString("");
+    }
+
+    auto it=input.cbegin();
+    QString resault=QString::number(it.key());
+    resault.append("_");
+    resault.append(*it);
+
+    if(it != input.cend())
+        it++;
+    for(;it !=  input.cend();it++)
+    { resault.append(",");
+        resault.append(QString::number(it.key()));
+        resault.append("_");
+        resault.append(*it);
+
+    }
+    return resault;
+}
+
+
+
+QMap<unsigned int,QString> xml_QMap::toIntQMap(const QString &input)
+{
+    QMap<unsigned int,QString>res;
+    QStringList str_list=input.split(",");
+    for(int cnt=0;cnt<str_list.size();cnt++)
+    {
+       QString key,value;
+       QStringList field=str_list[cnt].split("_");
+       if(field.size()!=2)
+       {
+           break;
+       }
+       key=field[0],value=field[1];
+       res.insert(key.toInt(),value);
+    }
+    return res;
+}
+
+

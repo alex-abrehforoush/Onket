@@ -19,9 +19,12 @@ namespace xml_QMap
 {
     QString toQString(const QMap<QString,double> & input);
     QString toQString(const QMap<QString,bool>& input);
+    QString toQString(const QMap<unsigned int,QString>& input);
 
      QMap<QString,double> toDoubleQMap(const QString& input);
      QMap<QString,bool> toBoolQMap(const QString& input);
+     QMap<unsigned int,QString> toIntQMap(const QString & input);
+
 };
 
 
