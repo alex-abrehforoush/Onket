@@ -142,6 +142,6 @@ void Question::addToFile(QXmlStreamWriter &xml_writer)
        xml_writer.writeTextElement("sender_id",this->sender_id);
        xml_writer.writeTextElement("date",file_QDate::toQString(this->date_create));
        xml_writer.writeTextElement("content",this->content);
-      // xml_writer.writeTextElement("replys_id",Question::toQString(this->replys_id));
+      // xml_writer.writeTextElement("replys_id",xml_QMap::toQString(this->replys));
     xml_writer.writeEndElement();
 }

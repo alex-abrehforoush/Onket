@@ -98,9 +98,10 @@ bool Reply::getLikeMode(const QString &sender_id)const
 void Reply::addToFile(QXmlStreamWriter &xml_writer)
 {
     xml_writer.writeStartElement("reply");
-        xml_writer.writeAttribute("like",QString::number(this->like));
-        xml_writer.writeAttribute("dislike",QString::number(this->dislike));
+//        xml_writer.writeAttribute("like",QString::number(this->like));
+//        xml_writer.writeAttribute("dislike",QString::number(this->dislike));
         xml_writer.writeTextElement("id",this->id);
+         xml_writer.writeTextElement("question_id",this->question_id);
         xml_writer.writeTextElement("sender_id",this->sender_id);
         xml_writer.writeTextElement("date",file_QDate::toQString(this->date_create));
         xml_writer.writeTextElement("content",this->content);
