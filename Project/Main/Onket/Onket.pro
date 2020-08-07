@@ -27,7 +27,8 @@ SOURCES += \
     question.cpp \
     reply.cpp \
     loginpage.cpp \
-    signup.cpp
+    signup.cpp \
+    type.cpp
 
 HEADERS += \
     User.h \
@@ -40,7 +41,8 @@ HEADERS += \
     question.h \
     reply.h \
     loginpage.h \
-    signup.h
+    signup.h \
+    type.h
 
 FORMS += \
     mainwindow.ui \
