@@ -101,7 +101,7 @@ public:
     void ReplyReadFile();
     void ReplyWriteToFile();
 
-    Good();
+    explicit Good(const QString& id,const QString& type_id,const QString& maker_id,unsigned int price);
 };
 
 #endif // GOOD_H

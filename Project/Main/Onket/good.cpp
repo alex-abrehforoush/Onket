@@ -966,15 +966,21 @@ void Good::ReplyWriteToFile()
 
 }
 
-
-
-
-
-Good::Good()
-
+Good::Good(const QString &id, const QString &type_id, const QString &maker_id, unsigned int price)
 {
 
-
+    this->id=id;
+    this->type_id=type_id;
+    this->maker_id=maker_id;
+    this->price=price;
 }
+
+
+
+
+
+
+
+
 
 
