@@ -772,6 +772,197 @@ void Good::commentsWriteToFile()
         this->commentSortByView();
     }
     else;
+    
+}
+
+void Good::QuestionReadFile()
+{
+   QString path="d:/HelpMemory/OnketFile/Questions/";path.append(this->id);path.append(".xml");
+   QFile file(path);
+   if(file.open(QFile::ReadOnly| QFile::Text)==true)
+   {
+       QXmlStreamReader xml_reader;
+       xml_reader.setDevice(& file);
+       QString id, sender_id,content;
+       QDate date_creat;
+       for(;xml_reader.atEnd()==false;xml_reader.readNext())
+       {
+           if(xml_reader.isStartElement())
+           {
+               if(xml_reader.name()=="id")
+               {
+                   id=xml_reader.readElementText();
+               }
+               else if(xml_reader.name()=="sender_id")
+               {
+                   sender_id=xml_reader.readElementText();
+               }
+               else if(xml_reader.name()=="date")
+               {
+                   date_creat=file_QDate::toQDate(xml_reader.readElementText());
+               }
+
+               else if(xml_reader.name()=="content")
+               {
+                   content=xml_reader.readElementText();
+                   Question q(date_creat,id,sender_id,content);
+                   this->questions.insert(file_QDate::toQString(date_creat),q);
+                   this->questions_id.insert(id,true);
+               }
+
+
+           }
+       }
+       file.flush();
+       file.close();
+   }
+}
+
+void Good::QUestionWriteToFile()
+{
+    QString path="d:/HelpMemory/OnketFile";
+    QDir d(path);
+    if(d.exists("Questions")==false)
+    {
+        d.mkdir("Questions");
+    }
+    path.append("/Questions");path.append("/");path.append(this->id);path.append(".xml");
+    QFile file(path);
+    if(file.open(QFile::WriteOnly | QFile::Text)==true)
+    {
+        this->QuestionSortByDate();
+        QXmlStreamWriter xml_writer;
+        xml_writer.setDevice(& file);
+        xml_writer.setAutoFormatting(true);
+        xml_writer.writeStartDocument();
+        xml_writer.writeStartElement("Question_list");
+
+        for(auto it=this->questions.begin();it != this->questions.end();it++)
+        {
+            it.value().addToFile(xml_writer);
+        }
+
+        xml_writer.writeEndElement();
+        xml_writer.writeEndDocument();
+
+        file.flush();
+        file.close();
+        if(this->question_sort_by=="reply_number")
+        {
+            this->QuestionSortyByReplyNumber();
+        }
+
+    }
+ 
+
+}
+
+void Good::ReplyReadFile()
+{
+    QString path="d:/HelpMemory/OnketFile/Reply/";path.append(this->id);path.append(".xml");
+    QFile file(path);
+    if(file.open(QFile::ReadOnly | QFile::Text)==true)
+    {
+        QXmlStreamReader xml_reader;
+        xml_reader.setDevice(& file);
+
+        QString id,question_id,sender_id,content;
+        QDate date_creat;
+        QMap<QString,bool> users_like;
+
+        for(;xml_reader.atEnd()==false;xml_reader.readNext())
+        {
+            if(xml_reader.isStartElement()==true)
+            {
+                if(xml_reader.name()=="id")
+                {
+                    id=xml_reader.readElementText();
+                }
+               else if(xml_reader.name()=="sender_id")
+                {
+                    sender_id=xml_reader.readElementText();
+                }
+                else if(xml_reader.name()=="question_id")
+                 {
+                     question_id=xml_reader.readElementText();
+                 }
+                else if(xml_reader.name()=="date")
+                 {
+                     date_creat=file_QDate::toQDate(xml_reader.readElementText());
+                 }
+                else if(xml_reader.name()=="content")
+                 {
+                     content=xml_reader.readElementText();
+                 }
+                else if(xml_reader.name()=="users_like")
+                 {
+                      users_like=xml_QMap::toBoolQMap(xml_reader.readElementText());
+
+
+                     if(this->existQuestionId(question_id)==true)
+                     {
+                         Reply r(date_creat,id,sender_id,question_id,content);
+                         this->replys.insert(r.getId(),r);
+                         this->getQuestionPrivate(r.getQuestionId()).addReply(r.getId());
+
+                         for(auto it=users_like.begin();it != users_like.end();it++)
+                         {
+                             if(it.value()==true)
+                             {
+                                 this->addReplyLike(r.getId(),r.getSenderId());
+                             }
+                             else
+                             {
+                                 this->addReplyDisLike(r.getId(),r.getSenderId());
+                             }
+                         }
+                     }
+                     else;
+
+
+
+                 }
+
+
+            }
+        }
+        file.close();
+        file.flush();
+    }
+}
+
+void Good::ReplyWriteToFile()
+{
+    QString path="d:/HelpMemory/OnketFile";
+    QDir d(path);
+    if(d.exists("Reply")==false)
+    {
+        d.mkdir("Reply");
+    }
+    path.append("/Reply");path.append("/");path.append(this->id);path.append(".xml");
+    QFile file(path);
+    if(file.open(QFile::WriteOnly | QFile::Text)==true)
+    {
+
+        QXmlStreamWriter xml_writer;
+        xml_writer.setDevice(& file);
+        xml_writer.setAutoFormatting(true);
+        xml_writer.writeStartDocument();
+        xml_writer.writeStartElement("Reply_list");
+
+        for(auto it=this->replys.begin();it != this->replys.end();it++)
+        {
+            it.value().addToFile(xml_writer);
+        }
+
+        xml_writer.writeEndElement();
+        xml_writer.writeEndDocument();
+
+        file.flush();
+        file.close();
+
+    }
+
 
 }
 

@@ -96,6 +96,10 @@ public:
 
     void commentsReadFile();
     void commentsWriteToFile();
+    void QuestionReadFile();
+    void QUestionWriteToFile();
+    void ReplyReadFile();
+    void ReplyWriteToFile();
 
     Good();
 };
