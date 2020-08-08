@@ -1,12 +1,12 @@
 #include "Admin.h"
 
-void Admin::setUserId(User& user, unsigned long long int id)
+void Admin::setUserId(User& user, QString id)
 {
 	user.id = id;
 	return;
 }
 
-unsigned long long int Admin::getUserId(User& user) const
+QString Admin::getUserId(User& user) const
 {
 	return user.id;
 }

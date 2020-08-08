@@ -188,6 +188,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin.cpp" />
+    <ClCompile Include="Customer.cpp" />
     <ClCompile Include="comment.cpp" />
     <ClCompile Include="discussionitem.cpp" />
     <ClCompile Include="filefunctions.cpp" />
@@ -228,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
+    <ClInclude Include="Customer.h" />
     <ClInclude Include="comment.h" />
     <ClInclude Include="discussionitem.h" />
     <ClInclude Include="filefunctions.h" />
