@@ -6,9 +6,10 @@ class Admin :
 {
 protected:
 private:
+	const int is_admin = 1;
 public:
-	void setUserId(User& user, unsigned long long int id);
-	unsigned long long int getUserId(User& user) const;
+	void setUserId(User& user, QString id);
+	QString getUserId(User& user) const;
 };
 
 #endif

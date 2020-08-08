@@ -7,7 +7,7 @@
 class User
 {
 protected:
-	unsigned long long int id;
+	QString id;
 	QString username, password;
 	QVector<QDateTime> last_activities;
 private:
@@ -20,7 +20,6 @@ public:
 	QString decryptPassword(QString password);
 	void addActivity(QDateTime new_login);
 
-	friend class Admin;
 };
 
 #endif
