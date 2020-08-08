@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Onket", "Onket.vcxproj", "{91B55A86-7025-3E9E-9DA8-C4DEC927819E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AA4EC358-F6C7-4E00-831E-1D6A9A6891D9}"
+	ProjectSection(SolutionItems) = preProject
+		Order.cpp = Order.cpp
+		Order.h = Order.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
