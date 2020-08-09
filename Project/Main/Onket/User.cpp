@@ -1,5 +1,17 @@
 #include "User.h"
 
+void User::setFirstname(QString firstname)
+{
+	this->firstname = firstname;
+	return;
+}
+
+void User::setLastname(QString lastname)
+{
+	this->lastname = lastname;
+	return;
+}
+
 void User::setUsername(QString username)
 {
 	this->username = username;
@@ -10,6 +22,16 @@ void User::setPassword(QString password)
 {
 	this->password = this->encryptPassword(password);
 	return;
+}
+
+QString User::getFirstname() const
+{
+	return this->firstname;
+}
+
+QString User::getLastname() const
+{
+	return this->lastname;
 }
 
 QString User::getUsername() const

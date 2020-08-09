@@ -8,12 +8,16 @@ class User
 {
 protected:
 	QString id;
-	QString username, password;
+	QString firstname, lastname, username, password;
 	QVector<QDateTime> last_activities;
 private:
 public:
+	void setFirstname(QString firstname);
+	void setLastname(QString lastname);
 	void setUsername(QString username);
 	void setPassword(QString password);
+	QString getFirstname() const;
+	QString getLastname() const;
 	QString getUsername() const;
 	QString getPassword() const;
 	QString encryptPassword(QString password);
