@@ -86,6 +86,7 @@
     </property>
     <addaction name="action_10"/>
     <addaction name="action_11"/>
+    <addaction name="action"/>
    </widget>
    <widget class="QMenu" name="menu_5">
     <property name="title">
@@ -284,6 +285,11 @@
   <action name="action_34">
    <property name="text">
     <string>خرید شارژ و بستۀ اینترنت</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>داشبورد</string>
    </property>
   </action>
  </widget>
