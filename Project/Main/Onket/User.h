@@ -12,6 +12,7 @@ protected:
 	QVector<QDateTime> last_activities;
 private:
 public:
+	virtual int isAdmin() = 0;
 	void setFirstname(QString firstname);
 	void setLastname(QString lastname);
 	void setUsername(QString username);

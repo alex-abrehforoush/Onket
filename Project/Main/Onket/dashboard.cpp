@@ -1,18 +1,38 @@
 #include "dashboard.h"
 #include "ui_dashboard.h"
 
-Dashboard::Dashboard(int mode, QWidget *parent)
+Dashboard::Dashboard(User& current_user, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Dashboard)
 {
     ui->setupUi(this);
-    ui->my_orders->hide();
-    ui->lists->hide();
-    ui->comments->hide();
-    ui->addresses->hide();
-    ui->messages->hide();
-    ui->last_activities->hide();
-    ui->account_info->hide();
+    if(current_user.isAdmin() == 0)
+    {
+        ui->admin->hide();
+        ui->customer->show();
+
+        ui->my_orders->hide();
+        ui->lists->hide();
+        ui->comments->hide();
+        ui->addresses->hide();
+        ui->messages->hide();
+        ui->last_activities->hide();
+        ui->account_info->hide();
+    }
+    else if(current_user.isAdmin() == 1)
+    {
+        ui->admin->show();
+        ui->customer->hide();
+
+        ui->goods_management->hide();
+        ui->user_management->hide();
+        ui->site_settings->hide();
+        ui->finance->hide();
+        ui->employeement->hide();
+        ui->treaties->hide();
+        ui->account_info->hide();
+        ui->foreign_connections->hide();
+    }
 }
 
 Dashboard::~Dashboard()
@@ -95,4 +115,100 @@ void Dashboard::on_pushButton_15_clicked()
     ui->messages->hide();
     ui->last_activities->hide();
     ui->account_info->show();
+}
+
+void Dashboard::on_pushButton_clicked()
+{
+    ui->goods_management->show();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->treaties->hide();
+    ui->account_info->hide();
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_pushButton_2_clicked()
+{
+    ui->goods_management->hide();
+    ui->user_management->show();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->treaties->hide();
+    ui->account_info->hide();
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_pushButton_3_clicked()
+{
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->show();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->treaties->hide();
+    ui->account_info->hide();
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_pushButton_4_clicked()
+{
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->show();
+    ui->employeement->hide();
+    ui->treaties->hide();
+    ui->account_info->hide();
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_pushButton_5_clicked()
+{
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->show();
+    ui->treaties->hide();
+    ui->account_info->hide();
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_pushButton_6_clicked()
+{
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->treaties->show();
+    ui->account_info->hide();
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_pushButton_7_clicked()
+{
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->treaties->hide();
+    ui->account_info->show();
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_pushButton_8_clicked()
+{
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->treaties->hide();
+    ui->account_info->hide();
+    ui->foreign_connections->show();
 }
