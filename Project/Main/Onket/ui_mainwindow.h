@@ -58,6 +58,7 @@ public:
     QAction *action_32;
     QAction *action_33;
     QAction *action_34;
+    QAction *action;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QMenu *menu;
@@ -146,6 +147,8 @@ public:
         action_33->setObjectName(QString::fromUtf8("action_33"));
         action_34 = new QAction(MainWindow);
         action_34->setObjectName(QString::fromUtf8("action_34"));
+        action = new QAction(MainWindow);
+        action->setObjectName(QString::fromUtf8("action"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
@@ -216,6 +219,7 @@ public:
         menu_8->addAction(action_34);
         menu_4->addAction(action_10);
         menu_4->addAction(action_11);
+        menu_4->addAction(action);
 
         retranslateUi(MainWindow);
 
@@ -260,6 +264,7 @@ public:
         action_32->setText(QCoreApplication::translate("MainWindow", "\332\251\330\252\330\247\330\250\330\256\331\210\330\247\331\206 \331\201\333\214\330\257\333\214\330\250\331\210\332\251", nullptr));
         action_33->setText(QCoreApplication::translate("MainWindow", "\332\251\330\247\330\261\330\252 \331\207\330\257\333\214\331\207 \330\256\330\261\333\214\330\257 \330\247\330\262 \330\242\331\206\332\251\330\252", nullptr));
         action_34->setText(QCoreApplication::translate("MainWindow", "\330\256\330\261\333\214\330\257 \330\264\330\247\330\261\332\230 \331\210 \330\250\330\263\330\252\333\200 \330\247\333\214\331\206\330\252\330\261\331\206\330\252", nullptr));
+        action->setText(QCoreApplication::translate("MainWindow", "\330\257\330\247\330\264\330\250\331\210\330\261\330\257", nullptr));
         menu->setTitle(QCoreApplication::translate("MainWindow", "\330\257\330\263\330\252\331\207 \330\250\331\206\330\257\333\214 \332\251\330\247\331\204\330\247\331\207\330\247", nullptr));
         menu_8->setTitle(QCoreApplication::translate("MainWindow", "\332\251\330\247\331\204\330\247\333\214 \330\257\333\214\330\254\333\214\330\252\330\247\331\204", nullptr));
         menu_2->setTitle(QCoreApplication::translate("MainWindow", "\330\263\331\210\331\276\330\261\331\205\330\247\330\261\332\251\330\252", nullptr));

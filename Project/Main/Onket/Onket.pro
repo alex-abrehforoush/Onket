@@ -16,7 +16,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Order.cpp \
     User.cpp \
+    dashboard.cpp \
     discussionitem.cpp \
     filefunctions.cpp \
     good.cpp \
@@ -31,7 +33,9 @@ SOURCES += \
     type.cpp
 
 HEADERS += \
+    Order.h \
     User.h \
+    dashboard.h \
     discussionitem.h \
     filefunctions.h \
     good.h \
@@ -45,6 +49,7 @@ HEADERS += \
     type.h
 
 FORMS += \
+    dashboard.ui \
     mainwindow.ui \
     loginpage.ui \
     signup.ui

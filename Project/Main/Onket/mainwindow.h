@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "loginpage.h"
 #include "signup.h"
+#include "dashboard.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,9 +23,12 @@ private slots:
 
     void on_action_11_triggered();
 
+    void on_action_triggered();
+
 private:
     Ui::MainWindow* ui;
     LoginPage* login_page;
     signup* signup_page;
+    Dashboard* dashboard;
 };
 #endif // MAINWINDOW_H

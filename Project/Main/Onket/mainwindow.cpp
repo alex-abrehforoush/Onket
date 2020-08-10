@@ -5,6 +5,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     ,ui(new Ui::MainWindow)
     ,login_page(nullptr)
+    ,signup_page(nullptr)
+    ,dashboard(nullptr)
 {
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
@@ -30,4 +32,10 @@ void MainWindow::on_action_11_triggered()
 {
     if(signup_page == nullptr) signup_page = new signup(this);
     signup_page->show();
+}
+
+void MainWindow::on_action_triggered()
+{
+    if(dashboard == nullptr) dashboard = new Dashboard(-1, this);
+    dashboard->show();
 }
