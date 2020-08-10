@@ -26,7 +26,7 @@ bool csv_validator::isValidInCsv(const QString &input)
 {
     for(auto it=input.cbegin();it != input.cend();it++)
     {
-        if(*it==','||*it=='\n')
+        if(*it==';'||*it=='\n')
             return  false;
     }
     return true;
@@ -167,3 +167,151 @@ QMap<unsigned int,QString> xml_QMap::toIntQMap(const QString &input)
 }
 
 
+
+QString csv_QMap::toQStirng(const QMap<QString, QString> &input)
+{
+
+    if(input.isEmpty()==true)
+    {
+        return "";
+    }
+
+    QString res;
+
+   for(auto  it=input.cbegin();;)
+   {
+     res.append(it.key());
+     res.append("_");
+     res.append(it.value());
+     it++;
+     if(it== input.cend())
+     {
+         break;
+     }
+     else
+     {
+
+         res.append("#");
+     }
+
+   }
+   return res;
+
+}
+
+QString csv_QMap::toQString(const QMap<QString, double> &input)
+{
+
+    if(input.isEmpty()==true)
+    {
+        return "";
+    }
+
+    QString res;
+
+   for(auto it=input.cbegin();;)
+   {
+     res.append(it.key());
+     res.append("_");
+     res.append(QString::number(it.value()));
+     it++;
+     if(it== input.cend())
+     {
+         break;
+     }
+     else
+     {
+         res.append("#");
+     }
+
+   }
+   return res;
+}
+
+QMap<QString, QString> csv_QMap::toQStringQMap(const QString &input)
+{
+    QMap<QString,QString>res;
+    QStringList str_list=input.split("#");
+
+    for(int cnt=0;cnt<str_list.size() && str_list[cnt].isEmpty()==false;cnt++)
+    {
+        QStringList field=str_list[cnt].split("_");
+        if(field.size() !=2)
+        {
+            break;
+        }
+        else
+        {
+          res.insert(field[0],field[1]);
+        }
+
+    }
+
+    return res;
+}
+
+QMap<QString, double> csv_QMap::toDoubleQMap(const QString &input)
+{
+    QMap<QString,double>res;
+    QStringList str_list=input.split("#");
+
+    for(int cnt=0;cnt<str_list.size() && str_list[cnt].isEmpty()==false;cnt++)
+    {
+        QStringList field=str_list[cnt].split("_");
+        if(field.size() !=2)
+        {
+            break;
+        }
+        else
+        {
+          res.insert(field[0],field[1].toDouble());
+        }
+
+    }
+
+    return res;
+}
+
+QString csv_QVector::toQString(const QVector<QString> &input)
+{
+    if(input.isEmpty()==true)
+    {
+        return "";
+    }
+    else
+    {
+        QString res;
+
+        for(auto it=input.cbegin();;)
+        {
+            res.append(*it);
+            it++;
+            if(it==input.cend())
+            {
+                break;
+            }
+            else
+            {
+                res.append("_");
+            }
+        }
+        return res;
+    }
+}
+
+QVector<QString> csv_QVector::toQVector(const QString &input)
+{
+   QVector<QString>res;
+
+   if(input.isEmpty()==true)
+   {
+       return res;
+   }
+   QStringList str_list=input.split("_");
+
+   for(auto it=str_list.begin();it!=str_list.end();it++)
+   {
+       res.push_back(*it);
+   }
+   return res;
+}
