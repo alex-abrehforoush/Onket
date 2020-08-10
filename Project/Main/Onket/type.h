@@ -6,6 +6,8 @@
 #include <QVector>
 
 #include "filefunctions.h"
+#include <QDir>
+
 
 class Type
 {
@@ -17,22 +19,26 @@ class Type
     QString parent_id;
 
     QVector<QString>branches_id;
-    mutable QVector<QString>::const_iterator branches_it=branches_id.cbegin();
-    QVector<QString>goods_id;
-    mutable QVector<QString>::const_iterator goods_it=goods_id.cbegin();
+    mutable QVector<QString>::const_iterator branches_it;
+    mutable QVector<QString>goods_id;
+    mutable QVector<QString>::const_iterator goods_it;
 
-    QVector<QString>property_name;
-    mutable QVector<QString>::const_iterator property_it=property_name.cbegin();
+    mutable QVector<QString>property_name;
+    mutable QVector<QString>::const_iterator property_it;
 
-    QVector<QString>comment_item;
-    mutable QVector<QString>::const_iterator comment_item_it=comment_item.cbegin();
+    mutable QVector<QString>comment_item;
+    mutable QVector<QString>::const_iterator comment_item_it;
 
+
+    bool addBranch(const QString branch_name);
+    static Type& getTypePrivate(const QString& type_id);
 public:
 
     static bool existTypeId(const QString& type_id);
-    static Type& getType(const QString& type_id);
+    static const Type& getType(const QString& type_id);
+    static QVector<QString>getBaseTypeId();
 
-    Type(QString type_name,QString parent_id="null");
+
     QString getId()const;
     QString getName()const;
     QString getParentId()const;
@@ -41,20 +47,20 @@ public:
 
 
     bool existBranch(const QString branch_name)const;
-    Type& addBranch(const QString branch_name);
+
     bool removeBranch(const QString& branch_name);
 
     bool existGood(const QString good_id)const;
-    bool addGood(const QString& good_id);
-    bool removeGood(const QString& good_id);
+    bool addGood(const QString& good_id)const;
+    bool removeGood(const QString& good_id)const;
 
     bool existProperty(const QString property_name)const;
-    bool addProperty(const QString property_name);
-    bool removeProperty(const QString property_name);
+    bool addProperty(const QString property_name)const;
+    bool removeProperty(const QString property_name)const;
 
-    bool existCommentItem(const QString& item_name );
-    bool addCommentItem(const QString& item_name);
-    bool removeCommentItem(const QString& item_name);
+    bool existCommentItem(const QString& item_name )const;
+    bool addCommentItem(const QString& item_name)const;
+    bool removeCommentItem(const QString& item_name)const;
 
     void setBranchSeekBegin()const;
     QString readBranchId()const;
@@ -69,8 +75,17 @@ public:
     bool PropertySeekAtEnd()const;
 
     void setCommentSeekBegin()const;
-    QString readCommentId()const;
+    QString readCommentItem()const;
     bool CommentSeekAtEnd()const;
+
+
+
+     Type( QString type_name, QString parent_id );
+     Type(const QString& line);
+     void addToFile(QTextStream& txt_writer);
+
+     static bool  WriteToFile();
+     static bool readFile();
 
 };
 

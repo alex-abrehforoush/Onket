@@ -1,6 +1,30 @@
+
+
 #include "type.h"
 
 QMap<QString,Type> Type::types;
+bool Type::addBranch(const QString branch_name)
+{
+    if(this->existBranch(branch_name)==true)
+    {
+        return false;
+    }
+    else
+    {
+        QString branch_id=this->id;
+        branch_id.append("/");branch_id.append(branch_name);
+        this->branches_id.push_back(branch_id);
+        return true;
+    }
+
+}
+
+Type &Type::getTypePrivate(const QString &type_id)
+{
+    auto it=types.find(type_id);
+    return *it;
+}
+
 bool Type::existTypeId(const QString &type_id)
 {
     auto it=types.find(type_id);
@@ -14,10 +38,20 @@ bool Type::existTypeId(const QString &type_id)
     }
 }
 
-Type &Type::getType(const QString &type_id)
+const Type &Type::getType(const QString &type_id)
 {
     auto it=types.find(type_id);
     return *it;
+}
+
+QVector<QString> Type::getBaseTypeId()
+{
+    QVector <QString>res;
+    for(auto it=Type::types.cbegin();it!=Type::types.cend();it++)
+    {
+        res.push_back(it.key());
+    }
+    return res;
 }
 
 Type::Type(QString type_name, QString parent_id)
@@ -25,9 +59,10 @@ Type::Type(QString type_name, QString parent_id)
 
     this->parent_id=parent_id;
     this->name=type_name;
-    if(this->parent_id=="null")
+    if(this->parent_id=="none")
     {
         this->id=this->name;
+
     }
     else
     {
@@ -35,10 +70,133 @@ Type::Type(QString type_name, QString parent_id)
          this->id.append("/");this->id.append(this->name);
     }
 
-    if(Type::existTypeId(this->id)==false && csv_validator::isValidInCsv(this->id)==true)
+    if(Type::existTypeId(this->id)==false  && csv_validator::isValidInCsv(this->id)==true)
     {
-        types.insert(this->id,*this);
+        if(Type::existTypeId(parent_id)==false)
+        {
+            if(this->parent_id=="none")
+           {
+               Type::types.insert(this->id,*this);
+               return;
+           }
+           else
+           {
+               return;
+           }
+        }
+        Type& parent=Type::getTypePrivate(this->parent_id);
+        parent.addBranch(this->name);
+
+        for(parent.setCommentSeekBegin();parent.CommentSeekAtEnd()==false;)
+        {
+            this->addCommentItem(parent.readCommentItem());
+        }
+        for(parent.setPropertySeekBegin();parent.PropertySeekAtEnd()==false;)
+        {
+            this->addProperty(parent.readPropertyName());
+        }
+
+        Type::types.insert(this->id,*this);
     }
+}
+
+Type::Type(const QString &line)
+{
+    using namespace csv_QVector;
+    QStringList str_list=line.split(";");
+
+   if(str_list.size()!=7)
+   {
+       return;
+   }
+   else
+   {
+       this->id=str_list[0];this->name=str_list[1];this->parent_id=str_list[2];
+       if(Type::existTypeId(this->id)==true)
+       {
+           return;
+       }
+       this->branches_id=toQVector(str_list[3]);
+       this->goods_id=toQVector(str_list[4]);
+       this->property_name=toQVector(str_list[5]);
+       this->comment_item=toQVector(str_list[6]);
+
+       Type::types.insert(this->id,*this);
+
+   }
+}
+
+void Type::addToFile(QTextStream &txt_writer)
+{
+    using namespace csv_QVector;
+    txt_writer<<this->id<<";"<<this->name<<";"<<this->parent_id<<";"<<toQString(this->branches_id)<<";"<<toQString(this->goods_id)<<";"<<toQString(this->property_name)<<";"<<toQString(this->comment_item)<<endl;
+}
+
+bool Type::WriteToFile()
+{
+
+   QString path="E:/OnketFile/Types";
+    QDir d;
+    if(d.exists(path)==false)
+    {
+        d.mkpath(path);
+    }
+    path.append("/Types.csv");
+
+    QFile file(path);
+    if(file.open(QFile::WriteOnly | QFile::Text)==false)
+    {
+        return false;
+
+    }
+
+    else
+    {
+        QTextStream txt_writer;
+        txt_writer.setDevice(& file);
+        txt_writer.setAutoDetectUnicode(true);
+        txt_writer<<"id;name;parent_id;children_id;goods_id;property;comment"<<endl;
+        for(auto it: Type::types)
+        {
+            it.addToFile(txt_writer);
+        }
+        file.flush();
+        file.close();
+        return true;
+    }
+}
+
+bool Type::readFile()
+{
+    QString path="E:/OnketFile/Types";
+     QDir d;
+     if(d.exists(path)==false)
+     {
+         d.mkpath(path);
+     }
+     path.append("/Types.csv");
+
+     QFile file(path);
+     if(file.open(QFile::ReadOnly | QFile::Text)==false)
+     {
+         return false;
+
+     }
+     else
+     {
+         QTextStream txt_reader;
+         txt_reader.setDevice(& file);
+         txt_reader.setAutoDetectUnicode(true);
+         txt_reader.readLine();
+         while(txt_reader.atEnd()==false)
+         {
+             Type(txt_reader.readLine());
+         }
+
+         file.flush();
+         file.close();
+         return true;
+     }
 }
 
 QString Type::getId()const
@@ -81,24 +239,8 @@ bool Type::existBranch(const QString branch_name) const
     return false;
 }
 
-Type& Type::addBranch(const QString branch_name)
-{
-    QString branch_id=this->id;
-    branch_id.append("/");branch_id.append(branch_name);
 
-    if(existTypeId(branch_id)==true || this->goods_id.isEmpty()==false || csv_validator::isValidInCsv(branch_id)==false)
-    {
-        return *this;
-    }
-    else
-    {
-      this->branches_id.push_back(branch_id);
-     Type temp(branch_name,this->id);
-     types.insert(temp.getId(),temp);
-     return getType(temp.getId());
-    }
 
-}
 
 bool Type::removeBranch(const QString &branch_name)
 {
@@ -117,6 +259,7 @@ bool Type::removeBranch(const QString &branch_name)
         types.remove(branch_id);
         int index=this->branches_id.indexOf(branch_id);
         this->branches_id.remove(index);
+        return true;
     }
 }
 
@@ -133,7 +276,7 @@ bool Type::existGood(const QString good_id) const
     return false;
 }
 
-bool Type::addGood(const QString &good_id)
+bool Type::addGood(const QString &good_id)const
 {
    if(this->existGood(good_id) || csv_validator::isValidInCsv(good_id)==false)
    {
@@ -146,7 +289,7 @@ bool Type::addGood(const QString &good_id)
    }
 }
 
-bool Type::removeGood(const QString &good_id)
+bool Type::removeGood(const QString &good_id)const
 {
     if(this->existGood(good_id)==false)
     {
@@ -160,11 +303,12 @@ bool Type::removeGood(const QString &good_id)
     }
 }
 
-bool Type::existProperty(const QString property_name) const
+bool Type::existProperty(const QString input) const
 {
     for(int cnt=0;cnt<this->property_name.size();cnt++)
     {
-        if(this->property_name[cnt]==property_name)
+        QString s=this->property_name[cnt];
+        if(this->property_name[cnt]==input)
         {
             return true;
         }
@@ -172,7 +316,7 @@ bool Type::existProperty(const QString property_name) const
     return false;
 }
 
-bool Type::addProperty(const QString property_name)
+bool Type::addProperty(const QString property_name)const
 {
 
     if(this->existProperty(property_name)==true)
@@ -190,7 +334,7 @@ bool Type::addProperty(const QString property_name)
     }
 }
 
-bool Type::removeProperty(const QString property_name)
+bool Type::removeProperty(const QString property_name)const
 {
 
     if(this->existProperty(property_name)==false)
@@ -207,7 +351,7 @@ bool Type::removeProperty(const QString property_name)
     }
 }
 
-bool Type::existCommentItem(const QString &item_name)
+bool Type::existCommentItem(const QString &item_name)const
 {
     for(int cnt=0;cnt<comment_item.size();cnt++)
     {
@@ -222,7 +366,7 @@ bool Type::existCommentItem(const QString &item_name)
 
 
 
-bool Type::addCommentItem(const QString &item_name)
+bool Type::addCommentItem(const QString &item_name)const
 {
   if(this->existCommentItem(item_name)==true)
   {
@@ -236,7 +380,7 @@ bool Type::addCommentItem(const QString &item_name)
   }
 }
 
-bool Type::removeCommentItem(const QString &item_name)
+bool Type::removeCommentItem(const QString &item_name)const
 {
     if(this->existCommentItem(item_name)==false)
     {
@@ -348,7 +492,7 @@ void Type::setCommentSeekBegin() const
     this->comment_item_it=this->comment_item.cbegin();
 }
 
-QString Type::readCommentId() const
+QString Type::readCommentItem() const
 {
     if(this->comment_item_it==this->comment_item.cend())
     {
