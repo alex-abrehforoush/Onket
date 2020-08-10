@@ -1,5 +1,53 @@
-
 #include "good.h"
+
+QMap<QString,Good> Good::goods_id;
+QMap<QString,bool> Good::goods_name;
+
+
+void Good::controlItemscomment(Comment &input)
+{
+    for(auto it=this->comments_item.begin();it != this->comments_item.end();it++)
+    {
+        if(input.existItem(it.key())==false)
+        {
+            input.insertItem(it.key());
+        }
+        else
+        {
+            int size=this->comments.size();
+             long double sum_befor=it.value()*size;
+             it.value()=(sum_befor+input.getItemValue(it.key()))/(size+1);
+        }
+
+    }
+
+    QVector<QString> remove_items;
+    for(input.setItemSeekBegin();input.ItemSeekAtEnd()==false;)
+    {
+        QString item_name=input.readItemName();
+        if(this->comments_item.find(item_name)==this->comments_item.cend())
+        {
+           remove_items.push_back(item_name);
+        }
+    }
+    for(int cnt=0;cnt<remove_items.size();cnt++)
+    {
+        input.removeItem(remove_items[cnt]);
+    }
+}
+
+Comment &Good::getCommentPrivate(const QString &sender_id)
+{
+   for(auto it=this->comments.begin();it != this->comments.end();it++)
+   {
+       if((*it).getSenderId()==sender_id)
+       {
+           return *it;
+       }
+   }
+   return *(this->comments.end());
+}
+
 
 Question &Good::getQuestionPrivate(const QString &question_id)
 {
@@ -30,6 +78,112 @@ QString Good::toQString(unsigned int input)
     res.append(temp);
     return  res;
 }
+
+bool Good::existGoodId(const QString &good_id)
+{
+    auto it= goods_id.find(good_id);
+    if(it==goods_id.end())
+    {
+        return false;
+    }
+    return true;
+}
+
+Good &Good::getGood(const QString &good_id)
+{
+    auto it = goods_id.find(good_id);
+    return it.value();
+}
+
+bool Good::existGoodName(const QString &good_name)
+{
+    auto it=goods_name.find(good_name);
+    if(it == goods_name.end())
+    {
+        return false;
+    }
+    return true;
+}
+
+bool Good::readFile()
+{
+    QFile file("E:/OnketFile/Goods/goods.csv");
+    if(file.open(QFile::ReadOnly | QFile::Text)==false)
+    {
+        return false;
+
+    }
+    else
+    {
+        QTextStream txt_stream;
+        txt_stream.setDevice(& file);
+        txt_stream.setAutoDetectUnicode(true);
+
+        txt_stream.readLine();
+        while (txt_stream.atEnd()==false)
+        {
+          QString line=txt_stream.readLine();
+
+          Good g(line);
+
+
+        }
+
+        file.flush();
+        file.close();
+
+        return true;
+    }
+
+}
+
+bool Good::WriteFile()
+{
+   QDir d;
+   if (d.exists("E:/OnketFile/Goods")==false)
+   {
+       d.mkpath("E:/OnketFile/Goods");
+   }
+
+   QFile file("E:/OnketFile/Goods/goods.csv");
+
+   if(file.open(QFile::WriteOnly | QFile::Text)==false)
+   {
+       return false;
+
+   }
+
+   else
+   {
+       QTextStream txt_stream;
+       txt_stream.setDevice(& file);
+       txt_stream.setAutoDetectUnicode(true);
+
+       txt_stream<<"id;name;maker_id;type_id;price;discount;properties;comment_item"<<endl;
+       for(auto it=goods_id.begin(); it != goods_id.end();it++)
+       {
+         (*it).addToFile(txt_stream);
+       }
+
+
+       file.flush();
+       file.close();
+
+       return true;
+   }
+}
+
+QString Good::getId() const
+{
+    return this->id;
+}
+
+QString Good::getName() const
+{
+    return this->name;
+}
+
+
 
 
 
@@ -175,7 +329,80 @@ bool Good::existCommentSender(const QString &sender_id)
     else return  true;
 }
 
- Comment &Good::getComment(const QString &sender_id)
+bool Good::existCommentItem(const QString & item_name)const
+{
+
+    QMap<QString,double>::const_iterator it=this->comments_item.find(item_name);
+    if(it == this->comments_item.cend())
+    {
+        return false;
+    }
+
+    return true;
+
+}
+
+bool Good::addCommentItem(const QString &item_name)
+{
+    if(this->existCommentItem(item_name)==true)
+    {
+        return false;
+    }
+    else
+
+
+    {
+        this->comments_item.insert(item_name,0.0);
+        return true;
+    }
+}
+
+void Good::commentAddLike(const QString &comment_sender, const QString &liker_id)
+{
+    this->getCommentPrivate(comment_sender).addLike(liker_id);
+}
+
+void Good::commentAddDisLike(const QString &comment_sender, const QString &disliker_id)
+{
+    this->getCommentPrivate(comment_sender).addDisLike(disliker_id);
+}
+
+bool Good::CommentSetItemValue(const QString &comment_sender, const QString &item_name, const double &item_value)
+{
+  if(this->existCommentSender(comment_sender)==false|| Comment::isValidGrade(item_value)==false)
+  {
+      return false;
+  }
+  else
+  {
+      Comment* c=&(this->getCommentPrivate(comment_sender));
+      //Comment c2=this->getCommentPrivate(comment_sender);
+      if(c->existItem(item_name)==false)
+      {
+          return false;
+      }
+      else
+      {
+          double befor_value=c->getItemValue(item_name);
+          int size=this->comments.size ();
+          c->setItemValue(item_name,item_value);
+          if(this->existCommentItem(item_name)==true)
+          {
+              long double befor=this->comments_item[item_name]*size;
+              befor-=befor_value;
+              befor+=item_value;
+              this->comments_item[item_name]=befor/size;
+
+          }
+
+
+      }
+  }
+}
+
+
+
+ const Comment &Good::getComment(const QString &sender_id)
 {
     if(this->existCommentSender(sender_id) == false)
     {
@@ -194,7 +421,7 @@ bool Good::existCommentSender(const QString &sender_id)
     }
  }
 
- Comment &Good::readComment()
+ const Comment &Good::readComment()
  {
      if(this->comments.isEmpty()==true || this->comments_it==this->comments.begin())
      {
@@ -223,7 +450,7 @@ bool Good::existCommentSender(const QString &sender_id)
          return false;
  }
 
-bool Good::addComment(const Comment &new_comment)
+bool Good::addComment( Comment new_comment)
 {
     if(this->existCommentSender(new_comment.getSenderId()) == true)
     {
@@ -232,6 +459,9 @@ bool Good::addComment(const Comment &new_comment)
     else
     {
         this->comments_id.insert(new_comment.getSenderId(),true);
+
+        this->controlItemscomment(new_comment);
+
         if(this->comments_sort_by == "date")
         {
             this->comments.insert(file_QDate::toQString( new_comment.getDateCreate()),new_comment);
@@ -250,26 +480,27 @@ bool Good::addComment(const Comment &new_comment)
     }
 }
 
-bool Good::changeComment(const Comment &input_comment)
-{
-     if(this->existCommentSender(input_comment.getSenderId()) == false)
-         return  false;
-     else
-     {
-         for(auto it=this->comments.begin(); it!= this->comments.end(); it++)
-         {
-             if((*it).getSenderId() == input_comment.getSenderId())
-             {
-                (*it)=input_comment;
-                 return  true;
-             }
-         }
+//bool Good::changeComment(const Comment &input_comment)
+//{
+//     if(this->existCommentSender(input_comment.getSenderId()) == false)
+//         return  false;
+//     else
+//     {
+//         for(auto it=this->comments.begin(); it!= this->comments.end(); it++)
+//         {
+//             if((it.value()).getSenderId() == input_comment.getSenderId())
+//             {
+//                (it.value())=input_comment;
+//                 this->controlItemscomment(it.value());
+//                 return  true;
+//             }
+//         }
 
 
 
-         return  true;
-     }
-}
+//         return  true;
+//     }
+//}
 
 bool Good::existQuestionContent(const QString &content)
 {
@@ -695,20 +926,20 @@ void Good::commentsReadFile()
 
                  for(auto it=items.cbegin();it != items.cend();it++)
                  {
-                     this->getComment(c.getSenderId()).insertItem(it.key());
-                     this->getComment(c.getSenderId()).setItemValue(it.key(),it.value());
+                     this->getCommentPrivate(c.getSenderId()).insertItem(it.key());
+                     this->getCommentPrivate(c.getSenderId()).setItemValue(it.key(),it.value());
                  }
 
                  for(auto it=user_like.cbegin();it != user_like.cend();it++)
                  {
                      if(it.value()==true)
                      {
-                         this->getComment(c.getSenderId()).addLike(it.key());
+                         this->getCommentPrivate(c.getSenderId()).addLike(it.key());
 
                      }
                      else
                      {
-                          this->getComment(c.getSenderId()).addDisLike(it.key());
+                          this->getCommentPrivate(c.getSenderId()).addDisLike(it.key());
                      }
                  }
 
@@ -772,7 +1003,7 @@ void Good::commentsWriteToFile()
         this->commentSortByView();
     }
     else;
-    
+
 }
 
 void Good::QuestionReadFile()
@@ -853,7 +1084,7 @@ void Good::QUestionWriteToFile()
         }
 
     }
- 
+
 
 }
 
@@ -966,32 +1197,91 @@ void Good::ReplyWriteToFile()
 
 }
 
-Good::Good(const QString &id, const QString &type_id, const QString &maker_id, unsigned int price)
+Good::Good(const QString &name, const QString &type_id, const QString &maker_id, unsigned int price)
 {
 
-    this->id=id;
+    this->name=name;
     this->type_id=type_id;
     this->maker_id=maker_id;
     this->price=price;
 
-    if(Type::existTypeId(type_id)==false)
+    if(existGoodName(name)==true)
     {
+        return;
+    }
+
+
+     else if(Type::existTypeId(type_id)==false)
+    {
+
         return;
     }
     else
     {
-        Type* type=& Type::getType(type_id);
+        goods_name.insert(name,true);
+        /////make id for good
+
+        this->id=QString::number(goods_id.size()+1);
+
+        goods_id.insert(id,*this);
+
+        const Type* type=& Type::getType(type_id);
 
         type->addGood(this->id);
+        Good* g=&(Good ::getGood(this->id));
 
         for(type->setPropertySeekBegin();type->PropertySeekAtEnd()==false;)
         {
-            this->addProperty(type->readPropertyName());
+           g->addProperty(type->readPropertyName());
+        }
+
+        for(type->setCommentSeekBegin();type->CommentSeekAtEnd()==false;)
+        {
+           g->addCommentItem(type->readCommentItem());
         }
 
 
     }
 
+}
+
+Good::Good(const QString &line)
+{
+   QStringList str_list=line.split(";");
+
+   if(str_list.size()!=8)
+   {
+       return;
+   }
+   else
+   {
+      this->id= str_list[0];
+       this->name=str_list[1];
+       this->maker_id=str_list[2];
+       this->type_id=str_list[3];
+       this->price=str_list[4].toInt();
+       this->discount_percent=str_list[5].toInt();
+       this->properties=csv_QMap::toQStringQMap(str_list[6]);
+       this->comments_item=csv_QMap::toDoubleQMap(str_list[7]);
+       if(Good::existGoodName(name)==true )
+       {
+           return;
+       }
+       else
+       {
+
+
+
+
+           goods_id.insert(this->id,*this);
+           goods_name.insert(this->name,true);
+       }
+   }
+}
+
+void Good::addToFile( QTextStream &txt_stream)
+{
+    txt_stream<<this->id<<";"<<this->name<<";"<<this->maker_id<<";"<<this->type_id<<";"<<QString::number(this->price)<<";"<<QString::number(this->discount_percent)<<";"<<csv_QMap::toQStirng(this->properties)<<";"<<csv_QMap::toQString(this->comments_item)<<endl;
 }
 
 

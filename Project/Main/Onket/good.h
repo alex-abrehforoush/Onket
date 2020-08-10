@@ -18,9 +18,15 @@
 #include "type.h"
 
 
+
 class Good
 {
+
+    static QMap<QString,Good> goods_id;
+    static QMap<QString,bool> goods_name;
+
     QString id;
+    QString name;
     QString type_id;
     QString maker_id;
 
@@ -30,6 +36,7 @@ class Good
     mutable QMap<QString,QString>::const_iterator property_it=properties.begin();
 
     QMultiMap<QString,Comment>comments;//first field is sort part name
+    QMap<QString,double>comments_item;
     QMap<QString,bool>comments_id;//save comment sender_id  the secend part igonre
     QMultiMap<QString,Comment>::iterator comments_it=comments.end();
     QString comments_sort_by = "date";
@@ -41,12 +48,28 @@ class Good
 
     QMap<QString,Reply> replys;
 
-
+    void controlItemscomment(Comment& input);
+    Comment& getCommentPrivate(const QString& sender_id);
     Question& getQuestionPrivate(const QString& question_id);
      Reply &getReplyPrivate(const QString& reply_id);
     static QString toQString(unsigned int input);
 
+
+
 public:
+
+    static bool  existGoodId(const QString& good_id);
+    static Good& getGood(const QString& good_id);
+    static bool existGoodName(const QString& good_name);
+
+    QString getId()const;
+    QString getName()const;
+
+    static bool readFile();
+    static bool WriteFile();
+
+
+
     void setPrice(unsigned int price);
     void setFinalPrice(unsigned int final_price);
     bool setDiscountPercent(double discount_percent);
@@ -64,12 +87,18 @@ public:
 
 
     bool existCommentSender(const QString& sender_id);
-    Comment& getComment(const QString& sender_id);
-    Comment& readComment();
+    bool existCommentItem(const QString& item_name)const;
+    bool addCommentItem(const QString& item_name);
+    void commentAddLike(const QString& comment_sender,const QString& liker_id);
+    void commentAddDisLike(const QString& comment_sender,const QString& disliker_id);
+    bool CommentSetItemValue(const QString& comment_sender,const QString& item_name,const double& item_value);
+    const Comment& getComment(const QString& sender_id);
+    const Comment& readComment();
     void setCommentSeekBegin();
     bool commentSeekAtEnd();
-    bool addComment(const Comment& new_comment);
-    bool changeComment(const Comment& input_comment);
+
+    bool addComment( Comment new_comment);
+    //bool changeComment(const Comment& input_comment);
 
 //    bool existQuestion(const QString& question_id);
 //    const Question& getQuestion(const QString & question_id);
@@ -103,7 +132,13 @@ public:
     void ReplyReadFile();
     void ReplyWriteToFile();
 
-    explicit Good(const QString& id,const QString& type_id,const QString& maker_id,unsigned int price);
+    explicit Good(const QString& name,const QString& type_id,const QString& maker_id,unsigned int price);
+    explicit Good(const QString& line);
+
+    void addToFile( QTextStream& txt_stream);
+
 };
 
 #endif // GOOD_H
+
+
