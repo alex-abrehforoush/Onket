@@ -392,8 +392,11 @@ bool Good::CommentSetItemValue(const QString &comment_sender, const QString &ite
               befor-=befor_value;
               befor+=item_value;
               this->comments_item[item_name]=befor/size;
+              return true;
 
           }
+
+          return false;
 
 
       }
