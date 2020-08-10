@@ -1,10 +1,5 @@
 #include "Customer.h"
 
-QString Customer::getId(User& user) const
-{
-	return this->id;
-}
-
 void Customer::setBirthday(QDateTime birthday)
 {
 	this->birthday = birthday;

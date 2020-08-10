@@ -1,3 +1,27 @@
-﻿  Commodity.cpp
-mainwindow.obj : error LNK2019: unresolved external symbol "public: __cdecl signup::signup(class QWidget *)" (??0signup@@QEAA@PEAVQWidget@@@Z) referenced in function "private: void __cdecl MainWindow::on_action_11_triggered(void)" (?on_action_11_triggered@MainWindow@@AEAAXXZ)
-debug\\Onket.exe : fatal error LNK1120: 1 unresolved externals
+﻿  Reading Qt configuration (C:\Qt\Qt5.14.2\5.14.2\msvc2017_64\bin\qmake.exe)
+  Moc'ing mainwindow.h...
+  Admin.cpp
+  Customer.cpp
+  comment.cpp
+  Commodity.cpp
+  discussionitem.cpp
+  filefunctions.cpp
+  good.cpp
+  loginpage.cpp
+  main.cpp
+  mainwindow.cpp
+  Order.cpp
+  question.cpp
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\Customer.cpp(37,56): warning C4100: 'number': unreferenced formal parameter
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\Customer.cpp(41,57): warning C4100: 'number': unreferenced formal parameter
+  reply.cpp
+  User.cpp
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\mainwindow.cpp(39,65): error C2664: 'Dashboard::Dashboard(const Dashboard &)': cannot convert argument 1 from 'int' to 'User &'
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\dashboard.h(16,5): message : see declaration of 'Dashboard::Dashboard' (compiling source file mainwindow.cpp)
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\good.cpp(71): warning C4715: 'Good::getQuestionPrivate': not all control paths return a value
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\good.cpp(569): warning C4715: 'Good::getQuestion': not all control paths return a value
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\User.cpp(95,25): error C2259: 'User': cannot instantiate abstract class
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\User.h(8): message : see declaration of 'User'
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\User.cpp(95,25): message : due to following members:
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\User.cpp(95,25): message : 'int User::isAdmin(void)': is abstract
+C:\Users\Alireza\Desktop\Project\Onket\Project\Main\Onket\User.h(17): message : see declaration of 'User::isAdmin'

@@ -1,5 +1,12 @@
 #include "User.h"
 
+User::User(QString username, QString password)
+	:username(username)
+	,password(decryptPassword(password))
+{
+
+}
+
 void User::setFirstname(QString firstname)
 {
 	this->firstname = firstname;
@@ -78,4 +85,40 @@ void User::addActivity(QDateTime new_login)
 {
 	this->last_activities.push_back(new_login);
 	return;
+}
+
+void User::loadUsersInfo()
+{
+
+}
+
+void User::addUser(User& new_user)
+{
+	if (!(user_list.contains(new_user.getUsername())))
+	{
+		user_list.insert(new_user.getUsername(), new_user);
+		//open file
+	//write info
+	//close file
+	}
+	else
+	{
+		//cout this username exists
+	}
+}
+
+void User::removeUser(QString username)
+{
+	if (user_list.contains(username))
+	{
+		user_list.remove(username);
+		//open file
+		//add user to deleted users
+		//delete user
+		//close file
+	}
+	else
+	{
+		//there is no user with this username
+	}
 }
