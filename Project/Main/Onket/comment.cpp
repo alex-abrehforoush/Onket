@@ -52,13 +52,26 @@ QString Comment::xmlToItem(const QString &xml)
    return  resualt;
 }
 
-
-
-
-
-bool Comment::setAdvantages(const QString & advantages)
+bool Comment::isValidGrade(double item_value)
 {
-    if(this->isValidInxml(advantages)==false)
+    for(auto it : grades)
+    {
+        if(it==item_value)
+        {
+            return true;
+        }
+
+    }
+    return false;
+}
+
+
+
+
+
+bool Comment::setAdvantages(const QString & advantages)const
+{
+    if(isValidInxml(advantages)==false)
     {
         return false;
     }
@@ -66,9 +79,9 @@ bool Comment::setAdvantages(const QString & advantages)
     return true;
 }
 
-bool Comment::setDisAdvantages(const QString &disadvantages)
+bool Comment::setDisAdvantages(const QString &disadvantages)const
 {
-    if(this->isValidInxml(disadvantages)==false)
+    if(isValidInxml(disadvantages)==false)
     {
         return false;
     }
@@ -76,8 +89,8 @@ bool Comment::setDisAdvantages(const QString &disadvantages)
     return true;
 }
 
-bool Comment::setDescription(const QString &description)
-{   if(this->isValidInxml(description)==false)
+bool Comment::setDescription(const QString &description)const
+{   if(isValidInxml(description)==false)
     {
         return false;
     }
@@ -126,9 +139,9 @@ unsigned int Comment::getViewNumber()const
     return this->like+this->dislike;
 }
 
-bool Comment::exist(const QString &sender_id)
+bool Comment::exist(const QString &liker_id)
 {
-    auto it=users_like.find(sender_id);
+    auto it=users_like.find(liker_id);
     if (it != users_like.end())
     {
         return true;
@@ -217,6 +230,7 @@ bool Comment::insertItem(const QString &item_name)
 
 bool Comment::removeItem(const QString &item_name)
 {
+    this->setItemSeekBegin();
     bool resualt;
     auto it=map_items.find(item_name);
     if(it != map_items.end())
@@ -230,6 +244,20 @@ bool Comment::removeItem(const QString &item_name)
 
 
     return resualt;
+}
+
+bool Comment::existItem(const QString &item_name) const
+{
+    auto it=this->map_items.find(item_name);
+
+    if(it==this->map_items.cend())
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
 
 bool Comment::setItemValue(const QString &item_name, double item_value)
@@ -253,6 +281,54 @@ bool Comment::setItemValue(const QString &item_name, double item_value)
       return  resualt;
   }
 }
+
+double Comment::getItemValue(const QString &item_name) const
+{
+    if(this->existItem(item_name)==false)
+    {
+        return -1;
+    }
+    else
+    {
+      auto it=this->map_items.find(item_name);
+      return it.value();
+    }
+}
+
+void Comment::setItemSeekBegin() const
+{
+    this->map_it=this->map_items.cbegin();
+}
+
+
+
+bool Comment::ItemSeekAtEnd()
+{
+    if(this->map_it==this->map_items.cend())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+QString Comment::readItemName() const
+{
+   if(this->map_it==this->map_items.cend())
+   {
+       return "";
+
+   }
+   else
+   {
+       QString res=map_it.key();
+       map_it++;
+       return res;
+   }
+}
+
 
 
 
