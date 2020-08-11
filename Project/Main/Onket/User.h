@@ -11,10 +11,10 @@ protected:
 	QString firstname, lastname, username, password;
 	QVector<QDateTime> last_activities;
 private:
-	static QMap<QString, User> user_list;
+    static QMap<QString, User*> user_list;
 public:
 	User(QString username, QString password);
-	virtual int isAdmin() = 0;
+    virtual int getMode() const = 0;
 	void setFirstname(QString firstname);
 	void setLastname(QString lastname);
 	void setUsername(QString username);
@@ -28,7 +28,7 @@ public:
 	void addActivity(QDateTime new_login);
 
 	static void loadUsersInfo();
-	static void addUser(User& new_user);
+    static void addUser(User* new_user);
 	static void removeUser(QString username);
 
 };

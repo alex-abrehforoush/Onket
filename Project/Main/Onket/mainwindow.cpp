@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QMessageBox>
+#include "Admin.h"
+#include "Customer.h"
+#include "Guest.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     ,login_page(nullptr)
     ,signup_page(nullptr)
     ,dashboard(nullptr)
+    ,current_user(new Guest())
 {
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
@@ -36,6 +41,12 @@ void MainWindow::on_action_11_triggered()
 
 void MainWindow::on_action_triggered()
 {
-    if(dashboard == nullptr) dashboard = new Dashboard(-1, this);
-    dashboard->show();
+    if(current_user->getMode()==-1)
+    {
+        QMessageBox::information(this, "پیام", "لطفا وارد شوید و یا ثبت نام کنید");
+    }
+    else
+    {
+        if(this->dashboard==nullptr) dashboard = new Dashboard(current_user, this);
+    }
 }

@@ -79,12 +79,27 @@
     <ClCompile Include="Order.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="dashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Guest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="type.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="mainwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="loginpage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="dashboard.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="signup.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -101,6 +116,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="loginpage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="dashboard.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="signup.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -144,8 +165,22 @@
     <ClInclude Include="Order.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Guest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\build-Onket-Desktop_Qt_5_14_2_MinGW_32_bit-Debug\ui_dashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\build-Onket-Desktop_Qt_5_14_2_MinGW_32_bit-Debug\ui_signup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Onket.pro" />
+    <None Include="Onket.pro">
+      <Filter>Generated Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

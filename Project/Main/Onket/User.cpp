@@ -1,5 +1,7 @@
 #include "User.h"
 
+QMap<QString, User*> User::user_list;
+
 User::User(QString username, QString password)
 	:username(username)
 	,password(decryptPassword(password))
@@ -57,7 +59,7 @@ QString User::encryptPassword(QString password)
 	std::string temp2 = password.toStdString();
 	char temp3;
 	int length = password.length();
-	for (int i = 1; i <= length; i++)
+    for (int i = 0; i < length; i++)
 	{
 		temp3 = temp2.at(i);
 		temp3 += (i * i + 7) % 128;
@@ -72,7 +74,7 @@ QString User::decryptPassword(QString password)
 	std::string temp2 = password.toStdString();
 	char temp3;
 	int length = password.length();
-	for (int i = 1; i <= length; i++)
+    for (int i = 0; i < length; i++)
 	{
 		temp3 = temp2.at(i);
 		temp3 -= (i * i + 7) % 128;
@@ -92,14 +94,14 @@ void User::loadUsersInfo()
 
 }
 
-void User::addUser(User& new_user)
+void User::addUser(User* new_user)
 {
-	if (!(user_list.contains(new_user.getUsername())))
+    if (!(user_list.contains(new_user->getUsername())))
 	{
-		user_list.insert(new_user.getUsername(), new_user);
+        user_list.insert(new_user->getUsername(), new_user);
 		//open file
-	//write info
-	//close file
+        //write info
+        //close file
 	}
 	else
 	{

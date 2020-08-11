@@ -1,5 +1,15 @@
 #include "Customer.h"
 
+int Customer::getMode() const
+{
+	return mode;
+}
+
+Customer::Customer(QString username, QString password)
+	:User(username, encryptPassword(password))
+{
+}
+
 void Customer::setBirthday(QDateTime birthday)
 {
 	this->birthday = birthday;

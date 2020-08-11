@@ -1,12 +1,12 @@
 #include "dashboard.h"
 #include "ui_dashboard.h"
 
-Dashboard::Dashboard(User& current_user, QWidget *parent)
+Dashboard::Dashboard(User* current_user, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Dashboard)
 {
     ui->setupUi(this);
-    if(current_user.isAdmin() == 0)
+    if(current_user->getMode() == 0)
     {
         ui->admin->hide();
         ui->customer->show();
@@ -19,7 +19,7 @@ Dashboard::Dashboard(User& current_user, QWidget *parent)
         ui->last_activities->hide();
         ui->account_info->hide();
     }
-    else if(current_user.isAdmin() == 1)
+    else if(current_user->getMode() == 1)
     {
         ui->admin->show();
         ui->customer->hide();

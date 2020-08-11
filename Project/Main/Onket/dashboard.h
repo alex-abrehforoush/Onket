@@ -13,7 +13,7 @@ class Dashboard : public QWidget
     Q_OBJECT
 
 public:
-    Dashboard(User& current_user, QWidget *parent = nullptr);
+    Dashboard(User* current_user, QWidget *parent = nullptr);
     ~Dashboard();
 
 private slots:

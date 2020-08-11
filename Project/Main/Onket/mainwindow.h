@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "User.h"
+#include "Admin.h"
 #include "loginpage.h"
 #include "signup.h"
 #include "dashboard.h"
@@ -30,5 +32,6 @@ private:
     LoginPage* login_page;
     signup* signup_page;
     Dashboard* dashboard;
+    User* current_user;
 };
 #endif // MAINWINDOW_H

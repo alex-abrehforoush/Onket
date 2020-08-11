@@ -1,3 +1,6 @@
+debug/Admin.o
+debug/Customer.o
+debug/Guest.o
 debug/Order.o
 debug/User.o
 debug/dashboard.o

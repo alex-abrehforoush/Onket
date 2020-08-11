@@ -1,6 +1,6 @@
 #include "Admin.h"
 
-int Admin::isAdmin()
+int Admin::getMode() const
 {
-	return is_admin;
+	return mode;
 }

@@ -7,12 +7,14 @@ class Customer :
 {
 protected:
 private:
-	const int is_admin = 0;
+	const int mode = 0;
 	QDateTime birthday;
 	QString phone_number;
 	QVector<Order> orders_history;
 	QVector<QString> addresses;
 public:
+    int getMode() const;
+	Customer(QString username, QString password);
 	void setBirthday(QDateTime birthday);
 	QDateTime getBirthday() const;
 	void setPhoneNumber(QString phone_number);

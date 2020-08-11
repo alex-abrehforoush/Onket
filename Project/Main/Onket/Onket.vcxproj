@@ -191,15 +191,18 @@
     <ClCompile Include="Customer.cpp" />
     <ClCompile Include="comment.cpp" />
     <ClCompile Include="Commodity.cpp" />
+    <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="discussionitem.cpp" />
     <ClCompile Include="filefunctions.cpp" />
     <ClCompile Include="good.cpp" />
+    <ClCompile Include="Guest.cpp" />
     <ClCompile Include="loginpage.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="question.cpp" />
     <ClCompile Include="reply.cpp" />
+    <ClCompile Include="type.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -225,21 +228,29 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="dashboard.ui" />
     <QtUic Include="loginpage.ui" />
     <QtUic Include="mainwindow.ui">
     </QtUic>
+    <QtUic Include="signup.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\build-Onket-Desktop_Qt_5_14_2_MinGW_32_bit-Debug\ui_dashboard.h" />
+    <ClInclude Include="..\build-Onket-Desktop_Qt_5_14_2_MinGW_32_bit-Debug\ui_signup.h" />
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="comment.h" />
     <ClInclude Include="Commodity.h" />
+    <QtMoc Include="dashboard.h" />
     <ClInclude Include="discussionitem.h" />
     <ClInclude Include="filefunctions.h" />
     <ClInclude Include="good.h" />
+    <ClInclude Include="Guest.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="question.h" />
     <ClInclude Include="reply.h" />
+    <QtMoc Include="signup.h" />
+    <ClInclude Include="type.h" />
     <ClInclude Include="ui_loginpage.h" />
     <ClInclude Include="ui_mainwindow.h" />
     <ClInclude Include="User.h" />

@@ -1,3 +1,6 @@
+release/Admin.o
+release/Customer.o
+release/Guest.o
 release/Order.o
 release/User.o
 release/dashboard.o

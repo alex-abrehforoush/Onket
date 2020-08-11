@@ -2,13 +2,14 @@
 #define ADMIN_QSFEESX
 #include "User.h"
 class Admin :
-	private User
+    public User
 {
 protected:
 private:
-	const int is_admin = 1;
+	const int mode = 1;
 public:
-	int isAdmin();
+    Admin(QString username, QString password):User(username, encryptPassword(password)) {}
+    int getMode() const;
 };
 
 #endif
