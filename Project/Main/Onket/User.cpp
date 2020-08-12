@@ -1,4 +1,8 @@
 #include "User.h"
+#include <QDir>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
 
 QMap<QString, User*> User::user_list;
 
@@ -94,11 +98,52 @@ void User::loadUsersInfo()
 
 }
 
-void User::addUser(User* new_user)
+int User::addUser(User* new_user)
 {
     if (!(user_list.contains(new_user->getUsername())))
 	{
         user_list.insert(new_user->getUsername(), new_user);
+        QDir data;
+        data.mkpath("Database/User");
+        QFile username_password_list("Database/User/uplist.csv");
+        if(!username_password_list.open(QIODevice::WriteOnly | QIODevice::Append))
+        {
+            return 0;
+        }
+        else
+        {
+            QTextStream out(&username_password_list);
+            out << new_user->getUsername() << "," << new_user->getPassword() << "\n";
+            username_password_list.close();
+        }
+        QFile user_personal("Database/User/" + new_user->getUsername() + ".csv");
+        if(!user_personal.open(QIODevice::WriteOnly))
+        {
+            return 0;
+        }
+        else
+        {
+            QTextStream out(&user_personal);
+            out << new_user->getUsername() << "," << new_user->getPassword() << "," << new_user->getMode() << "," << new_user->getFirstname() << "," << new_user->getLastname() << "," ;
+            if(new_user->getMode()==0)
+            {
+                out << new_user->getBirthday().toString() << "," << new_user->getPhoneNumber() << ",";
+                for(int i = 0; i<new_user->getAddresses().size(); i++)
+                {
+                    if(i==new_user->getAddresses().size()-1)
+                    {
+                        out << new_user->getAddresses().at(i) << ",";
+                    }
+                    else
+                    {
+                        out << new_user->getAddresses().at(i) << "|";
+                    }
+                }
+                out << "\n\n";
+                QDateTime now=QDateTime::currentDateTime();
+                out << "Account created in " << now.toString() << "\n";
+            }
+        }
 		//open file
         //write info
         //close file

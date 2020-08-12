@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "User.h"
 #include "Admin.h"
+#include "Customer.h"
+#include "Guest.h"
 #include "loginpage.h"
 #include "signup.h"
 #include "dashboard.h"

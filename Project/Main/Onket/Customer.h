@@ -18,7 +18,8 @@ public:
 	void setBirthday(QDateTime birthday);
 	QDateTime getBirthday() const;
 	void setPhoneNumber(QString phone_number);
-	QString getPhoneNumber();
+    QString getPhoneNumber() const;
+    QVector<QString> getAddresses() const;
 	void addAddress(QString address);
 	void removeAddressAt(int at);
 	void buy(QString good_id, QString color, int number);

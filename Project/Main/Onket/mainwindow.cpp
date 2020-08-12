@@ -11,11 +11,12 @@ MainWindow::MainWindow(QWidget *parent)
     ,login_page(nullptr)
     ,signup_page(nullptr)
     ,dashboard(nullptr)
-    ,current_user(new Guest())
+    ,current_user(new Guest())//for testing
 {
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
     setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
+    current_user->addUser(current_user);//for testing
 }
 
 MainWindow::~MainWindow()
@@ -43,7 +44,7 @@ void MainWindow::on_action_triggered()
 {
     if(current_user->getMode()==-1)
     {
-        QMessageBox::information(this, "پیام", "لطفا وارد شوید و یا ثبت نام کنید");
+        QMessageBox::information(this, "پیام", "لطفا وارد شوید یا ثبت نام کنید");
     }
     else
     {

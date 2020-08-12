@@ -984,7 +984,13 @@ release/User.o: User.cpp User.h \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qcontiguouscache.h \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qsharedpointer.h \
 		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qdatetime.h
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/QDir \
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qdir.h \
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qfileinfo.h \
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qfile.h \
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/qfiledevice.h \
+		C:/Qt/Qt5.14.2/5.14.2/mingw73_32/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\User.o User.cpp
 
 release/dashboard.o: dashboard.cpp dashboard.h \

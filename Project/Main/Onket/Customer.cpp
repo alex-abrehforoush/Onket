@@ -24,10 +24,15 @@ QDateTime Customer::getBirthday() const
 void Customer::setPhoneNumber(QString phone_number)
 {
 	this->phone_number = phone_number;
-	return;
+    return;
 }
 
-QString Customer::getPhoneNumber()
+QVector<QString> Customer::getAddresses() const
+{
+    return this->addresses;
+}
+
+QString Customer::getPhoneNumber() const
 {
 	return this->phone_number;
 }
