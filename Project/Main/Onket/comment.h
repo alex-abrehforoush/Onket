@@ -46,7 +46,8 @@ public:
     QString getAdvantages()const;
     QString getDisadvantages()const;
     QString getDescription()const;
-
+    bool existLiker(const QString& liker_id)const;
+    bool getLikeMode(const QString& liker_id)const;
     unsigned int getLikeNumber()const;
     unsigned int getDisLikeNumber()const;
     unsigned int getViewNumber()const;
@@ -54,7 +55,7 @@ public:
     void addLike(const QString& sender_id);
     void addDisLike(const QString& sender_id);
     bool getLikeMode(const QString& sender_id);
-
+    bool removeLiker(const QString& liker_id);
     bool insertItem(const QString& item_name);
     bool removeItem(const QString& item_name);
     bool existItem(const QString& item_name)const;

@@ -124,6 +124,32 @@ QString Comment::getDescription()const
     return this->description;
 }
 
+bool Comment::existLiker(const QString &liker_id) const
+{
+    auto it=this->users_like.find(liker_id);
+    if(it==this->users_like.cend())
+    {
+        return false;
+
+    }
+    return true;
+}
+
+bool Comment::getLikeMode(const QString &liker_id) const
+{
+    if(this->existLiker(liker_id)==false)
+    {
+        return false;
+    }
+    else
+    {
+       auto it=users_like.find(liker_id);
+       return it.value();
+    }
+}
+
+
+
 unsigned int Comment::getLikeNumber()const
 {
     return this->like;
@@ -194,6 +220,32 @@ bool Comment::getLikeMode(const QString &sender_id)
         return users_like[sender_id];
     }
     else return true;
+}
+
+bool Comment::removeLiker(const QString &liker_id)
+{
+    if(this->existLiker(liker_id)==false)
+    {
+        return false;
+    }
+    else
+    {
+        auto it=this->users_like.find(liker_id);
+        if(it.value()==true && this->like>0)
+        {
+            this->like--;
+        }
+        else if(this->dislike>0)
+        {
+            this->dislike--;
+        }
+        else;
+        this->users_like.remove(liker_id);
+
+
+
+        return true;
+    }
 }
 
 
