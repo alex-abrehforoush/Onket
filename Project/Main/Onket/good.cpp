@@ -368,6 +368,20 @@ void Good::commentAddDisLike(const QString &comment_sender, const QString &disli
     this->getCommentPrivate(comment_sender).addDisLike(disliker_id);
 }
 
+bool Good::commentRemoveLiker(const QString &comment_sender, const QString &liker_id)
+{
+    if(this->existCommentSender(comment_sender)==false )
+    {
+        return false;
+    }
+    else if(this->getCommentPrivate(comment_sender).existLiker(liker_id)==false)
+    {
+        return false;
+    }
+    this->getCommentPrivate(comment_sender).removeLiker(liker_id);
+    return true;
+}
+
 bool Good::CommentSetItemValue(const QString &comment_sender, const QString &item_name, const double &item_value)
 {
   if(this->existCommentSender(comment_sender)==false|| Comment::isValidGrade(item_value)==false)

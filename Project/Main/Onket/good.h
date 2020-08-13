@@ -91,6 +91,7 @@ public:
     bool addCommentItem(const QString& item_name);
     void commentAddLike(const QString& comment_sender,const QString& liker_id);
     void commentAddDisLike(const QString& comment_sender,const QString& disliker_id);
+    bool commentRemoveLiker(const QString& comment_sender,const QString& liker_id);
     bool CommentSetItemValue(const QString& comment_sender,const QString& item_name,const double& item_value);
     const Comment& getComment(const QString& sender_id);
     const Comment& readComment();
