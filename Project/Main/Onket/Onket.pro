@@ -25,6 +25,8 @@ SOURCES += \
     discussionitem.cpp \
     filefunctions.cpp \
     good.cpp \
+    goodpreviewscrollarea.cpp \
+    goodpreviewwidget.cpp \
     main.cpp \
     mainwindow.cpp \
     comment.cpp \
@@ -46,6 +48,8 @@ HEADERS += \
     discussionitem.h \
     filefunctions.h \
     good.h \
+    goodpreviewscrollarea.h \
+    goodpreviewwidget.h \
     mainwindow.h \
     comment.h \
     Commity.h \
@@ -57,6 +61,8 @@ HEADERS += \
 
 FORMS += \
     dashboard.ui \
+    goodpreviewscrollarea.ui \
+    goodpreviewwidget.ui \
     mainwindow.ui \
     loginpage.ui \
     signup.ui
