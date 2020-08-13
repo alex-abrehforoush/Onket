@@ -28,6 +28,7 @@ class GoodPreviewWidget : public QWidget
 
     void showAll();
 
+
  signals:
     void on_Good_preview_clicke(const QString& good_id);
 protected:

@@ -127,6 +127,7 @@ GoodPreviewWidget::GoodPreviewWidget(const QString &good_id,QWidget *parent) :
     if(Good::existGoodId(good_id)==true)
     {
         this->update();
+
     }
 
       else
