@@ -75,7 +75,7 @@ public:
     bool setDiscountPercent(double discount_percent);
     unsigned int getPrice();
     unsigned int getFinalPrice();
-    double getFinalDiscountPrice();
+    double getDiscountpercent();
 
     bool existProperty(const QString& property_name)const;
     bool addProperty(const QString& property_name);

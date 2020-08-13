@@ -190,6 +190,7 @@ QString Good::getName() const
 void Good::setPrice(unsigned int  price)
 {
     this->price=price;
+    this->discount_percent=0;
 }
 
 void Good::setFinalPrice(unsigned int final_price)
@@ -224,7 +225,7 @@ unsigned int Good::getFinalPrice()
     return this->price *(1.0-discount_percent);
 }
 
-double Good::getFinalDiscountPrice()
+double Good::getDiscountpercent()
 {
     return this->discount_percent;
 }
