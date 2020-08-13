@@ -8,7 +8,7 @@ protected:
 private:
 	const int mode = 1;
 public:
-    Admin(QString username, QString password):User(username, encryptPassword(password)) {}
+    Admin(QString username, QString password);
     QDateTime getBirthday() const;
     QString getPhoneNumber() const;
     QVector<QString> getAddresses() const;

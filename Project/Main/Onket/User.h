@@ -11,13 +11,14 @@ protected:
 	QString firstname, lastname, username, password;
 	QVector<QDateTime> last_activities;
 private:
-	static QMap<QString, User*> user_list;
 public:
 	User(QString username, QString password);
 	virtual int getMode() const = 0;
     virtual QDateTime getBirthday() const = 0;
     virtual QString getPhoneNumber() const = 0;
     virtual QVector<QString> getAddresses() const = 0;
+    virtual void addAddress(QString address);
+    virtual void removeAddressAt(int at);
 	void setFirstname(QString firstname);
 	void setLastname(QString lastname);
 	void setUsername(QString username);
@@ -30,7 +31,8 @@ public:
 	QString decryptPassword(QString password);
 	void addActivity(QDateTime new_login);
 
-	static void loadUsersInfo();
+    static int userExist(QString username);
+    static User* getUser(QString username);
     static int addUser(User* new_user);
 	static void removeUser(QString username);
 

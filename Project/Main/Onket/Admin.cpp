@@ -1,5 +1,11 @@
 #include "Admin.h"
 
+Admin::Admin(QString username, QString password)
+    :User(username, password)
+{
+
+}
+
 QDateTime Admin::getBirthday() const
 {
     return QDateTime::currentDateTime();
