@@ -1,16 +1,27 @@
 #include "User.h"
+#include "Admin.h"
+#include "Customer.h"
+#include "Guest.h"
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
 #include <QMessageBox>
-
-QMap<QString, User*> User::user_list;
 
 User::User(QString username, QString password)
 	:username(username)
 	,password(decryptPassword(password))
 {
 
+}
+
+void User::addAddress(QString address)
+{
+    return;
+}
+
+void User::removeAddressAt(int at)
+{
+    return;
 }
 
 void User::setFirstname(QString firstname)
@@ -90,38 +101,56 @@ QString User::decryptPassword(QString password)
 void User::addActivity(QDateTime new_login)
 {
 	this->last_activities.push_back(new_login);
-	return;
+    return;
 }
 
-void User::loadUsersInfo()
+int User::userExist(QString username)
 {
+    QFile data("Database/User/" + username + ".csv");
+    return data.exists();
+}
 
+User *User::getUser(QString username)
+{
+    User* return_user = nullptr;
+    if(userExist(username))
+    {
+        QFile read_user("Database/User/" + username + ".csv");
+        read_user.open(QIODevice::ReadOnly | QIODevice::Text);
+        QTextStream in(&read_user);
+        QString content = in.readAll();
+        QStringList list_1 = content.split("\n");
+        QStringList list_2 = list_1.at(0).split(",");
+        if(list_2.at(2) == 0)
+        {
+            return_user=new Customer(list_2.at(0), list_2.at(1), QDateTime::fromString(list_2.at(5)), list_2.at(6));
+            return_user->setFirstname(list_2.at(3));
+            return_user->setLastname(list_2.at(4));
+            QStringList list_3 = list_2.at(7).split("|");
+            for(int i = 0; i<=list_3.size(); i++)
+            {
+                return_user->addAddress(list_3.at(i));
+            }
+            ////////////////////////////////////// input orders
+        }
+        else
+        {
+            return_user=new Admin(list_2.at(0), list_2.at(1));
+            return_user->setFirstname(list_2.at(3));
+            return_user->setLastname(list_2.at(4));
+        }
+    }
+    else return return_user;
 }
 
 int User::addUser(User* new_user)
 {
-    if (!(user_list.contains(new_user->getUsername())))
+    if (!(userExist(new_user->getUsername())))
 	{
-        user_list.insert(new_user->getUsername(), new_user);
         QDir data;
         data.mkpath("Database/User");
-        QFile username_password_list("Database/User/uplist.csv");
-        if(!username_password_list.open(QIODevice::WriteOnly | QIODevice::Append))
-        {
-            return 0;
-        }
-        else
-        {
-            QTextStream out(&username_password_list);
-            out << new_user->getUsername() << "," << new_user->getPassword() << "\n";
-            username_password_list.close();
-        }
         QFile user_personal("Database/User/" + new_user->getUsername() + ".csv");
-        if(!user_personal.open(QIODevice::WriteOnly))
-        {
-            return 0;
-        }
-        else
+        if(user_personal.open(QIODevice::WriteOnly | QIODevice::Text))
         {
             QTextStream out(&user_personal);
             out << new_user->getUsername() << "," << new_user->getPassword() << "," << new_user->getMode() << "," << new_user->getFirstname() << "," << new_user->getLastname() << "," ;
@@ -139,33 +168,49 @@ int User::addUser(User* new_user)
                         out << new_user->getAddresses().at(i) << "|";
                     }
                 }
-                out << "\n\n";
+                out << "\n";
+                /////////////////////////////////////////// orders must be written
+
                 QDateTime now=QDateTime::currentDateTime();
-                out << "Account created in " << now.toString() << "\n";
+                out << "Account created in " << now.toString() << "|";
             }
+            else
+            {
+                out << new_user->getBirthday().toString() << "," << new_user->getPhoneNumber() << ",";
+//                for(int i = 0; i<new_user->getAddresses().size(); i++)
+//                {
+//                    if(i==new_user->getAddresses().size()-1)
+//                    {
+//                        out << new_user->getAddresses().at(i) << ",";
+//                    }
+//                    else
+//                    {
+//                        out << new_user->getAddresses().at(i) << "|";
+//                    }
+//                }
+                out << ",\n\n";
+
+                QDateTime now=QDateTime::currentDateTime();
+                out << "Account created in " << now.toString() << "|";
+            }
+            return 1;
+
         }
-		//open file
+        else
+        {
+            return 0;
+        }
+        //open file
         //write info
         //close file
-	}
+    }
 	else
 	{
-		//cout this username exists
+        return 0;
 	}
 }
 
 void User::removeUser(QString username)
 {
-	if (user_list.contains(username))
-	{
-		user_list.remove(username);
-		//open file
-		//add user to deleted users
-		//delete user
-		//close file
-	}
-	else
-	{
-		//there is no user with this username
-	}
+
 }

@@ -5,9 +5,12 @@ int Customer::getMode() const
 	return mode;
 }
 
-Customer::Customer(QString username, QString password)
-	:User(username, encryptPassword(password))
+Customer::Customer(QString username, QString password, QDateTime _birthday, QString _phone_number)
+    :User(username, password)
+    ,birthday(_birthday)
+    ,phone_number(_phone_number)
 {
+
 }
 
 void Customer::setBirthday(QDateTime birthday)
@@ -51,6 +54,7 @@ void Customer::removeAddressAt(int at)
 
 void Customer::buy(QString good_id, QString color, int number)
 {
+
 }
 
 void Customer::sell(QString good_id, QString color, int number)
