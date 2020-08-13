@@ -21,6 +21,7 @@ SOURCES += \
     Guest.cpp \
     Order.cpp \
     User.cpp \
+    commentlistwidgetitem.cpp \
     dashboard.cpp \
     discussionitem.cpp \
     filefunctions.cpp \
@@ -44,6 +45,7 @@ HEADERS += \
     Guest.h \
     Order.h \
     User.h \
+    commentlistwidgetitem.h \
     dashboard.h \
     discussionitem.h \
     filefunctions.h \
@@ -60,6 +62,7 @@ HEADERS += \
     type.h
 
 FORMS += \
+    commentlistwidgetitem.ui \
     dashboard.ui \
     goodpreviewscrollarea.ui \
     goodpreviewwidget.ui \
