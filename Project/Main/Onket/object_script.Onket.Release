@@ -3,10 +3,13 @@ release/Customer.o
 release/Guest.o
 release/Order.o
 release/User.o
+release/commentlistwidgetitem.o
 release/dashboard.o
 release/discussionitem.o
 release/filefunctions.o
 release/good.o
+release/goodpreviewscrollarea.o
+release/goodpreviewwidget.o
 release/main.o
 release/mainwindow.o
 release/comment.o
@@ -16,7 +19,10 @@ release/reply.o
 release/loginpage.o
 release/signup.o
 release/type.o
+release/moc_commentlistwidgetitem.o
 release/moc_dashboard.o
+release/moc_goodpreviewscrollarea.o
+release/moc_goodpreviewwidget.o
 release/moc_mainwindow.o
 release/moc_loginpage.o
 release/moc_signup.o

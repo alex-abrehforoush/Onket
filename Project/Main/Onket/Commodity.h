@@ -1,12 +1,17 @@
 #ifndef COMMODITY_XCSFBE
 #define COMMODITY_XCSFBE
 #include <QMap>
+#include <QFile>
+#include <QDir>
+#include <QTextStream>
+
 class Commodity
 {
 protected:
 private:
 	QString id_of_good;
     QMap<QString, unsigned int> color;
+    //static QFile commodity_data("Database/Commodity/commodity_list");
 public:
 	Commodity(QString id_of_good = 0);
     QString getCommodityId() const;

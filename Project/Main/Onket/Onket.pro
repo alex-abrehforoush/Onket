@@ -28,6 +28,7 @@ SOURCES += \
     good.cpp \
     goodpreviewscrollarea.cpp \
     goodpreviewwidget.cpp \
+    item.cpp \
     main.cpp \
     mainwindow.cpp \
     comment.cpp \
@@ -52,6 +53,7 @@ HEADERS += \
     good.h \
     goodpreviewscrollarea.h \
     goodpreviewwidget.h \
+    item.h \
     mainwindow.h \
     comment.h \
     Commity.h \

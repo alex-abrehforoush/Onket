@@ -1,7 +1,5 @@
 #include "Commodity.h"
-#include <QFile>
-#include <QDir>
-#include <QTextStream>
+
 Commodity::Commodity(QString id_of_good)
 	:id_of_good(id_of_good)
 {

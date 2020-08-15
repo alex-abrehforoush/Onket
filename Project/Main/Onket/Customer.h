@@ -2,6 +2,7 @@
 #define CUSTOMER_BNUB
 #include "User.h"
 #include "Order.h"
+#include <QVector>
 class Customer :
 	public User
 {
@@ -10,7 +11,7 @@ private:
 	const int mode = 0;
 	QDateTime birthday;
 	QString phone_number;
-	QVector<Order> orders_history;
+    QVector<QString> order_ids;
 	QVector<QString> addresses;
 public:
     int getMode() const;
@@ -18,12 +19,13 @@ public:
 	void setBirthday(QDateTime birthday);
 	QDateTime getBirthday() const;
 	void setPhoneNumber(QString phone_number);
+    QVector<QString> getOrderIds() const;
     QString getPhoneNumber() const;
     QVector<QString> getAddresses() const;
 	void addAddress(QString address);
 	void removeAddressAt(int at);
-	void buy(QString good_id, QString color, int number);
-	void sell(QString good_id, QString color, int number);
+    int buy(QVector<Item> my_basket);
+    void sell(QString good_id, QString color, QString number);
 
 };
 
