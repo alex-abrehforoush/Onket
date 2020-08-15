@@ -42,6 +42,7 @@ SOURCES += \
     questionviewitem.cpp \
     reply.cpp \
     loginpage.cpp \
+    replyviewitem.cpp \
     signup.cpp \
     type.cpp
 
@@ -72,6 +73,7 @@ HEADERS += \
     questionviewitem.h \
     reply.h \
     loginpage.h \
+    replyviewitem.h \
     signup.h \
     type.h
 
@@ -86,6 +88,7 @@ FORMS += \
     mainwindow.ui \
     loginpage.ui \
     questionviewitem.ui \
+    replyviewitem.ui \
     signup.ui
 
 # Default rules for deployment.
