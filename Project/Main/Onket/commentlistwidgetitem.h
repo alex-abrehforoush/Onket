@@ -14,12 +14,14 @@ class CommentListWidgetItem : public QWidget
 {
     Q_OBJECT
 
-    bool info_valid;
+    bool info_valid=false;
     QString user_id;
     QString good_id;
     QString comment_sender;
 
 
+public slots:
+   void update();
 
 
 public:

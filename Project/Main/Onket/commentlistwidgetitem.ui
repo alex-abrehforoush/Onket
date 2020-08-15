@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -49,6 +49,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="lab_disadv_content">
       <property name="styleSheet">
        <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 226, 233);
 gridline-color: rgb(0, 255, 0);</string>
       </property>
       <property name="text">
@@ -59,7 +60,8 @@ gridline-color: rgb(0, 255, 0);</string>
     <item row="2" column="1">
      <widget class="QLabel" name="lab_adv_content">
       <property name="styleSheet">
-       <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+       <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(202, 255, 202);</string>
       </property>
       <property name="text">
        <string>مزایا </string>
@@ -90,7 +92,7 @@ color: rgb(0, 255, 0);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -102,6 +104,9 @@ color: rgb(0, 255, 0);</string>
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <widget class="QPushButton" name="bnt_dislike">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(85, 170, 255);</string>
+      </property>
       <property name="text">
        <string/>
       </property>
@@ -109,6 +114,9 @@ color: rgb(0, 255, 0);</string>
     </item>
     <item row="0" column="1">
      <widget class="QPushButton" name="bnt_like">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(85, 170, 255);</string>
+      </property>
       <property name="text">
        <string/>
       </property>
