@@ -37,6 +37,7 @@ class Good
 
     QMultiMap<QString,Comment>comments;//first field is sort part name
     QMap<QString,double>comments_item;
+    mutable QMap<QString,double>::const_iterator comments_item_it=comments_item.begin();
     QMap<QString,bool>comments_id;//save comment sender_id  the secend part igonre
     QMultiMap<QString,Comment>::iterator comments_it=comments.end();
     QString comments_sort_by = "date";
@@ -93,10 +94,16 @@ public:
     void commentAddDisLike(const QString& comment_sender,const QString& disliker_id);
     bool commentRemoveLiker(const QString& comment_sender,const QString& liker_id);
     bool CommentSetItemValue(const QString& comment_sender,const QString& item_name,const double& item_value);
+    double CommentGetItemValue(const QString& comment_sender,const QString& item_name);
+    double CommentGetItemValue(const QString& item_name);
     const Comment& getComment(const QString& sender_id);
     const Comment& readComment();
     void setCommentSeekBegin();
     bool commentSeekAtEnd();
+    void setCommentItemSeekBegein()const;
+    QString readCommentsItem()const;
+    bool CommentItemSeekAtEnd()const;
+
 
     bool addComment( Comment new_comment);
     //bool changeComment(const Comment& input_comment);

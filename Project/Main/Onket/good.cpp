@@ -418,6 +418,35 @@ bool Good::CommentSetItemValue(const QString &comment_sender, const QString &ite
   }
 }
 
+double Good::CommentGetItemValue(const QString &comment_sender, const QString &item_name)
+{
+    if(this->existCommentItem(item_name)==false || this->existCommentSender(comment_sender)==false)
+    {
+        return -1;
+    }
+    else
+    {
+        double item_value=this->getComment(comment_sender).getItemValue(item_name);
+        return item_value;
+    }
+
+}
+
+double Good::CommentGetItemValue(const QString &item_name)
+{
+    if(this->existCommentItem(item_name)==false)
+    {
+        return -1;
+    }
+    else
+    {
+        auto it=this->comments_item.find(item_name);
+        return it.value();
+    }
+}
+
+
+
 
 
  const Comment &Good::getComment(const QString &sender_id)
@@ -466,6 +495,33 @@ bool Good::CommentSetItemValue(const QString &comment_sender, const QString &ite
          return true;
      else
          return false;
+ }
+
+ void Good::setCommentItemSeekBegein() const
+ {
+     this->comments_item_it=this->comments_item.cbegin();
+ }
+
+ QString Good::readCommentsItem()const
+ {
+     if(this->comments_item_it==this->comments_item.cend())
+     {
+         return "";
+     }
+     QString res=this->comments_item_it.key();
+
+     this->comments_item_it++;
+     return res;
+
+ }
+
+ bool Good::CommentItemSeekAtEnd() const
+ {
+     if(this->comments_item_it==this->comments_item.cend())
+     {
+         return true;
+     }
+     return false;
  }
 
 bool Good::addComment( Comment new_comment)
