@@ -62,7 +62,7 @@ QuestionViewItem::~QuestionViewItem()
 
 void QuestionViewItem::on_bnt_add_reply_clicked()
 {
-    this->setWindowTitle("s");
+
     if(info_valid==false)
     {
         return;
@@ -75,7 +75,7 @@ void QuestionViewItem::on_bnt_add_reply_clicked()
 
         if(g.getReply(reply_id).getSenderId()==user_id)
         {
-            this->setWindowTitle("error");
+
             QMessageBox::information(this,"در خواست نا معتبر","شما قبلا پاسخ این سوال را داده اید",QMessageBox::Ok,0);
 
             return;
