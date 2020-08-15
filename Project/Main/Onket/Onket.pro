@@ -23,6 +23,8 @@ SOURCES += \
     User.cpp \
     commentlistwidget.cpp \
     commentlistwidgetitem.cpp \
+    commentwidget.cpp \
+    commentwidgetfield.cpp \
     dashboard.cpp \
     discussionitem.cpp \
     filefunctions.cpp \
@@ -48,6 +50,8 @@ HEADERS += \
     User.h \
     commentlistwidget.h \
     commentlistwidgetitem.h \
+    commentwidget.h \
+    commentwidgetfield.h \
     dashboard.h \
     discussionitem.h \
     filefunctions.h \
@@ -66,6 +70,8 @@ HEADERS += \
 FORMS += \
     commentlistwidget.ui \
     commentlistwidgetitem.ui \
+    commentwidget.ui \
+    commentwidgetfield.ui \
     dashboard.ui \
     goodpreviewscrollarea.ui \
     goodpreviewwidget.ui \
