@@ -68,19 +68,14 @@ void QuestionViewItem::on_bnt_add_reply_clicked()
         return;
     }
     Good& g=Good::getGood(good_id);
-    const Question& q=g.getQuestion(question_id);
-    for(q.setReplySeekBegin();q.replySeekAtEnd()==false;)
+
+    if(g.existReply(user_id,question_id)==true)
     {
-        QString reply_id=q.readReply();
+        QMessageBox::information(this,"در خواست نا معتبر","شما قبلا پاسخ این سوال را داده اید",QMessageBox::Ok,0);
 
-        if(g.getReply(reply_id).getSenderId()==user_id)
-        {
-
-            QMessageBox::information(this,"در خواست نا معتبر","شما قبلا پاسخ این سوال را داده اید",QMessageBox::Ok,0);
-
-            return;
-        }
+        return;
     }
+
 
 
     emit this->addReply(user_id,good_id,question_id);
