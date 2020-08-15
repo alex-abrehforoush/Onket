@@ -67,7 +67,7 @@ Question::~Question()
 
 }
 
-bool Question::existReply(const QString &reply_id)
+bool Question::existReply(const QString &reply_id)const
 {
     auto it=replys_id.find(reply_id);
     if(it != this->replys_id.end())

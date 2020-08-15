@@ -39,6 +39,7 @@ SOURCES += \
     comment.cpp \
     Commodity.cpp \
     question.cpp \
+    questionviewitem.cpp \
     reply.cpp \
     loginpage.cpp \
     signup.cpp \
@@ -68,6 +69,7 @@ HEADERS += \
     comment.h \
     Commity.h \
     question.h \
+    questionviewitem.h \
     reply.h \
     loginpage.h \
     signup.h \
@@ -83,6 +85,7 @@ FORMS += \
     goodpreviewwidget.ui \
     mainwindow.ui \
     loginpage.ui \
+    questionviewitem.ui \
     signup.ui
 
 # Default rules for deployment.

@@ -21,7 +21,7 @@ public:
    const  QVector<QString>& getReplysId()const;
      explicit Question(const QDate& date_create, const QString& id,const QString& sender_id,const QString& content);
     ~Question();
-     bool existReply(const QString& reply_id);
+     bool existReply(const QString& reply_id)const;
      bool addReply(const QString & reply_id) ;
         bool changeReplyLike(const QString& reply_id,unsigned int reply_like_number);
 
