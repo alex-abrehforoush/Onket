@@ -3,6 +3,7 @@
 
 void CommentListWidget::update()
 {
+
    //clear main_widget
     if(id_valid==false)
     {

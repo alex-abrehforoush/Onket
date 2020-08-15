@@ -18,11 +18,13 @@ class CommentListWidget : public QScrollArea
     QVBoxLayout* main_lay=nullptr;
     QString good_id;
     QString user_id;
-    bool id_valid;
+    bool id_valid=false;
     QMap<QString,CommentListWidgetItem*> widgets;
+public slots:
+   void update();
 
 public:
-    void update();
+
     bool existCommentSender(const QString& comment_sender)const;
     CommentListWidgetItem& getItem(const QString& comment_sender);
     explicit CommentListWidget(const QString& good_id ,const QString& user_id,QWidget *parent = nullptr);
