@@ -25,6 +25,8 @@ SOURCES += \
     commentlistwidgetitem.cpp \
     commentwidget.cpp \
     commentwidgetfield.cpp \
+    commentitemstatus.cpp \
+    commentitemstatusfield.cpp \
     dashboard.cpp \
     discussionitem.cpp \
     filefunctions.cpp \
@@ -50,6 +52,8 @@ HEADERS += \
     Order.h \
     User.h \
     commentlistwidget.h \
+    commentitemstatus.h \
+    commentitemstatusfield.h \
     commentlistwidgetitem.h \
     commentwidget.h \
     commentwidgetfield.h \
