@@ -846,6 +846,23 @@ bool Good::addReplyDisLike(const QString &reply_id, const QString &sender_id)
 
 }
 
+bool Good::replyRemoveLiker(const QString &reply_id, const QString &liker_id)
+{
+    if(this->existReply(reply_id)==false)
+    {
+        return false;
+    }
+    else
+    {
+        Reply& r=this->getReplyPrivate(reply_id);
+        bool mode =r.removeLiker(liker_id);
+        this->getQuestionPrivate(r.getQuestionId()).changeReplyLike(r.getId(),r.getLikeNumber());
+
+        return mode;
+    }
+
+}
+
 
 
 void Good::commentSortByDate()
