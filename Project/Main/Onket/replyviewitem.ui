@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -27,35 +27,35 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="bnt_dislike">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(0, 170, 255);</string>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="bnt_like">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(0, 170, 255);</string>
       </property>
       <property name="text">
-       <string>PushButton</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>ایا این پاسخ به درد شما خورد؟</string>
+       <string>آیا این پاسخ برای شما مفید بود؟</string>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -66,7 +66,7 @@
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="lab_date">
       <property name="styleSheet">
        <string notr="true">color: rgb(0, 0, 255);</string>
       </property>
@@ -76,7 +76,11 @@
      </widget>
     </item>
     <item row="0" column="1" rowspan="2">
-     <widget class="QTextEdit" name="txt_content"/>
+     <widget class="QTextEdit" name="txt_content">
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+     </widget>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="lab_sender">
