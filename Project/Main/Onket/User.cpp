@@ -14,9 +14,9 @@ User::User(QString username, QString password)
 
 }
 
-QDateTime User::getBirthday() const
+QDate/*Time*/ User::getBirthday() const
 {
-    return QDateTime::currentDateTime();
+    return QDate/*Time*/::currentDate/*Time*/();
 }
 
 QString User::getPhoneNumber() const
@@ -24,7 +24,7 @@ QString User::getPhoneNumber() const
     return "";
 }
 
-void User::setBirthday(QDateTime birthday)
+void User::setBirthday(QDate/*Time*/ birthday)
 {
     return;
 }
@@ -106,7 +106,8 @@ QString User::encryptPassword(QString password)
 		temp3 += (i * i + 7) % 128;
 		temp1.append(temp3);
 	}
-	return temp1;
+    return password;
+//    return temp1;
 }
 
 QString User::decryptPassword(QString password)
@@ -121,7 +122,8 @@ QString User::decryptPassword(QString password)
 		temp3 -= (i * i + 7) % 128;
 		temp1.append(temp3);
 	}
-	return temp1;
+    return password;
+//    return temp1;
 }
 
 void User::addActivity(QDateTime new_login)
@@ -138,7 +140,7 @@ int User::userExist(QString username)
 
 User *User::getUser(QString username)
 {
-    User* return_user = nullptr;
+    User* pointer_to_user = nullptr;
     if(userExist(username))
     {
         QFile read_user("Database/User/" + username + ".csv");
@@ -147,28 +149,28 @@ User *User::getUser(QString username)
         QString content = in.readAll();
         QStringList list_1 = content.split("\n");
         QStringList list_2 = list_1.at(0).split(",");
-        if(list_2.at(2) == 0)
+        if(list_2.at(2).toInt() == 0)
         {
-            return_user = new Customer(list_2.at(0), list_2.at(1));
-            return_user->setBirthday(QDateTime::fromString(list_2.at(5)));
-            return_user->setPhoneNumber(list_2.at(6));
-            return_user->setFirstname(list_2.at(3));
-            return_user->setLastname(list_2.at(4));
+            pointer_to_user = new Customer(list_2.at(0), list_2.at(1));
+            pointer_to_user->setBirthday(QDate/*Time*/::fromString(list_2.at(5)));
+            pointer_to_user->setPhoneNumber(list_2.at(6));
+            pointer_to_user->setFirstname(list_2.at(3));
+            pointer_to_user->setLastname(list_2.at(4));
             QStringList list_3 = list_2.at(7).split("|");
-            for(int i = 0; i<=list_3.size(); i++)
+            for(int i = 0; i<list_3.size(); i++)
             {
-                return_user->addAddress(list_3.at(i));
+                pointer_to_user->addAddress(list_3.at(i));
             }
             ////////////////////////////////////// input orders
         }
         else
         {
-            return_user = new Admin(list_2.at(0), list_2.at(1));
-            return_user->setFirstname(list_2.at(3));
-            return_user->setLastname(list_2.at(4));
+            pointer_to_user = new Admin(list_2.at(0), list_2.at(1));
+            pointer_to_user->setFirstname(list_2.at(3));
+            pointer_to_user->setLastname(list_2.at(4));
         }
     }
-    else return return_user;
+    return pointer_to_user;
 }
 
 int User::addUser(User* new_user)

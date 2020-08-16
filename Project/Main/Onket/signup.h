@@ -2,6 +2,7 @@
 #define SIGNUP_H
 
 #include <QWidget>
+#include "Customer.h"
 
 namespace Ui {
 class signup;
@@ -28,9 +29,22 @@ private slots:
 
     void on_signup_button_clicked();
 
+    void on_firstname_line_edit_editingFinished();
+
+    void on_lastname_line_edit_editingFinished();
+
+    void on_phone_number_line_edit_editingFinished();
+
+    void on_address_line_edit_editingFinished();
+
+    void on_add_address_button_clicked();
+
+    void on_create_account_clicked();
+
 private:
     Ui::signup *ui;
     QSize sizeHint() const;
+    User* user_creator;
 };
 
 #endif // SIGNUP_H

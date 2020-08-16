@@ -66,8 +66,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Narrow</family>
-     <pointsize>14</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>11</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -85,8 +85,8 @@
    </property>
    <property name="font">
     <font>
-     <family>Arial Narrow</family>
-     <pointsize>14</pointsize>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>11</pointsize>
     </font>
    </property>
    <property name="styleSheet">

@@ -49,13 +49,10 @@ void LoginPage::on_show_password_stateChanged()
 
 User* LoginPage::on_enter_button_clicked()
 {
-    if(ui->username_line_edit->text().isEmpty()) ui->username_is_empty->setText("نام کاربری را وارد کنید");
-    else ui->username_is_empty->setText("");
-    if(ui->password_line_edit->text().isEmpty()) ui->password_is_empty->setText("کلمه عبور را وارد کنید");
-    else ui->password_is_empty->setText("");
     if(!ui->username_line_edit->text().isEmpty() && !ui->password_line_edit->text().isEmpty())
     {
-        User* temp = User::getUser(ui->username_line_edit->text());
+        User* temp = nullptr;
+        temp = User::getUser(ui->username_line_edit->text());
         if(User::userExist(ui->username_line_edit->text()))
         {
             if(User::encryptPassword(ui->password_line_edit->text()) == temp->getPassword())
@@ -100,4 +97,16 @@ void LoginPage::on_signup_button_clicked()
 {
     emit signup();
     ui->back->click();
+}
+
+void LoginPage::on_username_line_edit_editingFinished()
+{
+    if(ui->username_line_edit->text().isEmpty()) ui->username_is_empty->setText("نام کاربری را وارد کنید");
+    else ui->username_is_empty->setText("");
+}
+
+void LoginPage::on_password_line_edit_editingFinished()
+{
+    if(ui->password_line_edit->text().isEmpty()) ui->password_is_empty->setText("کلمه عبور را وارد کنید");
+    else ui->password_is_empty->setText("");
 }

@@ -67,8 +67,8 @@ public:
         username_line_edit->setObjectName(QString::fromUtf8("username_line_edit"));
         username_line_edit->setGeometry(QRect(510, 393, 441, 51));
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Arial Narrow"));
-        font1.setPointSize(14);
+        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font1.setPointSize(11);
         username_line_edit->setFont(font1);
         username_line_edit->setStyleSheet(QString::fromUtf8("selection-background-color: rgb(255, 111, 111);"));
         password_line_edit = new QLineEdit(LoginPage);

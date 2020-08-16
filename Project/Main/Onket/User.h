@@ -14,9 +14,9 @@ private:
 public:
 	User(QString username, QString password);
 	virtual int getMode() const = 0;
-    virtual QDateTime getBirthday() const;
+    virtual QDate/*Time*/ getBirthday() const;
     virtual QString getPhoneNumber() const;
-    virtual void setBirthday(QDateTime birthday);
+    virtual void setBirthday(QDate/*Time*/ birthday);
     virtual void setPhoneNumber(QString phone_number);
     virtual QVector<QString> getAddresses() const;
     virtual void addAddress(QString address);

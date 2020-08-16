@@ -7,6 +7,8 @@ debug/commentlistwidget.o
 debug/commentlistwidgetitem.o
 debug/commentwidget.o
 debug/commentwidgetfield.o
+debug/commentitemstatus.o
+debug/commentitemstatusfield.o
 debug/dashboard.o
 debug/discussionitem.o
 debug/filefunctions.o
@@ -19,11 +21,17 @@ debug/mainwindow.o
 debug/comment.o
 debug/Commodity.o
 debug/question.o
+debug/questioninputwidget.o
+debug/questionviewitem.o
 debug/reply.o
 debug/loginpage.o
+debug/replyinputwidget.o
+debug/replyviewitem.o
 debug/signup.o
 debug/type.o
 debug/moc_commentlistwidget.o
+debug/moc_commentitemstatus.o
+debug/moc_commentitemstatusfield.o
 debug/moc_commentlistwidgetitem.o
 debug/moc_commentwidget.o
 debug/moc_commentwidgetfield.o
@@ -31,5 +39,9 @@ debug/moc_dashboard.o
 debug/moc_goodpreviewscrollarea.o
 debug/moc_goodpreviewwidget.o
 debug/moc_mainwindow.o
+debug/moc_questioninputwidget.o
+debug/moc_questionviewitem.o
 debug/moc_loginpage.o
+debug/moc_replyinputwidget.o
+debug/moc_replyviewitem.o
 debug/moc_signup.o

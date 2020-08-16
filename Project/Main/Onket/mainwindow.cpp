@@ -45,12 +45,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_action_10_triggered()
 {
-    if(login_page == nullptr)
+    if(current_user->getMode()==-1)
     {
-        login_page = new LoginPage(this);
-        connect(login_page, SIGNAL(signup()), this, SLOT(on_action_11_triggered()));
+        if(login_page == nullptr)
+        {
+            login_page = new LoginPage(this);
+            connect(login_page, SIGNAL(signup()), this, SLOT(on_action_11_triggered()));
+        }
+        login_page->show();
     }
-    login_page->show();
+    else
+    {
+        QMessageBox::information(this, "پیام", "شما وارد شده اید");
+    }
 }
 
 void MainWindow::on_action_11_triggered()

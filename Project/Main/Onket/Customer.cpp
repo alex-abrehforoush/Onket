@@ -14,13 +14,13 @@ Customer::Customer(QString username, QString password)
 
 }
 
-void Customer::setBirthday(QDateTime birthday)
+void Customer::setBirthday(QDate/*Time*/ birthday)
 {
 	this->birthday = birthday;
 	return;
 }
 
-QDateTime Customer::getBirthday() const
+QDate/*Time*/ Customer::getBirthday() const
 {
 	return this->birthday;
 }
@@ -91,4 +91,9 @@ int Customer::buy(QVector<Item> my_basket)
 
 void Customer::sell(QString good_id, QString color, QString number)
 {
+}
+
+Customer::~Customer()
+{
+    return;
 }

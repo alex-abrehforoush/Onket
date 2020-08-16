@@ -9,15 +9,15 @@ class Customer :
 protected:
 private:
 	const int mode = 0;
-	QDateTime birthday;
+    QDate/*Time*/ birthday;
 	QString phone_number;
     QVector<QString> order_ids;
 	QVector<QString> addresses;
 public:
     int getMode() const;
     Customer(QString username, QString password);
-	void setBirthday(QDateTime birthday);
-	QDateTime getBirthday() const;
+    void setBirthday(QDate/*Time*/ birthday);
+    QDate/*Time*/ getBirthday() const;
 	void setPhoneNumber(QString phone_number);
     QVector<QString> getOrderIds() const;
     QString getPhoneNumber() const;
@@ -26,7 +26,7 @@ public:
 	void removeAddressAt(int at);
     int buy(QVector<Item> my_basket);
     void sell(QString good_id, QString color, QString number);
-
+    ~Customer();
 };
 
 #endif
