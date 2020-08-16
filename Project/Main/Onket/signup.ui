@@ -47,7 +47,7 @@ color: rgb(0, 0, 0);</string>
     <string>نام کاربری(ایمیل):</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="username_line_edit">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -74,7 +74,7 @@ color: rgb(0, 0, 0);</string>
     <string>کلمه عبور:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="password_line_edit">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -101,7 +101,7 @@ color: rgb(0, 0, 0);</string>
     <string>تکرار کلمه عبور:</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="repeat_password_line_edit">
    <property name="geometry">
     <rect>
      <x>510</x>
@@ -111,7 +111,7 @@ color: rgb(0, 0, 0);</string>
     </rect>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBox">
+  <widget class="QCheckBox" name="show_password">
    <property name="geometry">
     <rect>
      <x>752</x>
@@ -127,7 +127,7 @@ color: rgb(0, 0, 0);</string>
     <string>کلمه عبور نماش داده شود</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="signup_button">
    <property name="geometry">
     <rect>
      <x>660</x>
@@ -143,7 +143,7 @@ color: rgb(0, 0, 0);</string>
     <string>ثبت نام</string>
    </property>
   </widget>
-  <widget class="QCommandLinkButton" name="commandLinkButton">
+  <widget class="QCommandLinkButton" name="back">
    <property name="geometry">
     <rect>
      <x>10</x>

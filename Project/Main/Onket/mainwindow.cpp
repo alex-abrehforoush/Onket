@@ -4,6 +4,9 @@
 #include "Admin.h"
 #include "Customer.h"
 #include "Guest.h"
+#include "signup.h"
+
+User* MainWindow::current_user;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,12 +14,24 @@ MainWindow::MainWindow(QWidget *parent)
     ,login_page(nullptr)
     ,signup_page(nullptr)
     ,dashboard(nullptr)
-    ,current_user(new Guest())//for testing
 {
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
     setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
-    current_user->addUser(current_user);//for testing
+    current_user = new Guest();
+}
+
+void MainWindow::setCurrentUser(User *crnt)
+{
+    delete current_user;
+    current_user = nullptr;
+    current_user = crnt;
+    return;
+}
+
+User *MainWindow::getCurrentUser() const
+{
+    return this->current_user;
 }
 
 MainWindow::~MainWindow()
@@ -30,14 +45,25 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_action_10_triggered()
 {
-    if(login_page == nullptr) login_page = new LoginPage(this);
+    if(login_page == nullptr)
+    {
+        login_page = new LoginPage(this);
+        connect(login_page, SIGNAL(signup()), this, SLOT(on_action_11_triggered()));
+    }
     login_page->show();
 }
 
 void MainWindow::on_action_11_triggered()
 {
-    if(signup_page == nullptr) signup_page = new signup(this);
-    signup_page->show();
+    if(current_user->getMode()==-1)
+    {
+        if(signup_page == nullptr) signup_page = new signup(this);
+        signup_page->show();
+    }
+    else
+    {
+        QMessageBox::information(this, "پیام", "شما وارد شده اید");
+    }
 }
 
 void MainWindow::on_action_triggered()

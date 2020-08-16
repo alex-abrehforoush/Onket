@@ -14,6 +14,32 @@ User::User(QString username, QString password)
 
 }
 
+QDateTime User::getBirthday() const
+{
+    return QDateTime::currentDateTime();
+}
+
+QString User::getPhoneNumber() const
+{
+    return "";
+}
+
+void User::setBirthday(QDateTime birthday)
+{
+    return;
+}
+
+void User::setPhoneNumber(QString phone_number)
+{
+    return;
+}
+
+QVector<QString> User::getAddresses() const
+{
+    QVector<QString> temp;
+    return temp;
+}
+
 void User::addAddress(QString address)
 {
     return;
@@ -123,7 +149,9 @@ User *User::getUser(QString username)
         QStringList list_2 = list_1.at(0).split(",");
         if(list_2.at(2) == 0)
         {
-            return_user=new Customer(list_2.at(0), list_2.at(1), QDateTime::fromString(list_2.at(5)), list_2.at(6));
+            return_user = new Customer(list_2.at(0), list_2.at(1));
+            return_user->setBirthday(QDateTime::fromString(list_2.at(5)));
+            return_user->setPhoneNumber(list_2.at(6));
             return_user->setFirstname(list_2.at(3));
             return_user->setLastname(list_2.at(4));
             QStringList list_3 = list_2.at(7).split("|");
@@ -135,7 +163,7 @@ User *User::getUser(QString username)
         }
         else
         {
-            return_user=new Admin(list_2.at(0), list_2.at(1));
+            return_user = new Admin(list_2.at(0), list_2.at(1));
             return_user->setFirstname(list_2.at(3));
             return_user->setLastname(list_2.at(4));
         }
@@ -168,33 +196,11 @@ int User::addUser(User* new_user)
                         out << new_user->getAddresses().at(i) << "|";
                     }
                 }
-                out << "\n";
-                /////////////////////////////////////////// orders must be written
-
-                QDateTime now=QDateTime::currentDateTime();
-                out << "Account created in " << now.toString() << "|";
+                out << "\n\n";
+                out << "Account created in " << QDateTime::currentDateTime().toString() << "|";
             }
-            else
-            {
-                out << new_user->getBirthday().toString() << "," << new_user->getPhoneNumber() << ",";
-//                for(int i = 0; i<new_user->getAddresses().size(); i++)
-//                {
-//                    if(i==new_user->getAddresses().size()-1)
-//                    {
-//                        out << new_user->getAddresses().at(i) << ",";
-//                    }
-//                    else
-//                    {
-//                        out << new_user->getAddresses().at(i) << "|";
-//                    }
-//                }
-                out << ",\n\n";
-
-                QDateTime now=QDateTime::currentDateTime();
-                out << "Account created in " << now.toString() << "|";
-            }
+            user_personal.close();
             return 1;
-
         }
         else
         {

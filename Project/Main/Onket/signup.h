@@ -16,15 +16,17 @@ public:
     ~signup();
 
 private slots:
-    void on_lineEdit_3_editingFinished();
+    void on_repeat_password_line_edit_editingFinished();
 
-    void on_lineEdit_editingFinished();
+    void on_username_line_edit_editingFinished();
 
-    void on_lineEdit_2_editingFinished();
+    void on_password_line_edit_editingFinished();
 
-    void on_checkBox_stateChanged();
+    void on_show_password_stateChanged();
 
-    void on_commandLinkButton_clicked();
+    void on_back_clicked();
+
+    void on_signup_button_clicked();
 
 private:
     Ui::signup *ui;

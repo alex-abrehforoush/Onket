@@ -8,10 +8,8 @@ int Customer::getMode() const
 	return mode;
 }
 
-Customer::Customer(QString username, QString password, QDateTime _birthday, QString _phone_number)
+Customer::Customer(QString username, QString password)
     :User(username, password)
-    ,birthday(_birthday)
-    ,phone_number(_phone_number)
 {
 
 }
@@ -65,7 +63,7 @@ int Customer::buy(QVector<Item> my_basket)
     Order new_order(this->getUsername() + QString::number(this->getOrderIds().size()+1), QDateTime::currentDateTime(), this->getFirstname() + " " + this->getLastname(), this->getPhoneNumber(), this->getAddresses().at(0), QDateTime::currentDateTime().addDays(5), 10000);
     for(int i = 0; i < my_basket.size(); i++)
     {
-        new_order.addToBasket(my_basket.at(i).getItemId(),my_basket.at(i).getItemColor(), my_basket.at(i).getNumber());
+        new_order.addToBasket(my_basket.at(i).getItemId(), my_basket.at(i).getItemColor(), my_basket.at(i).getNumber());
     }
     Order::addOrder(new_order);
     QFile data_read("Database/User/" + this->getUsername() + ".csv");
@@ -74,14 +72,14 @@ int Customer::buy(QVector<Item> my_basket)
         QTextStream in(&data_read);
         QString content = in.readAll();
         QStringList list_1 = content.split("\n");
-        QString line_2_of_csv_file = list_1.at(1);
-        line_2_of_csv_file.append(this->getUsername() + QString::number(this->getOrderIds().size()+1));
+        list_1[1].append(this->getUsername() + QString::number(this->getOrderIds().size()+1));
+        list_1[1].append("─");
         data_read.close();
         QFile data_write("Database/User/" + this->getUsername() + ".csv");
         if(data_write.open(QIODevice::WriteOnly | QIODevice::Text))
         {
             QTextStream out(&data_write);
-            out << list_1.at(0) << "\n" << line_2_of_csv_file << "\n" << list_1.at(2);
+            out << list_1.at(0) << "\n" << list_1.at(1) << "\n" << list_1.at(2);
             data_write.close();
         }
         else return 0;

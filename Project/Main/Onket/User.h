@@ -14,9 +14,11 @@ private:
 public:
 	User(QString username, QString password);
 	virtual int getMode() const = 0;
-    virtual QDateTime getBirthday() const = 0;
-    virtual QString getPhoneNumber() const = 0;
-    virtual QVector<QString> getAddresses() const = 0;
+    virtual QDateTime getBirthday() const;
+    virtual QString getPhoneNumber() const;
+    virtual void setBirthday(QDateTime birthday);
+    virtual void setPhoneNumber(QString phone_number);
+    virtual QVector<QString> getAddresses() const;
     virtual void addAddress(QString address);
     virtual void removeAddressAt(int at);
 	void setFirstname(QString firstname);
@@ -27,8 +29,8 @@ public:
 	QString getLastname() const;
 	QString getUsername() const;
 	QString getPassword() const;
-	QString encryptPassword(QString password);
-	QString decryptPassword(QString password);
+    static QString encryptPassword(QString password);
+    static QString decryptPassword(QString password);
 	void addActivity(QDateTime new_login);
 
     static int userExist(QString username);

@@ -18,8 +18,13 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
+public slots:
+
+
 public:
     MainWindow(QWidget *parent = nullptr);
+    static void setCurrentUser(User* crnt);
+    User* getCurrentUser() const;
     ~MainWindow();
 
 private slots:
@@ -34,6 +39,6 @@ private:
     LoginPage* login_page;
     signup* signup_page;
     Dashboard* dashboard;
-    User* current_user;
+    static User* current_user;
 };
 #endif // MAINWINDOW_H

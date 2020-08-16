@@ -15,7 +15,7 @@ private:
 	QVector<QString> addresses;
 public:
     int getMode() const;
-    Customer(QString username, QString password, QDateTime _birthday, QString _phone_number);
+    Customer(QString username, QString password);
 	void setBirthday(QDateTime birthday);
 	QDateTime getBirthday() const;
 	void setPhoneNumber(QString phone_number);

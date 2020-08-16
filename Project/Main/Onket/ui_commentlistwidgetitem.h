@@ -22,14 +22,14 @@ QT_BEGIN_NAMESPACE
 class Ui_CommentListWidgetItem
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QTextEdit *txt_description;
     QLabel *lab_disadv_content;
     QLabel *lab_adv_content;
     QLabel *lab_disadv;
     QLabel *lab_adv;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout_2;
     QPushButton *bnt_dislike;
     QPushButton *bnt_like;
@@ -41,13 +41,13 @@ public:
             CommentListWidgetItem->setObjectName(QString::fromUtf8("CommentListWidgetItem"));
         CommentListWidgetItem->resize(570, 255);
         CommentListWidgetItem->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
-        widget = new QWidget(CommentListWidgetItem);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(20, 10, 501, 138));
-        gridLayout = new QGridLayout(widget);
+        layoutWidget = new QWidget(CommentListWidgetItem);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(20, 10, 501, 138));
+        gridLayout = new QGridLayout(layoutWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
-        txt_description = new QTextEdit(widget);
+        txt_description = new QTextEdit(layoutWidget);
         txt_description->setObjectName(QString::fromUtf8("txt_description"));
         txt_description->setStyleSheet(QString::fromUtf8("border-color: rgb(255, 255, 255);\n"
 "font: 75 8pt \"8514oem\";\n"
@@ -57,50 +57,54 @@ public:
 
         gridLayout->addWidget(txt_description, 0, 0, 1, 2);
 
-        lab_disadv_content = new QLabel(widget);
+        lab_disadv_content = new QLabel(layoutWidget);
         lab_disadv_content->setObjectName(QString::fromUtf8("lab_disadv_content"));
         lab_disadv_content->setStyleSheet(QString::fromUtf8("font: 75 10pt \"MS Shell Dlg 2\";\n"
+"background-color: rgb(255, 226, 233);\n"
 "gridline-color: rgb(0, 255, 0);"));
 
         gridLayout->addWidget(lab_disadv_content, 2, 0, 1, 1);
 
-        lab_adv_content = new QLabel(widget);
+        lab_adv_content = new QLabel(layoutWidget);
         lab_adv_content->setObjectName(QString::fromUtf8("lab_adv_content"));
-        lab_adv_content->setStyleSheet(QString::fromUtf8("font: 75 10pt \"MS Shell Dlg 2\";"));
+        lab_adv_content->setStyleSheet(QString::fromUtf8("font: 75 10pt \"MS Shell Dlg 2\";\n"
+"background-color: rgb(202, 255, 202);"));
 
         gridLayout->addWidget(lab_adv_content, 2, 1, 1, 1);
 
-        lab_disadv = new QLabel(widget);
+        lab_disadv = new QLabel(layoutWidget);
         lab_disadv->setObjectName(QString::fromUtf8("lab_disadv"));
         lab_disadv->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(255, 0, 0);"));
 
         gridLayout->addWidget(lab_disadv, 1, 0, 1, 1);
 
-        lab_adv = new QLabel(widget);
+        lab_adv = new QLabel(layoutWidget);
         lab_adv->setObjectName(QString::fromUtf8("lab_adv"));
         lab_adv->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
 "color: rgb(0, 255, 0);"));
 
         gridLayout->addWidget(lab_adv, 1, 1, 1, 1);
 
-        widget1 = new QWidget(CommentListWidgetItem);
-        widget1->setObjectName(QString::fromUtf8("widget1"));
-        widget1->setGeometry(QRect(20, 170, 491, 30));
-        gridLayout_2 = new QGridLayout(widget1);
+        layoutWidget1 = new QWidget(CommentListWidgetItem);
+        layoutWidget1->setObjectName(QString::fromUtf8("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(20, 170, 491, 30));
+        gridLayout_2 = new QGridLayout(layoutWidget1);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
-        bnt_dislike = new QPushButton(widget1);
+        bnt_dislike = new QPushButton(layoutWidget1);
         bnt_dislike->setObjectName(QString::fromUtf8("bnt_dislike"));
+        bnt_dislike->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 170, 255);"));
 
         gridLayout_2->addWidget(bnt_dislike, 0, 0, 1, 1);
 
-        bnt_like = new QPushButton(widget1);
+        bnt_like = new QPushButton(layoutWidget1);
         bnt_like->setObjectName(QString::fromUtf8("bnt_like"));
+        bnt_like->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 170, 255);"));
 
         gridLayout_2->addWidget(bnt_like, 0, 1, 1, 1);
 
-        label_5 = new QLabel(widget1);
+        label_5 = new QLabel(layoutWidget1);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
         gridLayout_2->addWidget(label_5, 0, 2, 1, 1);
