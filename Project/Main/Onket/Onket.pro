@@ -39,9 +39,11 @@ SOURCES += \
     comment.cpp \
     Commodity.cpp \
     question.cpp \
+    questioninputwidget.cpp \
     questionviewitem.cpp \
     reply.cpp \
     loginpage.cpp \
+    replyinputwidget.cpp \
     replyviewitem.cpp \
     signup.cpp \
     type.cpp
@@ -70,9 +72,11 @@ HEADERS += \
     comment.h \
     Commity.h \
     question.h \
+    questioninputwidget.h \
     questionviewitem.h \
     reply.h \
     loginpage.h \
+    replyinputwidget.h \
     replyviewitem.h \
     signup.h \
     type.h
@@ -87,7 +91,9 @@ FORMS += \
     goodpreviewwidget.ui \
     mainwindow.ui \
     loginpage.ui \
+    questioninputwidget.ui \
     questionviewitem.ui \
+    replyinputwidget.ui \
     replyviewitem.ui \
     signup.ui
 
