@@ -265,7 +265,7 @@ bool Comment::insertItem(const QString &item_name)
 
         }
         resualt=true;
-        map_items.insert(item_name,0.5);
+        map_items.insert(item_name,0.0);
     }
 
 

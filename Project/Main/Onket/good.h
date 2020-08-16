@@ -125,7 +125,7 @@ public:
     QString addReply(const QString& question_id,const QDate& date_create,const QString& sender_id,const QString& content);
     bool addReplyLike(const QString& reply_id,const QString& sender_id);
     bool addReplyDisLike(const QString& reply_id,const QString& sender_id);
-
+    bool replyRemoveLiker(const QString& reply_id,const QString& liker_id);
     void commentSortByDate();
     void commentSortByLike();
     void commentSortByView();

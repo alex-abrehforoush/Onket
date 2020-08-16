@@ -25,6 +25,8 @@ SOURCES += \
     commentlistwidgetitem.cpp \
     commentwidget.cpp \
     commentwidgetfield.cpp \
+    commentitemstatus.cpp \
+    commentitemstatusfield.cpp \
     dashboard.cpp \
     discussionitem.cpp \
     filefunctions.cpp \
@@ -37,8 +39,12 @@ SOURCES += \
     comment.cpp \
     Commodity.cpp \
     question.cpp \
+    questioninputwidget.cpp \
+    questionviewitem.cpp \
     reply.cpp \
     loginpage.cpp \
+    replyinputwidget.cpp \
+    replyviewitem.cpp \
     signup.cpp \
     type.cpp
 
@@ -50,6 +56,8 @@ HEADERS += \
     Order.h \
     User.h \
     commentlistwidget.h \
+    commentitemstatus.h \
+    commentitemstatusfield.h \
     commentlistwidgetitem.h \
     commentwidget.h \
     commentwidgetfield.h \
@@ -64,8 +72,12 @@ HEADERS += \
     comment.h \
     Commity.h \
     question.h \
+    questioninputwidget.h \
+    questionviewitem.h \
     reply.h \
     loginpage.h \
+    replyinputwidget.h \
+    replyviewitem.h \
     signup.h \
     type.h
 
@@ -79,6 +91,10 @@ FORMS += \
     goodpreviewwidget.ui \
     mainwindow.ui \
     loginpage.ui \
+    questioninputwidget.ui \
+    questionviewitem.ui \
+    replyinputwidget.ui \
+    replyviewitem.ui \
     signup.ui
 
 # Default rules for deployment.

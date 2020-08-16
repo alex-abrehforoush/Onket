@@ -66,9 +66,32 @@ void Reply::addDisLike(const QString &sender_id)
     }
 }
 
+bool Reply::removeLiker(const QString &liker_id)
+{
+    if(this->exist(liker_id)==false)
+    {
+        return false;
+    }
+    else
+      {
+        auto it=this->users_like.find(liker_id);
+        if(it.value()==true)
+        {
+            this->like--;
+        }
+        else
+        {
+            this->dislike--;
+        }
+        this->users_like.remove(liker_id);
+        return true;
+    }
+}
+
 bool Reply::exist(const QString &sender_id)const
 {
-    auto it=users_like.find(sender_id);
+
+   auto it=users_like.find(sender_id);
     if(it != users_like.cend())
     {
         return true;
@@ -87,7 +110,9 @@ bool Reply::getLikeMode(const QString &sender_id)const
     }
     else
     {
-        return true;
+       auto it =this->users_like.find(sender_id);
+
+       return it.value();
     }
 }
 
