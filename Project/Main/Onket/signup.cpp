@@ -154,7 +154,7 @@ void signup::on_add_address_button_clicked()
     }
     else
     {
-        QMessageBox::information(this, "پیام", "این نشانی وجود دارد");
+        QMessageBox::information(this, "پیام", "این آدرس وجود دارد");
     }
 }
 

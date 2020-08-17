@@ -14,11 +14,11 @@ private:
 public:
 	User(QString username, QString password);
 	virtual int getMode() const = 0;
-    virtual QDate/*Time*/ getBirthday() const;
+    virtual QDate getBirthday() const;
     virtual QString getPhoneNumber() const;
     virtual void setBirthday(QDate/*Time*/ birthday);
     virtual void setPhoneNumber(QString phone_number);
-    virtual QVector<QString> getAddresses() const;
+    virtual QVector<QString>& getAddresses();
     virtual void addAddress(QString address);
     virtual void removeAddressAt(int at);
 	void setFirstname(QString firstname);

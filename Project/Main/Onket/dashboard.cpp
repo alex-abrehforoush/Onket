@@ -1,6 +1,9 @@
 #include "dashboard.h"
 #include "ui_dashboard.h"
 #include "mainwindow.h"
+#include <QMessageBox>
+#include <QFile>
+#include <QTextStream>
 
 Dashboard::Dashboard(User* current_user, QWidget *parent)
     : QWidget(parent)
@@ -18,7 +21,24 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->addresses->hide();
         ui->messages->hide();
         ui->last_activities->hide();
-        ui->account_info->hide();
+        ui->customer_account_info->hide();
+
+        ui->customer_account_edit->hide();
+
+        ui->customer_firstname_line_edit->setText(MainWindow::getCurrentUser()->getFirstname());
+        ui->customer_lastname_line_edit->setText(MainWindow::getCurrentUser()->getLastname());
+        ui->customer_username_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
+        ui->customer_password_line_edit->setText(MainWindow::getCurrentUser()->getPassword());
+        ui->customer_birthday_edit->setDate(MainWindow::getCurrentUser()->getBirthday());
+        ui->customer_email_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
+        ui->customer_phone_number_line_edit->setText(MainWindow::getCurrentUser()->getPhoneNumber());
+
+        ui->customer_password_line_edit->setEchoMode(QLineEdit::Password);
+        ui->customer_address_number->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
+        ui->customer_show_address->setText(MainWindow::getCurrentUser()->getAddresses().at(0));
+        ui->customer_address_number_edit->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
+        ui->customer_addresses_to_be_removed->setText(MainWindow::getCurrentUser()->getAddresses().at(0));
+
     }
     else if(current_user->getMode() == 1)
     {
@@ -31,7 +51,7 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->finance->hide();
         ui->employeement->hide();
         ui->treaties->hide();
-        ui->account_info->hide();
+        ui->customer_account_info->hide();
         ui->foreign_connections->hide();
     }
 }
@@ -49,7 +69,7 @@ void Dashboard::on_pushButton_9_clicked()
     ui->addresses->hide();
     ui->messages->hide();
     ui->last_activities->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_10_clicked()
@@ -60,7 +80,7 @@ void Dashboard::on_pushButton_10_clicked()
     ui->addresses->hide();
     ui->messages->hide();
     ui->last_activities->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_11_clicked()
@@ -71,7 +91,7 @@ void Dashboard::on_pushButton_11_clicked()
     ui->addresses->hide();
     ui->messages->hide();
     ui->last_activities->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_12_clicked()
@@ -82,7 +102,7 @@ void Dashboard::on_pushButton_12_clicked()
     ui->addresses->show();
     ui->messages->hide();
     ui->last_activities->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_13_clicked()
@@ -93,7 +113,7 @@ void Dashboard::on_pushButton_13_clicked()
     ui->addresses->hide();
     ui->messages->show();
     ui->last_activities->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_14_clicked()
@@ -104,7 +124,7 @@ void Dashboard::on_pushButton_14_clicked()
     ui->addresses->hide();
     ui->messages->hide();
     ui->last_activities->show();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_15_clicked()
@@ -115,7 +135,9 @@ void Dashboard::on_pushButton_15_clicked()
     ui->addresses->hide();
     ui->messages->hide();
     ui->last_activities->hide();
-    ui->account_info->show();
+    ui->customer_account_info->show();
+
+    ui->customer_account_edit->hide();
 
     ui->customer_first_and_last_name->setText(MainWindow::getCurrentUser()->getFirstname() + " " + MainWindow::getCurrentUser()->getLastname());
     ui->customer_username->setText(MainWindow::getCurrentUser()->getUsername());
@@ -136,7 +158,7 @@ void Dashboard::on_pushButton_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->treaties->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -148,7 +170,7 @@ void Dashboard::on_pushButton_2_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->treaties->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -160,7 +182,7 @@ void Dashboard::on_pushButton_3_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->treaties->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -172,7 +194,7 @@ void Dashboard::on_pushButton_4_clicked()
     ui->finance->show();
     ui->employeement->hide();
     ui->treaties->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -184,7 +206,7 @@ void Dashboard::on_pushButton_5_clicked()
     ui->finance->hide();
     ui->employeement->show();
     ui->treaties->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -196,7 +218,7 @@ void Dashboard::on_pushButton_6_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->treaties->show();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -208,7 +230,7 @@ void Dashboard::on_pushButton_7_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->treaties->hide();
-    ui->account_info->show();
+    ui->customer_account_info->show();
     ui->foreign_connections->hide();
 }
 
@@ -220,11 +242,90 @@ void Dashboard::on_pushButton_8_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->treaties->hide();
-    ui->account_info->hide();
+    ui->customer_account_info->hide();
     ui->foreign_connections->show();
 }
 
 void Dashboard::on_customer_address_edit_of_valueChanged(int arg1)
 {
     this->ui->customer_addresses_to_be_removed->setText(MainWindow::getCurrentUser()->getAddresses().at(arg1-1));
+}
+
+void Dashboard::on_remove_this_address_button_clicked()
+{
+    if(MainWindow::getCurrentUser()->getAddresses().size() != 1)
+    {
+        MainWindow::getCurrentUser()->getAddresses().remove(this->ui->customer_address_number_edit->value() - 1);
+        QMessageBox::information(this, "پیام", "آدرس مورد نظر حذف شد");
+        this->ui->customer_addresses_to_be_removed->clear();
+        this->ui->customer_address_number->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
+        this->ui->customer_address_number_edit->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
+    }
+    else
+    {
+        QMessageBox::information(this, "پیام", "حداقل یک آدرس را وارد کنید");
+    }
+}
+
+void Dashboard::on_customer_address_number_edit_valueChanged(int arg1)
+{
+    this->ui->customer_addresses_to_be_removed->setText(MainWindow::getCurrentUser()->getAddresses().at(arg1 - 1));
+}
+
+void Dashboard::on_add_this_address_button_clicked()
+{
+    if(!this->ui->add_address_line_edit->text().isEmpty() && !MainWindow::getCurrentUser()->getAddresses().contains(this->ui->add_address_line_edit->text()))
+    {
+        MainWindow::getCurrentUser()->addAddress(this->ui->add_address_line_edit->text());
+        QMessageBox::information(this, "پیام", "آدرس با موفقیت اضافه شد");
+        this->ui->add_address_line_edit->clear();
+        this->ui->customer_address_number->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
+        this->ui->customer_address_number_edit->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
+    }
+}
+
+void Dashboard::on_customer_apply_changes_button_clicked()
+{
+    QFile data_remove("Database/User/" + MainWindow::getCurrentUser()->getUsername() + ".csv");
+    data_remove.remove();
+    MainWindow::getCurrentUser()->setFirstname(this->ui->customer_firstname_line_edit->text());
+    MainWindow::getCurrentUser()->setLastname(this->ui->customer_lastname_line_edit->text());
+    MainWindow::getCurrentUser()->setUsername(this->ui->customer_username_line_edit->text());
+    MainWindow::getCurrentUser()->setPassword(this->ui->customer_password_line_edit->text());
+    MainWindow::getCurrentUser()->setBirthday(this->ui->customer_birthday_edit->date());
+    MainWindow::getCurrentUser()->setPhoneNumber(this->ui->customer_phone_number->text());
+    User::addUser(MainWindow::getCurrentUser());
+}
+
+void Dashboard::on_show_password_checkBox_stateChanged(int arg1)
+{
+    if(arg1 == 0) ui->customer_password_line_edit->setEchoMode(QLineEdit::Password);
+    else ui->customer_password_line_edit->setEchoMode(QLineEdit::Normal);
+}
+
+void Dashboard::on_customer_edit_clicked()
+{
+    this->ui->customer_account_info->hide();
+    ui->customer_firstname_line_edit->setText(MainWindow::getCurrentUser()->getFirstname());
+    ui->customer_lastname_line_edit->setText(MainWindow::getCurrentUser()->getLastname());
+    ui->customer_username_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
+    ui->customer_password_line_edit->setText(MainWindow::getCurrentUser()->getPassword());
+    ui->customer_birthday_edit->setDate(MainWindow::getCurrentUser()->getBirthday());
+    ui->customer_email_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
+    ui->customer_phone_number_line_edit->setText(MainWindow::getCurrentUser()->getPhoneNumber());
+    this->ui->customer_account_edit->show();
+}
+
+void Dashboard::on_back_clicked()
+{
+    ui->show_password_checkBox->setCheckState(Qt::Unchecked);
+    ui->customer_account_info->hide();
+    ui->customer_account_edit->hide();
+    this->close();
+}
+
+void Dashboard::on_customer_address_number_valueChanged(int arg1)
+{
+    ui->customer_show_address->setText(MainWindow::getCurrentUser()->getAddresses().at(/*arg1 - 1*/ui->customer_address_number->value() - 1));
+    return;
 }

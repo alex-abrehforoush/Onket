@@ -14,13 +14,13 @@ Customer::Customer(QString username, QString password)
 
 }
 
-void Customer::setBirthday(QDate/*Time*/ birthday)
+void Customer::setBirthday(QDate birthday)
 {
 	this->birthday = birthday;
 	return;
 }
 
-QDate/*Time*/ Customer::getBirthday() const
+QDate Customer::getBirthday() const
 {
 	return this->birthday;
 }
@@ -36,7 +36,7 @@ QVector<QString> Customer::getOrderIds() const
     return this->order_ids;
 }
 
-QVector<QString> Customer::getAddresses() const
+QVector<QString>& Customer::getAddresses()
 {
     return this->addresses;
 }
@@ -48,7 +48,7 @@ QString Customer::getPhoneNumber() const
 
 void Customer::addAddress(QString address)
 {
-	this->addresses.append(address);
+    this->addresses.push_back(address);
 	return;
 }
 

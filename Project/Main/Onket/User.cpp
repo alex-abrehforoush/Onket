@@ -34,7 +34,7 @@ void User::setPhoneNumber(QString phone_number)
     return;
 }
 
-QVector<QString> User::getAddresses() const
+QVector<QString>& User::getAddresses()
 {
     QVector<QString> temp;
     return temp;
@@ -194,6 +194,10 @@ int User::addUser(User* new_user)
                     if(i!=new_user->getAddresses().size()-1)
                     {
                         out << new_user->getAddresses().at(i) << "|";
+                    }
+                    else
+                    {
+                        out << new_user->getAddresses().at(i);
                     }
                 }
                 out << "\n\n";

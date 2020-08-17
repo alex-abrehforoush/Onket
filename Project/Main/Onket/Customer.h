@@ -16,12 +16,12 @@ private:
 public:
     int getMode() const;
     Customer(QString username, QString password);
-    void setBirthday(QDate/*Time*/ birthday);
-    QDate/*Time*/ getBirthday() const;
+    void setBirthday(QDate birthday);
+    QDate getBirthday() const;
 	void setPhoneNumber(QString phone_number);
     QVector<QString> getOrderIds() const;
     QString getPhoneNumber() const;
-    QVector<QString> getAddresses() const;
+    QVector<QString>& getAddresses();
 	void addAddress(QString address);
 	void removeAddressAt(int at);
     int buy(QVector<Item> my_basket);

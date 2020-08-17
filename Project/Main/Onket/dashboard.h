@@ -49,6 +49,22 @@ private slots:
 
     void on_customer_address_edit_of_valueChanged(int arg1);
 
+    void on_remove_this_address_button_clicked();
+
+    void on_customer_address_number_edit_valueChanged(int arg1);
+
+    void on_add_this_address_button_clicked();
+
+    void on_customer_apply_changes_button_clicked();
+
+    void on_show_password_checkBox_stateChanged(int arg1);
+
+    void on_customer_edit_clicked();
+
+    void on_back_clicked();
+
+    void on_customer_address_number_valueChanged(int arg1);
+
 private:
     Ui::Dashboard *ui;
 };
