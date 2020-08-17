@@ -16,12 +16,14 @@ public:
 	virtual int getMode() const = 0;
     virtual QDate getBirthday() const;
     virtual QString getPhoneNumber() const;
-    virtual void setBirthday(QDate/*Time*/ birthday);
+    virtual void setBirthday(QDate birthday);
     virtual void setPhoneNumber(QString phone_number);
     virtual QVector<QString>& getAddresses();
     virtual void addAddress(QString address);
     virtual void removeAddressAt(int at);
-	void setFirstname(QString firstname);
+    virtual QVector<QString>& getOrderIds();
+    QVector<QDateTime> getLastActivities() const;
+    void setFirstname(QString firstname);
 	void setLastname(QString lastname);
 	void setUsername(QString username);
 	void setPassword(QString password);

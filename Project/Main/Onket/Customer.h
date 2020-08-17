@@ -24,7 +24,7 @@ public:
     void setBirthday(QDate birthday);
     QDate getBirthday() const;
 	void setPhoneNumber(QString phone_number);
-    QVector<QString> getOrderIds() const;
+    QVector<QString>& getOrderIds();
     QString getPhoneNumber() const;
     QVector<QString>& getAddresses();
 	void addAddress(QString address);

@@ -57,7 +57,7 @@ void Customer::setPhoneNumber(QString phone_number)
     return;
 }
 
-QVector<QString> Customer::getOrderIds() const
+QVector<QString>& Customer::getOrderIds()
 {
     return this->order_ids;
 }

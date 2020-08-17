@@ -65,6 +65,8 @@ private slots:
 
     void on_customer_address_number_valueChanged(int arg1);
 
+    void on_logout_clicked();
+
 private:
     Ui::Dashboard *ui;
 };

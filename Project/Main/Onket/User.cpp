@@ -50,6 +50,16 @@ void User::removeAddressAt(int at)
     return;
 }
 
+QVector<QString>& User::getOrderIds()
+{
+
+}
+
+QVector<QDateTime> User::getLastActivities() const
+{
+    return this->last_activities;
+}
+
 void User::setFirstname(QString firstname)
 {
 	this->firstname = firstname;
@@ -162,7 +172,11 @@ User *User::getUser(QString username)
             {
                 pointer_to_user->addAddress(list_3.at(i));
             }
-            ////////////////////////////////////// input orders
+            QStringList list_4 = list_1.at(1).split("|");
+            for(int i = 0; i < list_4.size(); i++)
+            {
+                pointer_to_user->getOrderIds().push_back(list_4.at(i));
+            }
         }
         else
         {
@@ -200,8 +214,20 @@ int User::addUser(User* new_user)
                         out << new_user->getAddresses().at(i);
                     }
                 }
-                out << "\n\n";
+                out << "\n";
+                for(int i = 0; i < new_user->getOrderIds().size(); i++)
+                {
+                    out << new_user->getOrderIds().at(i);
+                    if(i != new_user->getOrderIds().size() - 1) out << "|";
+                }
+                out << "\n";
                 out << "Account created in " << QDateTime::currentDateTime().toString() << "|";
+                for(int i = 0; i < new_user->getLastActivities().size(); i++)
+                {
+                    out << new_user->getLastActivities().at(i).toString();
+                    if(i%2 == 0 && i != new_user->getLastActivities().size() - 1) out << "─";
+                    if(i%2 == 1) out << "|";
+                }
             }
             user_personal.close();
             return 1;

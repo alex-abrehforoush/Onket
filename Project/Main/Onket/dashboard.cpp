@@ -39,6 +39,13 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->customer_address_number_edit->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
         ui->customer_addresses_to_be_removed->setText(MainWindow::getCurrentUser()->getAddresses().at(0));
 
+        for(int i = 0; i < MainWindow::getCurrentUser()->getLastActivities().size(); i++)
+        {
+            ui->customer_last_activities->insertPlainText(MainWindow::getCurrentUser()->getLastActivities().at(i).toString());
+            if(i%2 == 0 && i != MainWindow::getCurrentUser()->getLastActivities().size() - 1) ui->customer_last_activities->insertPlainText("─");
+            if(i%2 == 1 && i != MainWindow::getCurrentUser()->getLastActivities().size() - 1) ui->customer_last_activities->insertPlainText("\n");
+        }
+
     }
     else if(current_user->getMode() == 1)
     {
@@ -277,7 +284,7 @@ void Dashboard::on_add_this_address_button_clicked()
     if(!this->ui->add_address_line_edit->text().isEmpty() && !MainWindow::getCurrentUser()->getAddresses().contains(this->ui->add_address_line_edit->text()))
     {
         MainWindow::getCurrentUser()->addAddress(this->ui->add_address_line_edit->text());
-        QMessageBox::information(this, "پیام", "آدرس با موفقیت اضافه شد");
+        QMessageBox::information(this, "پیام", "آدرس جدید با موفقیت اضافه شد");
         this->ui->add_address_line_edit->clear();
         this->ui->customer_address_number->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
         this->ui->customer_address_number_edit->setRange(1, MainWindow::getCurrentUser()->getAddresses().size());
@@ -328,4 +335,22 @@ void Dashboard::on_customer_address_number_valueChanged(int arg1)
 {
     ui->customer_show_address->setText(MainWindow::getCurrentUser()->getAddresses().at(/*arg1 - 1*/ui->customer_address_number->value() - 1));
     return;
+}
+
+void Dashboard::on_logout_clicked()
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "پیام", "آیا می خواهید خارج شوید؟", QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        MainWindow::getCurrentUser()->getLastActivities().push_back(QDateTime::currentDateTime());
+        this->ui->back->click();
+        delete MainWindow::getCurrentUser();
+        MainWindow::setCurrentUser(nullptr);
+        MainWindow::setCurrentUser(new Guest);
+    }
+    else
+    {
+
+    }
 }

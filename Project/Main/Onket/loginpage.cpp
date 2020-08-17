@@ -76,6 +76,7 @@ User* LoginPage::on_enter_button_clicked()
                 }
                 emit successfulLogin();
                 MainWindow::setCurrentUser(temp);
+                MainWindow::getCurrentUser()->getLastActivities().push_back(QDateTime::currentDateTime());
                 QMessageBox::information(this, "پیام", MainWindow::getCurrentUser()->getFirstname() + " " + MainWindow::getCurrentUser()->getLastname() + " " + "عزیز خوش آمدید");
                 ui->back->click();
                 return temp;
