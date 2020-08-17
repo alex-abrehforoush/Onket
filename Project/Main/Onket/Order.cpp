@@ -121,6 +121,7 @@ Order Order::getOrder(QString order_id)
         if(data.open(QIODevice::ReadOnly | QIODevice::Text))
         {
             QTextStream in(&data);
+            in.setCodec("UTF-8");
             QString content = in.readAll();
             QStringList list_1 = content.split("\n");
             for(int i = 0; i<list_1.size(); i++)
@@ -162,6 +163,7 @@ void Order::addOrder(Order new_order)
     if(data.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
     {
         QTextStream out(&data);
+        out.setCodec("UTF-8");
         out << new_order.getOrderId() << "," << new_order.getOrderDate().toString() << "," << new_order.getOwnerName() << ","
             << new_order.getOwnerPhone() << "," << new_order.getDeliverAddress() << "," << new_order.getStuffPrice() << ","
             << new_order.getDeliverDate().toString() << "," << new_order.getDeliverPrice() << ",";

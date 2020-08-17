@@ -2,6 +2,7 @@
 #include "ui_signup.h"
 #include "User.h"
 #include "Customer.h"
+#include <QString>
 #include <QMessageBox>
 
 signup::signup(QWidget *parent) :

@@ -29,9 +29,9 @@ void MainWindow::setCurrentUser(User *crnt)
     return;
 }
 
-User *MainWindow::getCurrentUser() const
+User *MainWindow::getCurrentUser()
 {
-    return this->current_user;
+    return current_user;
 }
 
 MainWindow::~MainWindow()
@@ -82,5 +82,6 @@ void MainWindow::on_action_triggered()
     else
     {
         if(this->dashboard==nullptr) dashboard = new Dashboard(current_user, this);
+        dashboard->show();
     }
 }

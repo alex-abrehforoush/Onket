@@ -1,5 +1,6 @@
 #include "dashboard.h"
 #include "ui_dashboard.h"
+#include "mainwindow.h"
 
 Dashboard::Dashboard(User* current_user, QWidget *parent)
     : QWidget(parent)
@@ -115,6 +116,16 @@ void Dashboard::on_pushButton_15_clicked()
     ui->messages->hide();
     ui->last_activities->hide();
     ui->account_info->show();
+
+    ui->customer_first_and_last_name->setText(MainWindow::getCurrentUser()->getFirstname() + " " + MainWindow::getCurrentUser()->getLastname());
+    ui->customer_username->setText(MainWindow::getCurrentUser()->getUsername());
+    ui->customer_password->setText(MainWindow::getCurrentUser()->getPassword());
+    ui->customer_phone_number->setText(MainWindow::getCurrentUser()->getPhoneNumber());
+    ui->customer_birthday->setText(MainWindow::getCurrentUser()->getBirthday().toString());
+    ui->customer_email->setText(MainWindow::getCurrentUser()->getUsername());
+    ui->customer_show_address->setText(MainWindow::getCurrentUser()->getAddresses().at(ui->customer_address_number->value() - 1));
+
+    ui->customer_address_number_edit->clear();
 }
 
 void Dashboard::on_pushButton_clicked()
@@ -211,4 +222,9 @@ void Dashboard::on_pushButton_8_clicked()
     ui->treaties->hide();
     ui->account_info->hide();
     ui->foreign_connections->show();
+}
+
+void Dashboard::on_customer_address_edit_of_valueChanged(int arg1)
+{
+    this->ui->customer_addresses_to_be_removed->setText(MainWindow::getCurrentUser()->getAddresses().at(arg1-1));
 }

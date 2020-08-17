@@ -47,6 +47,8 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_customer_address_edit_of_valueChanged(int arg1);
+
 private:
     Ui::Dashboard *ui;
 };

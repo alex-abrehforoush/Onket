@@ -14,9 +14,9 @@ User::User(QString username, QString password)
 
 }
 
-QDate/*Time*/ User::getBirthday() const
+QDate User::getBirthday() const
 {
-    return QDate/*Time*/::currentDate/*Time*/();
+    return QDate::currentDate();
 }
 
 QString User::getPhoneNumber() const
@@ -24,7 +24,7 @@ QString User::getPhoneNumber() const
     return "";
 }
 
-void User::setBirthday(QDate/*Time*/ birthday)
+void User::setBirthday(QDate birthday)
 {
     return;
 }
@@ -146,13 +146,14 @@ User *User::getUser(QString username)
         QFile read_user("Database/User/" + username + ".csv");
         read_user.open(QIODevice::ReadOnly | QIODevice::Text);
         QTextStream in(&read_user);
+        in.setCodec("UTF-8");
         QString content = in.readAll();
         QStringList list_1 = content.split("\n");
         QStringList list_2 = list_1.at(0).split(",");
         if(list_2.at(2).toInt() == 0)
         {
             pointer_to_user = new Customer(list_2.at(0), list_2.at(1));
-            pointer_to_user->setBirthday(QDate/*Time*/::fromString(list_2.at(5)));
+            pointer_to_user->setBirthday(QDate::fromString(list_2.at(5)));
             pointer_to_user->setPhoneNumber(list_2.at(6));
             pointer_to_user->setFirstname(list_2.at(3));
             pointer_to_user->setLastname(list_2.at(4));
@@ -183,17 +184,14 @@ int User::addUser(User* new_user)
         if(user_personal.open(QIODevice::WriteOnly | QIODevice::Text))
         {
             QTextStream out(&user_personal);
+            out.setCodec("UTF-8");
             out << new_user->getUsername() << "," << new_user->getPassword() << "," << new_user->getMode() << "," << new_user->getFirstname() << "," << new_user->getLastname() << "," ;
             if(new_user->getMode()==0)
             {
                 out << new_user->getBirthday().toString() << "," << new_user->getPhoneNumber() << ",";
                 for(int i = 0; i<new_user->getAddresses().size(); i++)
                 {
-                    if(i==new_user->getAddresses().size()-1)
-                    {
-                        out << new_user->getAddresses().at(i) << ",";
-                    }
-                    else
+                    if(i!=new_user->getAddresses().size()-1)
                     {
                         out << new_user->getAddresses().at(i) << "|";
                     }

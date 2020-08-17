@@ -24,7 +24,7 @@ public slots:
 public:
     MainWindow(QWidget *parent = nullptr);
     static void setCurrentUser(User* crnt);
-    User* getCurrentUser() const;
+    static User* getCurrentUser();
     ~MainWindow();
 
 private slots:
