@@ -16,7 +16,7 @@
   <widget class="QWidget" name="admin" native="true">
    <property name="geometry">
     <rect>
-     <x>1510</x>
+     <x>0</x>
      <y>0</y>
      <width>1500</width>
      <height>800</height>
@@ -341,7 +341,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="admin_account_info" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -621,7 +621,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="my_orders" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -631,7 +631,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="lists" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -641,7 +641,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="comments" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -651,7 +651,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="addresses" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -686,9 +686,9 @@ color: rgb(0, 0, 0);</string>
     <widget class="QLabel" name="label_23">
      <property name="geometry">
       <rect>
-       <x>1020</x>
+       <x>1010</x>
        <y>10</y>
-       <width>71</width>
+       <width>81</width>
        <height>40</height>
       </rect>
      </property>
@@ -703,7 +703,7 @@ color: rgb(0, 0, 0);</string>
       <string>پیام ها</string>
      </property>
     </widget>
-    <widget class="QTextBrowser" name="message_sent_by_admin">
+    <widget class="QTextEdit" name="message_sent_by_admin">
      <property name="geometry">
       <rect>
        <x>55</x>
@@ -711,6 +711,12 @@ color: rgb(0, 0, 0);</string>
        <width>1021</width>
        <height>261</height>
       </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

@@ -19,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Onket | An Online Market");
     setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
     current_user = new Guest();
+    Admin alireza("wwe_alireza.abc2015@yahoo.com", "5B24cX7o");
+    alireza.setFirstname("علیرضا");
+    alireza.setLastname("ابره فروش");
+    User::addUser(&alireza);
 }
 
 void MainWindow::setCurrentUser(User *crnt)

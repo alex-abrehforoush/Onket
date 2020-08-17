@@ -58,20 +58,23 @@ User* LoginPage::on_enter_button_clicked()
         {
             if(User::encryptPassword(ui->password_line_edit->text()) == temp->getPassword())
             {
-                QFile data_read("Database/User/" + ui->username_line_edit->text() + ".csv");
-                if(data_read.open(QIODevice::ReadOnly | QIODevice::Text))
+                if(temp->getMode() == 0)
                 {
-                    QTextStream in(&data_read);
-                    QString content = in.readAll();
-                    data_read.close();
-                    QStringList list_1 = content.split("\n");
-                    list_1[2].append(QDateTime::currentDateTime().toString() + "─");
-                    QFile data_write("Database/User/" + ui->username_line_edit->text() + ".csv");
-                    if(data_write.open(QIODevice::WriteOnly | QIODevice::Text))
+                    QFile data_read("Database/User/" + ui->username_line_edit->text() + ".csv");
+                    if(data_read.open(QIODevice::ReadOnly | QIODevice::Text))
                     {
-                        QTextStream out(&data_write);
-                        out << list_1.at(0) << "\n" << list_1.at(1) << "\n" << list_1.at(2);
-                        data_write.close();
+                        QTextStream in(&data_read);
+                        QString content = in.readAll();
+                        data_read.close();
+                        QStringList list_1 = content.split("\n");
+                        list_1[2].append(QDateTime::currentDateTime().toString() + "_");
+                        QFile data_write("Database/User/" + ui->username_line_edit->text() + ".csv");
+                        if(data_write.open(QIODevice::WriteOnly | QIODevice::Text))
+                        {
+                            QTextStream out(&data_write);
+                            out << list_1.at(0) << "\n" << list_1.at(1) << "\n" << list_1.at(2);
+                            data_write.close();
+                        }
                     }
                 }
                 emit successfulLogin();

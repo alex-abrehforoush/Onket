@@ -16,7 +16,7 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->admin->hide();
         ui->customer->show();
 
-        //connect(, , ui->message_sent_by_admin, SLOT())
+
 
         ui->my_orders->hide();
         ui->lists->hide();
@@ -123,6 +123,16 @@ void Dashboard::on_pushButton_13_clicked()
     ui->messages->show();
     ui->last_activities->hide();
     ui->customer_account_info->hide();
+
+    QFile messages("Database/Dashboard/customers_messages.txt");
+    QTextStream read_messages(&messages);
+    read_messages.setCodec("UTF-8");
+    QString content;
+    if(messages.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        content = read_messages.readAll();
+    }
+    ui->message_sent_by_admin->setText(content);
 }
 
 void Dashboard::on_pushButton_14_clicked()
@@ -167,7 +177,7 @@ void Dashboard::on_pushButton_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->messages_2->hide();
-    ui->customer_account_info->hide();
+    ui->admin_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -179,7 +189,7 @@ void Dashboard::on_pushButton_2_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->messages_2->hide();
-    ui->customer_account_info->hide();
+    ui->admin_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -191,7 +201,7 @@ void Dashboard::on_pushButton_3_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->messages_2->hide();
-    ui->customer_account_info->hide();
+    ui->admin_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -203,7 +213,7 @@ void Dashboard::on_pushButton_4_clicked()
     ui->finance->show();
     ui->employeement->hide();
     ui->messages_2->hide();
-    ui->customer_account_info->hide();
+    ui->admin_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -215,11 +225,11 @@ void Dashboard::on_pushButton_5_clicked()
     ui->finance->hide();
     ui->employeement->show();
     ui->messages_2->hide();
-    ui->customer_account_info->hide();
+    ui->admin_account_info->hide();
     ui->foreign_connections->hide();
 }
 
-void Dashboard::on_pushButton_6_clicked()
+void Dashboard::on_send_message_clicked()
 {
     ui->goods_management->hide();
     ui->user_management->hide();
@@ -227,7 +237,7 @@ void Dashboard::on_pushButton_6_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->messages_2->show();
-    ui->customer_account_info->hide();
+    ui->admin_account_info->hide();
     ui->foreign_connections->hide();
 }
 
@@ -239,7 +249,7 @@ void Dashboard::on_pushButton_7_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->messages_2->hide();
-    ui->customer_account_info->show();
+    ui->admin_account_info->show();
     ui->foreign_connections->hide();
 }
 
@@ -251,7 +261,7 @@ void Dashboard::on_pushButton_8_clicked()
     ui->finance->hide();
     ui->employeement->hide();
     ui->messages_2->hide();
-    ui->customer_account_info->hide();
+    ui->admin_account_info->hide();
     ui->foreign_connections->show();
 }
 
@@ -375,8 +385,8 @@ void Dashboard::on_send_clicked()
     {
         QTextStream out(&data);
         out.setCodec("UTF-8");
-        out << "پیام از طرف ";
-        out << MainWindow::getCurrentUser()->getFirstname() << " " << MainWindow::getCurrentUser()->getLastname() << ":";
+        out << QString::fromUtf8("پیام از طرف ");
+        out << MainWindow::getCurrentUser()->getFirstname().toUtf8() << " " << MainWindow::getCurrentUser()->getLastname().toUtf8() << ":";
         out << "\n";
         out << this->ui->message_text->toPlainText();
         out << "\n\n";

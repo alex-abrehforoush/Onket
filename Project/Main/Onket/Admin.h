@@ -10,6 +10,7 @@ private:
 public:
     Admin(QString username, QString password);
     void setFirstname(QString firstname);
+    void setLastname(QString lastname);
     int getMode() const;
 };
 
