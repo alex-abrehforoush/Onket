@@ -11,6 +11,7 @@ commentitemstatus.o
 commentitemstatusfield.o
 dashboard.o
 discussionitem.o
+discussionlistwidget.o
 filefunctions.o
 good.o
 goodpreviewscrollarea.o
@@ -36,6 +37,7 @@ moc_commentlistwidgetitem.o
 moc_commentwidget.o
 moc_commentwidgetfield.o
 moc_dashboard.o
+moc_discussionlistwidget.o
 moc_goodpreviewscrollarea.o
 moc_goodpreviewwidget.o
 moc_mainwindow.o
