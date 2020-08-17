@@ -2,6 +2,7 @@
 #include "ui_dashboard.h"
 #include "mainwindow.h"
 #include <QMessageBox>
+#include <QDir>
 #include <QFile>
 #include <QTextStream>
 
@@ -15,6 +16,8 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->admin->hide();
         ui->customer->show();
 
+        //connect(, , ui->message_sent_by_admin, SLOT())
+
         ui->my_orders->hide();
         ui->lists->hide();
         ui->comments->hide();
@@ -22,7 +25,6 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->messages->hide();
         ui->last_activities->hide();
         ui->customer_account_info->hide();
-
         ui->customer_account_edit->hide();
 
         ui->customer_firstname_line_edit->setText(MainWindow::getCurrentUser()->getFirstname());
@@ -42,7 +44,7 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         for(int i = 0; i < MainWindow::getCurrentUser()->getLastActivities().size(); i++)
         {
             ui->customer_last_activities->insertPlainText(MainWindow::getCurrentUser()->getLastActivities().at(i).toString());
-            if(i%2 == 0 && i != MainWindow::getCurrentUser()->getLastActivities().size() - 1) ui->customer_last_activities->insertPlainText("─");
+            if(i%2 == 0 && i != MainWindow::getCurrentUser()->getLastActivities().size() - 1) ui->customer_last_activities->insertPlainText("_");
             if(i%2 == 1 && i != MainWindow::getCurrentUser()->getLastActivities().size() - 1) ui->customer_last_activities->insertPlainText("\n");
         }
 
@@ -57,7 +59,7 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->site_settings->hide();
         ui->finance->hide();
         ui->employeement->hide();
-        ui->treaties->hide();
+        ui->messages_2->hide();
         ui->customer_account_info->hide();
         ui->foreign_connections->hide();
     }
@@ -164,7 +166,7 @@ void Dashboard::on_pushButton_clicked()
     ui->site_settings->hide();
     ui->finance->hide();
     ui->employeement->hide();
-    ui->treaties->hide();
+    ui->messages_2->hide();
     ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
@@ -176,7 +178,7 @@ void Dashboard::on_pushButton_2_clicked()
     ui->site_settings->hide();
     ui->finance->hide();
     ui->employeement->hide();
-    ui->treaties->hide();
+    ui->messages_2->hide();
     ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
@@ -188,7 +190,7 @@ void Dashboard::on_pushButton_3_clicked()
     ui->site_settings->show();
     ui->finance->hide();
     ui->employeement->hide();
-    ui->treaties->hide();
+    ui->messages_2->hide();
     ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
@@ -200,7 +202,7 @@ void Dashboard::on_pushButton_4_clicked()
     ui->site_settings->hide();
     ui->finance->show();
     ui->employeement->hide();
-    ui->treaties->hide();
+    ui->messages_2->hide();
     ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
@@ -212,7 +214,7 @@ void Dashboard::on_pushButton_5_clicked()
     ui->site_settings->hide();
     ui->finance->hide();
     ui->employeement->show();
-    ui->treaties->hide();
+    ui->messages_2->hide();
     ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
@@ -224,7 +226,7 @@ void Dashboard::on_pushButton_6_clicked()
     ui->site_settings->hide();
     ui->finance->hide();
     ui->employeement->hide();
-    ui->treaties->show();
+    ui->messages_2->show();
     ui->customer_account_info->hide();
     ui->foreign_connections->hide();
 }
@@ -236,7 +238,7 @@ void Dashboard::on_pushButton_7_clicked()
     ui->site_settings->hide();
     ui->finance->hide();
     ui->employeement->hide();
-    ui->treaties->hide();
+    ui->messages_2->hide();
     ui->customer_account_info->show();
     ui->foreign_connections->hide();
 }
@@ -248,7 +250,7 @@ void Dashboard::on_pushButton_8_clicked()
     ui->site_settings->hide();
     ui->finance->hide();
     ui->employeement->hide();
-    ui->treaties->hide();
+    ui->messages_2->hide();
     ui->customer_account_info->hide();
     ui->foreign_connections->show();
 }
@@ -344,13 +346,41 @@ void Dashboard::on_logout_clicked()
     if (reply == QMessageBox::Yes)
     {
         MainWindow::getCurrentUser()->getLastActivities().push_back(QDateTime::currentDateTime());
+        QFile data_remove("Database/User/" + MainWindow::getCurrentUser()->getUsername() + ".csv");
+        data_remove.remove();
+        User::addUser(MainWindow::getCurrentUser());
         this->ui->back->click();
-        delete MainWindow::getCurrentUser();
-        MainWindow::setCurrentUser(nullptr);
         MainWindow::setCurrentUser(new Guest);
     }
     else
     {
+        return;
+    }
+}
 
+void Dashboard::on_send_clicked()
+{
+    QDir dashboard_director;
+    dashboard_director.mkpath("Database/Dashboard");
+    QFile data("Database/Dashboard/customers_messages.txt");
+    QString content;
+    if(data.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        QTextStream in(&data);
+        in.setCodec("UTF-8");
+        content = in.readAll();
+        data.close();
+    }
+    if(data.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QTextStream out(&data);
+        out.setCodec("UTF-8");
+        out << "پیام از طرف ";
+        out << MainWindow::getCurrentUser()->getFirstname() << " " << MainWindow::getCurrentUser()->getLastname() << ":";
+        out << "\n";
+        out << this->ui->message_text->toPlainText();
+        out << "\n\n";
+        out << content;
+        data.close();
     }
 }

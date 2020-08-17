@@ -22,7 +22,7 @@ public:
     virtual void addAddress(QString address);
     virtual void removeAddressAt(int at);
     virtual QVector<QString>& getOrderIds();
-    QVector<QDateTime> getLastActivities() const;
+    QVector<QDateTime>& getLastActivities();
     void setFirstname(QString firstname);
 	void setLastname(QString lastname);
 	void setUsername(QString username);

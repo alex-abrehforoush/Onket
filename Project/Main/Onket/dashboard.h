@@ -67,6 +67,8 @@ private slots:
 
     void on_logout_clicked();
 
+    void on_send_clicked();
+
 private:
     Ui::Dashboard *ui;
 };
