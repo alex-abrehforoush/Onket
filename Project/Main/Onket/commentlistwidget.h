@@ -5,7 +5,9 @@
 #include <QScrollBar>
 #include <QVBoxLayout>
 #include <QMap>
+#include <QPushButton>
 #include "commentlistwidgetitem.h"
+#include "commentwidget.h"
 
 namespace Ui {
 class CommentListWidget;
@@ -20,9 +22,14 @@ class CommentListWidget : public QScrollArea
     QString user_id;
     bool id_valid=false;
     QMap<QString,CommentListWidgetItem*> widgets;
+    CommentWidget* c_widget=nullptr;
+    QPushButton* bnt_add_comment=nullptr;
+
 public slots:
    void update();
-
+private slots:
+   void CommentFinished();
+   void commentAdded();
 public:
 
     bool existCommentSender(const QString& comment_sender)const;

@@ -25,10 +25,12 @@ public:
     ~ReplyViewItem();
 
 private slots:
+
+
+
  void on_bnt_like_clicked();
 
  void on_bnt_dislike_clicked();
-
 
 private:
     Ui::ReplyViewItem *ui;

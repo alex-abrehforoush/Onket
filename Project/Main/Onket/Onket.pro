@@ -29,6 +29,7 @@ SOURCES += \
     commentitemstatusfield.cpp \
     dashboard.cpp \
     discussionitem.cpp \
+    discussionlistwidget.cpp \
     filefunctions.cpp \
     good.cpp \
     goodpreviewscrollarea.cpp \
@@ -63,6 +64,7 @@ HEADERS += \
     commentwidgetfield.h \
     dashboard.h \
     discussionitem.h \
+    discussionlistwidget.h \
     filefunctions.h \
     good.h \
     goodpreviewscrollarea.h \
@@ -87,6 +89,7 @@ FORMS += \
     commentwidget.ui \
     commentwidgetfield.ui \
     dashboard.ui \
+    discussionlistwidget.ui \
     goodpreviewscrollarea.ui \
     goodpreviewwidget.ui \
     mainwindow.ui \

@@ -31,8 +31,8 @@ QuestionInputWidget::~QuestionInputWidget()
 void QuestionInputWidget::on_bnt_cancel_clicked()
 {
 
-   emit this->questionEditingFinished("");
-    this->close();
+   emit this->questionEditingFinished("cancel");
+
 
 }
 
@@ -48,7 +48,7 @@ void QuestionInputWidget::on_bnt_ok_clicked()
     if(g.existQuestionContent(content)==true)
     {
         emit this->questionEditingFinished(g.getIdQustion(content));
-        this->close();
+
         return;
     }
     else
@@ -56,5 +56,5 @@ void QuestionInputWidget::on_bnt_ok_clicked()
         g.addQuestion(QDate::currentDate(),sender_id,content);
         emit this->questionEditingFinished("");
     }
-    this->close();
+
 }

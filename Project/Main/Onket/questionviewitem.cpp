@@ -1,6 +1,14 @@
 #include "questionviewitem.h"
 #include "ui_questionviewitem.h"
 
+void QuestionViewItem::ReplyFinished()
+{
+    this->r_input->close();
+    delete r_input;
+    r_input=nullptr;
+    emit this->replyAdded();
+}
+
 void QuestionViewItem::update()
 {
     if(info_valid==false)
@@ -53,6 +61,7 @@ QuestionViewItem::QuestionViewItem(const QString & user_id,const QString & good_
 
     this->setFixedSize(1200,300);
 
+
 }
 
 QuestionViewItem::~QuestionViewItem()
@@ -60,9 +69,36 @@ QuestionViewItem::~QuestionViewItem()
     delete ui;
 }
 
+
+
+
+
+
+void QuestionViewItem::on_bnt_show_replys_clicked()
+{
+    if(info_valid==false)
+    {
+        return;
+    }
+    else
+    {
+        if(ui->bnt_show_replys->text()=="نمایش پاسخ ها")
+        {
+          emit this->showReplyRequsted(good_id,question_id);
+           this->ui->bnt_show_replys->setText("مخفی کردن پاسخ ها");
+           return;
+        }
+        else
+        {
+            emit this->hideReplyRequsted(good_id,question_id);
+            ui->bnt_show_replys->setText("نمایش پاسخ ها");
+            return;
+        }
+    }
+}
+
 void QuestionViewItem::on_bnt_add_reply_clicked()
 {
-
     if(info_valid==false)
     {
         return;
@@ -76,8 +112,17 @@ void QuestionViewItem::on_bnt_add_reply_clicked()
         return;
     }
 
+    if(this->r_input !=nullptr)
+    {
+        return;
+    }
+    else
+    {
+        r_input=new ReplyInputWidget(good_id,question_id,user_id);
+        r_input->show();
+        connect(r_input,SIGNAL(replyEditingFinished()),this,SLOT(ReplyFinished()));
 
+    }
 
-    emit this->addReply(user_id,good_id,question_id);
 
 }

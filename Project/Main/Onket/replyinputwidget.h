@@ -16,7 +16,7 @@ class ReplyInputWidget : public QWidget
     QString good_id;
     QString question_id;
     QString sender_id;
-    bool info_valid;
+    bool info_valid=false;
 
 signals:
     void replyEditingFinished();
@@ -25,9 +25,11 @@ public:
     ~ReplyInputWidget();
 
 private slots:
-    void on_bnt_ok_clicked();
+
 
     void on_bnt_cancel_clicked();
+
+    void on_bnt_ok_clicked();
 
 private:
     Ui::ReplyInputWidget *ui;
