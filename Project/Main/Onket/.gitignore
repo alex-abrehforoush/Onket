@@ -1,3 +1,7 @@
 .vs/*
 debug/*
+*.obj
+*.o
+moc*.cpp
+ui*.h
 Onket.pro.user
