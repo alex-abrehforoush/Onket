@@ -36,3 +36,9 @@ void Item::setItemNumber(int number)
 {
     this->number = number;
 }
+
+bool Item::operator==(const Item &itm)
+{
+    if(this->getItemId() == itm.getItemId() && this->getItemColor() == itm.getItemColor() && this->getNumber() == itm.getNumber()) return 1;
+    else return 0;
+}

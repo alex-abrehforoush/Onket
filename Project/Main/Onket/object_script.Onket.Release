@@ -11,6 +11,7 @@ release/commentitemstatus.o
 release/commentitemstatusfield.o
 release/dashboard.o
 release/discussionitem.o
+release/discussionlistwidget.o
 release/filefunctions.o
 release/good.o
 release/goodpreviewscrollarea.o
@@ -36,6 +37,7 @@ release/moc_commentlistwidgetitem.o
 release/moc_commentwidget.o
 release/moc_commentwidgetfield.o
 release/moc_dashboard.o
+release/moc_discussionlistwidget.o
 release/moc_goodpreviewscrollarea.o
 release/moc_goodpreviewwidget.o
 release/moc_mainwindow.o

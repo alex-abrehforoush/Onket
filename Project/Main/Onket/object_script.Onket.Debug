@@ -11,6 +11,7 @@ debug/commentitemstatus.o
 debug/commentitemstatusfield.o
 debug/dashboard.o
 debug/discussionitem.o
+debug/discussionlistwidget.o
 debug/filefunctions.o
 debug/good.o
 debug/goodpreviewscrollarea.o
@@ -36,6 +37,7 @@ debug/moc_commentlistwidgetitem.o
 debug/moc_commentwidget.o
 debug/moc_commentwidgetfield.o
 debug/moc_dashboard.o
+debug/moc_discussionlistwidget.o
 debug/moc_goodpreviewscrollarea.o
 debug/moc_goodpreviewwidget.o
 debug/moc_mainwindow.o

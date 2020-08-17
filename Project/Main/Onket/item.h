@@ -16,6 +16,7 @@ public:
     void setItemId(QString id);
     void setItemColor(QString color);
     void setItemNumber(int number);
+    bool operator==(const Item& itm);
 };
 
 #endif

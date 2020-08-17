@@ -2,6 +2,7 @@
 #define CUSTOMER_BNUB
 #include "User.h"
 #include "Order.h"
+#include "item.h"
 #include <QVector>
 class Customer :
 	public User
@@ -9,13 +10,17 @@ class Customer :
 protected:
 private:
 	const int mode = 0;
-    QDate/*Time*/ birthday;
+    QDate birthday;
 	QString phone_number;
+    QVector<Item> basket;
     QVector<QString> order_ids;
 	QVector<QString> addresses;
 public:
     int getMode() const;
     Customer(QString username, QString password);
+    QVector<Item>& getBasket();
+    void addToBasket(Item itm);
+    void removeFromBasket(Item itm);
     void setBirthday(QDate birthday);
     QDate getBirthday() const;
 	void setPhoneNumber(QString phone_number);

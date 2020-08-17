@@ -2,6 +2,7 @@
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
+#include "item.h"
 
 int Customer::getMode() const
 {
@@ -12,6 +13,31 @@ Customer::Customer(QString username, QString password)
     :User(username, password)
 {
 
+}
+
+QVector<Item>& Customer::getBasket()
+{
+    return this->basket;
+}
+
+void Customer::addToBasket(Item itm)
+{
+    int temp = this->basket.indexOf(itm);
+    if(temp == -1)
+    {
+        this->basket.push_back(itm);
+    }
+    return;
+}
+
+void Customer::removeFromBasket(Item itm)
+{
+    int temp = this->basket.indexOf(itm);
+    if(temp != -1)
+    {
+        this->basket.remove(this->basket.indexOf(itm));
+    }
+    return;
 }
 
 void Customer::setBirthday(QDate birthday)
@@ -84,6 +110,7 @@ int Customer::buy(QVector<Item> my_basket)
         }
         else return 0;
         data_read.close();
+        this->basket.clear();
         return 1;
     }
     else return 0;
