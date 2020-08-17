@@ -16,12 +16,12 @@
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>85</x>
-     <y>50</y>
-     <width>671</width>
+     <x>70</x>
+     <y>70</y>
+     <width>631</width>
      <height>351</height>
     </rect>
    </property>

@@ -65,7 +65,7 @@ CommentWidget::~CommentWidget()
 void CommentWidget::on_bnt_cancel_clicked()
 {
     emit this->commentEditingFinished();
-    this->close();
+
 }
 
 void CommentWidget::on_bnt_save_clicked()

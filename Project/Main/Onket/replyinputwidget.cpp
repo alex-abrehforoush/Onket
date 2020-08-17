@@ -26,6 +26,7 @@ ReplyInputWidget::ReplyInputWidget(const QString& good_id,const QString& questio
         this->info_valid=false;
         return;
     }
+    this->info_valid=true;
 
     this->ui->txt_question->setReadOnly(true);
     this->ui->bnt_icon_question->setIcon(QIcon("Icons/Question.png"));
@@ -39,6 +40,15 @@ ReplyInputWidget::ReplyInputWidget(const QString& good_id,const QString& questio
 ReplyInputWidget::~ReplyInputWidget()
 {
     delete ui;
+}
+
+
+
+
+void ReplyInputWidget::on_bnt_cancel_clicked()
+{
+    emit this->replyEditingFinished();
+
 }
 
 void ReplyInputWidget::on_bnt_ok_clicked()
@@ -55,11 +65,5 @@ void ReplyInputWidget::on_bnt_ok_clicked()
         g.addReply(question_id,QDate::currentDate(),sender_id,ui->txt_reply->toPlainText());
         emit this->replyEditingFinished();
     }
-    this->close();
-}
 
-void ReplyInputWidget::on_bnt_cancel_clicked()
-{
-    emit this->replyEditingFinished();
-    this->close();
 }

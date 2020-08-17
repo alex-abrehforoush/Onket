@@ -71,8 +71,8 @@ ReplyViewItem::ReplyViewItem(const QString& user_id,const QString& good_id,const
         this->update();
 
 
-
-
+    this->ui->txt_content->setFixedSize(700,250);
+    this->setFixedSize(1100,300);
 
     }
 
@@ -168,4 +168,6 @@ void ReplyViewItem::on_bnt_dislike_clicked()
        }
     }
 }
+
+
 

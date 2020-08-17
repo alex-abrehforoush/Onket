@@ -17,6 +17,7 @@ void CommentListWidget::update()
     this->widgets.clear();
 
     Good &g=Good::getGood(good_id);
+   this->main_lay->addWidget(bnt_add_comment);
 
     for( g.setCommentSeekBegin();g.commentSeekAtEnd()==false;)
     {
@@ -28,6 +29,28 @@ void CommentListWidget::update()
 
 
 
+}
+
+void CommentListWidget::CommentFinished()
+{
+ this->c_widget->close();
+ delete this->c_widget;
+  this->c_widget=nullptr;
+    this->update();
+}
+
+void CommentListWidget::commentAdded()
+{
+    if(this->c_widget!=nullptr)
+    {
+        return;
+    }
+    else
+    {
+        this->c_widget=new CommentWidget(good_id,user_id);
+        c_widget->show();
+        connect(c_widget,SIGNAL(commentEditingFinished()),this,SLOT(CommentFinished()));
+    }
 }
 
 bool CommentListWidget::existCommentSender(const QString &comment_sender)const
@@ -61,9 +84,12 @@ CommentListWidget::CommentListWidget(const QString& good_id,const QString& user_
     QScrollArea(parent),
     ui(new Ui::CommentListWidget)
   ,center_widget(new QWidget(this))
+  ,bnt_add_comment(new QPushButton("+ افزودن نظر",this))
   ,main_lay(new QVBoxLayout(this))
 {
 
+    this->bnt_add_comment->setStyleSheet("background-color: rgb(0, 0, 255);\ncolor: rgb(255,255,255);");
+    connect(this->bnt_add_comment,SIGNAL(clicked()),this,SLOT(commentAdded()));
     ui->setupUi(this);
     this->user_id=user_id;
     this->good_id=good_id;
