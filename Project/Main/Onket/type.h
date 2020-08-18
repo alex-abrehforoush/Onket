@@ -17,6 +17,7 @@ class Type
     QString id;
     QString name;
     QString parent_id;
+    static QString current_type_id;
 
     QVector<QString>branches_id;
     mutable QVector<QString>::const_iterator branches_it;
@@ -37,6 +38,8 @@ public:
     static bool existTypeId(const QString& type_id);
     static const Type& getType(const QString& type_id);
     static QVector<QString>getBaseTypeId();
+    static QString getCurrentTypeId();
+    static void setCurrentTypeId(QString type_id);
 
 
     QString getId()const;
@@ -53,6 +56,7 @@ public:
     bool existGood(const QString good_id)const;
     bool addGood(const QString& good_id)const;
     bool removeGood(const QString& good_id)const;
+    bool GoodListIsEmpty()const;
 
     bool existProperty(const QString property_name)const;
     bool addProperty(const QString property_name)const;
@@ -65,6 +69,7 @@ public:
     void setBranchSeekBegin()const;
     QString readBranchId()const;
     bool BranchSeekAtEnd()const;
+    bool branchIdIsEmpty()const;
 
     void setGoodSeekBegin()const;
     QString readGoodId()const;
