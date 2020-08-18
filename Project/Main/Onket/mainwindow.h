@@ -27,6 +27,9 @@ public:
     static void setCurrentUser(User* crnt);
     static User* getCurrentUser();
     static Storage& getOnketRepository();
+    static void setLoginPage(LoginPage* lgnpg);
+    static void setSignupPage(signup* sinup);
+    static void setDashboard(Dashboard* dshbrd);
     ~MainWindow();
 
 private slots:
@@ -38,9 +41,9 @@ private slots:
 
 private:
     Ui::MainWindow* ui;
-    LoginPage* login_page;
-    signup* signup_page;
-    Dashboard* dashboard;
+    static LoginPage* login_page;
+    static signup* signup_page;
+    static Dashboard* dashboard;
     static User* current_user;
     static Storage onket_repository;
 };

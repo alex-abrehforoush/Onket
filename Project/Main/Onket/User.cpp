@@ -201,7 +201,7 @@ User *User::getUser(QString username)
 int User::addUser(User* new_user)
 {
     if (!(userExist(new_user->getUsername())))
-	{
+    {
         QDir data;
         data.mkpath("Database/User");
         QFile user_personal("Database/User/" + new_user->getUsername() + ".csv");

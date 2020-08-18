@@ -6,29 +6,43 @@
 #include "Guest.h"
 #include "signup.h"
 
+LoginPage* MainWindow::login_page;
+signup* MainWindow::signup_page;
+Dashboard* MainWindow::dashboard;
 User* MainWindow::current_user;
 Storage MainWindow::onket_repository;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     ,ui(new Ui::MainWindow)
-    ,login_page(nullptr)
-    ,signup_page(nullptr)
-    ,dashboard(nullptr)
 {
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
     setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
     current_user = new Guest();
 
-    Admin alireza("wwe_alireza.abc2015@yahoo.com", "5B24cX7o");
-    alireza.setFirstname("علیرضا");
-    alireza.setLastname("ابره فروش");
-    User::addUser(&alireza);
-    Admin moein("moeinferdavani1380@gmail.com", "123456789");
-    moein.setFirstname("معین");
-    moein.setLastname("خراسانی فردوانی");
-    User::addUser(&moein);
+    if(!User::userExist("wwe_alireza.abc2015@yahoo.com"))
+    {
+        Admin alireza("wwe_alireza.abc2015@yahoo.com", "***REMOVED***");
+        alireza.setFirstname("علیرضا");
+        alireza.setLastname("ابره فروش");
+        User::addUser(&alireza);
+    }
+    if(!User::userExist("moeinferdavani1380@gmail.com"))
+    {
+        Admin moein("moeinferdavani1380@gmail.com", "123456789");
+        moein.setFirstname("معین");
+        moein.setLastname("خراسانی فردوانی");
+        User::addUser(&moein);
+    }
+    if(!User::userExist("adel.karshen@gmail.com"))
+    {
+        Admin adel("adel.karshen@gmail.com", "123456789");
+        adel.setFirstname("عادل");
+        adel.setLastname("کارشناس");
+        User::addUser(&adel);
+    }
+
 
 
     //onket_repository.loadStorage();
@@ -50,6 +64,24 @@ User *MainWindow::getCurrentUser()
 Storage &MainWindow::getOnketRepository()
 {
     return onket_repository;
+}
+
+void MainWindow::setLoginPage(LoginPage *lgnpg)
+{
+    delete login_page;
+    login_page = lgnpg;
+}
+
+void MainWindow::setSignupPage(signup *sinup)
+{
+    delete signup_page;
+    signup_page = sinup;
+}
+
+void MainWindow::setDashboard(Dashboard *dshbrd)
+{
+    delete dashboard;
+    dashboard = dshbrd;
 }
 
 MainWindow::~MainWindow()

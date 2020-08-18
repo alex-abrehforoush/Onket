@@ -11,7 +11,7 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
     , ui(new Ui::Dashboard)
 {
     ui->setupUi(this);
-    if(current_user->getMode() == 0)
+    if(MainWindow::getCurrentUser()->getMode() == 0)
     {
         ui->admin->hide();
         ui->customer->show();
@@ -49,7 +49,7 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         }
 
     }
-    else if(current_user->getMode() == 1)
+    else if(MainWindow::getCurrentUser()->getMode() == 1)
     {
         ui->admin->show();
         ui->customer->hide();
@@ -60,8 +60,17 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->finance->hide();
         ui->employeement->hide();
         ui->messages_2->hide();
-        ui->customer_account_info->hide();
+        ui->admin_account_info->hide();
         ui->foreign_connections->hide();
+        ui->admin_account_edit->hide();
+
+        ui->admin_password_line_edit->setEchoMode(QLineEdit::Password);
+        ui->first_and_lastname->setText(MainWindow::getCurrentUser()->getFirstname() + " " + MainWindow::getCurrentUser()->getLastname());
+        ui->username->setText(MainWindow::getCurrentUser()->getUsername());
+        ui->admin_firstname_line_edit->setText(MainWindow::getCurrentUser()->getFirstname());
+        ui->admin_lastname_line_edit->setText(MainWindow::getCurrentUser()->getLastname());
+        ui->admin_username_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
+        ui->admin_password_line_edit->setText(MainWindow::getCurrentUser()->getPassword());
     }
 }
 
@@ -160,7 +169,7 @@ void Dashboard::on_pushButton_15_clicked()
 
     ui->customer_first_and_last_name->setText(MainWindow::getCurrentUser()->getFirstname() + " " + MainWindow::getCurrentUser()->getLastname());
     ui->customer_username->setText(MainWindow::getCurrentUser()->getUsername());
-    ui->customer_password->setText(MainWindow::getCurrentUser()->getPassword());
+    //ui->customer_password->setText(MainWindow::getCurrentUser()->getPassword());
     ui->customer_phone_number->setText(MainWindow::getCurrentUser()->getPhoneNumber());
     ui->customer_birthday->setText(MainWindow::getCurrentUser()->getBirthday().toString());
     ui->customer_email->setText(MainWindow::getCurrentUser()->getUsername());
@@ -179,6 +188,7 @@ void Dashboard::on_goods_clicked()
     ui->messages_2->hide();
     ui->admin_account_info->hide();
     ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_pushButton_2_clicked()
@@ -191,6 +201,7 @@ void Dashboard::on_pushButton_2_clicked()
     ui->messages_2->hide();
     ui->admin_account_info->hide();
     ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_pushButton_3_clicked()
@@ -203,9 +214,10 @@ void Dashboard::on_pushButton_3_clicked()
     ui->messages_2->hide();
     ui->admin_account_info->hide();
     ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
 }
 
-void Dashboard::on_pushButton_4_clicked()
+void Dashboard::on_financial_management_clicked()
 {
     ui->goods_management->hide();
     ui->user_management->hide();
@@ -215,6 +227,7 @@ void Dashboard::on_pushButton_4_clicked()
     ui->messages_2->hide();
     ui->admin_account_info->hide();
     ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_pushButton_5_clicked()
@@ -227,6 +240,7 @@ void Dashboard::on_pushButton_5_clicked()
     ui->messages_2->hide();
     ui->admin_account_info->hide();
     ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_send_message_clicked()
@@ -239,9 +253,10 @@ void Dashboard::on_send_message_clicked()
     ui->messages_2->show();
     ui->admin_account_info->hide();
     ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
 }
 
-void Dashboard::on_pushButton_7_clicked()
+void Dashboard::on_account_management_clicked()
 {
     ui->goods_management->hide();
     ui->user_management->hide();
@@ -251,6 +266,7 @@ void Dashboard::on_pushButton_7_clicked()
     ui->messages_2->hide();
     ui->admin_account_info->show();
     ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_pushButton_8_clicked()
@@ -263,6 +279,7 @@ void Dashboard::on_pushButton_8_clicked()
     ui->messages_2->hide();
     ui->admin_account_info->hide();
     ui->foreign_connections->show();
+    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_customer_address_edit_of_valueChanged(int arg1)
@@ -316,10 +333,10 @@ void Dashboard::on_customer_apply_changes_button_clicked()
     User::addUser(MainWindow::getCurrentUser());
 }
 
-void Dashboard::on_show_password_checkBox_stateChanged(int arg1)
+void Dashboard::on_show_password_checkBox_stateChanged()
 {
-    if(arg1 == 0) ui->customer_password_line_edit->setEchoMode(QLineEdit::Password);
-    else ui->customer_password_line_edit->setEchoMode(QLineEdit::Normal);
+    if(ui->show_password_checkBox->checkState()) ui->customer_password_line_edit->setEchoMode(QLineEdit::Normal);
+    else ui->customer_password_line_edit->setEchoMode(QLineEdit::Password);
 }
 
 void Dashboard::on_customer_edit_clicked()
@@ -413,20 +430,7 @@ void Dashboard::on_add_to_storage_clicked()
 
 void Dashboard::on_admin_back_clicked()
 {
-    ui->good_id_for_adding_to_storage->setText("کد کالا");
-    ui->good_color_for_adding_to_storage->setCurrentText("سبز");
-    ui->good_number_for_adding_to_storage->setValue(1);
-    ui->show_inventory_label->clear();
-
-    ui->goods_management->hide();
-    ui->user_management->hide();
-    ui->site_settings->hide();
-    ui->finance->hide();
-    ui->employeement->hide();
-    ui->messages_2->hide();
-    ui->admin_account_info->hide();
-    ui->foreign_connections->hide();
-    this->close();
+    MainWindow::setDashboard(nullptr);
 }
 
 void Dashboard::on_inventory_clicked()
@@ -461,4 +465,50 @@ void Dashboard::on_make_good_button_clicked()
     Good temp(ui->name_of_good_to_make->text(), "موبایل", ui->seller_code->text(), ui->price_of_make->text().toUInt());
     Good::WriteFile();
     return;
+}
+
+void Dashboard::on_admin_apply_changes_button_clicked()
+{
+    QFile data_remove("Database/User/" + MainWindow::getCurrentUser()->getUsername() + ".csv");
+    data_remove.remove();
+    MainWindow::getCurrentUser()->setFirstname(this->ui->admin_firstname_line_edit->text());
+    MainWindow::getCurrentUser()->setLastname(this->ui->admin_lastname_line_edit->text());
+    MainWindow::getCurrentUser()->setUsername(this->ui->admin_username_line_edit->text());
+    MainWindow::getCurrentUser()->setPassword(this->ui->admin_password_line_edit->text());
+    User::addUser(MainWindow::getCurrentUser());
+    QMessageBox::information(this, "پیام", "تفییرات با موفقیت اعمال شد");
+    ui->admin_account_edit->hide();
+    ui->admin_account_info->show();
+}
+
+void Dashboard::on_show_password_checkBox_2_stateChanged()
+{
+    if(ui->show_password_checkBox_2->checkState()) ui->admin_password_line_edit->setEchoMode(QLineEdit::Normal);
+    else ui->admin_password_line_edit->setEchoMode(QLineEdit::Password);
+}
+
+void Dashboard::on_admin_edit_clicked()
+{
+    this->ui->admin_account_info->hide();
+    ui->admin_firstname_line_edit->setText(MainWindow::getCurrentUser()->getFirstname());
+    ui->admin_lastname_line_edit->setText(MainWindow::getCurrentUser()->getLastname());
+    ui->admin_username_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
+    ui->admin_password_line_edit->setText(MainWindow::getCurrentUser()->getPassword());
+    this->ui->admin_account_edit->show();
+}
+
+void Dashboard::on_admin_edit_back_clicked()
+{
+    this->ui->admin_account_edit->hide();
+    this->ui->admin_account_info->show();
+}
+
+void Dashboard::on_admin_info_back_clicked()
+{
+    this->ui->admin_account_info->hide();
+}
+
+void Dashboard::on_users_management_clicked()
+{
+
 }

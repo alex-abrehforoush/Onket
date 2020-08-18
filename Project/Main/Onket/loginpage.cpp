@@ -26,14 +26,7 @@ QSize LoginPage::sizeHint() const
 
 void LoginPage::on_back_clicked()
 {
-    ui->username_line_edit->clear();
-    ui->password_line_edit->clear();
-    ui->password_is_empty->setText("");
-    ui->username_is_empty->setText("");
-    ui->username_or_password_is_wrong->setText("");
-    ui->show_password->setCheckState(Qt::Unchecked);
-    ui->save_login_info->setCheckState(Qt::Unchecked);
-    this->close();
+    MainWindow::setLoginPage(nullptr);
 }
 
 void LoginPage::on_show_password_stateChanged()

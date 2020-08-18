@@ -31,7 +31,7 @@ private slots:
 
     void on_pushButton_14_clicked();
 
-    void on_pushButton_7_clicked();
+    void on_account_management_clicked();
 
     void on_goods_clicked();
 
@@ -39,7 +39,7 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_pushButton_4_clicked();
+    void on_financial_management_clicked();
 
     void on_pushButton_5_clicked();
 
@@ -57,7 +57,7 @@ private slots:
 
     void on_customer_apply_changes_button_clicked();
 
-    void on_show_password_checkBox_stateChanged(int arg1);
+    void on_show_password_checkBox_stateChanged();
 
     void on_customer_edit_clicked();
 
@@ -76,6 +76,18 @@ private slots:
     void on_inventory_clicked();
 
     void on_make_good_button_clicked();
+
+    void on_admin_apply_changes_button_clicked();
+
+    void on_show_password_checkBox_2_stateChanged();
+
+    void on_admin_edit_clicked();
+
+    void on_admin_edit_back_clicked();
+
+    void on_admin_info_back_clicked();
+
+    void on_users_management_clicked();
 
 private:
     Ui::Dashboard *ui;

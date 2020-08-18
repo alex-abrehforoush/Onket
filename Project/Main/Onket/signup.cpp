@@ -4,6 +4,7 @@
 #include "Customer.h"
 #include <QString>
 #include <QMessageBox>
+#include "mainwindow.h"
 
 signup::signup(QWidget *parent) :
     QWidget(parent),
@@ -61,29 +62,7 @@ void signup::on_show_password_stateChanged()
 
 void signup::on_back_clicked()
 {
-    ui->username_line_edit->clear();
-    ui->password_line_edit->clear();
-    ui->repeat_password_line_edit->clear();
-    ui->show_password->setCheckState(Qt::Unchecked);
-    ui->label_5->clear();
-    ui->label_6->clear();
-    ui->label_7->clear();
-    ui->signup_first_step->close();
-
-    ui->firstname_line_edit->clear();
-    ui->lastname_line_edit->clear();
-    ui->phone_number_line_edit->clear();
-    ui->birthday_edit->setDate(QDate::currentDate());
-    ui->address_line_edit->clear();
-    ui->firstname_is_empty->clear();
-    ui->lastname_is_empty->clear();
-    ui->phone_is_empty->clear();
-    ui->no_address->clear();
-    ui->signup_second_step->close();
-
-    this->close();
-
-    this->close();
+    MainWindow::setSignupPage(nullptr);
 }
 
 void signup::on_signup_button_clicked()
