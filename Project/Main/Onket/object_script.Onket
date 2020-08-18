@@ -31,6 +31,7 @@ loginpage.o
 replyinputwidget.o
 replyviewitem.o
 signup.o
+storage.o
 type.o
 moc_commentlistwidget.o
 moc_commentitemstatus.o

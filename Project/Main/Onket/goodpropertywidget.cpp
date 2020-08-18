@@ -14,6 +14,10 @@ GoodPropertyWidget::GoodPropertyWidget(const QString& good_id,QWidget *parent) :
     this->info_valid=true;
     Good& g=Good::getGood(good_id);
     ui->table_property->setColumnCount(2);
+
+    ui->table_property->setHorizontalHeaderItem(1,new QTableWidgetItem(""));
+    ui->table_property->setHorizontalHeaderItem(0,new QTableWidgetItem(""));
+
     int cnt=0;
     for(g.setPropertySeekBegin();g.propertySeekAtEnd()==false;cnt++)
     {
@@ -26,8 +30,9 @@ GoodPropertyWidget::GoodPropertyWidget(const QString& good_id,QWidget *parent) :
        QTableWidgetItem* itm_value=new QTableWidgetItem(g.getPropertyValue(property_name));
        itm_value->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-       ui->table_property->setItem(cnt,0,itm_name);
-      ui->table_property->setItem(cnt,1,itm_value);
+       ui->table_property->setItem(cnt,1,itm_name);
+      ui->table_property->setItem(cnt,0,itm_value);
+
 
    this->setFixedSize(400,400);
 
