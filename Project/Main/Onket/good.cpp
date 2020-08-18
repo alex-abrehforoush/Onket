@@ -107,7 +107,7 @@ bool Good::existGoodName(const QString &good_name)
 
 bool Good::readFile()
 {
-    QFile file("E:/OnketFile/Goods/goods.csv");
+    QFile file("Database/Goods/goods.csv");
     if(file.open(QFile::ReadOnly | QFile::Text)==false)
     {
         return false;
@@ -117,7 +117,7 @@ bool Good::readFile()
     {
         QTextStream txt_stream;
         txt_stream.setDevice(& file);
-        txt_stream.setAutoDetectUnicode(true);
+        txt_stream.setCodec("UTF-8");
 
         txt_stream.readLine();
         while (txt_stream.atEnd()==false)
@@ -140,12 +140,12 @@ bool Good::readFile()
 bool Good::WriteFile()
 {
    QDir d;
-   if (d.exists("E:/OnketFile/Goods")==false)
+   if (d.exists("Database/Goods")==false)
    {
-       d.mkpath("E:/OnketFile/Goods");
+       d.mkpath("Database/Goods");
    }
 
-   QFile file("E:/OnketFile/Goods/goods.csv");
+   QFile file("Database/Goods/goods.csv");
 
    if(file.open(QFile::WriteOnly | QFile::Text)==false)
    {
@@ -157,7 +157,7 @@ bool Good::WriteFile()
    {
        QTextStream txt_stream;
        txt_stream.setDevice(& file);
-       txt_stream.setAutoDetectUnicode(true);
+       txt_stream.setCodec("UTF-8");
 
        txt_stream<<"id;name;maker_id;type_id;price;discount;properties;comment_item"<<endl;
        for(auto it=goods_id.begin(); it != goods_id.end();it++)

@@ -14,8 +14,10 @@ release/discussionitem.o
 release/discussionlistwidget.o
 release/filefunctions.o
 release/good.o
+release/goodmainviewwidget.o
 release/goodpreviewscrollarea.o
 release/goodpreviewwidget.o
+release/goodpropertywidget.o
 release/item.o
 release/main.o
 release/mainwindow.o
@@ -39,8 +41,10 @@ release/moc_commentwidget.o
 release/moc_commentwidgetfield.o
 release/moc_dashboard.o
 release/moc_discussionlistwidget.o
+release/moc_goodmainviewwidget.o
 release/moc_goodpreviewscrollarea.o
 release/moc_goodpreviewwidget.o
+release/moc_goodpropertywidget.o
 release/moc_mainwindow.o
 release/moc_questioninputwidget.o
 release/moc_questionviewitem.o

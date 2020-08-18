@@ -16,10 +16,11 @@ public:
     Commodity& getCommodityOf(QString type);
     void loadStorage();
     void addGood(QString type, QString color, int num = 1);
+    QMap<QString,Commodity>& getRemaining();
 
     void sold(QString type, QString color, int num);
     int getPropertyValue();
-    int getRemaining(QString type, QString color);
+//    int getRemaining(QString type, QString color);
     void setRemaining(QString type, QString color,int num);
     void setSales(QString type, int num);
     int getSales(QString type);

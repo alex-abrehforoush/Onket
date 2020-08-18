@@ -48,6 +48,11 @@ void Storage::addGood(QString type, QString color, int num)
     return;
 }
 
+QMap<QString, Commodity> &Storage::getRemaining()
+{
+    return this->remaining;
+}
+
 void Storage::sold(QString type,QString color ,int num)
 {
 //    void Commodity::add(QString color, unsigned int number)
@@ -74,11 +79,11 @@ int Storage::getPropertyValue()
     return this->inventory;
 }
 //need check
-int Storage::getRemaining(QString type, QString color)
-{
-     auto it =this->remaining.find(type);
-     return it.value().inventoryOf(color);
-}
+//int Storage::getRemaining(QString type, QString color)
+//{
+//     auto it =this->remaining.find(type);
+//     return it.value().inventoryOf(color);
+//}
 //need check
 void Storage::setRemaining(QString type, QString color, int num)
 {

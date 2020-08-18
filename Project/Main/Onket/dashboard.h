@@ -71,6 +71,12 @@ private slots:
 
     void on_add_to_storage_clicked();
 
+    void on_admin_back_clicked();
+
+    void on_inventory_clicked();
+
+    void on_make_good_button_clicked();
+
 private:
     Ui::Dashboard *ui;
 };

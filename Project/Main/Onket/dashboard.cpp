@@ -410,3 +410,55 @@ void Dashboard::on_add_to_storage_clicked()
     MainWindow::getOnketRepository().addGood(this->ui->good_id_for_adding_to_storage->text(), temp, this->ui->good_number_for_adding_to_storage->value());
     return;
 }
+
+void Dashboard::on_admin_back_clicked()
+{
+    ui->good_id_for_adding_to_storage->setText("کد کالا");
+    ui->good_color_for_adding_to_storage->setCurrentText("سبز");
+    ui->good_number_for_adding_to_storage->setValue(1);
+    ui->show_inventory_label->clear();
+
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->messages_2->hide();
+    ui->admin_account_info->hide();
+    ui->foreign_connections->hide();
+    this->close();
+}
+
+void Dashboard::on_inventory_clicked()
+{
+    QString temp;
+    if(MainWindow::getOnketRepository().getRemaining().contains(ui->good_id_for_get_inventory->text()))
+    {
+        if(ui->good_color_for_get_inventory->currentText() == "همه موارد")
+        {
+            ui->show_inventory_label->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(ui->good_id_for_get_inventory->text()).inventory()) + "تا در انبار موجود است");
+        }
+        else if(ui->good_color_for_get_inventory->currentText() == "سبز") temp = "Green";
+        else if(ui->good_color_for_get_inventory->currentText() == "قرمز") temp = "Red";
+        else if(ui->good_color_for_get_inventory->currentText() == "آبی") temp = "Blue";
+        else if(ui->good_color_for_get_inventory->currentText() == "بنفش") temp = "Purple";
+        else if(ui->good_color_for_get_inventory->currentText() == "زرد") temp = "Yellow";
+        else if(ui->good_color_for_get_inventory->currentText() == "صورتی") temp = "Pink";
+        else if(ui->good_color_for_get_inventory->currentText() == "قهوه ای") temp = "Brown";
+        else if(ui->good_color_for_get_inventory->currentText() == "مشکی") temp = "Black";
+        else if(ui->good_color_for_get_inventory->currentText() == "سفید") temp = "White";
+        ui->show_inventory_label->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(ui->good_id_for_get_inventory->text()).inventoryOf(temp)) + "تا در انبار موجود است ");
+    }
+    else
+    {
+        ui->show_inventory_label->setText("چنین کالایی وجود ندارد");
+    }
+}
+
+void Dashboard::on_make_good_button_clicked()
+{
+    Good::readFile();
+    Good temp(ui->name_of_good_to_make->text(), "موبایل", ui->seller_code->text(), ui->price_of_make->text().toUInt());
+    Good::WriteFile();
+    return;
+}
