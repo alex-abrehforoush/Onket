@@ -7,6 +7,7 @@
 #include "signup.h"
 
 User* MainWindow::current_user;
+Storage MainWindow::onket_repository;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,15 +20,23 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Onket | An Online Market");
     setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
     current_user = new Guest();
+
     Admin alireza("wwe_alireza.abc2015@yahoo.com", "5B24cX7o");
     alireza.setFirstname("علیرضا");
     alireza.setLastname("ابره فروش");
     User::addUser(&alireza);
+    Admin moein("moeinferdavani1380@gmail.com", "123456789");
+    moein.setFirstname("معین");
+    moein.setLastname("خراسانی فردوانی");
+    User::addUser(&moein);
+
+
+    //onket_repository.loadStorage();
 }
 
 void MainWindow::setCurrentUser(User *crnt)
 {
-    delete current_user;
+    if(current_user != nullptr) delete current_user;
     current_user = nullptr;
     current_user = crnt;
     return;
@@ -36,6 +45,11 @@ void MainWindow::setCurrentUser(User *crnt)
 User *MainWindow::getCurrentUser()
 {
     return current_user;
+}
+
+Storage &MainWindow::getOnketRepository()
+{
+    return onket_repository;
 }
 
 MainWindow::~MainWindow()

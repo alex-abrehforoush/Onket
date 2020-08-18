@@ -9,6 +9,7 @@
 #include "loginpage.h"
 #include "signup.h"
 #include "dashboard.h"
+#include "storage.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +26,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     static void setCurrentUser(User* crnt);
     static User* getCurrentUser();
+    static Storage& getOnketRepository();
     ~MainWindow();
 
 private slots:
@@ -40,5 +42,6 @@ private:
     signup* signup_page;
     Dashboard* dashboard;
     static User* current_user;
+    static Storage onket_repository;
 };
 #endif // MAINWINDOW_H

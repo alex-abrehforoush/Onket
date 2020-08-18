@@ -209,7 +209,7 @@ int User::addUser(User* new_user)
         {
             QTextStream out(&user_personal);
             out.setCodec("UTF-8");
-            out << new_user->getUsername() << "," << new_user->getPassword() << "," << new_user->getMode() << "," << new_user->getFirstname() << "," << new_user->getLastname() << "," ;
+            out << new_user->getUsername() << "," << new_user->getPassword() << "," << new_user->getMode() << "," << new_user->getFirstname().toUtf8() << "," << new_user->getLastname().toUtf8() << "," ;
             if(new_user->getMode()==0)
             {
                 out << new_user->getBirthday().toString() << "," << new_user->getPhoneNumber() << ",";

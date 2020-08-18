@@ -33,7 +33,7 @@ private slots:
 
     void on_pushButton_7_clicked();
 
-    void on_pushButton_clicked();
+    void on_goods_clicked();
 
     void on_pushButton_2_clicked();
 
@@ -68,6 +68,14 @@ private slots:
     void on_logout_clicked();
 
     void on_send_clicked();
+
+    void on_add_to_storage_clicked();
+
+    void on_admin_back_clicked();
+
+    void on_inventory_clicked();
+
+    void on_make_good_button_clicked();
 
 private:
     Ui::Dashboard *ui;

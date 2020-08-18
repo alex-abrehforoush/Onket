@@ -22,7 +22,7 @@
      <height>800</height>
     </rect>
    </property>
-   <widget class="QPushButton" name="goods_management_2">
+   <widget class="QPushButton" name="goods">
     <property name="geometry">
      <rect>
       <x>1270</x>
@@ -159,11 +159,377 @@
       <height>500</height>
      </rect>
     </property>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>980</x>
+       <y>40</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>____________________________</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_32">
+     <property name="geometry">
+      <rect>
+       <x>969</x>
+       <y>10</y>
+       <width>131</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;B Homa&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>مدیریت کالا</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_33">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>90</y>
+       <width>161</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>اضافه کردن کالا به انبار:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="good_id_for_adding_to_storage">
+     <property name="geometry">
+      <rect>
+       <x>832</x>
+       <y>140</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>کد کالا</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="good_color_for_adding_to_storage">
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>140</y>
+       <width>101</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>سبز</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>قرمز</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>آبی</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>بنفش</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>زرد</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>صورتی</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>قهوه ای</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>مشکی</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>سفید</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="add_to_storage">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>140</y>
+       <width>91</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>اضافه به انبار</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="good_number_for_adding_to_storage">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>140</y>
+       <width>101</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>1000000</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_34">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>200</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>موجودی انبار:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="good_id_for_get_inventory">
+     <property name="geometry">
+      <rect>
+       <x>832</x>
+       <y>250</y>
+       <width>221</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>کد کالا</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="good_color_for_get_inventory">
+     <property name="geometry">
+      <rect>
+       <x>720</x>
+       <y>250</y>
+       <width>101</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>همه موارد</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>سبز</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>قرمز</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>آبی</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>بنفش</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>زرد</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>صورتی</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>قهوه ای</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>مشکی</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>سفید</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPushButton" name="inventory">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>250</y>
+       <width>91</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>موجودی</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="show_inventory_label">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>250</y>
+       <width>411</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_35">
+     <property name="geometry">
+      <rect>
+       <x>1010</x>
+       <y>310</y>
+       <width>81</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>ساخت کالا:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="name_of_good_to_make">
+     <property name="geometry">
+      <rect>
+       <x>910</x>
+       <y>350</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>نام کالا</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="good_type">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
+       <y>350</y>
+       <width>131</width>
+       <height>24</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="seller_code">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>350</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>کد فروشنده</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="make_good_button">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>350</y>
+       <width>91</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>ساخت</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="price_of_make">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>350</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>قیمت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="user_management" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -528,6 +894,27 @@ color: rgb(0, 0, 0);</string>
       <string>ویرایش اطلاعات شخصی</string>
      </property>
     </widget>
+   </widget>
+   <widget class="QCommandLinkButton" name="admin_back">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>80</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>7</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>بازگشت</string>
+    </property>
    </widget>
   </widget>
   <widget class="QWidget" name="customer" native="true">

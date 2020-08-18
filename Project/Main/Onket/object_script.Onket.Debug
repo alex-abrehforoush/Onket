@@ -14,8 +14,10 @@ debug/discussionitem.o
 debug/discussionlistwidget.o
 debug/filefunctions.o
 debug/good.o
+debug/goodmainviewwidget.o
 debug/goodpreviewscrollarea.o
 debug/goodpreviewwidget.o
+debug/goodpropertywidget.o
 debug/item.o
 debug/main.o
 debug/mainwindow.o
@@ -39,8 +41,10 @@ debug/moc_commentwidget.o
 debug/moc_commentwidgetfield.o
 debug/moc_dashboard.o
 debug/moc_discussionlistwidget.o
+debug/moc_goodmainviewwidget.o
 debug/moc_goodpreviewscrollarea.o
 debug/moc_goodpreviewwidget.o
+debug/moc_goodpropertywidget.o
 debug/moc_mainwindow.o
 debug/moc_questioninputwidget.o
 debug/moc_questionviewitem.o

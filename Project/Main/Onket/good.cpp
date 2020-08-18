@@ -117,7 +117,7 @@ bool Good::readFile()
     {
         QTextStream txt_stream;
         txt_stream.setDevice(& file);
-        txt_stream.setAutoDetectUnicode(true);
+        txt_stream.setCodec("UTF-8");
 
         txt_stream.readLine();
         while (txt_stream.atEnd()==false)
@@ -155,8 +155,14 @@ bool Good::WriteFile()
 
    else
    {
+<<<<<<< HEAD
        QTextStream txt_stream(&file);
        txt_stream.setAutoDetectUnicode(true);
+=======
+       QTextStream txt_stream;
+       txt_stream.setDevice(& file);
+       txt_stream.setCodec("UTF-8");
+>>>>>>> 063e114a632d5269e7d937b6ac90562853e23845
 
        txt_stream<<"id;name;maker_id;type_id;price;discount;properties;comment_item"<<endl;
        for(auto it=goods_id.begin(); it != goods_id.end();it++)
