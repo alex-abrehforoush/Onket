@@ -3,6 +3,7 @@ Customer.o
 Guest.o
 Order.o
 User.o
+actiointype.o
 commentlistwidget.o
 commentlistwidgetitem.o
 commentwidget.o
@@ -24,6 +25,7 @@ main.o
 mainwindow.o
 comment.o
 Commodity.o
+menutype.o
 question.o
 questioninputwidget.o
 questionviewitem.o
