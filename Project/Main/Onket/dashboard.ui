@@ -169,11 +169,47 @@
       <height>500</height>
      </rect>
     </property>
+    <widget class="QLabel" name="label_29">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>20</y>
+       <width>160</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;B Homa&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>اطلاعات شخصی</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_30">
+     <property name="geometry">
+      <rect>
+       <x>940</x>
+       <y>50</y>
+       <width>161</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>____________________________</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="site_settings" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -183,7 +219,7 @@
    <widget class="QWidget" name="finance" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -193,7 +229,7 @@
    <widget class="QWidget" name="employeement" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -203,7 +239,7 @@
    <widget class="QWidget" name="messages_2" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -341,7 +377,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="admin_account_info" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -497,7 +533,7 @@ color: rgb(0, 0, 0);</string>
   <widget class="QWidget" name="customer" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>1510</x>
      <y>0</y>
      <width>1500</width>
      <height>800</height>
@@ -661,7 +697,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="messages" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>

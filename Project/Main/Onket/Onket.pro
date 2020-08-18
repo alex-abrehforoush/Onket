@@ -49,6 +49,7 @@ SOURCES += \
     replyinputwidget.cpp \
     replyviewitem.cpp \
     signup.cpp \
+    storage.cpp \
     type.cpp
 
 HEADERS += \
@@ -85,6 +86,7 @@ HEADERS += \
     replyinputwidget.h \
     replyviewitem.h \
     signup.h \
+    storage.h \
     type.h
 
 FORMS += \

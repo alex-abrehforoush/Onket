@@ -29,6 +29,7 @@ debug/loginpage.o
 debug/replyinputwidget.o
 debug/replyviewitem.o
 debug/signup.o
+debug/storage.o
 debug/type.o
 debug/moc_commentlistwidget.o
 debug/moc_commentitemstatus.o
