@@ -3,6 +3,7 @@
 #include "type.h"
 
 QMap<QString,Type> Type::types;
+QString Type::current_type_id="none";
 bool Type::addBranch(const QString branch_name)
 {
     if(this->existBranch(branch_name)==true)
@@ -48,10 +49,24 @@ QVector<QString> Type::getBaseTypeId()
 {
     QVector <QString>res;
     for(auto it=Type::types.cbegin();it!=Type::types.cend();it++)
-    {
+    { if((*it).getParentId()=="none")
+
         res.push_back(it.key());
     }
     return res;
+}
+
+QString Type::getCurrentTypeId()
+{
+    return Type::current_type_id;
+}
+
+void Type::setCurrentTypeId(QString type_id)
+{
+    if(Type::existTypeId(type_id)==true)
+    {
+        Type::current_type_id=type_id;
+    }
 }
 
 Type::Type(QString type_name, QString parent_id)
@@ -303,6 +318,11 @@ bool Type::removeGood(const QString &good_id)const
     }
 }
 
+bool Type::GoodListIsEmpty()const
+{
+    return  this->goods_id.empty();
+}
+
 bool Type::existProperty(const QString input) const
 {
     for(int cnt=0;cnt<this->property_name.size();cnt++)
@@ -423,6 +443,11 @@ bool Type::BranchSeekAtEnd() const
     {
         return false;
     }
+}
+
+bool Type::branchIdIsEmpty() const
+{
+    return this->branches_id.empty();
 }
 
 void Type::setGoodSeekBegin() const

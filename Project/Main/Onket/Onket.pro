@@ -21,6 +21,7 @@ SOURCES += \
     Guest.cpp \
     Order.cpp \
     User.cpp \
+    actiointype.cpp \
     commentlistwidget.cpp \
     commentlistwidgetitem.cpp \
     commentwidget.cpp \
@@ -42,6 +43,7 @@ SOURCES += \
     mainwindow.cpp \
     comment.cpp \
     Commodity.cpp \
+    menutype.cpp \
     question.cpp \
     questioninputwidget.cpp \
     questionviewitem.cpp \
@@ -60,6 +62,7 @@ HEADERS += \
     Guest.h \
     Order.h \
     User.h \
+    actiointype.h \
     commentlistwidget.h \
     commentitemstatus.h \
     commentitemstatusfield.h \
@@ -80,6 +83,7 @@ HEADERS += \
     mainwindow.h \
     comment.h \
     Commity.h \
+    menutype.h \
     question.h \
     questioninputwidget.h \
     questionviewitem.h \
