@@ -6102,23 +6102,6 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		signup.h \
 		dashboard.h \
 		ui_mainwindow.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtCore/QVariant \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QAction \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qaction.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qactiongroup.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QApplication \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qapplication.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtCore/qeventloop.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qguiapplication.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qinputmethod.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QMenu \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qmenu.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QMenuBar \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qmenubar.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QStatusBar \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qstatusbar.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QMessageBox \
 		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qmessagebox.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qdialog.h
@@ -6868,40 +6851,11 @@ loginpage.o: loginpage.cpp loginpage.h \
 		User.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtCore/qdatetime.h \
 		ui_loginpage.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtCore/QVariant \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QApplication \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qapplication.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtCore/qcoreapplication.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtCore/qeventloop.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qdesktopwidget.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qguiapplication.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qinputmethod.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QCheckBox \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qcheckbox.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qabstractbutton.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qicon.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QCommandLinkButton \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qcommandlinkbutton.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qpushbutton.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QLabel \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qlabel.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qframe.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QLineEdit \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qlineedit.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qtextcursor.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qtextformat.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qpen.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qtextoption.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QPushButton \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QVBoxLayout \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qboxlayout.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qlayout.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qlayoutitem.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qgridlayout.h \
 		mainwindow.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/QMainWindow \
 		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qmainwindow.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtWidgets/qtabwidget.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_64/include/QtGui/qicon.h \
 		Admin.h \
 		Customer.h \
 		Order.h \
