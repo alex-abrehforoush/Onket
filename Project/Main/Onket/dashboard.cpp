@@ -169,7 +169,7 @@ void Dashboard::on_pushButton_15_clicked()
     ui->customer_address_number_edit->clear();
 }
 
-void Dashboard::on_pushButton_clicked()
+void Dashboard::on_goods_clicked()
 {
     ui->goods_management->show();
     ui->user_management->hide();
@@ -393,4 +393,20 @@ void Dashboard::on_send_clicked()
         out << content;
         data.close();
     }
+}
+
+void Dashboard::on_add_to_storage_clicked()
+{
+    QString temp;
+    if(this->ui->good_color_for_adding_to_storage->currentText() == "سبز") temp = "Green";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "قرمز") temp = "Red";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "آبی") temp = "Blue";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "بنفش") temp = "Purple";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "زرد") temp = "Yellow";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "صورتی") temp = "Pink";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "قهوه ای") temp = "Brown";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "مشکی") temp = "Black";
+    else if(this->ui->good_color_for_adding_to_storage->currentText() == "سفید") temp = "White";
+    MainWindow::getOnketRepository().addGood(this->ui->good_id_for_adding_to_storage->text(), temp, this->ui->good_number_for_adding_to_storage->value());
+    return;
 }

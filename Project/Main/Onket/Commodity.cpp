@@ -73,10 +73,10 @@ Commodity Commodity::getCommodity(QString good_id)
 
 int Commodity::addCommodity(Commodity new_commodity)
 {
-    if(!(new_commodity.commodityExist(new_commodity.getCommodityId())))
+    QDir data;
+    data.mkpath("Database/Commodity");
+    if(!commodityExist(new_commodity.getCommodityId()))
     {
-        QDir data;
-        data.mkpath("Database/Commodity");
         QFile commodity_list("Database/Commodity/commodity_list.csv");
         if(commodity_list.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
         {
@@ -85,20 +85,19 @@ int Commodity::addCommodity(Commodity new_commodity)
             commodity_list.close();
         }
         else return 0;
-        QFile commodity_personal("Database/Commodity/" + new_commodity.getCommodityId() + ".csv");
-        if(commodity_personal.open(QIODevice::WriteOnly | QIODevice::Text))
-        {
-            QTextStream out(&commodity_personal);
-            for(auto e : new_commodity.color.keys())
-            {
-                out << e << "," << new_commodity.color.value(e) << "\n";
-            }
-            commodity_personal.close();
-        }
-        else return 0;//file didn't open
-        return 1;//file created
     }
-    else return 0;//file exists
+    QFile commodity_personal("Database/Commodity/" + new_commodity.getCommodityId() + ".csv");
+    if(commodity_personal.open(QIODevice::WriteOnly | QIODevice::Text))
+    {
+        QTextStream out(&commodity_personal);
+        for(auto e : new_commodity.color.keys())
+        {
+            out << e << "," << new_commodity.color.value(e) << "\n";
+        }
+        commodity_personal.close();
+    }
+    else return 0;//file didn't open
+    return 1;//file created
 }
 
 unsigned long long int Commodity::inventory()

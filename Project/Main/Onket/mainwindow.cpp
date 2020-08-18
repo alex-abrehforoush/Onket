@@ -7,6 +7,7 @@
 #include "signup.h"
 
 User* MainWindow::current_user;
+Storage MainWindow::onket_repository;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -27,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::setCurrentUser(User *crnt)
 {
-    delete current_user;
+    if(current_user != nullptr) delete current_user;
     current_user = nullptr;
     current_user = crnt;
     return;
@@ -36,6 +37,11 @@ void MainWindow::setCurrentUser(User *crnt)
 User *MainWindow::getCurrentUser()
 {
     return current_user;
+}
+
+Storage &MainWindow::getOnketRepository()
+{
+    return onket_repository;
 }
 
 MainWindow::~MainWindow()

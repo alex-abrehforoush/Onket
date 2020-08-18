@@ -13,7 +13,7 @@ private:
     QMap<QString, unsigned int> color;
     //static QFile commodity_data("Database/Commodity/commodity_list");
 public:
-	Commodity(QString id_of_good = 0);
+    Commodity(QString id_of_good = QString::number(0));
     QString getCommodityId() const;
 	void add(QString color, unsigned int number = 1);
 	void remove(QString color, unsigned int number = 1);
