@@ -107,7 +107,7 @@ bool Good::existGoodName(const QString &good_name)
 
 bool Good::readFile()
 {
-    QFile file("E:/OnketFile/Goods/goods.csv");
+    QFile file("Database/Goods/goods.csv");
     if(file.open(QFile::ReadOnly | QFile::Text)==false)
     {
         return false;
@@ -140,12 +140,12 @@ bool Good::readFile()
 bool Good::WriteFile()
 {
    QDir d;
-   if (d.exists("E:/OnketFile/Goods")==false)
+   if (d.exists("Database/Goods")==false)
    {
-       d.mkpath("E:/OnketFile/Goods");
+       d.mkpath("Database/Goods");
    }
 
-   QFile file("E:/OnketFile/Goods/goods.csv");
+   QFile file("Database/Goods/goods.csv");
 
    if(file.open(QFile::WriteOnly | QFile::Text)==false)
    {
@@ -155,8 +155,7 @@ bool Good::WriteFile()
 
    else
    {
-       QTextStream txt_stream;
-       txt_stream.setDevice(& file);
+       QTextStream txt_stream(&file);
        txt_stream.setAutoDetectUnicode(true);
 
        txt_stream<<"id;name;maker_id;type_id;price;discount;properties;comment_item"<<endl;
@@ -181,6 +180,11 @@ QString Good::getId() const
 QString Good::getName() const
 {
     return this->name;
+}
+
+QString Good::getMakerId() const
+{
+    return this->maker_id;
 }
 
 

@@ -34,8 +34,9 @@ CommentItemStatusField::CommentItemStatusField(const QString& field_name,unsigne
    lab_space->setStyleSheet(style);
    lab_name->setText(this->field_name);
    lab_percent->setText(CommentItemStatusField::toQString(this->percent));
-   lab_rect->setStyleSheet("background-color: rgb(0, 0, 255);");
-
+   lab_rect->setStyleSheet("background-color: rgb(100, 100, 255);");
+    lab_name->setStyleSheet("color: rgb(255, 255, 255);background-color: rgb(0, 0, 255);");
+    lab_name->setAlignment(Qt::AlignCenter);
 
     QLabel* lab_zero=new QLabel("0",this);
     QLabel* lab_hudred=new QLabel("100",this);
@@ -58,6 +59,7 @@ CommentItemStatusField::CommentItemStatusField(const QString& field_name,unsigne
    this->main_lay->addWidget(lab_rect,3);
     this->main_lay->addWidget(lab_zero,4);
     this->main_lay->addWidget(lab_name,5);
+
 
 
 }

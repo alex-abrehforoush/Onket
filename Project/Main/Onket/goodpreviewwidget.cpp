@@ -90,7 +90,7 @@ void GoodPreviewWidget::update()
              ui->lab_discount->setHidden(true);
 
           }
-          QString path="E:/OnketFile/GoodPicture/goodPicture";
+          QString path="Database/GoodPicture/goodPicture";
           path.append(g.getId());path.append(".png");
           QImage img;
           bool mode_load=img.load(path);

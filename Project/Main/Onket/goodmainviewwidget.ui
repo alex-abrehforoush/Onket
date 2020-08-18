@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>goodMainviewWidget</class>
- <widget name="goodMainviewWidget" class="QScrollArea">
+ <widget class="QScrollArea" name="goodMainviewWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,5 +13,10 @@
   <property name="windowTitle">
    <string>ScrollArea</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
  </widget>
+ <resources/>
+ <connections/>
 </ui>

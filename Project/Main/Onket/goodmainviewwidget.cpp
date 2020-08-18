@@ -5,9 +5,12 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     QScrollArea(parent)
     ,center_widget(new QWidget(this))
     ,bnt_add_to_basket(new QPushButton("افزودن به سبد خرید",this))
-    ,lab_img(new QLabel(this))
+
+  ,g_properties(new GoodPropertyWidget(good_id,this))
   ,c_status(new CommentItemStatus(good_id,this))
-  ,main_lay(new QHBoxLayout(this))
+ ,lab_img(new QLabel(this))
+  ,g_general(new GoodGenralInfoWidget(good_id,this))
+  ,main_lay(new QGridLayout(this))
   ,lay_picture(new QVBoxLayout(this)),lay_body(new QVBoxLayout(this)),lay_comment_items(new QVBoxLayout(this)),lay_buy(new QVBoxLayout(this))
    , ui(new Ui::goodMainviewWidget)
 {
@@ -26,18 +29,44 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     {
         return;
     }
+    QDir d;
+    if(d.exists("Database/GoodPicture")==false)
+    {
+        d.mkpath("Database/GoodPicture");
+    }
+
+    Good & g=Good::getGood(good_id);
+    QString path="Database/GoodPicture/";
+    path.append(good_id);
+    path.append(".png");
+    QImage img;
+   if(QFile::exists(path)==false)
+   {
+       img.load("Database/GoodPicture/default.jpg");
+       this->lab_img->setPixmap(QPixmap::fromImage(img));
+   }
+
+  QString bnt_add_content="افزودن به سبد خرید";
+  bnt_add_content.append(" )");
+  bnt_add_content.append(QString::number(g.getFinalPrice()));
+  bnt_add_content.append("  تومان  )");
+  this->bnt_add_to_basket->setText(bnt_add_content);
+
+
+
     this->info_valid=true;
     this->setupSTyleSheet();
     this->setupLayout();
-
+    this->lab_img->setFixedSize(300,300);
+    this->setFixedSize(1500,800);
 
 }
 
 void goodMainViewWidget::setupSTyleSheet()
 {
-    this->bnt_add_to_basket->setStyleSheet("background-color: rgb(255, 0, 255);color: rgb(255, 255, 255);");
-    this->bnt_add_to_basket->setFixedSize(100,100);
-    this->lab_img->setFixedSize(300,300);
+    this->bnt_add_to_basket->setStyleSheet("background-color: rgb(255, 0, 0);color: rgb(255, 255, 255);");
+   // this->bnt_add_to_basket->setFixedSize(100,100);
+
 
 }
 
@@ -49,35 +78,37 @@ void goodMainViewWidget::setupLayout()
     }
     Good& g=Good::getGood(good_id);
 
-     this->main_lay->addLayout(lay_buy,0);
-    this->main_lay->addLayout(lay_comment_items,1);
-     this->main_lay->addLayout(lay_body,2);
-     this->main_lay->addLayout(lay_picture,3);
+     this->main_lay->addLayout(lay_buy,0,0);
+
+
+     this->main_lay->addLayout(lay_picture,0,1);
+    this->main_lay->addLayout(lay_comment_items,1,0);
+     this->main_lay->addLayout(lay_body,1,1);
+
 
 
      this->lay_picture->addWidget(lab_img);
-    this->lay_body->addWidget(new QLabel(g.getName(),this),0);
-    this->lay_body->addWidget(new QLabel("مشخصات",this),1);
-
-    for(g.setPropertySeekBegin();g.propertySeekAtEnd()==false;)
-    {
-        QString property_name=g.readPropertyName();
-        QString content=property_name;content.append(" : ");
-        content.append(g.getPropertyValue(property_name));
-
-        this->lay_body->addWidget(new QLabel(content,this));
+    QLabel* lab_name=new QLabel(g.getName(),this);
+    lab_name->setStyleSheet("color: rgb(255, 0, 0);background-color: rgb(255, 255, 255);");
+    lab_name->setFixedSize(200,40);
+    lab_name->setAlignment(Qt::AlignCenter);
 
 
-    }
-
-    this->lay_comment_items->addWidget(new QLabel("",this),0);
-    this->lay_comment_items->addWidget(this->c_status,1);
+    this->lay_body->addWidget(g_properties,0,Qt::AlignCenter);
 
 
-    this->lay_buy->addWidget(this->bnt_add_to_basket);
+    this->lay_comment_items->addWidget(this->c_status,0,Qt::AlignCenter);
+
+    this->lay_buy->addWidget(this->g_general);
+    this->lay_buy->addWidget(this->bnt_add_to_basket,1);
 
 
 
+}
+
+void goodMainViewWidget::update()
+{
+ this->c_status->update();
 }
 
 goodMainViewWidget::~goodMainViewWidget()

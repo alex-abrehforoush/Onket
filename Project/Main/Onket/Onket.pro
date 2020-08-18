@@ -32,6 +32,7 @@ SOURCES += \
     discussionlistwidget.cpp \
     filefunctions.cpp \
     good.cpp \
+    goodgenralinfowidget.cpp \
     goodmainviewwidget.cpp \
     goodpreviewscrollarea.cpp \
     goodpreviewwidget.cpp \
@@ -70,6 +71,7 @@ HEADERS += \
     discussionlistwidget.h \
     filefunctions.h \
     good.h \
+    goodgenralinfowidget.h \
     goodmainviewwidget.h \
     goodpreviewscrollarea.h \
     goodpreviewwidget.h \
@@ -96,6 +98,7 @@ FORMS += \
     commentwidgetfield.ui \
     dashboard.ui \
     discussionlistwidget.ui \
+    goodgenralinfowidget.ui \
     goodmainviewwidget.ui \
     goodpreviewscrollarea.ui \
     goodpreviewwidget.ui \

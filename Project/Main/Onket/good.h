@@ -65,6 +65,7 @@ public:
 
     QString getId()const;
     QString getName()const;
+    QString getMakerId()const;
 
     static bool readFile();
     static bool WriteFile();
