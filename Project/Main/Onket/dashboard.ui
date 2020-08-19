@@ -153,7 +153,7 @@
    <widget class="QWidget" name="goods_management" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -499,22 +499,6 @@ color: rgb(0, 0, 0);</string>
       <string>ساخت</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="price_of_make">
-     <property name="geometry">
-      <rect>
-       <x>510</x>
-       <y>260</y>
-       <width>141</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="placeholderText">
-      <string>قیمت</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="choose_picture_for_good">
      <property name="geometry">
       <rect>
@@ -619,7 +603,7 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="propery_name_line_edit">
      <property name="geometry">
       <rect>
        <x>720</x>
@@ -658,7 +642,7 @@ color: rgb(0, 0, 0);</string>
       <string>+</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="item_name_line_edit">
      <property name="geometry">
       <rect>
        <x>340</x>
@@ -694,19 +678,6 @@ color: rgb(0, 0, 0);</string>
       </property>
      </widget>
     </widget>
-    <widget class="QLabel" name="label_good_type">
-     <property name="geometry">
-      <rect>
-       <x>814</x>
-       <y>260</y>
-       <width>121</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
     <widget class="QPushButton" name="make_type_button">
      <property name="geometry">
       <rect>
@@ -721,6 +692,51 @@ color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
       <string>ساخت</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="good_type_line_edit">
+     <property name="geometry">
+      <rect>
+       <x>830</x>
+       <y>260</y>
+       <width>101</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>کد نوع</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="name_of_type">
+     <property name="geometry">
+      <rect>
+       <x>910</x>
+       <y>380</y>
+       <width>141</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>نام نوع</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="price_to_make">
+     <property name="geometry">
+      <rect>
+       <x>533</x>
+       <y>260</y>
+       <width>111</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="maximum">
+      <number>1000000000</number>
      </property>
     </widget>
    </widget>

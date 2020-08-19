@@ -10,6 +10,12 @@
 Dashboard::Dashboard(User* current_user, QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Dashboard)
+    , property_center_widget(new QWidget(this))
+    , comment_center_widget(new QWidget(this))
+    ,lay_good_property(new QGridLayout(this))
+    ,good_property_center_widget(new QWidget(this))
+    , lay_property(new QVBoxLayout(this))
+    , lay_comment(new QVBoxLayout(this))
 {
     ui->setupUi(this);
     if(MainWindow::getCurrentUser()->getMode() == 0)
@@ -73,6 +79,23 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->admin_lastname_line_edit->setText(MainWindow::getCurrentUser()->getLastname());
         ui->admin_username_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
         ui->admin_password_line_edit->setText(MainWindow::getCurrentUser()->getPassword());
+////////////////////////////////////////////
+        property_center_widget->setLayout(lay_property);
+        comment_center_widget->setLayout(lay_comment);
+
+        ui->scrollArea_properties->setWidget(property_center_widget);
+        ui->scrollArea_comment_item->setWidget(comment_center_widget);
+        ui->scrollArea_properties->setWidgetResizable(true);
+        ui->scrollArea_comment_item->setWidgetResizable(true);
+        ui->scrollArea_properties->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui->scrollArea_properties->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui->scrollArea_comment_item->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui->scrollArea_comment_item->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
+
+
+
+
 
         //for(int i = 0; i < )
     }
@@ -398,7 +421,8 @@ void Dashboard::on_inventory_clicked()
 void Dashboard::on_make_good_button_clicked()
 {
     Good::readFile();
-    Good temp(ui->name_of_good_to_make->text(), "موبایل", ui->seller_code->text(), ui->price_of_make->text().toUInt());
+
+    Good temp(ui->name_of_good_to_make->text(), "موبایل", ui->seller_code->text(), ui->price_to_make->text().toUInt());
     Good::WriteFile();
     return;
 }
@@ -446,6 +470,103 @@ void Dashboard::on_admin_info_back_clicked()
 
 void Dashboard::on_choose_picture_for_good_clicked()
 {
-    QString filename = QFileDialog::getOpenFileName(this,"Open File");
+    img_path = QFileDialog::getOpenFileName(this,"Open File","Database/GoodPicture","*.png");
+    QImage img;
+    if(img.load(img_path)==false)
+    {
+        return;
+    }
+    ui->picture_of_good_to_make->setPixmap(QPixmap::fromImage(img));
+    ui->picture_of_good_to_make->setScaledContents(true);
+}
+void Dashboard::on_make_type_button_clicked()
+{
+    if(ui->name_of_type->text().isEmpty()  && ui->name_of_type_to_make->text().isEmpty())
+    {
+        QMessageBox::information(this,"پیام","همه فیلد ها را پر کنید");
+        return;
+    }
+    Type temp(ui->name_of_type->text(),ui->name_of_type_to_make->text());
+
+    const Type& t=Type::getType(temp.getId());
+
+    for(auto it : property_list)
+    {
+        t.addProperty(it);
+    }
+    for(auto it : comment_list)
+    {
+        t.addCommentItem(it);
+    }
+
+    Type::WriteToFile();
+    QMessageBox::information(this,"پیام","نوع جدید اضافه شد");
+    return;
+}
+
+void Dashboard::on_name_of_type_to_make_editingFinished()
+{
+    Type::readFile();
+    if(ui->name_of_type_to_make->text()=="none")
+    {
+        return;
+    }
+    if(ui->name_of_type_to_make->text() != "" && Type::existTypeId(ui->name_of_type_to_make->text())==true )
+    {
+        const Type& t=Type::getType(ui->name_of_type_to_make->text());
+        for(t.setPropertySeekBegin();t.PropertySeekAtEnd()==false;)
+        {
+            QString property_name=t.readPropertyName();
+            QLabel* lab_property=new QLabel(property_name,this);
+            lab_property->setFixedSize(200,40);
+            this->lay_property->addWidget(lab_property);
+            this->property_list.push_back(property_name);
+
+        }
+        for(t.setCommentSeekBegin();t.CommentSeekAtEnd()==false;)
+        {
+
+            QString comment_name=t.readCommentItem();
+            QLabel* lab_comment=new QLabel(comment_name,this);
+            lab_comment->setFixedSize(200,40);
+            this->lay_comment->addWidget(lab_comment);
+            this->comment_list.push_back(comment_name);
+        }
+    }
+}
+
+void Dashboard::on_pushButton_add_properties_clicked()
+{
+    QString property_name=ui->propery_name_line_edit->text();
+    this->property_list.push_back(property_name);
+    QLabel* lab_property=new QLabel(property_name,this);
+    lab_property->setFixedSize(200,40);
+    this->lay_property->addWidget(lab_property);
+    ui->propery_name_line_edit->clear();
+}
+
+void Dashboard::on_pushButton_add_comment_item_clicked()
+{
+    QString item_name=ui->item_name_line_edit->text();
+    this->comment_list.push_back(item_name);
+    QLabel* lab_comment=new QLabel(item_name,this);
+    lab_comment->setFixedSize(200,40);
+    this->lay_comment->addWidget(lab_comment);
+    ui->item_name_line_edit->clear();
+    
+}
+
+void Dashboard::on_name_of_good_to_make_editingFinished()
+{
+    QString good_name=ui->name_of_good_to_make->text();
+    if(Good::existGoodName(good_name)==true)
+    {
+        QMessageBox::information(this,"پیام","نام کالا تکراری است");
+        return;
+    }
+}
+
+void Dashboard::on_good_type_line_edit_editingFinished()
+{
 
 }

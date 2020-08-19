@@ -28,15 +28,15 @@ MenuType::MenuType(const QString &type_id, QWidget *parent):QMenu(parent)
             this->addMenu(menu);
         }
     }
-    if(current_user->getMode()==1)
-    {
-        ActionAddGood* act_good=new ActionAddGood(type_id,parent);
-        act_good->setText("افزودن کالا");
-        this->addAction(act_good);
-        ActionAddType* act_type=new ActionAddType(type_id,parent);
-        act_type->setText("افزودن نوع");
-        this->addAction(act_type);
-    }
+//    if(current_user->getMode()==1)
+//    {
+//        ActionAddGood* act_good=new ActionAddGood(type_id,parent);
+//        act_good->setText("افزودن کالا");
+//        this->addAction(act_good);
+//        ActionAddType* act_type=new ActionAddType(type_id,parent);
+//        act_type->setText("افزودن نوع");
+//        this->addAction(act_type);
+//    }
 }
 
 QMenu *MenuType::getMenu(User *current_user, QWidget *parent)

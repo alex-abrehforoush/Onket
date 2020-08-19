@@ -28,6 +28,7 @@ Type &Type::getTypePrivate(const QString &type_id)
 
 bool Type::existTypeId(const QString &type_id)
 {
+
     auto it=types.find(type_id);
     if(it == types.end())
     {
@@ -150,7 +151,7 @@ void Type::addToFile(QTextStream &txt_writer)
 bool Type::WriteToFile()
 {
 
-   QString path="E:/OnketFile/Types";
+   QString path="Database/Types";
     QDir d;
     if(d.exists(path)==false)
     {
@@ -183,7 +184,7 @@ bool Type::WriteToFile()
 
 bool Type::readFile()
 {
-    QString path="E:/OnketFile/Types";
+    QString path="Database/Types";
      QDir d;
      if(d.exists(path)==false)
      {

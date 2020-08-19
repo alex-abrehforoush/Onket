@@ -2,7 +2,11 @@
 #define DASHBOARD_H
 
 #include <QWidget>
+#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QImage>
 #include "User.h"
+#include "type.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Dashboard; }
@@ -92,7 +96,26 @@ private slots:
 
     void on_choose_picture_for_good_clicked();
 
+    void on_make_type_button_clicked();
+
+    void on_name_of_type_to_make_editingFinished();
+
+    void on_pushButton_add_properties_clicked();
+
+    void on_pushButton_add_comment_item_clicked();
+    
+    void on_name_of_good_to_make_editingFinished();
+
+    void on_good_type_line_edit_editingFinished();
+
 private:
+    QWidget* property_center_widget,* comment_center_widget,*good_property_center_widget;
+    QVBoxLayout* lay_property,*lay_comment;
+    QGridLayout* lay_good_property;
+    QVector<QString> property_list,comment_list;
+    QMap<QString,QString> property_value;
+    QString img_path;
     Ui::Dashboard *ui;
+    void setPropertyItem(const QString& property_name);
 };
 #endif // DASHBOARD_H
