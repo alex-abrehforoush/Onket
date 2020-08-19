@@ -82,15 +82,20 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
 ////////////////////////////////////////////
         property_center_widget->setLayout(lay_property);
         comment_center_widget->setLayout(lay_comment);
-
+        good_property_center_widget->setLayout(lay_good_property);
         ui->scrollArea_properties->setWidget(property_center_widget);
         ui->scrollArea_comment_item->setWidget(comment_center_widget);
+        ui->scrollArea_set_properties_of_good_to_make->setWidget(good_property_center_widget);
         ui->scrollArea_properties->setWidgetResizable(true);
         ui->scrollArea_comment_item->setWidgetResizable(true);
+        ui->scrollArea_set_properties_of_good_to_make->setWidgetResizable(true);
         ui->scrollArea_properties->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         ui->scrollArea_properties->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         ui->scrollArea_comment_item->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         ui->scrollArea_comment_item->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui->scrollArea_set_properties_of_good_to_make->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui->scrollArea_set_properties_of_good_to_make->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 
 
 
@@ -568,5 +573,29 @@ void Dashboard::on_name_of_good_to_make_editingFinished()
 
 void Dashboard::on_good_type_line_edit_editingFinished()
 {
+    Type::readFile();
+    if(Type::existTypeId(ui->good_type_line_edit->text())==false)
+    {
+        QMessageBox::information(this,"پیام","نوع کالا موجود نیست");
+        return;
+    }
+    const Type& t=Type::getType(ui->good_type_line_edit->text());
+    for(t.setPropertySeekBegin();t.PropertySeekAtEnd()==false;)
+    {
+        QString property_name=t.readPropertyName();
+        this->addPropertyItemToScrollArea(property_name);
+    }
+}
 
+void Dashboard::addPropertyItemToScrollArea(const QString &property_name)
+{
+    static int row=0;
+    QLabel* lab_property_name=new QLabel(property_name,this);
+    QLineEdit* le_property_value=new QLineEdit("",this);
+    lab_property_name->setFixedSize(200,40);
+    le_property_value->setFixedSize(200,40);
+    this->good_property_list_widgets.insert(lab_property_name,le_property_value);
+    this->lay_good_property->addWidget(lab_property_name,row,0);
+    this->lay_good_property->addWidget(lab_property_name,row,1);
+    row++;
 }

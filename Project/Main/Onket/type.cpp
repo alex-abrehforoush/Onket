@@ -184,7 +184,8 @@ bool Type::WriteToFile()
 
 bool Type::readFile()
 {
-    QString path="Database/Types";
+     Type::types.clear();
+     QString path="Database/Types";
      QDir d;
      if(d.exists(path)==false)
      {

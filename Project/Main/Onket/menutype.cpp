@@ -43,6 +43,7 @@ QMenu *MenuType::getMenu(User *current_user, QWidget *parent)
 {
     delete menu_base;
 
+    Type::readFile();
    MenuType::current_user=current_user;
     if(current_user==nullptr)
     {

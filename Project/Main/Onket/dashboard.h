@@ -5,6 +5,8 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QImage>
+#include <QLabel>
+#include <QLineEdit>
 #include "User.h"
 #include "type.h"
 
@@ -113,9 +115,11 @@ private:
     QVBoxLayout* lay_property,*lay_comment;
     QGridLayout* lay_good_property;
     QVector<QString> property_list,comment_list;
-    QMap<QString,QString> property_value;
+    QMap<QLabel*,QLineEdit*> good_property_list_widgets;
     QString img_path;
     Ui::Dashboard *ui;
-    void setPropertyItem(const QString& property_name);
+    void addPropertyItemToScrollArea(const QString& property_name);
+
+
 };
 #endif // DASHBOARD_H
