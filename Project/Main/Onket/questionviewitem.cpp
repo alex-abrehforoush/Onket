@@ -55,7 +55,7 @@ QuestionViewItem::QuestionViewItem(const QString & user_id,const QString & good_
     }
 
     this->info_valid=true;
-    this->ui->bnt_icon->setIcon(QIcon("Icons/Question.png"));
+    this->ui->bnt_icon->setIcon(QIcon("Database/Icons/Question.png"));
 
     this->update();
 

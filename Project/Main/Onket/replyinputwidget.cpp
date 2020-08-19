@@ -29,8 +29,8 @@ ReplyInputWidget::ReplyInputWidget(const QString& good_id,const QString& questio
     this->info_valid=true;
 
     this->ui->txt_question->setReadOnly(true);
-    this->ui->bnt_icon_question->setIcon(QIcon("Icons/Question.png"));
-    this->ui->bnt_icon_reply->setIcon(QIcon("Icons/Reply.png"));
+    this->ui->bnt_icon_question->setIcon(QIcon("Database/Icons/Question.png"));
+    this->ui->bnt_icon_reply->setIcon(QIcon("Database/Icons/Reply.png"));
     this->ui->txt_reply->setPlaceholderText("پاسخ خود را وارد کنید");
 
     this->ui->txt_question->setText(q.getContent());
