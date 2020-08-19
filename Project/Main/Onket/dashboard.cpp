@@ -5,6 +5,7 @@
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
+#include <QFileDialog>
 
 Dashboard::Dashboard(User* current_user, QWidget *parent)
     : QWidget(parent)
@@ -71,6 +72,8 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->admin_lastname_line_edit->setText(MainWindow::getCurrentUser()->getLastname());
         ui->admin_username_line_edit->setText(MainWindow::getCurrentUser()->getUsername());
         ui->admin_password_line_edit->setText(MainWindow::getCurrentUser()->getPassword());
+
+        //for(int i = 0; i < )
     }
 }
 
@@ -510,5 +513,11 @@ void Dashboard::on_admin_info_back_clicked()
 
 void Dashboard::on_users_management_clicked()
 {
+
+}
+
+void Dashboard::on_pushButton_clicked()
+{
+    QString filename = QFileDialog::getOpenFileName(this,"Open File");
 
 }

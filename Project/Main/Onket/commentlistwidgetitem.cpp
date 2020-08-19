@@ -12,9 +12,9 @@ Good& g=Good::getGood(good_id);
  this->ui->txt_description->setText(c.getDescription());
  this->ui->lab_adv_content->setText(c.getAdvantages());
  this->ui->lab_disadv_content->setText(c.getDisadvantages());
- this->ui->bnt_like->setIcon(QIcon("Icons/LikeBlank.png"));
+ this->ui->bnt_like->setIcon(QIcon("Database/LikeBlank.png"));
  this->ui->bnt_like->setText(QString::number(c.getLikeNumber()));
- this->ui->bnt_dislike->setIcon(QIcon("Icons/DislikeBlank.png"));
+ this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DislikeBlank.png"));
  this->ui->bnt_dislike->setText(QString::number(c.getDisLikeNumber()));
 
  if(c.existLiker(user_id)==true)
@@ -22,11 +22,11 @@ Good& g=Good::getGood(good_id);
      bool like_mode=c.getLikeMode(user_id);
      if(like_mode)
      {
-         this->ui->bnt_like->setIcon(QIcon("Icons/LikeFill.png"));
+         this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeFill.png"));
      }
      else
      {
-         this->ui->bnt_dislike->setIcon(QIcon("Icons/DislikeFill.png"));
+         this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DislikeFill.png"));
      }
  }
 
@@ -87,7 +87,7 @@ void CommentListWidgetItem::on_bnt_like_clicked()
        if(c.existLiker(user_id)==false)
        {
            Good::getGood(good_id).commentAddLike(comment_sender,user_id);
-           this->ui->bnt_like->setIcon(QIcon("Icons/LikeFill.png"));
+           this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeFill.png"));
 
            this->ui->bnt_like->setText(QString::number(c.getLikeNumber()));
 
@@ -99,7 +99,7 @@ void CommentListWidgetItem::on_bnt_like_clicked()
            Good::getGood(good_id).commentRemoveLiker(comment_sender,user_id);
 
 
-           this->ui->bnt_like->setIcon(QIcon("Icons/LikeBlank.png"));
+           this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeBlank.png"));
 
 
            this->ui->bnt_like->setText(QString::number(c.getLikeNumber()));
@@ -108,8 +108,8 @@ void CommentListWidgetItem::on_bnt_like_clicked()
        if(like_mode==false)
        {
            Good::getGood(good_id).commentAddLike(comment_sender,user_id);
-           this->ui->bnt_like->setIcon(QIcon("Icons/LikeFill.png"));
-           this->ui->bnt_dislike->setIcon(QIcon("Icons/DislikeBlank.png"));
+           this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeFill.png"));
+           this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DislikeBlank.png"));
           this->ui->bnt_like->setText(QString::number(c.getLikeNumber()));
            this->ui->bnt_dislike->setText(QString::number(c.getDisLikeNumber()));
 
@@ -133,7 +133,7 @@ void CommentListWidgetItem::on_bnt_dislike_clicked()
        if(c.existLiker(user_id)==false)
        {
            Good ::getGood(good_id).commentAddDisLike(comment_sender,user_id);
-           this->ui->bnt_dislike->setIcon(QIcon("Icons/DislikeFill.png"));
+           this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DislikeFill.png"));
            this->ui->bnt_dislike->setText(QString::number(c.getDisLikeNumber()));
 
        }
@@ -143,15 +143,15 @@ void CommentListWidgetItem::on_bnt_dislike_clicked()
            if(like_mode==false)
            {
                Good::getGood(good_id).commentRemoveLiker(comment_sender,user_id);
-               this->ui->bnt_dislike->setIcon(QIcon("Icons/DislikeBlank.png"));
+               this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DislikeBlank.png"));
                 this->ui->bnt_dislike->setText(QString::number(c.getDisLikeNumber()));
 
            }
            else
            {
                Good::getGood(good_id).commentAddDisLike(comment_sender,user_id);
-               this->ui->bnt_like->setIcon(QIcon("Icons/LikeBlank.png"));
-               this->ui->bnt_dislike->setIcon(QIcon("Icons/DislikeFill.png"));
+               this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeBlank.png"));
+               this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DislikeFill.png"));
               this->ui->bnt_like->setText(QString::number(c.getLikeNumber()));
                this->ui->bnt_dislike->setText(QString::number(c.getDisLikeNumber()));
 

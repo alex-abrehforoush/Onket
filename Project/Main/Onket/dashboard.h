@@ -89,6 +89,8 @@ private slots:
 
     void on_users_management_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Dashboard *ui;
 };

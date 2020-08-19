@@ -12,8 +12,8 @@ void ReplyViewItem::update()
          Good& g=Good::getGood(good_id);
           const Reply& r=g.getReply(reply_id);
 
-          this->ui->bnt_like->setIcon(QIcon("Icons/LikeBlank.png"));
-          this->ui->bnt_dislike->setIcon(QIcon("Icons/DisLikeBlank.png"));
+          this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeBlank.png"));
+          this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DisLikeBlank.png"));
 
           this->ui->bnt_like->setText(QString::number(r.getLikeNumber()));
           this->ui->bnt_dislike->setText(QString::number(r.getDisLikeNumber()));
@@ -22,11 +22,11 @@ void ReplyViewItem::update()
           {
               if(r.getLikeMode(user_id)==true)
               {
-                  this->ui->bnt_like->setIcon(QIcon("Icons/LikeFill.png"));
+                  this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeFill.png"));
               }
               else
               {
-                   this->ui->bnt_dislike->setIcon(QIcon("Icons/DisLikeFill.png"));
+                   this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DisLikeFill.png"));
               }
           }
     }
@@ -60,7 +60,7 @@ ReplyViewItem::ReplyViewItem(const QString& user_id,const QString& good_id,const
     {
         this->info_valid=true;
        const Reply& r=g.getReply(reply_id);
-       this->ui->bnt_icon->setIcon(QIcon("Icons/Reply.png"));
+       this->ui->bnt_icon->setIcon(QIcon("Database/Icons/Reply.png"));
        this->ui->txt_content->setReadOnly(true);
        this->ui->txt_content->setText(r.getContent());
        this->ui->lab_date->setText(r.getDateCreate().toString());
@@ -98,7 +98,7 @@ void ReplyViewItem::on_bnt_like_clicked()
     {
 
         g.addReplyLike(reply_id,user_id);
-        this->ui->bnt_like->setIcon(QIcon("Icons/LikeFill.png"));
+        this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeFill.png"));
         this->ui->bnt_like->setText(QString::number(r.getLikeNumber()));
         return;
     }
@@ -107,7 +107,7 @@ void ReplyViewItem::on_bnt_like_clicked()
        if(r.getLikeMode(user_id)==true)
        {
            g.replyRemoveLiker(reply_id,user_id);
-           this->ui->bnt_like->setIcon(QIcon("Icons/LikeBlank.png"));
+           this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeBlank.png"));
            this->ui->bnt_like->setText(QString::number(r.getLikeNumber()));
            return;
        }
@@ -115,8 +115,8 @@ void ReplyViewItem::on_bnt_like_clicked()
        {
            g.addReplyLike(reply_id,user_id);
 
-           this->ui->bnt_like->setIcon(QIcon("Icons/LikeFill.png"));
-           this->ui->bnt_dislike->setIcon(QIcon("Icons/DisLikeBlank.png"));
+           this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeFill.png"));
+           this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DisLikeBlank.png"));
 
            this->ui->bnt_like->setText(QString::number(r.getLikeNumber()));
             this->ui->bnt_dislike->setText(QString::number(r.getDisLikeNumber()));
@@ -140,7 +140,7 @@ void ReplyViewItem::on_bnt_dislike_clicked()
     {
 
         g.addReplyDisLike(reply_id,user_id);
-        this->ui->bnt_dislike->setIcon(QIcon("Icons/DisLikeFill.png"));
+        this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DisLikeFill.png"));
         this->ui->bnt_dislike->setText(QString::number(r.getDisLikeNumber()));
         return;
     }
@@ -151,7 +151,7 @@ void ReplyViewItem::on_bnt_dislike_clicked()
        {
 
            g.replyRemoveLiker(reply_id,user_id);
-           this->ui->bnt_dislike->setIcon(QIcon("Icons/DisLikeBlank.png"));
+           this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DisLikeBlank.png"));
            this->ui->bnt_dislike->setText(QString::number(r.getDisLikeNumber()));
            return;
        }
@@ -159,8 +159,8 @@ void ReplyViewItem::on_bnt_dislike_clicked()
        {
            g.addReplyDisLike(reply_id,user_id);
 
-           this->ui->bnt_like->setIcon(QIcon("Icons/LikeBlank.png"));
-           this->ui->bnt_dislike->setIcon(QIcon("Icons/DisLikeFill.png"));
+           this->ui->bnt_like->setIcon(QIcon("Database/Icons/LikeBlank.png"));
+           this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DisLikeFill.png"));
 
            this->ui->bnt_like->setText(QString::number(r.getLikeNumber()));
             this->ui->bnt_dislike->setText(QString::number(r.getDisLikeNumber()));

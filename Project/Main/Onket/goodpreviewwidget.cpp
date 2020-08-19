@@ -1,11 +1,13 @@
 #include "goodpreviewwidget.h"
 #include "ui_goodpreviewwidget.h"
+#include <QMessageBox>
 
 
 
 QVector<QString> GoodPreviewWidget::style_sheet={"font: 12pt \"Myanmar Text\";\ncolor: rgb(255, 255, 255);\nbackground-color: rgb(85, 85, 255);","font: 12pt \"Myanmar Text\";\ncolor: rgb(0, 0, 0);\nbackground-color: rgb(255, 255, 0);\n\n","font: 12pt \"Myanmar Text\";\nbackground-color: rgb(0, 255, 0);\ncolor: rgb(255, 255, 255);\n\n"};
 QString GoodPreviewWidget::style_error="font: 12pt \"Myanmar Text\";\nbackground-color: rgb(255, 0, 0);\ncolor: rgb(255, 255, 255);\n\n";
 int GoodPreviewWidget::style_index=0;
+QVector<QString> GoodPreviewWidget::compare;
 
 void GoodPreviewWidget::increaseStyleIndex()
 {
@@ -111,7 +113,7 @@ void GoodPreviewWidget::update()
 
               ui->lab_img->setPixmap(QPixmap::fromImage(img));
           }
- }
+    }
 }
 
 
@@ -119,30 +121,22 @@ GoodPreviewWidget::GoodPreviewWidget(const QString &good_id,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GoodPreviewWidget)
 {
-
-
     this->setFixedSize(340,340);
     ui->setupUi(this);
     this->good_id=good_id;
     if(Good::existGoodId(good_id)==true)
     {
         this->update();
-
     }
-
       else
       {
           this->id_valid=false;
           this->load_picture=false;
-         ui->lab_price->setHidden(true);
-         ui->lab_discount->setHidden(true);
-         ui->lab_final_price->setHidden(true);
-
-           ui->lab_img->setAlignment(Qt::AlignCenter);
-           ui->lab_img->setText("کالای مورد نظر یافت نشد");
-
-
-
+          ui->lab_price->setHidden(true);
+          ui->lab_discount->setHidden(true);
+          ui->lab_final_price->setHidden(true);
+          ui->lab_img->setAlignment(Qt::AlignCenter);
+          ui->lab_img->setText("کالای مورد نظر یافت نشد");
       }
 }
 
@@ -150,4 +144,21 @@ GoodPreviewWidget::~GoodPreviewWidget()
 
 {
     delete ui;
+}
+
+void GoodPreviewWidget::on_checkBox_compare_stateChanged()
+{
+    if(this->ui->checkBox_compare->checkState() == Qt::Unchecked) compare.remove(compare.indexOf(this->getGoodId()));
+    else
+    {
+        if(compare.size()<5)
+        {
+            compare.push_back(this->good_id);
+        }
+        else
+        {
+            QMessageBox::information(this, "پیام", "حداکثر پنج کالا را می توان مقایسه کرد");
+            ui->checkBox_compare->setCheckState(Qt::Unchecked);
+        }
+    }
 }

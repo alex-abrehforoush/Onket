@@ -5,14 +5,13 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     QScrollArea(parent)
     ,center_widget(new QWidget(this))
     ,bnt_add_to_basket(new QPushButton("افزودن به سبد خرید",this))
-
-  ,g_properties(new GoodPropertyWidget(good_id,this))
-  ,c_status(new CommentItemStatus(good_id,this))
- ,lab_img(new QLabel(this))
-  ,g_general(new GoodGenralInfoWidget(good_id,this))
-  ,main_lay(new QGridLayout(this))
-  ,lay_picture(new QVBoxLayout(this)),lay_body(new QVBoxLayout(this)),lay_comment_items(new QVBoxLayout(this)),lay_buy(new QVBoxLayout(this))
-   , ui(new Ui::goodMainviewWidget)
+    ,g_properties(new GoodPropertyWidget(good_id,this))
+    ,c_status(new CommentItemStatus(good_id,this))
+    ,lab_img(new QLabel(this))
+    ,g_general(new GoodGenralInfoWidget(good_id,this))
+    ,main_lay(new QGridLayout(this))
+    ,lay_picture(new QVBoxLayout(this)),lay_body(new QVBoxLayout(this)),lay_comment_items(new QVBoxLayout(this)),lay_buy(new QVBoxLayout(this))
+    ,ui(new Ui::goodMainviewWidget)
 {
 
     ui->setupUi(this);

@@ -6,6 +6,7 @@
 #include <QImage>
 #include <QPixmap>
 #include <QMouseEvent>
+#include <QPushButton>
 
 #include "good.h"
 
@@ -19,6 +20,7 @@ class GoodPreviewWidget : public QWidget
     static QVector<QString> style_sheet;
     static QString style_error;
     static int style_index;
+    static QVector<QString> compare;
 
     QString good_id;
     bool id_valid;
@@ -41,6 +43,9 @@ public:
     void update();
     explicit GoodPreviewWidget(const QString& good_id,QWidget *parent = nullptr);
     ~GoodPreviewWidget();
+
+private slots:
+    void on_checkBox_compare_stateChanged();
 
 private:
     Ui::GoodPreviewWidget *ui;
