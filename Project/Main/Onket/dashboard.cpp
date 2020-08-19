@@ -19,6 +19,7 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
 
 
 
+
         ui->my_orders->hide();
         ui->lists->hide();
         ui->comments->hide();

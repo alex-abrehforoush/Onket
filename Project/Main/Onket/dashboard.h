@@ -16,6 +16,7 @@ public:
     Dashboard(User* current_user, QWidget *parent = nullptr);
     void hideAdminWidgets();
     void hideCustomerWidgets();
+
     ~Dashboard();
 
 private slots:
