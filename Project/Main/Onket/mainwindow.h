@@ -38,7 +38,6 @@ private slots:
     void on_action_11_triggered();
 
     void on_action_triggered();
-
 private:
     Ui::MainWindow* ui;
     static LoginPage* login_page;
