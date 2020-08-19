@@ -159,10 +159,7 @@ bool Good::WriteFile()
        QTextStream txt_stream;
        txt_stream.setDevice(& file);
        txt_stream.setCodec("UTF-8");
-<<<<<<< HEAD
-=======
 
->>>>>>> 3665ceb9997f02d8c5b5a354b4b95028050a3fe4
 
        txt_stream<<"id;name;maker_id;type_id;price;discount;properties;comment_item"<<endl;
        for(auto it=goods_id.begin(); it != goods_id.end();it++)
