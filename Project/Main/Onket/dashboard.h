@@ -14,6 +14,9 @@ class Dashboard : public QWidget
 
 public:
     Dashboard(User* current_user, QWidget *parent = nullptr);
+    void hideAdminWidgets();
+    void hideCustomerWidgets();
+
     ~Dashboard();
 
 private slots:
@@ -35,7 +38,7 @@ private slots:
 
     void on_goods_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_users_management_clicked();
 
     void on_pushButton_3_clicked();
 
@@ -87,9 +90,7 @@ private slots:
 
     void on_admin_info_back_clicked();
 
-    void on_users_management_clicked();
-
-    void on_pushButton_clicked();
+    void on_choose_picture_for_good_clicked();
 
 private:
     Ui::Dashboard *ui;
