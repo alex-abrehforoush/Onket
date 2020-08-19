@@ -77,6 +77,31 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
     }
 }
 
+void Dashboard::hideAdminWidgets()
+{
+    ui->goods_management->hide();
+    ui->user_management->hide();
+    ui->site_settings->hide();
+    ui->finance->hide();
+    ui->employeement->hide();
+    ui->messages_2->hide();
+    ui->admin_account_info->hide();
+    ui->foreign_connections->hide();
+    ui->admin_account_edit->hide();
+}
+
+void Dashboard::hideCustomerWidgets()
+{
+    ui->my_orders->hide();
+    ui->lists->hide();
+    ui->comments->hide();
+    ui->addresses->hide();
+    ui->messages->hide();
+    ui->last_activities->hide();
+    ui->customer_account_info->hide();
+    ui->customer_account_edit->hide();
+}
+
 Dashboard::~Dashboard()
 {
     delete ui;
@@ -84,57 +109,32 @@ Dashboard::~Dashboard()
 
 void Dashboard::on_pushButton_9_clicked()
 {
+    this->hideCustomerWidgets();
     ui->my_orders->show();
-    ui->lists->hide();
-    ui->comments->hide();
-    ui->addresses->hide();
-    ui->messages->hide();
-    ui->last_activities->hide();
-    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_10_clicked()
 {
-    ui->my_orders->hide();
+    this->hideCustomerWidgets();
     ui->lists->show();
-    ui->comments->hide();
-    ui->addresses->hide();
-    ui->messages->hide();
-    ui->last_activities->hide();
-    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_11_clicked()
 {
-    ui->my_orders->hide();
-    ui->lists->hide();
+    this->hideCustomerWidgets();
     ui->comments->show();
-    ui->addresses->hide();
-    ui->messages->hide();
-    ui->last_activities->hide();
-    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_12_clicked()
 {
-    ui->my_orders->hide();
-    ui->lists->hide();
-    ui->comments->hide();
+    this->hideCustomerWidgets();
     ui->addresses->show();
-    ui->messages->hide();
-    ui->last_activities->hide();
-    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_13_clicked()
 {
-    ui->my_orders->hide();
-    ui->lists->hide();
-    ui->comments->hide();
-    ui->addresses->hide();
+    this->hideCustomerWidgets();
     ui->messages->show();
-    ui->last_activities->hide();
-    ui->customer_account_info->hide();
 
     QFile messages("Database/Dashboard/customers_messages.txt");
     QTextStream read_messages(&messages);
@@ -149,26 +149,14 @@ void Dashboard::on_pushButton_13_clicked()
 
 void Dashboard::on_pushButton_14_clicked()
 {
-    ui->my_orders->hide();
-    ui->lists->hide();
-    ui->comments->hide();
-    ui->addresses->hide();
-    ui->messages->hide();
+    this->hideCustomerWidgets();
     ui->last_activities->show();
-    ui->customer_account_info->hide();
 }
 
 void Dashboard::on_pushButton_15_clicked()
 {
-    ui->my_orders->hide();
-    ui->lists->hide();
-    ui->comments->hide();
-    ui->addresses->hide();
-    ui->messages->hide();
-    ui->last_activities->hide();
+    this->hideCustomerWidgets();
     ui->customer_account_info->show();
-
-    ui->customer_account_edit->hide();
 
     ui->customer_first_and_last_name->setText(MainWindow::getCurrentUser()->getFirstname() + " " + MainWindow::getCurrentUser()->getLastname());
     ui->customer_username->setText(MainWindow::getCurrentUser()->getUsername());
@@ -183,106 +171,50 @@ void Dashboard::on_pushButton_15_clicked()
 
 void Dashboard::on_goods_clicked()
 {
+    this->hideAdminWidgets();
     ui->goods_management->show();
-    ui->user_management->hide();
-    ui->site_settings->hide();
-    ui->finance->hide();
-    ui->employeement->hide();
-    ui->messages_2->hide();
-    ui->admin_account_info->hide();
-    ui->foreign_connections->hide();
-    ui->admin_account_edit->hide();
 }
 
-void Dashboard::on_pushButton_2_clicked()
+void Dashboard::on_users_management_clicked()
 {
-    ui->goods_management->hide();
+    this->hideAdminWidgets();
     ui->user_management->show();
-    ui->site_settings->hide();
-    ui->finance->hide();
-    ui->employeement->hide();
-    ui->messages_2->hide();
-    ui->admin_account_info->hide();
-    ui->foreign_connections->hide();
-    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_pushButton_3_clicked()
 {
-    ui->goods_management->hide();
-    ui->user_management->hide();
+    this->hideAdminWidgets();
     ui->site_settings->show();
-    ui->finance->hide();
-    ui->employeement->hide();
-    ui->messages_2->hide();
-    ui->admin_account_info->hide();
-    ui->foreign_connections->hide();
-    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_financial_management_clicked()
 {
-    ui->goods_management->hide();
-    ui->user_management->hide();
-    ui->site_settings->hide();
+    this->hideAdminWidgets();
     ui->finance->show();
-    ui->employeement->hide();
-    ui->messages_2->hide();
-    ui->admin_account_info->hide();
-    ui->foreign_connections->hide();
-    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_pushButton_5_clicked()
 {
-    ui->goods_management->hide();
-    ui->user_management->hide();
-    ui->site_settings->hide();
-    ui->finance->hide();
+    this->hideAdminWidgets();
     ui->employeement->show();
-    ui->messages_2->hide();
-    ui->admin_account_info->hide();
-    ui->foreign_connections->hide();
-    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_send_message_clicked()
 {
-    ui->goods_management->hide();
-    ui->user_management->hide();
-    ui->site_settings->hide();
-    ui->finance->hide();
-    ui->employeement->hide();
+    this->hideAdminWidgets();
     ui->messages_2->show();
-    ui->admin_account_info->hide();
-    ui->foreign_connections->hide();
-    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_account_management_clicked()
 {
-    ui->goods_management->hide();
-    ui->user_management->hide();
-    ui->site_settings->hide();
-    ui->finance->hide();
-    ui->employeement->hide();
-    ui->messages_2->hide();
+    this->hideAdminWidgets();
     ui->admin_account_info->show();
-    ui->foreign_connections->hide();
-    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_pushButton_8_clicked()
 {
-    ui->goods_management->hide();
-    ui->user_management->hide();
-    ui->site_settings->hide();
-    ui->finance->hide();
-    ui->employeement->hide();
-    ui->messages_2->hide();
-    ui->admin_account_info->hide();
+    this->hideAdminWidgets();
     ui->foreign_connections->show();
-    ui->admin_account_edit->hide();
 }
 
 void Dashboard::on_customer_address_edit_of_valueChanged(int arg1)
@@ -511,12 +443,7 @@ void Dashboard::on_admin_info_back_clicked()
     this->ui->admin_account_info->hide();
 }
 
-void Dashboard::on_users_management_clicked()
-{
-
-}
-
-void Dashboard::on_pushButton_clicked()
+void Dashboard::on_choose_picture_for_good_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this,"Open File");
 
