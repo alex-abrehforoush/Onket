@@ -1378,7 +1378,7 @@ Good::Good(const QString &line)
 
 void Good::addToFile( QTextStream &txt_stream)
 {
-    txt_stream<<this->id<<";"<<this->name<<";"<<this->maker_id<<";"<<this->type_id<<";"<<QString::number(this->price)<<";"<<QString::number(this->discount_percent)<<";"<<csv_QMap::toQStirng(this->properties)<<";"<<csv_QMap::toQString(this->comments_item)<<endl;
+    txt_stream<<this->id.toUtf8()<<";"<<this->name.toUtf8()<<";"<<this->maker_id.toUtf8()<<";"<<this->type_id.toUtf8()<<";"<<QString::number(this->price).toUtf8()<<";"<<QString::number(this->discount_percent).toUtf8()<<";"<<csv_QMap::toQStirng(this->properties).toUtf8()<<";"<<csv_QMap::toQString(this->comments_item).toUtf8()<<endl;
 }
 
 

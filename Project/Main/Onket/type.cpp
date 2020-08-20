@@ -145,7 +145,7 @@ Type::Type(const QString &line)
 void Type::addToFile(QTextStream &txt_writer)
 {
     using namespace csv_QVector;
-    txt_writer<<this->id<<";"<<this->name<<";"<<this->parent_id<<";"<<toQString(this->branches_id)<<";"<<toQString(this->goods_id)<<";"<<toQString(this->property_name)<<";"<<toQString(this->comment_item)<<endl;
+    txt_writer<<this->id.toUtf8()<<";"<<this->name.toUtf8()<<";"<<this->parent_id.toUtf8()<<";"<<toQString(this->branches_id).toUtf8()<<";"<<toQString(this->goods_id).toUtf8()<<";"<<toQString(this->property_name).toUtf8()<<";"<<toQString(this->comment_item).toUtf8()<<endl;
 }
 
 bool Type::WriteToFile()
@@ -170,7 +170,8 @@ bool Type::WriteToFile()
     {
         QTextStream txt_writer;
         txt_writer.setDevice(& file);
-        txt_writer.setAutoDetectUnicode(true);
+        //txt_writer.setAutoDetectUnicode(true);
+        txt_writer.setCodec("UTF-8");
         txt_writer<<"id;name;parent_id;children_id;goods_id;property;comment"<<endl;
         for(auto it: Type::types)
         {
@@ -203,7 +204,7 @@ bool Type::readFile()
      {
          QTextStream txt_reader;
          txt_reader.setDevice(& file);
-         txt_reader.setAutoDetectUnicode(true);
+         txt_reader.setCodec("UTF-8");
          txt_reader.readLine();
          while(txt_reader.atEnd()==false)
          {

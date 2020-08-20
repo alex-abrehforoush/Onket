@@ -22,7 +22,10 @@ public:
     Dashboard(User* current_user, QWidget *parent = nullptr);
     void hideAdminWidgets();
     void hideCustomerWidgets();
-
+    void clearAddGoodNumberFields();
+    void clearInventoryFields();
+    void clearAddGoodFields();
+    void clearAddTypeFields();
     ~Dashboard();
 
 private slots:

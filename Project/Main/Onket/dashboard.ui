@@ -2528,7 +2528,7 @@ color: rgb(0, 0, 0);</string>
   <widget class="QLabel" name="user_management_label_customer_firstname">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>2000</x>
      <y>250</y>
      <width>641</width>
      <height>16</height>
