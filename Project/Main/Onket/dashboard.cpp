@@ -154,16 +154,31 @@ void Dashboard::clearAddGoodFields()
     ui->picture_of_good_to_make->clear();
     delete this->lay_good_property;
     this->lay_good_property = new QGridLayout(this);
+    delete this->good_property_center_widget;
+    this->good_property_center_widget=new QWidget(this);
+    this->good_property_center_widget->setLayout(lay_good_property);
+    ui->scrollArea_set_properties_of_good_to_make->setWidget(good_property_center_widget);
+
 }
 
 void Dashboard::clearAddTypeFields()
 {
-    ui->name_of_good_to_make->clear();
+    ui->name_of_type_to_make->clear();
     ui->name_of_type->clear();
     delete this->lay_comment;
     delete this->lay_property;
+    this->lay_comment=nullptr;
+    this->lay_property=nullptr;
     this->lay_comment=new QVBoxLayout(this);
     this->lay_property=new QVBoxLayout(this);
+    delete this->comment_center_widget;
+    this->comment_center_widget=new QWidget(this);
+    delete this->property_center_widget;
+    this->property_center_widget=new QWidget(this);
+    this->comment_center_widget->setLayout(lay_comment);
+    this->property_center_widget->setLayout(lay_property);
+    ui->scrollArea_properties->setWidget(property_center_widget);
+    ui->scrollArea_comment_item->setWidget(comment_center_widget);
 }
 
 Dashboard::~Dashboard()

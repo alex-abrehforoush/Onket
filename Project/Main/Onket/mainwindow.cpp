@@ -5,6 +5,7 @@
 #include "Customer.h"
 #include "Guest.h"
 #include "signup.h"
+#include "menutype.h"
 
 LoginPage* MainWindow::login_page;
 signup* MainWindow::signup_page;
@@ -43,6 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
         User::addUser(&adel);
     }
 
+    //MenuType::setUpMenu(ui->menu);
 
 
     //onket_repository.loadStorage();

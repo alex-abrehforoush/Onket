@@ -22,8 +22,6 @@ SOURCES += \
     Order.cpp \
     User.cpp \
     actiointype.cpp \
-    actionaddgood.cpp \
-    actionaddtype.cpp \
     commentlistwidget.cpp \
     commentlistwidgetitem.cpp \
     commentwidget.cpp \
@@ -65,7 +63,6 @@ HEADERS += \
     Order.h \
     User.h \
     actiointype.h \
-    actionaddgood.h \
     actionaddtype.h \
     commentlistwidget.h \
     commentitemstatus.h \
