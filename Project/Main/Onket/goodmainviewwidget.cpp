@@ -43,6 +43,7 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
    {
        img.load("Database/GoodPicture/default.jpg");
        this->lab_img->setPixmap(QPixmap::fromImage(img));
+       this->lab_img->setScaledContents(true);
    }
 
   QString bnt_add_content="افزودن به سبد خرید";

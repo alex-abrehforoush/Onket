@@ -5,7 +5,6 @@
 #include "Customer.h"
 #include "Guest.h"
 #include "signup.h"
-#include "menutype.h"
 
 LoginPage* MainWindow::login_page;
 signup* MainWindow::signup_page;
@@ -15,6 +14,11 @@ Storage MainWindow::onket_repository;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
+    ,main_lay(new QGridLayout(this))
+    ,main_center_widget(new QWidget(this))
+    ,scroll_price(new GoodPreviewScrollArea(this))
+    ,scroll_discount(new GoodPreviewScrollArea(this))
+    ,scroll_willingness(new GoodPreviewScrollArea(this))
     ,ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -44,8 +48,14 @@ MainWindow::MainWindow(QWidget *parent)
         User::addUser(&adel);
     }
 
-    //MenuType::setUpMenu(ui->menu);
+    this->setupDynomicMenu(ui->menu);
 
+    this->main_center_widget->setLayout(main_lay);
+    ui->main_scroll_area->setWidget(main_center_widget);
+    ui->main_scroll_area->setWidgetResizable(true);
+    ui->main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    ui->main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    this->updateScrollAreas("none");
 
     //onket_repository.loadStorage();
 }
@@ -136,4 +146,49 @@ void MainWindow::on_action_triggered()
         if(this->dashboard==nullptr) dashboard = new Dashboard(current_user, this);
         dashboard->show();
     }
+}
+
+void MainWindow::updateScrollAreas(const QString &type_id)
+{
+    Type::readFile();
+    if(Type::existTypeId(type_id)==false && type_id!="none")return;
+//    this->main_lay->removeWidget(scroll_price);
+//    this->main_lay->removeWidget(scroll_discount);
+//    this->main_lay->removeWidget(scroll_willingness);
+//    delete this->scroll_price;
+//    delete this->scroll_discount;
+//    delete this->scroll_willingness;
+//    scroll_price=new GoodPreviewScrollArea(this);
+//    scroll_discount=new GoodPreviewScrollArea(this);
+//    scroll_willingness=new GoodPreviewScrollArea(this);
+    scroll_price->clear();
+    scroll_discount->clear();
+    scroll_willingness->clear();
+    if(type_id=="none")
+    {
+        QVector<QString>base_type=Type::getBaseTypeId();
+        for(auto it : base_type)
+        {
+            scroll_price->addGoodSortedByPrice(it);
+            scroll_discount->addGoodSortedByDiscount(it);
+            scroll_willingness->addGoodSortedByWillingness(it);
+        }
+
+
+    }
+    scroll_price->addGoodSortedByPrice(type_id);
+    scroll_discount->addGoodSortedByDiscount(type_id);
+    scroll_willingness->addGoodSortedByWillingness(type_id);
+
+    this->main_lay->addWidget(scroll_price,0,0);
+    this->main_lay->addWidget(scroll_discount,1,0);
+    this->main_lay->addWidget(scroll_willingness,2,0);
+}
+
+void MainWindow::setupDynomicMenu(QMenu *menu)
+{
+    delete base_menu;
+    base_menu=new MenuType("");
+    base_menu->setUpMenu(menu);
+    connect(base_menu,SIGNAL(actionTriggered(const QString& )),this,SLOT(updateScrollAreas(const QString& )));
 }

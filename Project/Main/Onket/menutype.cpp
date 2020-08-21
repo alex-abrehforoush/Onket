@@ -1,6 +1,11 @@
 #include "menutype.h"
 
 
+void MenuType::action_triggered(const QString &type_id)
+{
+    emit this->action_triggered(type_id);
+}
+
 MenuType::MenuType(const QString &type_id, QWidget *parent):QMenu(parent)
 {
     if(Type::existTypeId(type_id)==false)
@@ -19,11 +24,13 @@ MenuType::MenuType(const QString &type_id, QWidget *parent):QMenu(parent)
         {
             ActoinType * act=new ActoinType(branch_id,parent);
             this->addAction(act);
+            connect(act,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString& )));
         }
         else
         {
             MenuType* menu=new MenuType(branch_id,parent);
             this->addMenu(menu);
+            connect(menu,SIGNAL(actionTriggered(const QString&)),this,SLOT(action_triggered(const QString&)));
         }
     }
 
@@ -32,8 +39,8 @@ MenuType::MenuType(const QString &type_id, QWidget *parent):QMenu(parent)
 void MenuType::setUpMenu(QMenu *menu, QWidget *parent)
 {
 
-      menu->clear();
-      Type::readFile();
+       menu->clear();
+       Type::readFile();
 
 
         QVector<QString> base_id=Type::getBaseTypeId();
@@ -42,11 +49,16 @@ void MenuType::setUpMenu(QMenu *menu, QWidget *parent)
             const Type& t=Type::getType(it);
             if(t.branchIdIsEmpty()==true)
             {
-                menu->addAction(new ActoinType(it,menu));
+                ActoinType* act=new ActoinType(it,menu);
+                menu->addAction(act);
+                connect(act,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString&)));
+
             }
             else
             {
-                menu->addMenu(new MenuType(it,menu));
+                MenuType* menu_type=new MenuType(it,menu);
+                menu->addMenu(menu_type);
+                connect(menu_type,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString&)));
             }
         }
 

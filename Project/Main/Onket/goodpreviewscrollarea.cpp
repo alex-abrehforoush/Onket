@@ -4,7 +4,6 @@
 #include "ui_goodpreviewscrollarea.h"
 
 
-QMap<QString,GoodPreviewWidget*> GoodPreviewScrollArea::good_preview;
 
 bool GoodPreviewScrollArea::existGood(const QString &good_id)const
 {
@@ -24,6 +23,71 @@ void GoodPreviewScrollArea::addGood(const QString &good_id)
         GoodPreviewWidget* good_preview_item=new GoodPreviewWidget(good_id,this);
         this->good_preview.insert(good_id,good_preview_item);
         this->main_lay->addWidget(good_preview_item);
+    }
+}
+
+void GoodPreviewScrollArea::addGoodSortedByPrice(const QString &type_id)
+{
+    Type::readFile();
+    Good::readFile();
+    if(Type::existTypeId(type_id)==false)return;
+    const Type& t=Type::getType(type_id);
+
+    QVector<QString>good_id;
+    for(t.setGoodSeekBegin();t.GoodSeekAtEnd()==false;)
+    {
+        good_id.push_back(t.readGoodId());
+    }
+    {
+        QVector<QString>temp=Good::getSortByPrice(good_id,true);
+        for(auto it : temp)
+        {
+            this->addGood(it);
+        }
+    }
+    good_id.clear();
+}
+
+void GoodPreviewScrollArea::addGoodSortedByDiscount(const QString &type_id)
+{
+    Type::readFile();
+    Good::readFile();
+    if(Type::existTypeId(type_id)==false)return;
+    const Type& t=Type::getType(type_id);
+
+    QVector<QString>good_id;
+    for(t.setGoodSeekBegin();t.GoodSeekAtEnd()==false;)
+    {
+        good_id.push_back(t.readGoodId());
+    }
+    {
+        QVector<QString>temp=Good::getSortByDiscount(good_id,false);
+        for(auto it : temp)
+        {
+            this->addGood(it);
+        }
+    }
+    good_id.clear();
+}
+
+void GoodPreviewScrollArea::addGoodSortedByWillingness(const QString &type_id)
+{
+    Type::readFile();
+    Good::readFile();
+    if(Type::existTypeId(type_id)==false)return;
+    const Type& t=Type::getType(type_id);
+
+    QVector<QString>good_id;
+    for(t.setGoodSeekBegin();t.GoodSeekAtEnd()==false;)
+    {
+        good_id.push_back(t.readGoodId());
+    }
+    {
+        QVector<QString>temp=Good::getSortByWillingness(good_id,true);
+        for(auto it : temp)
+        {
+            this->addGood(it);
+        }
     }
 }
 
@@ -56,6 +120,18 @@ void GoodPreviewScrollArea::update()
     {
         it->update();
     }
+}
+
+void GoodPreviewScrollArea::clear()
+{
+
+    for(auto it=this->good_preview.begin();it != this->good_preview.end();it++)
+    {
+        this->main_lay->removeWidget(it.value());
+        delete it.value();
+
+    }
+    this->good_preview.clear();
 }
 
 GoodPreviewScrollArea::GoodPreviewScrollArea(QWidget *parent) :

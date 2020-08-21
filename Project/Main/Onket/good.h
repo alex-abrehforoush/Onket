@@ -63,6 +63,11 @@ public:
     static Good& getGood(const QString& good_id);
     static bool existGoodName(const QString& good_name);
 
+    static QVector<QString> getSortByPrice(const QVector<QString>& input,bool ascending);
+    static QVector<QString> getSortByDiscount(const QVector<QString>& input,bool ascending);
+    static QVector<QString> getSortByWillingness(const QVector<QString>& input,bool  ascending);
+
+
     QString getId()const;
     QString getName()const;
     QString getMakerId()const;
@@ -78,7 +83,7 @@ public:
     unsigned int getPrice();
     unsigned int getFinalPrice();
     double getDiscountpercent();
-
+    double getWillingness();
     bool existProperty(const QString& property_name)const;
     bool addProperty(const QString& property_name);
     bool setPropertyValue(const QString& property_name,const QString& property_value);

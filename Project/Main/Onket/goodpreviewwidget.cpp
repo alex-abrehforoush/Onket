@@ -73,6 +73,8 @@ void GoodPreviewWidget::update()
 
           this->id_valid=true;
           Good& g=Good::getGood(good_id);
+          ui->lab_name->setText(g.getName());
+          ui->lab_name->setAlignment(Qt::AlignCenter);
           QString discount=QString::number(g.getDiscountpercent()*100);
           QString final_price=this->number(g.getFinalPrice());
           final_price.append("تومان ");
@@ -92,7 +94,7 @@ void GoodPreviewWidget::update()
              ui->lab_discount->setHidden(true);
 
           }
-          QString path="Database/GoodPicture/goodPicture";
+          QString path="Database/GoodPicture/";
           path.append(g.getId());path.append(".png");
           QImage img;
           bool mode_load=img.load(path);

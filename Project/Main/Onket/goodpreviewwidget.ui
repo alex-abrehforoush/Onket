@@ -39,24 +39,26 @@ color: rgb(255, 255, 255);
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>90</x>
      <y>230</y>
      <width>171</width>
-     <height>81</height>
+     <height>104</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
     <item row="2" column="0">
-     <widget class="QLabel" name="lab_final_price">
+     <widget class="QLabel" name="lab_price">
       <property name="styleSheet">
-       <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+       <string notr="true">color: rgb(122, 122, 122);
+font: 10pt &quot;MS UI Gothic&quot;;
+text-decoration: line-through;</string>
       </property>
       <property name="text">
        <string>TextLabel</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QLabel" name="lab_discount">
       <property name="styleSheet">
        <string notr="true">background-color: rgb(255, 0, 0);
@@ -68,12 +70,20 @@ font: 75 13pt &quot;Agency FB&quot;;</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="lab_price">
+    <item row="3" column="0">
+     <widget class="QLabel" name="lab_final_price">
       <property name="styleSheet">
-       <string notr="true">color: rgb(122, 122, 122);
-font: 10pt &quot;MS UI Gothic&quot;;
-text-decoration: line-through;</string>
+       <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="lab_name">
+      <property name="styleSheet">
+       <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
       </property>
       <property name="text">
        <string>TextLabel</string>

@@ -13,18 +13,24 @@ class GoodPreviewScrollArea;
 
 class GoodPreviewScrollArea : public QScrollArea
 {
-    static QMap<QString,GoodPreviewWidget* > good_preview;
+    QMap<QString,GoodPreviewWidget* > good_preview;
     QWidget* center_widget=nullptr;
     QHBoxLayout* main_lay=nullptr;
 
     Q_OBJECT
 
+public slots:
+    void update();
+    void clear();
+
 public:
     bool existGood(const QString& good_id)const ;
     void addGood(const QString& good_id);
+    void addGoodSortedByPrice(const QString& type_id);
+    void addGoodSortedByDiscount(const QString& type_id);
+    void addGoodSortedByWillingness(const QString& type_id);
     bool removeGood(const QString& good_id);
     GoodPreviewWidget& getGoodPreviewWidget(const QString& good_id);
-    void update();
     explicit GoodPreviewScrollArea(QWidget *parent = nullptr);
     ~GoodPreviewScrollArea();
 

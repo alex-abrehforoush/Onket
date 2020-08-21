@@ -174,7 +174,6 @@ DIST          =  Admin.h \
 		Order.h \
 		User.h \
 		actiointype.h \
-		actionaddtype.h \
 		commentlistwidget.h \
 		commentitemstatus.h \
 		commentitemstatusfield.h \
@@ -671,7 +670,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Onket.zip $(SOURCES) $(DIST) Onket.pro D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\spec_pre.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\qdevice.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\device_config.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\sanitize.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\gcc-base.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\g++-base.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\angle.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\windows-vulkan.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\g++-win32.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\windows-desktop.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\qconfig.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3d.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3drender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qt_functions.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qt_config.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\win32-g++\qmake.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\exclusive_builds.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\toolchain.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\default_pre.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\default_pre.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\resolve_config.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\default_post.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qml_debug.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\precompile_header.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\warn_on.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qt.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\resources_functions.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\resources.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\moc.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\opengl.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\uic.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qmake_use.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\file_copies.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\windows.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\testcase_targets.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\exceptions.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\yacc.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\lex.prf Onket.pro D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\Qt5Widgets.prl D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\Qt5Gui.prl D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\Qt5Core.prl D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\qtmain.prl    D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\data\dummy.cpp Admin.h Commodity.h Customer.h Guest.h Order.h User.h actiointype.h actionaddtype.h commentlistwidget.h commentitemstatus.h commentitemstatusfield.h commentlistwidgetitem.h commentwidget.h commentwidgetfield.h dashboard.h discussionitem.h discussionlistwidget.h filefunctions.h good.h goodgenralinfowidget.h goodmainviewwidget.h goodpreviewscrollarea.h goodpreviewwidget.h goodpropertywidget.h item.h mainwindow.h comment.h Commity.h menutype.h question.h questioninputwidget.h questionviewitem.h reply.h loginpage.h replyinputwidget.h replyviewitem.h signup.h storage.h type.h  Admin.cpp Customer.cpp Guest.cpp Order.cpp User.cpp actiointype.cpp commentlistwidget.cpp commentlistwidgetitem.cpp commentwidget.cpp commentwidgetfield.cpp commentitemstatus.cpp commentitemstatusfield.cpp dashboard.cpp discussionitem.cpp discussionlistwidget.cpp filefunctions.cpp good.cpp goodgenralinfowidget.cpp goodmainviewwidget.cpp goodpreviewscrollarea.cpp goodpreviewwidget.cpp goodpropertywidget.cpp item.cpp main.cpp mainwindow.cpp comment.cpp Commodity.cpp menutype.cpp question.cpp questioninputwidget.cpp questionviewitem.cpp reply.cpp loginpage.cpp replyinputwidget.cpp replyviewitem.cpp signup.cpp storage.cpp type.cpp commentlistwidget.ui commentlistwidgetitem.ui commentwidget.ui commentwidgetfield.ui dashboard.ui discussionlistwidget.ui goodgenralinfowidget.ui goodmainviewwidget.ui goodpreviewscrollarea.ui goodpreviewwidget.ui goodpropertywidget.ui mainwindow.ui loginpage.ui questioninputwidget.ui questionviewitem.ui replyinputwidget.ui replyviewitem.ui signup.ui    
+	$(ZIP) Onket.zip $(SOURCES) $(DIST) Onket.pro D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\spec_pre.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\qdevice.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\device_config.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\sanitize.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\gcc-base.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\g++-base.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\angle.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\windows_vulkan_sdk.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\windows-vulkan.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\g++-win32.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\common\windows-desktop.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\qconfig.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3danimation.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3danimation_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dcore.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dcore_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dextras.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dextras_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dinput.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dinput_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dlogic.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dlogic_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquick.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquick_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickextras.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickextras_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickinput.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickinput_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickrender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickrender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3drender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_3drender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_accessibility_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axbase.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axbase_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axcontainer.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axcontainer_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axserver.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_axserver_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bluetooth.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bluetooth_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bodymovin_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_bootstrap_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_charts.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_charts_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_concurrent.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_concurrent_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_core.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_core_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_datavisualization.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_datavisualization_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_dbus.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_dbus_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_designer.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_designer_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_designercomponents_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_edid_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_egl_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_fb_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gamepad.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gamepad_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gui.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_gui_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_help.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_help_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_location.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_location_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimedia.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimedia_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_network.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_network_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_networkauth.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_networkauth_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_nfc.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_nfc_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_opengl.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_opengl_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_openglextensions.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_openglextensions_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_packetprotocol_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioning.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioning_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioningquick.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_positioningquick_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_printsupport.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_printsupport_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_purchasing.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_purchasing_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qml.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qml_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmldebug_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmldevtools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlmodels.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlmodels_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmltest.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmltest_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3d.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3d_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dassetimport_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3drender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3drender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3druntimerender_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dutils.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick3dutils_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quick_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickparticles_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickshapes_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickwidgets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_quickwidgets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_remoteobjects.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_remoteobjects_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_repparser.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_repparser_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_script.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_script_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scripttools.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scripttools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scxml.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_scxml_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sensors.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sensors_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialbus.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialbus_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialport.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_serialport_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sql.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_sql_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_svg.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_svg_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_testlib.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_testlib_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_texttospeech.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_texttospeech_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_theme_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_uiplugin.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_uitools.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_uitools_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_webchannel.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_webchannel_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_websockets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_websockets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_widgets.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_widgets_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_winextras.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_winextras_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xml.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xml_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qt_functions.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qt_config.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\win32-g++\qmake.conf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\spec_post.prf .qmake.stash D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\exclusive_builds.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\toolchain.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\default_pre.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\default_pre.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\resolve_config.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\default_post.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qml_debug.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\precompile_header.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\warn_on.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qt.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\resources_functions.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\resources.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\moc.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\opengl.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\uic.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\qmake_use.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\file_copies.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\win32\windows.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\testcase_targets.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\exceptions.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\yacc.prf D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\lex.prf Onket.pro D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\Qt5Widgets.prl D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\Qt5Gui.prl D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\Qt5Core.prl D:\HelpMemory\Qt\5.14.0\mingw73_32\lib\qtmain.prl    D:\HelpMemory\Qt\5.14.0\mingw73_32\mkspecs\features\data\dummy.cpp Admin.h Commodity.h Customer.h Guest.h Order.h User.h actiointype.h commentlistwidget.h commentitemstatus.h commentitemstatusfield.h commentlistwidgetitem.h commentwidget.h commentwidgetfield.h dashboard.h discussionitem.h discussionlistwidget.h filefunctions.h good.h goodgenralinfowidget.h goodmainviewwidget.h goodpreviewscrollarea.h goodpreviewwidget.h goodpropertywidget.h item.h mainwindow.h comment.h Commity.h menutype.h question.h questioninputwidget.h questionviewitem.h reply.h loginpage.h replyinputwidget.h replyviewitem.h signup.h storage.h type.h  Admin.cpp Customer.cpp Guest.cpp Order.cpp User.cpp actiointype.cpp commentlistwidget.cpp commentlistwidgetitem.cpp commentwidget.cpp commentwidgetfield.cpp commentitemstatus.cpp commentitemstatusfield.cpp dashboard.cpp discussionitem.cpp discussionlistwidget.cpp filefunctions.cpp good.cpp goodgenralinfowidget.cpp goodmainviewwidget.cpp goodpreviewscrollarea.cpp goodpreviewwidget.cpp goodpropertywidget.cpp item.cpp main.cpp mainwindow.cpp comment.cpp Commodity.cpp menutype.cpp question.cpp questioninputwidget.cpp questionviewitem.cpp reply.cpp loginpage.cpp replyinputwidget.cpp replyviewitem.cpp signup.cpp storage.cpp type.cpp commentlistwidget.ui commentlistwidgetitem.ui commentwidget.ui commentwidgetfield.ui dashboard.ui discussionlistwidget.ui goodgenralinfowidget.ui goodmainviewwidget.ui goodpreviewscrollarea.ui goodpreviewwidget.ui goodpropertywidget.ui mainwindow.ui loginpage.ui questioninputwidget.ui questionviewitem.ui replyinputwidget.ui replyviewitem.ui signup.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) Admin.o Customer.o Guest.o Order.o User.o actiointype.o commentlistwidget.o commentlistwidgetitem.o commentwidget.o commentwidgetfield.o commentitemstatus.o commentitemstatusfield.o dashboard.o discussionitem.o discussionlistwidget.o filefunctions.o good.o goodgenralinfowidget.o goodmainviewwidget.o goodpreviewscrollarea.o goodpreviewwidget.o goodpropertywidget.o item.o main.o mainwindow.o comment.o Commodity.o menutype.o question.o questioninputwidget.o questionviewitem.o reply.o loginpage.o replyinputwidget.o replyviewitem.o signup.o storage.o type.o moc_commentlistwidget.o moc_commentitemstatus.o moc_commentitemstatusfield.o moc_commentlistwidgetitem.o moc_commentwidget.o moc_commentwidgetfield.o moc_dashboard.o moc_discussionlistwidget.o moc_goodgenralinfowidget.o moc_goodmainviewwidget.o moc_goodpreviewscrollarea.o moc_goodpreviewwidget.o moc_goodpropertywidget.o moc_mainwindow.o moc_questioninputwidget.o moc_questionviewitem.o moc_loginpage.o moc_replyinputwidget.o moc_replyviewitem.o moc_signup.o
@@ -2647,6 +2646,13 @@ moc_mainwindow.cpp: mainwindow.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/QDir \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qdir.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qfileinfo.h \
+		menutype.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenu \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
+		actiointype.h \
 		storage.h \
 		Commodity.h \
 		good.h \
@@ -2655,6 +2661,20 @@ moc_mainwindow.cpp: mainwindow.h \
 		question.h \
 		discussionitem.h \
 		reply.h \
+		goodpreviewscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollArea \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollBar \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollbar.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractslider.h \
+		goodpreviewwidget.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QPixmap \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QMouseEvent \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QPushButton \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QHBoxLayout \
 		moc_predefs.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/bin/moc.exe
 	D:\HelpMemory\Qt\5.14.0\mingw73_32\bin\moc.exe $(DEFINES) --include "D:/HelpMemory/OnketProje(Final Ap)/Onket/Project/Main/Onket/moc_predefs.h" -ID:/HelpMemory/Qt/5.14.0/mingw73_32/mkspecs/win32-g++ -I"D:/HelpMemory/OnketProje(Final Ap)/Onket/Project/Main/Onket" -ID:/HelpMemory/Qt/5.14.0/mingw73_32/include -ID:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets -ID:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui -ID:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtANGLE -ID:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.24.28314\include" -I"C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt" mainwindow.h -o moc_mainwindow.cpp
@@ -5118,6 +5138,13 @@ dashboard.o: dashboard.cpp dashboard.h \
 		Guest.h \
 		loginpage.h \
 		signup.h \
+		menutype.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenu \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
+		actiointype.h \
 		storage.h \
 		Commodity.h \
 		good.h \
@@ -5126,6 +5153,12 @@ dashboard.o: dashboard.cpp dashboard.h \
 		question.h \
 		discussionitem.h \
 		reply.h \
+		goodpreviewscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollBar \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollbar.h \
+		goodpreviewwidget.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QPixmap \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QMouseEvent \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMessageBox \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmessagebox.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qdialog.h \
@@ -6512,6 +6545,13 @@ main.o: main.cpp mainwindow.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/QDir \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qdir.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qfileinfo.h \
+		menutype.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenu \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
+		actiointype.h \
 		storage.h \
 		Commodity.h \
 		good.h \
@@ -6520,6 +6560,20 @@ main.o: main.cpp mainwindow.h \
 		question.h \
 		discussionitem.h \
 		reply.h \
+		goodpreviewscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollArea \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollBar \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollbar.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractslider.h \
+		goodpreviewwidget.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QPixmap \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QMouseEvent \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QPushButton \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QHBoxLayout \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QApplication \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qapplication.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qcoreapplication.h \
@@ -6678,6 +6732,13 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/QDir \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qdir.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qfileinfo.h \
+		menutype.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenu \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
+		actiointype.h \
 		storage.h \
 		Commodity.h \
 		good.h \
@@ -6686,11 +6747,22 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		question.h \
 		discussionitem.h \
 		reply.h \
+		goodpreviewscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollArea \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollBar \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollbar.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractslider.h \
+		goodpreviewwidget.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QPixmap \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QMouseEvent \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QPushButton \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qpushbutton.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractbutton.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QHBoxLayout \
 		ui_mainwindow.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/QVariant \
-		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
-		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QApplication \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qapplication.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qcoreapplication.h \
@@ -6698,17 +6770,13 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qdesktopwidget.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/qguiapplication.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/qinputmethod.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenu \
-		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenuBar \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenubar.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QStatusBar \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qstatusbar.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMessageBox \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmessagebox.h \
-		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qdialog.h \
-		menutype.h \
-		actiointype.h
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 comment.o: comment.cpp comment.h \
@@ -7641,6 +7709,13 @@ loginpage.o: loginpage.cpp loginpage.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/QDir \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qdir.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qfileinfo.h \
+		menutype.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenu \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
+		actiointype.h \
 		storage.h \
 		Commodity.h \
 		good.h \
@@ -7649,6 +7724,17 @@ loginpage.o: loginpage.cpp loginpage.h \
 		question.h \
 		discussionitem.h \
 		reply.h \
+		goodpreviewscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollArea \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollBar \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollbar.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractslider.h \
+		goodpreviewwidget.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QPixmap \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QMouseEvent \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QHBoxLayout \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMessageBox \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmessagebox.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qdialog.h
@@ -8143,6 +8229,13 @@ signup.o: signup.cpp signup.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/QDir \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qdir.h \
 		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtCore/qfileinfo.h \
+		menutype.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QMenu \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qmenu.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qaction.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qactiongroup.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QAction \
+		actiointype.h \
 		storage.h \
 		Commodity.h \
 		good.h \
@@ -8150,7 +8243,18 @@ signup.o: signup.cpp signup.h \
 		comment.h \
 		question.h \
 		discussionitem.h \
-		reply.h
+		reply.h \
+		goodpreviewscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollArea \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractscrollarea.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QScrollBar \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qscrollbar.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/qabstractslider.h \
+		goodpreviewwidget.h \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QPixmap \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtGui/QMouseEvent \
+		D:/HelpMemory/Qt/5.14.0/mingw73_32/include/QtWidgets/QHBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o signup.o signup.cpp
 
 storage.o: storage.cpp storage.h \

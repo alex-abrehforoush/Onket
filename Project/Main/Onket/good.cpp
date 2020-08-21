@@ -105,6 +105,87 @@ bool Good::existGoodName(const QString &good_name)
     return true;
 }
 
+QVector<QString> Good::getSortByPrice(const QVector<QString> &input, bool ascending)
+{
+    Good::readFile();
+    QMultiMap<unsigned int,QString> map_price;
+    QVector<QString>res;
+
+    for(auto it: input)
+    {
+        if(Good::existGoodId(it)==false)continue;
+
+        Good& g=Good::getGood(it);
+        map_price.insert(g.getPrice(),g.getId());
+    }
+    for(auto it : map_price)
+    {
+        if(ascending==true)
+        {
+            res.push_back(it);
+        }
+        else
+        {
+            res.push_front(it);
+        }
+    }
+    return res;
+}
+
+QVector<QString> Good::getSortByDiscount(const QVector<QString> &input, bool ascending)
+{
+    Good::readFile();
+
+    QMultiMap<double,QString>map_discount;
+    QVector<QString>res;
+
+    for(auto it : input)
+    {
+        if(Good::existGoodId(it)==false)continue;
+        Good& g=Good::getGood(it);
+        map_discount.insert(g.getDiscountpercent(),g.getId());
+    }
+    for(auto it : map_discount)
+    {
+        if(ascending==true)
+        {
+            res.push_back(it);
+        }
+        else
+        {
+            res.push_front(it);
+        }
+    }
+    return res;
+}
+
+QVector<QString> Good::getSortByWillingness(const QVector<QString> &input, bool ascending)
+{
+    Good::readFile();
+
+    QMultiMap<double,QString> map_Willingness;
+    QVector<QString>res;
+
+    for(auto it : input)
+    {
+        if(Good::existGoodId(it)==false)continue;
+        Good& g=Good::getGood(it);
+        map_Willingness.insert(g.getWillingness(),g.getId());
+    }
+    for(auto it : map_Willingness)
+    {
+        if(ascending==true)
+        {
+            res.push_back(it);
+        }
+        else
+        {
+            res.push_front(it);
+        }
+    }
+    return res;
+}
+
 bool Good::readFile()
 {
     QFile file("Database/Goods/goods.csv");
@@ -234,6 +315,21 @@ unsigned int Good::getFinalPrice()
 double Good::getDiscountpercent()
 {
     return this->discount_percent;
+}
+
+double Good::getWillingness()
+{
+    double sum=0,cnt=0;
+    for(auto it : this->comments_item)
+    {
+        sum+=it;
+        cnt++;
+    }
+    if(cnt==0)
+    {
+        return 0;
+    }
+    return sum/cnt;
 }
 
 bool Good::existProperty(const QString &property_name)const
@@ -955,6 +1051,8 @@ void Good::QuestionSortyByReplyNumber()
 
 void Good::commentsReadFile()
 {
+    goods_id.clear();
+    goods_name.clear();
     this->commentSortByDate();
     QString path="D:/HelpMemory/OnketFile";
     path.append("/Comments/");

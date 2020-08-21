@@ -303,6 +303,11 @@ bool Type::addGood(const QString &good_id)const
    else
    {
        this->goods_id.push_back(good_id);
+       if(Type::existTypeId(parent_id)==true)
+       {
+           Type& parent=Type::getTypePrivate(parent_id);
+           parent.addGood(good_id);
+       }
        return true;
    }
 }
@@ -317,6 +322,11 @@ bool Type::removeGood(const QString &good_id)const
     {
         int index=this->goods_id.indexOf(good_id);
         this->goods_id.remove(index);
+        if(Type::existTypeId(parent_id)==true)
+        {
+            Type& parent=Type::getTypePrivate(parent_id);
+            parent.addGood(good_id);
+        }
         return true;
     }
 }

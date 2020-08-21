@@ -9,7 +9,7 @@ void ActoinType::action_triggered()
         return;
     }
     Type::setCurrentTypeId(type_id);
-    //show some widget
+    emit this->action_triggered();
 }
 
 ActoinType::ActoinType(const QString &type_id, QWidget *parent):QAction(parent)

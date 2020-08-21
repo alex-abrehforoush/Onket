@@ -63,7 +63,6 @@ HEADERS += \
     Order.h \
     User.h \
     actiointype.h \
-    actionaddtype.h \
     commentlistwidget.h \
     commentitemstatus.h \
     commentitemstatusfield.h \

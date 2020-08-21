@@ -9,7 +9,9 @@
 #include "loginpage.h"
 #include "signup.h"
 #include "dashboard.h"
+#include "menutype.h"
 #include "storage.h"
+#include "goodpreviewscrollarea.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,6 +40,9 @@ private slots:
     void on_action_11_triggered();
 
     void on_action_triggered();
+public slots:
+    void updateScrollAreas(const QString& type_id);
+    void setupDynomicMenu(QMenu* menu);
 private:
     Ui::MainWindow* ui;
     static LoginPage* login_page;
@@ -45,5 +50,9 @@ private:
     static Dashboard* dashboard;
     static User* current_user;
     static Storage onket_repository;
+    MenuType* base_menu=nullptr;
+    QWidget* main_center_widget=nullptr;
+    QGridLayout* main_lay=nullptr;
+    GoodPreviewScrollArea* scroll_price=nullptr,*scroll_discount=nullptr,*scroll_willingness=nullptr;
 };
 #endif // MAINWINDOW_H
