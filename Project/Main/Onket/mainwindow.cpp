@@ -20,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent) :
     scroll_price(new GoodPreviewScrollArea(this)),
     scroll_discount(new GoodPreviewScrollArea(this)),
     scroll_willingness(new GoodPreviewScrollArea(this)),
+    lab_price(new QLabel("ارزان ترین ها",this)),
+    lab_discount(new QLabel("پر تخفیف ترین ها",this)),
+    lab_willingnes(new QLabel("محبوب ترین ها",this)),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -67,7 +70,12 @@ MainWindow::MainWindow(QWidget *parent) :
     main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     this->updateScrollAreas("none");
-
+    this->lab_willingnes->setStyleSheet("background-color: rgb(255, 0, 127);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
+    this->lab_discount->setStyleSheet("background-color: rgb(0, 255, 0);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
+    this->lab_price->setStyleSheet("background-color: rgb(0, 170, 255);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
+    this->lab_willingnes->setAlignment(Qt::AlignCenter);
+    this->lab_discount->setAlignment(Qt::AlignCenter);
+    this->lab_price->setAlignment(Qt::AlignCenter);
     main_scroll_area->show();
 
     //onket_repository.loadStorage();
@@ -207,10 +215,13 @@ void MainWindow::updateScrollAreas(const QString &type_id)
     scroll_price->addGoodSortedByPrice(type_id);
     scroll_discount->addGoodSortedByDiscount(type_id);
     scroll_willingness->addGoodSortedByWillingness(type_id);
+    this->main_lay->addWidget(lab_willingnes,0,0);
+    this->main_lay->addWidget(lab_discount,1,0);
+    this->main_lay->addWidget(lab_price,2,0);
+    this->main_lay->addWidget(scroll_willingness,0,1);
+    this->main_lay->addWidget(scroll_discount,1,1);
+    this->main_lay->addWidget(scroll_price,2,1);
 
-    this->main_lay->addWidget(scroll_price,0,0);
-    this->main_lay->addWidget(scroll_discount,1,0);
-    this->main_lay->addWidget(scroll_willingness,2,0);
 }
 
 void MainWindow::setupDynomicMenu(QMenu *menu)

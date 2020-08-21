@@ -60,5 +60,6 @@ private:
     QWidget* main_center_widget = nullptr;
     QGridLayout* main_lay = nullptr;
     GoodPreviewScrollArea* scroll_price = nullptr, *scroll_discount = nullptr, *scroll_willingness = nullptr;
+    QLabel* lab_price=nullptr,* lab_discount=nullptr,*lab_willingnes=nullptr;
 };
 #endif // MAINWINDOW_H
