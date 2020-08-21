@@ -8,8 +8,8 @@
 #include <QMessageBox>
 
 User::User(QString username, QString password)
-	:username(username)
-	,password(decryptPassword(password))
+    :username(username),
+    password(decryptPassword(password))
 {
 
 }
