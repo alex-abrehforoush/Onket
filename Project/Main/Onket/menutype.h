@@ -2,13 +2,13 @@
 #define MENUTYPE_H
 #include <QMenu>
 #include <QAction>
-#include "User.h"
-#include "actiointype.h"
+#include "actiontype.h"
 
 
 
 class MenuType:public QMenu
 {
+    Q_OBJECT
     QString type_id;
     bool info_valid=false;
 signals:

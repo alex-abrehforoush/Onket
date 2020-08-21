@@ -109,6 +109,7 @@ void MainWindow::on_action_10_triggered()
 {
     if(current_user->getMode()==-1)
     {
+        ui->main_scroll_area->hide();
         if(login_page == nullptr)
         {
             login_page = new LoginPage(this);

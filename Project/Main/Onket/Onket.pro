@@ -17,11 +17,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Admin.cpp \
+    actiontype.cpp \
     Customer.cpp \
     Guest.cpp \
     Order.cpp \
     User.cpp \
-    actiointype.cpp \
     commentlistwidget.cpp \
     commentlistwidgetitem.cpp \
     commentwidget.cpp \
@@ -39,11 +39,11 @@ SOURCES += \
     goodpreviewwidget.cpp \
     goodpropertywidget.cpp \
     item.cpp \
+    menutype.cpp \
     main.cpp \
     mainwindow.cpp \
     comment.cpp \
     Commodity.cpp \
-    menutype.cpp \
     question.cpp \
     questioninputwidget.cpp \
     questionviewitem.cpp \
@@ -57,12 +57,12 @@ SOURCES += \
 
 HEADERS += \
     Admin.h \
+    actiontype.h \
     Commodity.h \
     Customer.h \
     Guest.h \
     Order.h \
     User.h \
-    actiointype.h \
     commentlistwidget.h \
     commentitemstatus.h \
     commentitemstatusfield.h \

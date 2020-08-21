@@ -3,7 +3,7 @@
 
 void MenuType::action_triggered(const QString &type_id)
 {
-    emit this->action_triggered(type_id);
+    emit this->actionTriggered(type_id);
 }
 
 MenuType::MenuType(const QString &type_id, QWidget *parent):QMenu(parent)
@@ -22,7 +22,7 @@ MenuType::MenuType(const QString &type_id, QWidget *parent):QMenu(parent)
         QString branch_id=t.readBranchId();
         if(Type::getType(branch_id).branchIdIsEmpty()==true)
         {
-            ActoinType * act=new ActoinType(branch_id,parent);
+            ActionType * act=new ActionType(branch_id,parent);
             this->addAction(act);
             connect(act,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString& )));
         }
@@ -49,7 +49,7 @@ void MenuType::setUpMenu(QMenu *menu, QWidget *parent)
             const Type& t=Type::getType(it);
             if(t.branchIdIsEmpty()==true)
             {
-                ActoinType* act=new ActoinType(it,menu);
+                ActionType* act=new ActionType(it,menu);
                 menu->addAction(act);
                 connect(act,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString&)));
 

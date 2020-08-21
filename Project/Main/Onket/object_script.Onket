@@ -1,9 +1,9 @@
 Admin.o
+actiontype.o
 Customer.o
 Guest.o
 Order.o
 User.o
-actiointype.o
 commentlistwidget.o
 commentlistwidgetitem.o
 commentwidget.o
@@ -21,11 +21,11 @@ goodpreviewscrollarea.o
 goodpreviewwidget.o
 goodpropertywidget.o
 item.o
+menutype.o
 main.o
 mainwindow.o
 comment.o
 Commodity.o
-menutype.o
 question.o
 questioninputwidget.o
 questionviewitem.o
@@ -36,6 +36,7 @@ replyviewitem.o
 signup.o
 storage.o
 type.o
+moc_actiontype.o
 moc_commentlistwidget.o
 moc_commentitemstatus.o
 moc_commentitemstatusfield.o
@@ -50,6 +51,7 @@ moc_goodpreviewscrollarea.o
 moc_goodpreviewwidget.o
 moc_goodpropertywidget.o
 moc_mainwindow.o
+moc_menutype.o
 moc_questioninputwidget.o
 moc_questionviewitem.o
 moc_loginpage.o
