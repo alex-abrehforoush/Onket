@@ -11,15 +11,16 @@ signup* MainWindow::signup_page;
 Dashboard* MainWindow::dashboard;
 User* MainWindow::current_user;
 Storage MainWindow::onket_repository;
+QScrollArea* MainWindow::main_scroll_area = nullptr;
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    ,main_lay(new QGridLayout(this))
-    ,main_center_widget(new QWidget(this))
-    ,scroll_price(new GoodPreviewScrollArea(this))
-    ,scroll_discount(new GoodPreviewScrollArea(this))
-    ,scroll_willingness(new GoodPreviewScrollArea(this))
-    ,ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    main_lay(new QGridLayout(this)),
+    main_center_widget(new QWidget(this)),
+    scroll_price(new GoodPreviewScrollArea(this)),
+    scroll_discount(new GoodPreviewScrollArea(this)),
+    scroll_willingness(new GoodPreviewScrollArea(this)),
+    ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
@@ -48,14 +49,26 @@ MainWindow::MainWindow(QWidget *parent)
         User::addUser(&adel);
     }
 
+    if(main_scroll_area == nullptr)
+    {
+        main_scroll_area = new QScrollArea(this);
+    }
+    else
+    {
+        main_scroll_area->setParent(this);
+    }
+    main_scroll_area->setGeometry(0, 30, 1500, 770);
+
     this->setupDynomicMenu(ui->menu);
 
     this->main_center_widget->setLayout(main_lay);
-    ui->main_scroll_area->setWidget(main_center_widget);
-    ui->main_scroll_area->setWidgetResizable(true);
-    ui->main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    ui->main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    main_scroll_area->setWidget(main_center_widget);
+    main_scroll_area->setWidgetResizable(true);
+    main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     this->updateScrollAreas("none");
+
+    main_scroll_area->show();
 
     //onket_repository.loadStorage();
 }
@@ -96,6 +109,18 @@ void MainWindow::setDashboard(Dashboard *dshbrd)
     dashboard = dshbrd;
 }
 
+void MainWindow::hideMainScrollArea()
+{
+    main_scroll_area->hide();
+    return;
+}
+
+void MainWindow::showMainScrollArea()
+{
+    main_scroll_area->show();
+    return;
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -109,7 +134,11 @@ void MainWindow::on_action_10_triggered()
 {
     if(current_user->getMode()==-1)
     {
+<<<<<<< HEAD
         ui->main_scroll_area->hide();
+=======
+        MainWindow::hideMainScrollArea();
+>>>>>>> 7e4622ed7b0d2d69facf9663ffdd5eaa729d1cef
         if(login_page == nullptr)
         {
             login_page = new LoginPage(this);

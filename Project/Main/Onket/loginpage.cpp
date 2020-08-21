@@ -27,6 +27,7 @@ QSize LoginPage::sizeHint() const
 void LoginPage::on_back_clicked()
 {
     MainWindow::setLoginPage(nullptr);
+    MainWindow::showMainScrollArea();
 }
 
 void LoginPage::on_show_password_stateChanged()
