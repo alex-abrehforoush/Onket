@@ -78,20 +78,18 @@ MainWindow::MainWindow(QWidget *parent) :
     this->lab_price->setAlignment(Qt::AlignCenter);
     main_scroll_area->show();
 
-<<<<<<< HEAD
+
+
+
+
     connect(scroll_price,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
     connect(scroll_discount,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
-=======
-<<<<<<< HEAD
-    onket_repository.loadStorage();
-=======
->>>>>>> bd9552b3cd8c46cba9dee55f001f6ac3c52fb870
     connect(scroll_willingness,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
 
+    onket_repository.loadStorage();
 
 
-    //onket_repository.loadStorage();
->>>>>>> 201aab1a2f1f69ffe76940f40f46c8e657a8912f
+
 }
 
 void MainWindow::setCurrentUser(User *crnt)
