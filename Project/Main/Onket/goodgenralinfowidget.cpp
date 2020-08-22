@@ -23,6 +23,16 @@ void GoodGenralInfoWidget::update()
         ui->lab_discount_percent->setText(QString::number(g.getDiscountpercent()));
         ui->lab_final_price->setText(QString::number(g.getFinalPrice()));
 
+        ui->gridLayout->addWidget(ui->lab_1,0,0);
+        ui->gridLayout->addWidget(ui->lab_2,1,0);
+        ui->gridLayout->addWidget(ui->lab_3,2,0);
+        ui->gridLayout->addWidget(ui->lab_4,3,0);
+        ui->gridLayout->addWidget(ui->lab_5,4,0);
+        ui->gridLayout->addWidget(ui->lab_name,0,1);
+        ui->gridLayout->addWidget(ui->lab_seller,1,1);
+        ui->gridLayout->addWidget(ui->lab_price,2,1);
+        ui->gridLayout->addWidget(ui->lab_discount_percent,3,1);
+        ui->gridLayout->addWidget(ui->lab_final_price,4,1);
 
     }
 }

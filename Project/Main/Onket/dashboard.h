@@ -113,6 +113,10 @@ private slots:
 
     void on_good_type_line_edit_editingFinished();
 
+    void on_good_id_for_adding_to_storage_editingFinished();
+
+    void on_good_id_for_get_inventory_editingFinished();
+
 private:
     QWidget* property_center_widget,* comment_center_widget,*good_property_center_widget;
     QVBoxLayout* lay_property,*lay_comment;
@@ -123,6 +127,8 @@ private:
     Ui::Dashboard *ui;
     void addPropertyItemToScrollArea(const QString& property_name);
 
-
+signals:
+    void updateGoodsRequest(const QString& type_id);
+    void updateTypesRequest();
 };
 #endif // DASHBOARD_H
