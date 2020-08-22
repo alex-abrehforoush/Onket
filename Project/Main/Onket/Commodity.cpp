@@ -59,7 +59,7 @@ Commodity Commodity::getCommodity(QString good_id)
             QTextStream in(&data);
             QString content = in.readAll();
             QStringList list_1 = content.split("\n");
-            for(int i = 0; i<list_1.size(); i++)
+            for(int i = 0; i < list_1.size() - 1; i++)
             {
                 QStringList list_2 = list_1.at(i).split(",");
                 return_commodity.add(list_2.at(0), list_2.at(1).toUInt());
