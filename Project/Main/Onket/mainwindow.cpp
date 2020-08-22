@@ -78,7 +78,7 @@ MainWindow::MainWindow(QWidget *parent) :
     this->lab_price->setAlignment(Qt::AlignCenter);
     main_scroll_area->show();
 
-    //onket_repository.loadStorage();
+    onket_repository.loadStorage();
 }
 
 void MainWindow::setCurrentUser(User *crnt)

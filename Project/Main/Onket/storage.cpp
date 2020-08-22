@@ -22,7 +22,7 @@ void Storage::loadStorage()
         QTextStream in(&data);
         QString content = in.readAll();
         QStringList list_1 = content.split(",");
-        for(int i = 0; i < list_1.size(); i++)
+        for(int i = 0; i < list_1.size() - 1; i++)
         {
             this->remaining.insert(list_1.at(i), Commodity::getCommodity(list_1.at(i)));
         }
