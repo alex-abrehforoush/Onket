@@ -32,7 +32,7 @@ class GoodPreviewWidget : public QWidget
 
 
  signals:
-    void on_Good_preview_clicke(const QString& good_id);
+    void on_good_preview_clicked(const QString& good_id);
 protected:
     void mouseDoubleClickEvent(QMouseEvent *event) override;
 

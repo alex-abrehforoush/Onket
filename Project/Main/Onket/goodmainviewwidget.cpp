@@ -45,6 +45,13 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
        this->lab_img->setPixmap(QPixmap::fromImage(img));
        this->lab_img->setScaledContents(true);
    }
+   else
+   {
+      img.load(path);
+      this->lab_img->setPixmap(QPixmap::fromImage(img));
+      this->lab_img->setScaledContents(true);
+
+   }
 
   QString bnt_add_content="افزودن به سبد خرید";
   bnt_add_content.append(" )");
@@ -88,10 +95,7 @@ void goodMainViewWidget::setupLayout()
 
 
      this->lay_picture->addWidget(lab_img);
-    QLabel* lab_name=new QLabel(g.getName(),this);
-    lab_name->setStyleSheet("color: rgb(255, 0, 0);background-color: rgb(255, 255, 255);");
-    lab_name->setFixedSize(200,40);
-    lab_name->setAlignment(Qt::AlignCenter);
+
 
 
     this->lay_body->addWidget(g_properties,0,Qt::AlignCenter);

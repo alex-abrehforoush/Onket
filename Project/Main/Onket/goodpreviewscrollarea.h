@@ -18,7 +18,10 @@ class GoodPreviewScrollArea : public QScrollArea
     QHBoxLayout* main_lay=nullptr;
 
     Q_OBJECT
-
+signals:
+    void onGoodPreviewClicked(const QString& good_id);
+private slots:
+    void on_good_preview_clicked(const QString& good_id);
 public slots:
     void update();
     void clear();

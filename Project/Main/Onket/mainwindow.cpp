@@ -69,7 +69,7 @@ MainWindow::MainWindow(QWidget *parent) :
     main_scroll_area->setWidgetResizable(true);
     main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    this->updateScrollAreas("none");
+    this->updatePrviewScrollAreas("none");
     this->lab_willingnes->setStyleSheet("background-color: rgb(255, 0, 127);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
     this->lab_discount->setStyleSheet("background-color: rgb(0, 255, 0);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
     this->lab_price->setStyleSheet("background-color: rgb(0, 170, 255);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
@@ -77,6 +77,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->lab_discount->setAlignment(Qt::AlignCenter);
     this->lab_price->setAlignment(Qt::AlignCenter);
     main_scroll_area->show();
+
+    connect(scroll_willingness,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
 
     //onket_repository.loadStorage();
 }
@@ -184,7 +186,16 @@ void MainWindow::on_action_triggered()
     }
 }
 
-void MainWindow::updateScrollAreas(const QString &type_id)
+void MainWindow::showGood(const QString &good_id)
+{
+
+    this->hidePreviewScrollAreas();
+    goodMainViewWidget* good_main_view=new goodMainViewWidget(good_id,current_user->getUsername(),this);
+    this->main_lay->addWidget(good_main_view,0,0);
+
+}
+
+void MainWindow::updatePrviewScrollAreas(const QString &type_id)
 {
     Type::readFile();
     if(Type::existTypeId(type_id)==false && type_id!="none")return;
@@ -224,10 +235,20 @@ void MainWindow::updateScrollAreas(const QString &type_id)
 
 }
 
+void MainWindow::hidePreviewScrollAreas()
+{
+    this->lab_price->hide();
+    this->lab_discount->hide();
+    this->lab_willingnes->hide();
+    this->scroll_price->hide();
+    this->scroll_discount->hide();
+    this->lab_willingnes->hide();
+}
+
 void MainWindow::setupDynomicMenu(QMenu *menu)
 {
     delete base_menu;
     base_menu=new MenuType("");
     base_menu->setUpMenu(menu);
-    connect(base_menu,SIGNAL(actionTriggered(const QString& )),this,SLOT(updateScrollAreas(const QString& )));
+    connect(base_menu,SIGNAL(actionTriggered(const QString& )),this,SLOT(updatePrviewScrollAreas(const QString& )));
 }

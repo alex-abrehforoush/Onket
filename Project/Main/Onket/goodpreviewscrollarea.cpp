@@ -23,6 +23,7 @@ void GoodPreviewScrollArea::addGood(const QString &good_id)
         GoodPreviewWidget* good_preview_item=new GoodPreviewWidget(good_id,this);
         this->good_preview.insert(good_id,good_preview_item);
         this->main_lay->addWidget(good_preview_item);
+        connect(good_preview_item,SIGNAL(on_good_preview_clicked(const QString&)),this,SLOT(on_good_preview_clicked(const QString& )));
     }
 }
 
@@ -112,6 +113,11 @@ GoodPreviewWidget &GoodPreviewScrollArea::getGoodPreviewWidget(const QString &go
 {
     auto it=this->good_preview.find(good_id);
     return *(it.value());
+}
+
+void GoodPreviewScrollArea::on_good_preview_clicked(const QString &good_id)
+{
+    emit this->onGoodPreviewClicked(good_id);
 }
 
 void GoodPreviewScrollArea::update()

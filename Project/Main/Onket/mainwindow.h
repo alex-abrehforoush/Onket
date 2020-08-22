@@ -13,6 +13,7 @@
 #include "menutype.h"
 #include "storage.h"
 #include "goodpreviewscrollarea.h"
+#include "goodmainviewwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -43,9 +44,11 @@ private slots:
     void on_action_11_triggered();
 
     void on_action_triggered();
-
+private slots:
+    void showGood(const QString& good_id);
 public slots:
-    void updateScrollAreas(const QString& type_id);
+    void updatePrviewScrollAreas(const QString& type_id);
+    void hidePreviewScrollAreas();
     void setupDynomicMenu(QMenu* menu);
 
 private:

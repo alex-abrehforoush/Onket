@@ -44,7 +44,7 @@ void GoodPreviewWidget::showAll()
 
 void GoodPreviewWidget::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    emit on_Good_preview_clicke(this->good_id);
+    emit on_good_preview_clicked(this->good_id);
 
     QWidget::mouseDoubleClickEvent(event);
 }
