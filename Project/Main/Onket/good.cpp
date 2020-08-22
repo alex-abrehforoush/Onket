@@ -1455,7 +1455,7 @@ Good::Good(const QString &line)
        this->maker_id=str_list[2];
        this->type_id=str_list[3];
        this->price=str_list[4].toInt();
-       this->discount_percent=str_list[5].toInt();
+       this->discount_percent=str_list[5].toDouble();
        this->properties=csv_QMap::toQStringQMap(str_list[6]);
        this->comments_item=csv_QMap::toDoubleQMap(str_list[7]);
        if(Good::existGoodName(name)==true )
