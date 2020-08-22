@@ -10,8 +10,8 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QDir>
-
-
+#include <QComboBox>
+#include <QSpinBox>
 
 #include "good.h"
 #include "User.h"
@@ -20,6 +20,7 @@
 #include "goodgenralinfowidget.h"
 #include "commentlistwidget.h"
 #include "discussionlistwidget.h"
+
 
 
 
@@ -38,18 +39,23 @@ class goodMainViewWidget : public QScrollArea
     QVBoxLayout* lay_picture=nullptr,*lay_body=nullptr,*lay_comment_items=nullptr,*lay_buy=nullptr,*lay_return=nullptr;
     QHBoxLayout* lay_buttons=nullptr;
     QLabel* lab_img=nullptr;
+    QComboBox* color_selection=nullptr;
+    QSpinBox* item_number=nullptr;
     QPushButton* bnt_add_to_basket=nullptr;
     GoodPropertyWidget* g_properties=nullptr;
     CommentItemStatus* c_status;
     GoodGenralInfoWidget* g_general=nullptr;
     CommentListWidget* comments_area=nullptr;
     DiscussionListWidget* discussion_area=nullptr;
+
     void setupSTyleSheet();
     void setupLayout();
+    void setupComboBox();
 signals:
     void updateGoodsRequest();
 private slots:
     void on_bnt_return_clicked();
+    void on_bnt_add_to_basket_clicked();
 public slots:
     void update();
 public:

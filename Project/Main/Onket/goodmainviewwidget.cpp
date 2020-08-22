@@ -1,5 +1,6 @@
 #include "goodmainviewwidget.h"
 #include "ui_goodmainviewwidget.h"
+#include "mainwindow.h"
 
 goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& user_id,QWidget *parent) :
     QScrollArea(parent)
@@ -10,6 +11,8 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     ,bnt_add_to_basket(new QPushButton("افزودن به سبد خرید",this))
     ,g_properties(new GoodPropertyWidget(good_id,this))
     ,c_status(new CommentItemStatus(good_id,this))
+    ,color_selection(new QComboBox(this))
+    ,item_number(new QSpinBox(this))
     ,lab_img(new QLabel(this))
     ,g_general(new GoodGenralInfoWidget(good_id,this))
     ,main_lay(new QGridLayout(this))
@@ -36,7 +39,6 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     {
         d.mkpath("Database/GoodPicture");
     }
-
     Good & g=Good::getGood(good_id);
     QString path="Database/GoodPicture/";
     path.append(good_id);
@@ -64,6 +66,7 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
 
 
 
+
     this->info_valid=true;
     this->setupSTyleSheet();
     this->setupLayout();
@@ -71,7 +74,7 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     this->setFixedSize(1500,800);
 
     connect(this->bnt_return,SIGNAL(clicked()),this,SLOT(on_bnt_return_clicked()));
-
+    connect(this->bnt_add_to_basket,SIGNAL(clicked()),this,SLOT(on_bnt_add_to_basket_clicked()));
 }
 
 void goodMainViewWidget::setupSTyleSheet()
@@ -83,9 +86,12 @@ void goodMainViewWidget::setupSTyleSheet()
 
     this->bnt_comment->setStyleSheet("background-color: rgb(0, 0, 127);\ncolor: rgb(255, 255, 255);");
     this->bnt_discussion->setStyleSheet("background-color: rgb(0, 0, 127);\ncolor: rgb(255, 255, 255);");
+    this->color_selection->setStyleSheet("background-color: rgb(0, 0, 0);\ncolor: rgb(255, 255, 255);");
 
+    this->color_selection->setFixedSize(200,30);
     this->bnt_comment->setFixedSize(300,50);
     this->bnt_discussion->setFixedSize(300,50);
+    this->item_number->setFixedSize(100,20);
    // this->bnt_add_to_basket->setFixedSize(100,100);
 
 
@@ -119,7 +125,9 @@ void goodMainViewWidget::setupLayout()
     this->lay_comment_items->addWidget(this->c_status,0,Qt::AlignCenter);
 
     this->lay_buy->addWidget(this->g_general);
-    this->lay_buy->addWidget(this->bnt_add_to_basket,1);
+    this->lay_buy->addWidget(this->color_selection);
+    this->lay_buy->addWidget(this->item_number);
+    this->lay_buy->addWidget(this->bnt_add_to_basket);
 
     this->lay_buttons->addWidget(bnt_comment,0);
     this->lay_buttons->addWidget(bnt_discussion,1);
@@ -127,10 +135,29 @@ void goodMainViewWidget::setupLayout()
 
 }
 
+void goodMainViewWidget::setupComboBox()
+{
+    Commodity temp = MainWindow::getOnketRepository().getCommodityOf(this->good_id);
+
+}
+
 void goodMainViewWidget::on_bnt_return_clicked()
 {
     this->hide();
     emit this->updateGoodsRequest();
+}
+
+void goodMainViewWidget::on_bnt_add_to_basket_clicked()
+{
+    if(MainWindow::getCurrentUser()->getMode()!=0)
+    {
+        QMessageBox::information(this,"پیام","شما دسترسی لازم برای خرید کالا را ندارید");
+        return;
+    }
+    else
+    {
+
+    }
 }
 
 void goodMainViewWidget::update()
