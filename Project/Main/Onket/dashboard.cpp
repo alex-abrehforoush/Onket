@@ -151,6 +151,7 @@ void Dashboard::clearAddGoodFields()
     ui->good_type_line_edit->clear();
     ui->seller_code->clear();
     ui->price_to_make->setValue(0);
+    ui->discount_SpinBox->setValue(0);
     ui->picture_of_good_to_make->clear();
     delete this->lay_good_property;
     this->lay_good_property = new QGridLayout(this);
@@ -447,6 +448,7 @@ void Dashboard::on_add_to_storage_clicked()
 void Dashboard::on_admin_back_clicked()
 {
     MainWindow::setDashboard(nullptr);
+    MainWindow::showMainScrollArea();
 }
 
 void Dashboard::on_inventory_clicked()
@@ -456,18 +458,21 @@ void Dashboard::on_inventory_clicked()
     {
         if(ui->good_color_for_get_inventory->currentText() == "همه موارد")
         {
-            ui->show_inventory_label->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(ui->good_id_for_get_inventory->text()).inventory()) + "تا در انبار موجود است");
+            ui->show_inventory_label->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(ui->good_id_for_get_inventory->text()).inventory()) + "عدد در انبار موجود است");
         }
-        else if(ui->good_color_for_get_inventory->currentText() == "سبز") temp = "Green";
-        else if(ui->good_color_for_get_inventory->currentText() == "قرمز") temp = "Red";
-        else if(ui->good_color_for_get_inventory->currentText() == "آبی") temp = "Blue";
-        else if(ui->good_color_for_get_inventory->currentText() == "بنفش") temp = "Purple";
-        else if(ui->good_color_for_get_inventory->currentText() == "زرد") temp = "Yellow";
-        else if(ui->good_color_for_get_inventory->currentText() == "صورتی") temp = "Pink";
-        else if(ui->good_color_for_get_inventory->currentText() == "قهوه ای") temp = "Brown";
-        else if(ui->good_color_for_get_inventory->currentText() == "مشکی") temp = "Black";
-        else if(ui->good_color_for_get_inventory->currentText() == "سفید") temp = "White";
-        ui->show_inventory_label->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(ui->good_id_for_get_inventory->text()).inventoryOf(temp)) + "تا در انبار موجود است ");
+        else
+        {
+            if(ui->good_color_for_get_inventory->currentText() == "سبز") temp = "Green";
+            else if(ui->good_color_for_get_inventory->currentText() == "قرمز") temp = "Red";
+            else if(ui->good_color_for_get_inventory->currentText() == "آبی") temp = "Blue";
+            else if(ui->good_color_for_get_inventory->currentText() == "بنفش") temp = "Purple";
+            else if(ui->good_color_for_get_inventory->currentText() == "زرد") temp = "Yellow";
+            else if(ui->good_color_for_get_inventory->currentText() == "صورتی") temp = "Pink";
+            else if(ui->good_color_for_get_inventory->currentText() == "قهوه ای") temp = "Brown";
+            else if(ui->good_color_for_get_inventory->currentText() == "مشکی") temp = "Black";
+            else if(ui->good_color_for_get_inventory->currentText() == "سفید") temp = "White";
+            ui->show_inventory_label->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(ui->good_id_for_get_inventory->text()).inventoryOf(temp)) + "عدد در انبار موجود است ");
+        }
         this->clearInventoryFields();
     }
     else
@@ -488,6 +493,7 @@ void Dashboard::on_make_good_button_clicked()
     }
     Good temp(ui->name_of_good_to_make->text(), ui->good_type_line_edit->text(), ui->seller_code->text(), ui->price_to_make->text().toUInt());
     Good& g=Good::getGood(temp.getId());
+    g.setDiscountPercent(ui->discount_SpinBox->value()/100);
     for(auto it=this->good_property_list_widgets.cbegin();it!=this->good_property_list_widgets.cend();it++)
     {
         g.setPropertyValue(it.key()->text(),it.value()->text());
