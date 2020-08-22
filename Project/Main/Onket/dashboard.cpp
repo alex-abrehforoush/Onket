@@ -677,3 +677,35 @@ void Dashboard::addPropertyItemToScrollArea(const QString &property_name)
     this->lay_good_property->addWidget(lab_property_name,row,1);
     row++;
 }
+
+void Dashboard::on_good_id_for_adding_to_storage_editingFinished()
+{
+    Type::readFile();
+    Good::readFile();
+    if(Good::existGoodId(ui->good_id_for_adding_to_storage->text())==false)
+    {
+        ui->add_to_storage->setToolTip("کد کالای مورد نظر وجود ندارد");
+    }
+    else
+    {
+        Good& g=Good::getGood(ui->good_id_for_adding_to_storage->text());
+        QString tooltip=g.getName()+","+QString::number(g.getFinalPrice())+" تومان";
+        ui->add_to_storage->setToolTip(tooltip);
+    }
+}
+
+void Dashboard::on_good_id_for_get_inventory_editingFinished()
+{
+    Type::readFile();
+    Good::readFile();
+    if(Good::existGoodId(ui->good_id_for_get_inventory->text())==false)
+    {
+        ui->inventory->setToolTip("کد کالای مورد نظر وجود ندارد");
+    }
+    else
+    {
+        Good& g=Good::getGood(ui->good_id_for_get_inventory->text());
+        QString tooltip=g.getName()+","+QString::number(g.getFinalPrice())+" تومان";
+        ui->inventory->setToolTip(tooltip);
+    }
+}

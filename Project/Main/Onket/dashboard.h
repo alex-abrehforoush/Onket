@@ -113,6 +113,10 @@ private slots:
 
     void on_good_type_line_edit_editingFinished();
 
+    void on_good_id_for_adding_to_storage_editingFinished();
+
+    void on_good_id_for_get_inventory_editingFinished();
+
 private:
     QWidget* property_center_widget,* comment_center_widget,*good_property_center_widget;
     QVBoxLayout* lay_property,*lay_comment;
