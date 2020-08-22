@@ -63,6 +63,7 @@ void signup::on_show_password_stateChanged()
 void signup::on_back_clicked()
 {
     MainWindow::setSignupPage(nullptr);
+    MainWindow::showMainScrollArea();
 }
 
 void signup::on_signup_button_clicked()

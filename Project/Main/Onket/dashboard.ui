@@ -730,13 +730,49 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>533</x>
-       <y>260</y>
-       <width>111</width>
+       <y>240</y>
+       <width>110</width>
        <height>25</height>
       </rect>
      </property>
      <property name="maximum">
       <number>1000000000</number>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="discount_SpinBox">
+     <property name="geometry">
+      <rect>
+       <x>533</x>
+       <y>290</y>
+       <width>110</width>
+       <height>25</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_44">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>270</y>
+       <width>71</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>درصد تخفیف</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_46">
+     <property name="geometry">
+      <rect>
+       <x>570</x>
+       <y>220</y>
+       <width>31</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>قیمت</string>
      </property>
     </widget>
    </widget>

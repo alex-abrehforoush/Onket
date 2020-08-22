@@ -97,6 +97,7 @@ void LoginPage::on_signup_button_clicked()
 {
     emit signup();
     ui->back->click();
+    MainWindow::hideMainScrollArea();
 }
 
 void LoginPage::on_username_line_edit_editingFinished()

@@ -162,6 +162,7 @@ void MainWindow::on_action_11_triggered()
 {
     if(current_user->getMode()==-1)
     {
+        MainWindow::hideMainScrollArea();
         if(signup_page == nullptr) signup_page = new signup(this);
         signup_page->show();
     }
@@ -180,6 +181,7 @@ void MainWindow::on_action_triggered()
     else
     {
         if(this->dashboard==nullptr) dashboard = new Dashboard(current_user, this);
+        MainWindow::hideMainScrollArea();
         dashboard->show();
     }
 }

@@ -103,10 +103,10 @@ int Commodity::addCommodity(Commodity new_commodity)
 unsigned long long int Commodity::inventory()
 {
 	unsigned long long int temp = 0;
-    foreach (int value, this->color)
-	{
-		temp += value;
-	}
+    for(QMap<QString, unsigned int>::iterator it = this->color.begin(); it!=this->color.end(); ++it)
+    {
+        temp += it.value();
+    }
 	return temp;
 }
 
