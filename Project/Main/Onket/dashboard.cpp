@@ -703,9 +703,10 @@ void Dashboard::addPropertyItemToScrollArea(const QString &property_name)
     QLineEdit* le_property_value=new QLineEdit("",this);
     lab_property_name->setFixedSize(200,40);
     le_property_value->setFixedSize(200,40);
+    le_property_value->setStyleSheet("background-color: rgb(255, 255, 255);");
     this->good_property_list_widgets.insert(lab_property_name,le_property_value);
     this->lay_good_property->addWidget(lab_property_name,row,0);
-    this->lay_good_property->addWidget(lab_property_name,row,1);
+    this->lay_good_property->addWidget(le_property_value,row,1);
     row++;
 }
 

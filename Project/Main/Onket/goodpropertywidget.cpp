@@ -30,8 +30,8 @@ GoodPropertyWidget::GoodPropertyWidget(const QString& good_id,QWidget *parent) :
        QTableWidgetItem* itm_value=new QTableWidgetItem(g.getPropertyValue(property_name));
        itm_value->setFlags(Qt::ItemIsSelectable|Qt::ItemIsEnabled);
 
-       ui->table_property->setItem(cnt,1,itm_name);
-      ui->table_property->setItem(cnt,0,itm_value);
+       ui->table_property->setItem(cnt,0,itm_name);
+      ui->table_property->setItem(cnt,1,itm_value);
 
 
    this->setFixedSize(400,400);

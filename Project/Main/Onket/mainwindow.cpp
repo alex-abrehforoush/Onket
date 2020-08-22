@@ -78,7 +78,11 @@ MainWindow::MainWindow(QWidget *parent) :
     this->lab_price->setAlignment(Qt::AlignCenter);
     main_scroll_area->show();
 
+    connect(scroll_price,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
+    connect(scroll_discount,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
     connect(scroll_willingness,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
+
+
 
     //onket_repository.loadStorage();
 }
@@ -199,6 +203,7 @@ void MainWindow::showGood(const QString &good_id)
 
     this->hidePreviewScrollAreas();
     goodMainViewWidget* good_main_view=new goodMainViewWidget(good_id,current_user->getUsername(),this);
+    connect(good_main_view,SIGNAL(updateGoodsRequest()),this,SLOT(showPreviwScrollAreas()));
     this->main_lay->addWidget(good_main_view,0,0);
 
 }
@@ -251,6 +256,19 @@ void MainWindow::hidePreviewScrollAreas()
     this->scroll_price->hide();
     this->scroll_discount->hide();
     this->lab_willingnes->hide();
+}
+
+void MainWindow::showPreviwScrollAreas()
+{
+
+    this->lab_price->show();
+    this->lab_discount->show();
+    this->lab_willingnes->show();
+    this->scroll_price->show();
+    this->scroll_discount->show();
+    this->lab_willingnes->show();
+
+    this->updatePrviewScrollAreas(Type::getCurrentTypeId());
 }
 
 void MainWindow::setupDynamicMenu()
