@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     main_scroll_area->setGeometry(0, 30, 1500, 770);
 
-    this->setupDynomicMenu(ui->menu);
+    this->setupDynamicMenu(ui->menu);
 
     this->main_center_widget->setLayout(main_lay);
     main_scroll_area->setWidget(main_center_widget);
@@ -182,7 +182,13 @@ void MainWindow::on_action_triggered()
     }
     else
     {
-        if(this->dashboard==nullptr) dashboard = new Dashboard(current_user, this);
+        if(this->dashboard==nullptr)
+        {
+            dashboard = new Dashboard(current_user, this);
+            connect(dashboard, SIGNAL(updateGoodsRequest(const QString&)),this,SLOT(updatePrviewScrollAreas(const QString&)));
+            connect(dashboard, SIGNAL(updateTypesRequest()),this, SLOT(setupDynamicMenu()));
+        }
+
         MainWindow::hideMainScrollArea();
         dashboard->show();
     }
@@ -247,7 +253,12 @@ void MainWindow::hidePreviewScrollAreas()
     this->lab_willingnes->hide();
 }
 
-void MainWindow::setupDynomicMenu(QMenu *menu)
+void MainWindow::setupDynamicMenu()
+{
+    this->setupDynamicMenu(ui->menu);
+}
+
+void MainWindow::setupDynamicMenu(QMenu *menu)
 {
     delete base_menu;
     base_menu=new MenuType("");

@@ -49,7 +49,8 @@ private slots:
 public slots:
     void updatePrviewScrollAreas(const QString& type_id);
     void hidePreviewScrollAreas();
-    void setupDynomicMenu(QMenu* menu);
+    void setupDynamicMenu(QMenu* menu);
+    void setupDynamicMenu();
 
 private:
     Ui::MainWindow* ui;

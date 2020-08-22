@@ -127,6 +127,8 @@ private:
     Ui::Dashboard *ui;
     void addPropertyItemToScrollArea(const QString& property_name);
 
-
+signals:
+    void updateGoodsRequest(const QString& type_id);
+    void updateTypesRequest();
 };
 #endif // DASHBOARD_H

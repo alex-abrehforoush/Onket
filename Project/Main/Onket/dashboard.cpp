@@ -429,6 +429,11 @@ void Dashboard::on_send_clicked()
 
 void Dashboard::on_add_to_storage_clicked()
 {
+    if(ui->good_id_for_adding_to_storage->text().isEmpty()==true)
+    {
+        QMessageBox::information(this, "پیام", "کد کالا را وارد نمایید");
+        return;
+    }
     QString temp;
     if(this->ui->good_color_for_adding_to_storage->currentText() == "سبز") temp = "Green";
     else if(this->ui->good_color_for_adding_to_storage->currentText() == "قرمز") temp = "Red";
@@ -453,6 +458,11 @@ void Dashboard::on_admin_back_clicked()
 
 void Dashboard::on_inventory_clicked()
 {
+    if(ui->good_id_for_get_inventory->text().isEmpty()==true)
+    {
+        QMessageBox::information(this,"پیام","کد کالا را وارد نمایید");
+        return;
+    }
     QString temp;
     if(MainWindow::getOnketRepository().getRemaining().contains(ui->good_id_for_get_inventory->text()))
     {
@@ -485,13 +495,18 @@ void Dashboard::on_make_good_button_clicked()
 {
     Good::readFile();
 
-
+    if(ui->name_of_good_to_make->text()==""|| ui->good_type_line_edit->text()=="")
+    {
+        QMessageBox::information(this,"پیام","همه فیلد ها را پر کنید");
+        return;
+    }
     if(Good::existGoodName(ui->name_of_good_to_make->text())==true)
     {
         QMessageBox::information(this,"پیام","نام کالا تکراری است");
         return;
     }
-    Good temp(ui->name_of_good_to_make->text(), ui->good_type_line_edit->text(), ui->seller_code->text(), ui->price_to_make->text().toUInt());
+
+    Good temp(ui->name_of_good_to_make->text(), ui->good_type_line_edit->text(), ui->seller_code->text(), ui->price_to_make->value());
     Good& g=Good::getGood(temp.getId());
     g.setDiscountPercent(ui->discount_SpinBox->value()/100);
     for(auto it=this->good_property_list_widgets.cbegin();it!=this->good_property_list_widgets.cend();it++)
@@ -510,6 +525,7 @@ void Dashboard::on_make_good_button_clicked()
     Good::WriteFile();
     Type::WriteToFile();
     this->clearAddGoodFields();
+    emit this->updateGoodsRequest(Type::getCurrentTypeId());
     return;
 }
 
@@ -568,7 +584,7 @@ void Dashboard::on_choose_picture_for_good_clicked()
 void Dashboard::on_make_type_button_clicked()
 {
 
-    if(ui->name_of_type->text().isEmpty()  && ui->name_of_type_to_make->text().isEmpty())
+    if(ui->name_of_type->text().isEmpty()  || ui->name_of_type_to_make->text().isEmpty())
     {
         QMessageBox::information(this,"پیام","همه فیلد ها را پر کنید");
         return;
@@ -589,6 +605,7 @@ void Dashboard::on_make_type_button_clicked()
     Type::WriteToFile();
     QMessageBox::information(this,"پیام","نوع جدید اضافه شد");
     this->clearAddTypeFields();
+    emit updateTypesRequest();
     return;
 }
 
@@ -658,16 +675,24 @@ void Dashboard::on_good_type_line_edit_editingFinished()
 {
     Type::readFile();
 
-    if(Type::existTypeId(ui->good_type_line_edit->text().toUtf8())==false&& ui->good_type_line_edit->text()!="")
+    if(Type::existTypeId(ui->good_type_line_edit->text().toUtf8())==false && ui->good_type_line_edit->text()!="")
     {
         QMessageBox::information(this,"پیام","نوع کالا موجود نیست");
         return;
     }
-    const Type& t=Type::getType(ui->good_type_line_edit->text().toUtf8());
-    for(t.setPropertySeekBegin();t.PropertySeekAtEnd()==false;)
+    else if(ui->good_type_line_edit->text()=="")
     {
-        QString property_name=t.readPropertyName();
-        this->addPropertyItemToScrollArea(property_name);
+        QMessageBox::information(this,"پیام","نوع کالا را وارد کنید");
+        return;
+    }
+    else
+    {
+        const Type& t=Type::getType(ui->good_type_line_edit->text().toUtf8());
+        for(t.setPropertySeekBegin();t.PropertySeekAtEnd()==false;)
+        {
+            QString property_name=t.readPropertyName();
+            this->addPropertyItemToScrollArea(property_name);
+        }
     }
 }
 
