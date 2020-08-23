@@ -10,6 +10,11 @@ QString Commodity::getCommodityId() const
     return this->id_of_good;
 }
 
+QMap<QString, unsigned int> Commodity::getColor() const
+{
+    return this->color;
+}
+
 void Commodity::add(QString color, unsigned int number)
 {
 	unsigned int temp = this->color.value(color);

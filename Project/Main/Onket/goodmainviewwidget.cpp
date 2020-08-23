@@ -75,13 +75,16 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     this->info_valid=true;
     this->setupSTyleSheet();
     this->setupLayout();
+    this->setupComboBox();
     this->lab_img->setFixedSize(300,300);
     this->setFixedSize(1490,790);
+
 
     connect(this->bnt_return,SIGNAL(clicked()),this,SLOT(on_bnt_return_clicked()));
     connect(this->bnt_add_to_basket,SIGNAL(clicked()),this,SLOT(on_bnt_add_to_basket_clicked()));
     connect(this->bnt_comment,SIGNAL(clicked()),this,SLOT(on_bnt_comment_clicked()));
     connect(this->bnt_discussion,SIGNAL(clicked()),this,SLOT(on_bnt_discussion_clicked()));
+    connect(this->color_selection,SIGNAL(currentTextChanged(const QString&)),this,SLOT(color_section_current_text_chenged(const QString&)));
 }
 
 void goodMainViewWidget::setupSTyleSheet()
@@ -150,7 +153,16 @@ void goodMainViewWidget::setupLayout()
 void goodMainViewWidget::setupComboBox()
 {
     Commodity temp = MainWindow::getOnketRepository().getCommodityOf(this->good_id);
-
+    QMap<QString,unsigned int> color=temp.getColor();
+    for(auto it =color.cbegin();it != color.cend();it++)
+    {
+        if(it.value()>0)
+        this->color_selection->addItem(it.key());
+    }
+    if(this->color_selection->currentText().isEmpty()==false)
+    {
+        this->item_number->setRange(0,temp.inventoryOf(color_selection->currentText()));
+    }
 }
 
 void goodMainViewWidget::on_bnt_return_clicked()
@@ -207,6 +219,13 @@ void goodMainViewWidget::on_bnt_discussion_clicked()
         QMessageBox::information(this,"پیام","شما هنوز وارد حساب کاربری نشده اید");
         return;
     }
+}
+
+void goodMainViewWidget::color_section_current_text_chenged(const QString &current_color)
+{
+    Commodity temp = MainWindow::getOnketRepository().getCommodityOf(this->good_id);
+    int max=temp.inventoryOf(current_color);
+    this->item_number->setRange(0,max);
 }
 
 void goodMainViewWidget::update()

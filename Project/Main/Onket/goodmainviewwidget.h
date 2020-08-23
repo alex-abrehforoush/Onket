@@ -58,6 +58,7 @@ private slots:
     void on_bnt_add_to_basket_clicked();
     void on_bnt_comment_clicked();
     void on_bnt_discussion_clicked();
+    void color_section_current_text_chenged(const QString& current_color);
 
 public slots:
     void update();

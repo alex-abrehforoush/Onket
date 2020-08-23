@@ -15,6 +15,7 @@ private:
 public:
     Commodity(QString id_of_good = QString::number(0));
     QString getCommodityId() const;
+    QMap<QString, unsigned int> getColor() const;
 	void add(QString color, unsigned int number = 1);
 	void remove(QString color, unsigned int number = 1);
     static int commodityExist(QString good_id);
