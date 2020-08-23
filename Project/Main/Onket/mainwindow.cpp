@@ -131,6 +131,7 @@ void MainWindow::setDashboard(Dashboard *dshbrd)
 void MainWindow::hideMainScrollArea()
 {
     main_scroll_area->hide();
+
     return;
 }
 
@@ -210,6 +211,8 @@ void MainWindow::showGood(const QString &good_id)
     goodMainViewWidget* good_main_view=new goodMainViewWidget(good_id,current_user->getUsername(),this);
     connect(good_main_view,SIGNAL(updateGoodsRequest()),this,SLOT(showPreviwScrollAreas()));
     this->main_lay->addWidget(good_main_view,0,0);
+    MainWindow::main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    MainWindow::main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 }
 
@@ -274,6 +277,10 @@ void MainWindow::showPreviwScrollAreas()
     this->lab_willingnes->show();
 
     this->updatePrviewScrollAreas(Type::getCurrentTypeId());
+
+    MainWindow::main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    MainWindow::main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 }
 
 void MainWindow::setupDynamicMenu()

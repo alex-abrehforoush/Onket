@@ -1,4 +1,4 @@
-#ifndef GOODMAINVIEWWIDGET_H
+﻿#ifndef GOODMAINVIEWWIDGET_H
 #define GOODMAINVIEWWIDGET_H
 
 #include <QScrollArea>
@@ -36,7 +36,7 @@ class goodMainViewWidget : public QScrollArea
     QPushButton* bnt_return=nullptr,*bnt_comment=nullptr,*bnt_discussion=nullptr;
     QWidget* center_widget=nullptr;
     QGridLayout* main_lay=nullptr;
-    QVBoxLayout* lay_picture=nullptr,*lay_body=nullptr,*lay_comment_items=nullptr,*lay_buy=nullptr,*lay_return=nullptr;
+    QVBoxLayout* lay_picture=nullptr,*lay_body=nullptr,*lay_comment_items=nullptr,*lay_buy=nullptr,*lay_return=nullptr,*lay_area=nullptr;
     QHBoxLayout* lay_buttons=nullptr;
     QLabel* lab_img=nullptr;
     QComboBox* color_selection=nullptr;
@@ -56,6 +56,9 @@ signals:
 private slots:
     void on_bnt_return_clicked();
     void on_bnt_add_to_basket_clicked();
+    void on_bnt_comment_clicked();
+    void on_bnt_discussion_clicked();
+
 public slots:
     void update();
 public:

@@ -27,6 +27,7 @@ class CommentListWidget : public QScrollArea
 
 public slots:
    void update();
+   void changeUser(const QString& user_id);
 private slots:
    void CommentFinished();
    void commentAdded();

@@ -6,18 +6,20 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     QScrollArea(parent)
     ,center_widget(new QWidget(this))
     ,bnt_return(new QPushButton(this))
-    ,bnt_comment(new QPushButton("مشاهده نظرات",this))
-    ,bnt_discussion(new QPushButton("مشاهده پرسش ها"))
+    ,bnt_comment(new QPushButton("نمایش نظرات",this))
+    ,bnt_discussion(new QPushButton("نمایش پرسش ها"))
     ,bnt_add_to_basket(new QPushButton("افزودن به سبد خرید",this))
     ,g_properties(new GoodPropertyWidget(good_id,this))
     ,c_status(new CommentItemStatus(good_id,this))
+    ,comments_area(new CommentListWidget(good_id,MainWindow::getCurrentUser()->getUsername()))
+    ,discussion_area(new DiscussionListWidget(good_id,MainWindow::getCurrentUser()->getUsername()))
     ,color_selection(new QComboBox(this))
     ,item_number(new QSpinBox(this))
     ,lab_img(new QLabel(this))
     ,g_general(new GoodGenralInfoWidget(good_id,this))
     ,main_lay(new QGridLayout(this))
     ,lay_buttons(new QHBoxLayout(this))
-    ,lay_return(new QVBoxLayout(this)),lay_picture(new QVBoxLayout(this)),lay_body(new QVBoxLayout(this)),lay_comment_items(new QVBoxLayout(this)),lay_buy(new QVBoxLayout(this))
+    ,lay_return(new QVBoxLayout(this)),lay_picture(new QVBoxLayout(this)),lay_body(new QVBoxLayout(this)),lay_comment_items(new QVBoxLayout(this)),lay_buy(new QVBoxLayout(this)),lay_area(new QVBoxLayout(this))
     ,ui(new Ui::goodMainviewWidget)
 {
 
@@ -28,7 +30,8 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     this->setWidget(center_widget);
     this->setWidgetResizable(true);
     this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-      this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 
     if(Good::existGoodId(good_id)==false)
     {
@@ -64,6 +67,8 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
    bnt_add_content.append("  تومان  )");
    this->bnt_add_to_basket->setText(bnt_add_content);
 
+   this->comments_area->hide();
+   this->discussion_area->hide();
 
 
 
@@ -71,14 +76,19 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     this->setupSTyleSheet();
     this->setupLayout();
     this->lab_img->setFixedSize(300,300);
-    this->setFixedSize(1500,800);
+    this->setFixedSize(1490,790);
 
     connect(this->bnt_return,SIGNAL(clicked()),this,SLOT(on_bnt_return_clicked()));
     connect(this->bnt_add_to_basket,SIGNAL(clicked()),this,SLOT(on_bnt_add_to_basket_clicked()));
+    connect(this->bnt_comment,SIGNAL(clicked()),this,SLOT(on_bnt_comment_clicked()));
+    connect(this->bnt_discussion,SIGNAL(clicked()),this,SLOT(on_bnt_discussion_clicked()));
 }
 
 void goodMainViewWidget::setupSTyleSheet()
 {
+    this->horizontalScrollBar()->setStyleSheet("background-color: rgb(200, 200, 200)");
+    this->verticalScrollBar()->setStyleSheet("background-color: rgb(200, 200, 200)");
+
     this->bnt_add_to_basket->setStyleSheet("background-color: rgb(255, 0, 0);color: rgb(255, 255, 255);");
 
     this->bnt_return->setIcon(QIcon("Database/Icons/RightArrow.png"));
@@ -113,7 +123,7 @@ void goodMainViewWidget::setupLayout()
      this->main_lay->addLayout(lay_comment_items,1,0);
      this->main_lay->addLayout(lay_body,1,1);
      this->main_lay->addLayout(lay_buttons,2,0);
-
+     this->main_lay->addLayout(lay_area,3,0);
 
      this->lay_picture->addWidget(lab_img);
 
@@ -132,6 +142,8 @@ void goodMainViewWidget::setupLayout()
     this->lay_buttons->addWidget(bnt_comment,0);
     this->lay_buttons->addWidget(bnt_discussion,1);
 
+    this->lay_area->addWidget(comments_area,0);
+    this->lay_area->addWidget(discussion_area,0);
 
 }
 
@@ -157,6 +169,41 @@ void goodMainViewWidget::on_bnt_add_to_basket_clicked()
     else
     {
 
+    }
+}
+
+void goodMainViewWidget::on_bnt_comment_clicked()
+{
+    User* current_user=MainWindow::getCurrentUser();
+    if(current_user->getMode()==-1)
+    {
+        QMessageBox::information(this,"پیام","شما هنوز وارد حساب کاربری نشده اید");
+        return;
+    }
+    this->comments_area->changeUser(current_user->getUsername());
+    this->discussion_area->hide();
+    this->bnt_discussion->setText("نمایش پرسش ها");
+
+    if(this->bnt_comment->text()=="نمایش نظرات")
+    {
+        this->comments_area->show();
+        this->bnt_comment->setText("مخفی نمودن نظرات");
+    }
+    else
+    {
+        this->comments_area->hide();
+        this->bnt_comment->setText("نمایش نظرات");
+    }
+
+}
+
+void goodMainViewWidget::on_bnt_discussion_clicked()
+{
+    User* current_user=MainWindow::getCurrentUser();
+    if(current_user->getMode()==-1)
+    {
+        QMessageBox::information(this,"پیام","شما هنوز وارد حساب کاربری نشده اید");
+        return;
     }
 }
 

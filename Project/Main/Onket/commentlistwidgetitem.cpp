@@ -59,6 +59,7 @@ CommentListWidgetItem::CommentListWidgetItem(const QString& user_id,const QStrin
         }
 
         info_valid=true;
+        this->setFixedSize(700,300);
 
         this->update();
 

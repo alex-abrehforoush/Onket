@@ -20,7 +20,7 @@ void GoodGenralInfoWidget::update()
         ui->lab_name->setText(g.getName());
         ui->lab_seller->setText(g.getMakerId());
         ui->lab_price->setText(QString::number(g.getPrice()));
-        ui->lab_discount_percent->setText(QString::number(g.getDiscountpercent()));
+        ui->lab_discount_percent->setText(QString::number(g.getDiscountpercent()*100));
         ui->lab_final_price->setText(QString::number(g.getFinalPrice()));
 
         ui->gridLayout->addWidget(ui->lab_1,0,0);

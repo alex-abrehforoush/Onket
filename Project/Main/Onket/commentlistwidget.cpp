@@ -9,10 +9,13 @@ void CommentListWidget::update()
     {
         return;
     }
+    this->main_lay->removeWidget(bnt_add_comment);
     for(auto it: this->widgets)
     {
 
         this->main_lay->removeWidget(it);
+        delete it;
+        it=nullptr;
     }
     this->widgets.clear();
 
@@ -26,9 +29,16 @@ void CommentListWidget::update()
         this->widgets.insert(sender_id,cwItem);
       this->main_lay->addWidget(cwItem);
     }
+    this->setFixedHeight(320*widgets.size()+100);
 
 
 
+}
+
+void CommentListWidget::changeUser(const QString &user_id)
+{
+    this->user_id= user_id;
+    this->update();
 }
 
 void CommentListWidget::CommentFinished()
@@ -37,6 +47,7 @@ void CommentListWidget::CommentFinished()
  delete this->c_widget;
   this->c_widget=nullptr;
     this->update();
+
 }
 
 void CommentListWidget::commentAdded()
@@ -87,6 +98,7 @@ CommentListWidget::CommentListWidget(const QString& good_id,const QString& user_
   ,bnt_add_comment(new QPushButton("+ افزودن نظر",this))
   ,main_lay(new QVBoxLayout(this))
 {
+    Good::readFile();
 
     this->bnt_add_comment->setStyleSheet("background-color: rgb(0, 0, 255);\ncolor: rgb(255,255,255);");
     connect(this->bnt_add_comment,SIGNAL(clicked()),this,SLOT(commentAdded()));
@@ -98,15 +110,17 @@ CommentListWidget::CommentListWidget(const QString& good_id,const QString& user_
     {
         return;
     }
+    Good& g=Good::getGood(good_id);
+    g.readComment();
     center_widget->setLayout(main_lay);
     this->setWidget(center_widget);
     this->setWidgetResizable(true);
-    this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-    this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     this->horizontalScrollBar()->setStyleSheet("background-color: rgb(210, 210, 210);");
     this->verticalScrollBar()->setStyleSheet("background-color: rgb(210, 210, 210);");
-    this->setFixedWidth(1200);
+    this->setFixedWidth(700);
 
     this->update();
 }
