@@ -393,6 +393,7 @@ void Dashboard::on_logout_clicked()
         User::addUser(MainWindow::getCurrentUser());
         this->ui->back->click();
         MainWindow::setCurrentUser(new Guest);
+        MainWindow::showMainScrollArea();
     }
     else
     {
@@ -739,5 +740,25 @@ void Dashboard::on_good_id_for_get_inventory_editingFinished()
         Good& g=Good::getGood(ui->good_id_for_get_inventory->text());
         QString tooltip=g.getName()+","+QString::number(g.getFinalPrice())+" تومان";
         ui->inventory->setToolTip(tooltip);
+    }
+}
+
+void Dashboard::on_logout_2_clicked()
+{
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "پیام", "آیا می خواهید خارج شوید؟", QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::Yes)
+    {
+        MainWindow::getCurrentUser()->getLastActivities().push_back(QDateTime::currentDateTime());
+        QFile data_remove("Database/User/" + MainWindow::getCurrentUser()->getUsername() + ".csv");
+        data_remove.remove();
+        User::addUser(MainWindow::getCurrentUser());
+        this->ui->back->click();
+        MainWindow::setCurrentUser(new Guest);
+        MainWindow::showMainScrollArea();
+    }
+    else
+    {
+        return;
     }
 }

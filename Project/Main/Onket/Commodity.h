@@ -21,6 +21,8 @@ public:
     static int commodityExist(QString good_id);
     static Commodity getCommodity(QString good_id);
     static int addCommodity(Commodity new_commodity);
+    static QString colorToFarsi(QString clr);
+    static QString colorToEnglish(QString clr);
 	unsigned long long int inventory();
 	unsigned long long int inventoryOf(QString color);
 };

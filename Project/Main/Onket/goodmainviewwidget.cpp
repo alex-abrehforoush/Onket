@@ -101,7 +101,7 @@ void goodMainViewWidget::setupSTyleSheet()
     this->bnt_discussion->setStyleSheet("background-color: rgb(0, 0, 127);\ncolor: rgb(255, 255, 255);");
     this->color_selection->setStyleSheet("background-color: rgb(0, 0, 0);\ncolor: rgb(255, 255, 255);");
 
-    this->color_selection->setFixedSize(200,30);
+    this->color_selection->setFixedSize(100,30);
     this->bnt_comment->setFixedSize(300,50);
     this->bnt_discussion->setFixedSize(300,50);
     this->item_number->setFixedSize(100,20);
@@ -157,11 +157,11 @@ void goodMainViewWidget::setupComboBox()
     for(auto it =color.cbegin();it != color.cend();it++)
     {
         if(it.value()>0)
-        this->color_selection->addItem(it.key());
+        this->color_selection->addItem(Commodity::colorToFarsi(it.key()));
     }
     if(this->color_selection->currentText().isEmpty()==false)
     {
-        this->item_number->setRange(0,temp.inventoryOf(color_selection->currentText()));
+        this->item_number->setRange(0,temp.inventoryOf(Commodity::colorToEnglish(color_selection->currentText())));
     }
 }
 
@@ -224,7 +224,7 @@ void goodMainViewWidget::on_bnt_discussion_clicked()
 void goodMainViewWidget::color_section_current_text_chenged(const QString &current_color)
 {
     Commodity temp = MainWindow::getOnketRepository().getCommodityOf(this->good_id);
-    int max=temp.inventoryOf(current_color);
+    int max=temp.inventoryOf(Commodity::colorToEnglish(current_color));
     this->item_number->setRange(0,max);
 }
 

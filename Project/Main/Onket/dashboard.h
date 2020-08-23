@@ -117,6 +117,8 @@ private slots:
 
     void on_good_id_for_get_inventory_editingFinished();
 
+    void on_logout_2_clicked();
+
 private:
     QWidget* property_center_widget,* comment_center_widget,*good_property_center_widget;
     QVBoxLayout* lay_property,*lay_comment;

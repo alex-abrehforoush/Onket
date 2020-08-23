@@ -105,6 +105,34 @@ int Commodity::addCommodity(Commodity new_commodity)
     return 1;//file created
 }
 
+QString Commodity::colorToFarsi(QString clr)
+{
+    if(clr == "Green") return "سبز";
+    else if(clr == "Red") return "قرمز";
+    else if(clr == "Blue") return "آبی";
+    else if(clr == "Purple") return "بنفش";
+    else if(clr == "Yellow") return "زرد";
+    else if(clr == "Pink") return "صورتی";
+    else if(clr == "Brown") return "قهواه ای";
+    else if(clr == "Black") return "مشکی";
+    else if(clr == "White") return "سفید";
+    else return "";
+}
+
+QString Commodity::colorToEnglish(QString clr)
+{
+    if(clr == "سبز") return "Green";
+    else if(clr == "قرمز") return "Red";
+    else if(clr == "آبی") return "Blue";
+    else if(clr == "بنفش") return "Purple";
+    else if(clr == "زرد") return "Yellow";
+    else if(clr == "صورتی") return "Pink";
+    else if(clr == "قهوه ای") return "Brown";
+    else if(clr == "مشکی") return "Black";
+    else if(clr == "سفید") return "White";
+    else return "";
+}
+
 unsigned long long int Commodity::inventory()
 {
 	unsigned long long int temp = 0;
