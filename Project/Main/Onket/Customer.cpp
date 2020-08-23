@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QTextStream>
 #include "item.h"
+#include <QMessageBox>
 
 int Customer::getMode() const
 {
@@ -87,10 +88,11 @@ void Customer::removeAddressAt(int at)
 int Customer::buy(QVector<Item> my_basket)
 {
     Order new_order(this->getUsername() + QString::number(this->getOrderIds().size()+1), QDateTime::currentDateTime(), this->getFirstname() + " " + this->getLastname(), this->getPhoneNumber(), this->getAddresses().at(0), QDateTime::currentDateTime().addDays(5), 10000);
-    for(int i = 0; i < my_basket.size(); i++)
-    {
-        new_order.addToBasket(my_basket.at(i).getItemId(), my_basket.at(i).getItemColor(), my_basket.at(i).getNumber());
-    }
+//    for(int i = 0; i < my_basket.size(); i++)
+//    {
+//        new_order.addToBasket(my_basket.at(i).getItemId(), my_basket.at(i).getItemColor(), my_basket.at(i).getNumber());
+//    }
+    new_order.setBasket(my_basket);
     Order::addOrder(new_order);
     QFile data_read("Database/User/" + this->getUsername() + ".csv");
     if(data_read.open(QIODevice::ReadOnly | QIODevice::Text))

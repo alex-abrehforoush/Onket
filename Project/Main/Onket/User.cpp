@@ -55,6 +55,21 @@ QVector<QString>& User::getOrderIds()
 
 }
 
+void User::addToBasket(Item itm)
+{
+    return;
+}
+
+void User::removeFromBasket(Item itm)
+{
+    return;
+}
+
+int User::buy(QVector<Item> my_basket)
+{
+    return 0;
+}
+
 QVector<QDateTime>& User::getLastActivities()
 {
     return this->last_activities;
