@@ -29,6 +29,7 @@ SOURCES += \
     commentwidgetfield.cpp \
     commentitemstatus.cpp \
     commentitemstatusfield.cpp \
+    compare.cpp \
     dashboard.cpp \
     discussionitem.cpp \
     discussionlistwidget.cpp \
@@ -71,6 +72,7 @@ HEADERS += \
     commentlistwidgetitem.h \
     commentwidget.h \
     commentwidgetfield.h \
+    compare.h \
     dashboard.h \
     discussionitem.h \
     discussionlistwidget.h \
