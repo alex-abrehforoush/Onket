@@ -49,6 +49,11 @@ void GoodPreviewWidget::mouseDoubleClickEvent(QMouseEvent *event)
     QWidget::mouseDoubleClickEvent(event);
 }
 
+QVector<QString> GoodPreviewWidget::getCompareList()
+{
+    return compare;
+}
+
 QString GoodPreviewWidget::getGoodId()
 {
     return this->good_id;
@@ -150,17 +155,27 @@ GoodPreviewWidget::~GoodPreviewWidget()
 
 void GoodPreviewWidget::on_checkBox_compare_stateChanged()
 {
-    if(this->ui->checkBox_compare->checkState() == Qt::Unchecked) compare.remove(compare.indexOf(this->getGoodId()));
+    if(this->ui->checkBox_compare->checkState() == Qt::Unchecked)
+    {
+        compare.remove(compare.indexOf(this->getGoodId()));
+        if(compare.size()==0)
+        {
+            emit this->hideCompareButton();
+        }
+    }
     else
     {
-        if(compare.size()<5)
+        if(compare.size() < 5)
         {
             compare.push_back(this->good_id);
         }
         else
         {
             QMessageBox::information(this, "پیام", "حداکثر پنج کالا را می توان مقایسه کرد");
+            compare.push_back(this->good_id);
             ui->checkBox_compare->setCheckState(Qt::Unchecked);
+
         }
+        emit this->showCompareButton();
     }
 }

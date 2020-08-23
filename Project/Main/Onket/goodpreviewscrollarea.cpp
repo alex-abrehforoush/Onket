@@ -23,7 +23,9 @@ void GoodPreviewScrollArea::addGood(const QString &good_id)
         GoodPreviewWidget* good_preview_item=new GoodPreviewWidget(good_id,this);
         this->good_preview.insert(good_id,good_preview_item);
         this->main_lay->addWidget(good_preview_item);
-        connect(good_preview_item,SIGNAL(on_good_preview_clicked(const QString&)),this,SLOT(on_good_preview_clicked(const QString& )));
+        connect(good_preview_item, SIGNAL(on_good_preview_clicked(const QString&)), this, SLOT(on_good_preview_clicked(const QString& )));
+        connect(good_preview_item, SIGNAL(showCompareButton()), this, SLOT(show_compare_button()));
+        connect(good_preview_item, SIGNAL(hideCompareButton()), this, SLOT(hide_compare_button()));
     }
 }
 
@@ -118,6 +120,16 @@ GoodPreviewWidget &GoodPreviewScrollArea::getGoodPreviewWidget(const QString &go
 void GoodPreviewScrollArea::on_good_preview_clicked(const QString &good_id)
 {
     emit this->onGoodPreviewClicked(good_id);
+}
+
+void GoodPreviewScrollArea::show_compare_button()
+{
+    emit this->showCompareButton();
+}
+
+void GoodPreviewScrollArea::hide_compare_button()
+{
+    emit this->hideCompareButton();
 }
 
 void GoodPreviewScrollArea::update()

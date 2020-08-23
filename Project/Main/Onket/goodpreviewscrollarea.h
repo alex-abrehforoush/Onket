@@ -20,8 +20,13 @@ class GoodPreviewScrollArea : public QScrollArea
     Q_OBJECT
 signals:
     void onGoodPreviewClicked(const QString& good_id);
+    void showCompareButton();
+    void hideCompareButton();
 private slots:
     void on_good_preview_clicked(const QString& good_id);
+    void show_compare_button();
+    void hide_compare_button();
+
 public slots:
     void update();
     void clear();

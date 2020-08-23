@@ -31,12 +31,15 @@ class GoodPreviewWidget : public QWidget
     void showAll();
 
 
- signals:
+signals:
     void on_good_preview_clicked(const QString& good_id);
+    void showCompareButton();
+    void hideCompareButton();
 protected:
     void mouseDoubleClickEvent(QMouseEvent *event) override;
 
 public:
+    static QVector<QString> getCompareList();
     QString getGoodId();
     bool getIdValidMode();
     bool getLoadPictureMode();
