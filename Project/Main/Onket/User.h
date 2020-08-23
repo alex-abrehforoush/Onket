@@ -5,6 +5,8 @@
 #include <qdatetime.h>
 #include <qstring.h>
 #include <string>
+#include <item.h>
+
 class User
 {
 protected:
@@ -22,6 +24,9 @@ public:
     virtual void addAddress(QString address);
     virtual void removeAddressAt(int at);
     virtual QVector<QString>& getOrderIds();
+    virtual void addToBasket(Item itm);
+    virtual void removeFromBasket(Item itm);
+    virtual int buy(QVector<Item> my_basket);
     QVector<QDateTime>& getLastActivities();
     void setFirstname(QString firstname);
 	void setLastname(QString lastname);

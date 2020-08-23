@@ -161,14 +161,16 @@ void goodMainViewWidget::on_bnt_return_clicked()
 
 void goodMainViewWidget::on_bnt_add_to_basket_clicked()
 {
-    if(MainWindow::getCurrentUser()->getMode()!=0)
+    if(MainWindow::getCurrentUser()->getMode() != 0)
     {
         QMessageBox::information(this,"پیام","شما دسترسی لازم برای خرید کالا را ندارید");
         return;
     }
     else
     {
-
+        Item temp(this->good_id, this->color_selection->currentText(), this->item_number->value());
+        MainWindow::getCurrentUser()->addToBasket(temp);
+        QMessageBox::information(this, "پیام", "کالای مورد نظر به سبد خرید اضافه شد");
     }
 }
 

@@ -4,6 +4,7 @@
 #include <qdatetime.h>
 #include "item.h"
 #include <QVector>
+
 class Order
 {
 protected:
@@ -28,7 +29,7 @@ public:
 	QString getOwnerPhone() const;
     QString getDeliverAddress() const;
     QVector<Item> getBasket() const;
-    void addToBasket(QString id, QString color, int number);
+    void setBasket(QVector<Item> basket);
     Item getItemAt(int i);
     unsigned long long int stuffPriceToday() const;
 	QDateTime getDeliverDate() const;

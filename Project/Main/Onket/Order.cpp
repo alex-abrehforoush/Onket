@@ -54,10 +54,10 @@ QVector<Item> Order::getBasket() const
     return this->basket;
 }
 
-void Order::addToBasket(QString id, QString color, int number)
+void Order::setBasket(QVector<Item> basket)
 {
-    Item temp(id, color, number);
-    basket.push_back(temp);
+    this->basket = basket;
+    return;
 }
 
 Item Order::getItemAt(int i)
@@ -67,7 +67,7 @@ Item Order::getItemAt(int i)
 
 unsigned long long int Order::stuffPriceToday() const
 {
-    unsigned long long int temp=0;
+    unsigned long long int temp = 0;
     for(int i = 0; i < basket.size(); i++)
     {
         ///temp += basket.at(i).getNumber() * price
@@ -146,11 +146,14 @@ Order Order::getOrder(QString order_id)
             Order return_order(_order_id, _order_date, _owner_name, _owner_phone, _deliver_address, _deliver_date, _deliver_price);
             return_order.setStuffPrice(_stuff_price);
             QStringList list_3 = list_2.at(8).split("|");
+            QVector<Item> temp;
             for(int i = 0; i < list_3.size(); i++)
             {
                 QStringList list_4 = list_3.at(i).split("─");
-                return_order.addToBasket(list_4.at(0), list_4.at(1), list_4.at(2).toInt());
+                Item kemp(list_4.at(0), list_4.at(1), list_4.at(2).toInt());
+                temp.push_back(kemp);
             }
+            return_order.setBasket(temp);
             data.close();
             return return_order;
         }
