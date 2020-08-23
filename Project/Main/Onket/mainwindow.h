@@ -46,6 +46,8 @@ private slots:
     void on_action_triggered();
 private slots:
     void showGood(const QString& good_id);
+    void show_compare_button();
+    void hide_compare_button();
 public slots:
     void updatePrviewScrollAreas(const QString& type_id);
     void hidePreviewScrollAreas();
@@ -66,5 +68,6 @@ private:
     QGridLayout* main_lay = nullptr;
     GoodPreviewScrollArea* scroll_price = nullptr, *scroll_discount = nullptr, *scroll_willingness = nullptr;
     QLabel* lab_price=nullptr,* lab_discount=nullptr,*lab_willingnes=nullptr;
+    QPushButton* bnt_compare=nullptr;
 };
 #endif // MAINWINDOW_H

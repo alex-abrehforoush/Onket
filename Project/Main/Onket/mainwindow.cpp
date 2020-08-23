@@ -64,6 +64,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->setupDynamicMenu(ui->menu);
 
+    this->bnt_compare=new QPushButton("مقایسه",this);
+
     this->main_center_widget->setLayout(main_lay);
     main_scroll_area->setWidget(main_center_widget);
     main_scroll_area->setWidgetResizable(true);
@@ -73,18 +75,25 @@ MainWindow::MainWindow(QWidget *parent) :
     this->lab_willingnes->setStyleSheet("background-color: rgb(255, 0, 127);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
     this->lab_discount->setStyleSheet("background-color: rgb(0, 255, 0);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
     this->lab_price->setStyleSheet("background-color: rgb(0, 170, 255);\ncolor: rgb(255, 255, 255);\nfont: 10pt \"MS Shell Dlg 2\";");
+    this->bnt_compare->setStyleSheet("background-color: rgb(255, 0, 0);");
     this->lab_willingnes->setAlignment(Qt::AlignCenter);
     this->lab_discount->setAlignment(Qt::AlignCenter);
     this->lab_price->setAlignment(Qt::AlignCenter);
     main_scroll_area->show();
 
-
-
+    this->bnt_compare->setGeometry(0,760,200,40);
+    this->bnt_compare->hide();
 
 
     connect(scroll_price,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
     connect(scroll_discount,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
     connect(scroll_willingness,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
+    connect(scroll_price,SIGNAL(showCompareButton()),this,SLOT(show_compare_button()));
+    connect(scroll_discount,SIGNAL(showCompareButton()),this,SLOT(show_compare_button()));
+    connect(scroll_willingness,SIGNAL(showCompareButton()),this,SLOT(show_compare_button()));
+    connect(scroll_price,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
+    connect(scroll_discount,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
+    connect(scroll_willingness,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
 
     onket_repository.loadStorage();
 
@@ -216,6 +225,16 @@ void MainWindow::showGood(const QString &good_id)
 
 }
 
+void MainWindow::show_compare_button()
+{
+    this->bnt_compare->show();
+}
+
+void MainWindow::hide_compare_button()
+{
+    this->bnt_compare->hide();
+}
+
 void MainWindow::updatePrviewScrollAreas(const QString &type_id)
 {
     Type::readFile();
@@ -253,6 +272,11 @@ void MainWindow::updatePrviewScrollAreas(const QString &type_id)
     this->main_lay->addWidget(scroll_willingness,0,1);
     this->main_lay->addWidget(scroll_discount,1,1);
     this->main_lay->addWidget(scroll_price,2,1);
+
+
+
+
+
 
 }
 
