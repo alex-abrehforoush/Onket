@@ -96,14 +96,18 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->scrollArea_comment_item->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         ui->scrollArea_set_properties_of_good_to_make->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         ui->scrollArea_set_properties_of_good_to_make->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    }
 
-
-
-
-
-
-
-        //for(int i = 0; i < )
+    QDir dir("Database/User");
+    QFileInfoList list = dir.entryInfoList(QDir::AllEntries);
+    for(int i = 2; i < list.size(); i++)
+    {
+        int pos = list.at(i).fileName().lastIndexOf(QChar('.'));
+        QString kem = list.at(i).fileName().left(pos);
+        if(User::getUser(kem)->getMode() == 0)
+        {
+            ui->username_of_customer->addItem(kem);
+        }
     }
 }
 
@@ -761,4 +765,90 @@ void Dashboard::on_logout_2_clicked()
     {
         return;
     }
+}
+
+void Dashboard::on_username_of_customer_currentTextChanged(const QString &arg1)
+{
+    QDir dir("Database/User");
+    int temp1 = ui->username_of_customer->count();
+    int temp2 = dir.count();
+    if(ui->username_of_customer->count() - 1 == dir.count() - 5 && ui->username_of_customer->currentIndex() != 0)
+    {
+        User* temp = User::getUser(ui->username_of_customer->currentText());
+        ui->user_management_label_customer_firstname->setText(temp->getFirstname());
+        ui->user_management_label_customer_lastname->setText(temp->getLastname());
+        ui->user_management_label_customer_password->setText(temp->getPassword());
+        ui->user_management_label_customer_birthday->setText(temp->getBirthday().toString());
+        ui->user_management_label_customer_phone->setText(temp->getPhoneNumber());
+        ui->comboBox_addresses_of_customer->clear();
+        ui->customer_activity_log->clear();
+        for(int i = 0; i < temp->getAddresses().size(); i++)
+        {
+            ui->comboBox_addresses_of_customer->addItem(temp->getAddresses().at(i));
+        }
+        //orders
+        for(int i = 0; i < temp->getLastActivities().size(); i++)
+        {
+            if(i % 2 == 0) ui->customer_activity_log->append(temp->getLastActivities().at(i).toString());
+            else ui->customer_activity_log->append(temp->getLastActivities().at(i).toString() + "\n");
+        }
+        return;
+    }
+    else return;
+}
+
+void Dashboard::on_user_management_back_clicked()
+{
+    ui->username_of_customer->setCurrentIndex(0);
+    ui->user_management_label_customer_firstname->clear();
+    ui->user_management_label_customer_lastname->clear();
+    ui->user_management_label_customer_password->clear();
+    ui->user_management_label_customer_birthday->clear();
+    ui->user_management_label_customer_phone->clear();
+    ui->comboBox_addresses_of_customer->clear();
+    //orders
+    ui->customer_activity_log->clear();
+    ui->user_management->hide();
+}
+
+void Dashboard::on_admin_back_2_clicked()
+{
+    void clearAddGoodNumberFields();
+    void clearInventoryFields();
+    void clearAddGoodFields();
+    void clearAddTypeFields();
+    ui->goods_management->hide();
+}
+
+void Dashboard::on_messages_2_back_clicked()
+{
+    ui->receiver->setCurrentText(0);
+    ui->message_text->clear();
+    ui->messages_2->hide();
+}
+
+void Dashboard::on_site_settings_back_clicked()
+{
+    ui->site_settings->hide();
+}
+
+void Dashboard::on_foreign_conncections_back_clicked()
+{
+    ui->foreign_connections->hide();
+}
+
+void Dashboard::on_finance_back_clicked()
+{
+    ui->finance->hide();
+}
+
+void Dashboard::on_employeement_back_clicked()
+{
+    ui->employeement->hide();
+}
+
+void Dashboard::on_website_management_clicked()
+{
+    this->hideAdminWidgets();
+    ui->site_settings->show();
 }

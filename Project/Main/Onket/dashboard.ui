@@ -775,15 +775,39 @@ color: rgb(0, 0, 0);</string>
       <string>قیمت</string>
      </property>
     </widget>
+    <widget class="QCommandLinkButton" name="admin_back_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="user_management" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
      </rect>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::RightToLeft</enum>
     </property>
     <widget class="QLabel" name="label_29">
      <property name="geometry">
@@ -821,31 +845,20 @@ color: rgb(0, 0, 0);</string>
       <string>____________________________</string>
      </property>
     </widget>
-    <widget class="QLabel" name="label_43">
-     <property name="geometry">
-      <rect>
-       <x>806</x>
-       <y>70</y>
-       <width>281</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;</string>
-     </property>
-     <property name="text">
-      <string>نام کاربری کاربر مورد نظر را انتخاب کنید:</string>
-     </property>
-    </widget>
     <widget class="QComboBox" name="username_of_customer">
      <property name="geometry">
       <rect>
        <x>270</x>
        <y>70</y>
-       <width>521</width>
+       <width>681</width>
        <height>24</height>
       </rect>
      </property>
+     <item>
+      <property name="text">
+       <string>کاربر مورد نطر را انتخاب کنید</string>
+      </property>
+     </item>
     </widget>
     <widget class="QTextEdit" name="customer_activity_log">
      <property name="geometry">
@@ -911,11 +924,14 @@ color: rgb(0, 0, 0);</string>
        <height>16</height>
       </rect>
      </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
      <property name="text">
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_68">
+    <widget class="QLabel" name="user_management_label_customer_phone">
      <property name="geometry">
       <rect>
        <x>360</x>
@@ -923,6 +939,9 @@ color: rgb(0, 0, 0);</string>
        <width>591</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
      </property>
      <property name="text">
       <string/>
@@ -950,6 +969,9 @@ color: rgb(0, 0, 0);</string>
        <height>16</height>
       </rect>
      </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
      <property name="text">
       <string/>
      </property>
@@ -962,6 +984,9 @@ color: rgb(0, 0, 0);</string>
        <width>601</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
      </property>
      <property name="text">
       <string/>
@@ -1003,21 +1028,128 @@ color: rgb(0, 0, 0);</string>
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="label_51">
+     <property name="geometry">
+      <rect>
+       <x>1039</x>
+       <y>110</y>
+       <width>21</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>نام:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="user_management_label_customer_firstname">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>110</y>
+       <width>641</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="user_management_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="site_settings" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
      </rect>
     </property>
+    <widget class="QLabel" name="label_54">
+     <property name="geometry">
+      <rect>
+       <x>927</x>
+       <y>20</y>
+       <width>171</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;B Homa&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>تنظیمات سایت</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_55">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>50</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>________________________________________</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="site_settings_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="finance" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1059,21 +1191,99 @@ color: rgb(0, 0, 0);</string>
       <string>امور مالی</string>
      </property>
     </widget>
+    <widget class="QCommandLinkButton" name="finance_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="employeement" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
      </rect>
     </property>
+    <widget class="QLabel" name="label_56">
+     <property name="geometry">
+      <rect>
+       <x>1010</x>
+       <y>50</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>____________________________</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_57">
+     <property name="geometry">
+      <rect>
+       <x>1009</x>
+       <y>20</y>
+       <width>91</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;B Homa&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>استخدام</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="employeement_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="messages_2" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1178,6 +1388,27 @@ color: rgb(0, 0, 0);</string>
       <string>ارسال</string>
      </property>
     </widget>
+    <widget class="QCommandLinkButton" name="messages_2_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="logout_2">
     <property name="geometry">
@@ -1201,17 +1432,74 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="foreign_connections" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
-      <y>810</y>
+      <x>40</x>
+      <y>140</y>
       <width>1130</width>
       <height>500</height>
      </rect>
     </property>
+    <widget class="QLabel" name="label_43">
+     <property name="geometry">
+      <rect>
+       <x>959</x>
+       <y>20</y>
+       <width>141</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;B Homa&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>روابط عمومی</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_52">
+     <property name="geometry">
+      <rect>
+       <x>960</x>
+       <y>50</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>________________________________________</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="foreign_conncections_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="admin_account_info" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1376,7 +1664,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="admin_account_edit" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -2560,19 +2848,6 @@ color: rgb(0, 0, 0);</string>
      <string>بازگشت</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QLabel" name="user_management_label_customer_firstname">
-   <property name="geometry">
-    <rect>
-     <x>2000</x>
-     <y>250</y>
-     <width>641</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
   </widget>
  </widget>
  <resources/>
