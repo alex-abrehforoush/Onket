@@ -12,6 +12,11 @@ Dashboard* MainWindow::dashboard;
 User* MainWindow::current_user;
 Storage MainWindow::onket_repository;
 QScrollArea* MainWindow::main_scroll_area = nullptr;
+QLabel* MainWindow::logo_fa = nullptr;
+QLabel* MainWindow::logo_en = nullptr;
+QLineEdit* MainWindow::search_line_edit = nullptr;
+QPushButton* MainWindow::show_basket = nullptr;
+QListWidget* MainWindow::search_results = nullptr;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -50,6 +55,43 @@ MainWindow::MainWindow(QWidget *parent) :
         adel.setFirstname("عادل");
         adel.setLastname("کارشناس");
         User::addUser(&adel);
+    }
+
+    if(logo_fa == nullptr)
+    {
+        logo_fa = new QLabel("آنکت");
+        logo_fa->setStyleSheet("font: 32pt \"B Arshia\";\ncolor: rgb(255, 0, 0);");
+        logo_fa->setGeometry(1420, 0, 61, 41);
+    }
+
+    if(logo_en == nullptr)
+    {
+        logo_en = new QLabel("Onket");
+        logo_en->setStyleSheet("color: rgb(255, 0, 0);\nfont: 16pt \"Pristina\";");
+        logo_en->setGeometry(1420, 40, 61, 31);
+    }
+
+    if(search_line_edit == nullptr)
+    {
+        search_line_edit = new QLineEdit();
+        search_line_edit->setStyleSheet("font: 11pt \"MS Shell Dlg 2\";");
+        search_line_edit->setPlaceholderText("نام کالای مورد نظر را وارد کنید ...");
+        search_line_edit->setGeometry(180, 13, 1231, 41);
+    }
+
+    if(show_basket == nullptr)
+    {
+        show_basket = new QPushButton("سبد خرید");
+        show_basket->setStyleSheet("background-color: rgb(255, 0, 0);");
+        show_basket->setGeometry(20, 13, 151, 41);
+    }
+
+    {
+        if(search_results!=nullptr)
+        {
+            delete search_results;
+        }
+        search_results = new QListWidget;
     }
 
     if(main_scroll_area == nullptr)

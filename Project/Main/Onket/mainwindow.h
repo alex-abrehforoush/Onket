@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include <QScrollArea>
 #include <QListWidget>
+#include <QPushButton>
+#include <QLabel>
+#include <QLineEdit>
 
 #include "User.h"
 #include "Admin.h"
@@ -75,6 +78,11 @@ private:
     static User* current_user;
     static Storage onket_repository;
     static QScrollArea* main_scroll_area;
+    static QLabel* logo_fa;
+    static QLabel* logo_en;
+    static QLineEdit* search_line_edit;
+    static QPushButton* show_basket;
+    static QListWidget* search_results;
     MenuType* base_menu = nullptr;
     QWidget* main_center_widget = nullptr;
     QGridLayout* main_lay = nullptr;
@@ -82,7 +90,6 @@ private:
     GoodPreviewScrollArea* scroll_price = nullptr, *scroll_discount = nullptr, *scroll_willingness = nullptr;
     QLabel* lab_price=nullptr, * lab_discount=nullptr, *lab_willingnes=nullptr;
     QPushButton* bnt_compare = nullptr;
-    QListWidget* search_results = nullptr;
 
 };
 #endif // MAINWINDOW_H
