@@ -137,6 +137,14 @@ private slots:
 
     void on_website_management_clicked();
 
+    void on_comments_back_clicked();
+
+    void on_customer_account_edit_back_clicked();
+
+    void on_customer_account_info_back_clicked();
+
+    void on_last_activities_back_clicked();
+
 private:
     QWidget* property_center_widget,* comment_center_widget,*good_property_center_widget;
     QVBoxLayout* lay_property,*lay_comment;

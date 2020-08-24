@@ -13,8 +13,8 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
     , ui(new Ui::Dashboard)
     , property_center_widget(new QWidget(this))
     , comment_center_widget(new QWidget(this))
-    ,lay_good_property(new QGridLayout(this))
-    ,good_property_center_widget(new QWidget(this))
+    , lay_good_property(new QGridLayout(this))
+    , good_property_center_widget(new QWidget(this))
     , lay_property(new QVBoxLayout(this))
     , lay_comment(new QVBoxLayout(this))
 {
@@ -129,7 +129,6 @@ void Dashboard::hideCustomerWidgets()
     ui->my_orders->hide();
     ui->lists->hide();
     ui->comments->hide();
-    ui->addresses->hide();
     ui->messages->hide();
     ui->last_activities->hide();
     ui->customer_account_info->hide();
@@ -851,4 +850,25 @@ void Dashboard::on_website_management_clicked()
 {
     this->hideAdminWidgets();
     ui->site_settings->show();
+}
+
+void Dashboard::on_comments_back_clicked()
+{
+    ui->comments->hide();
+}
+
+void Dashboard::on_customer_account_edit_back_clicked()
+{
+    ui->customer_account_edit->hide();
+    ui->customer_account_info->show();
+}
+
+void Dashboard::on_customer_account_info_back_clicked()
+{
+    ui->customer_account_info->hide();
+}
+
+void Dashboard::on_last_activities_back_clicked()
+{
+    ui->last_activities->hide();
 }
