@@ -119,6 +119,24 @@ private slots:
 
     void on_logout_2_clicked();
 
+    void on_username_of_customer_currentTextChanged(const QString &arg1);
+
+    void on_user_management_back_clicked();
+
+    void on_admin_back_2_clicked();
+
+    void on_messages_2_back_clicked();
+
+    void on_site_settings_back_clicked();
+
+    void on_foreign_conncections_back_clicked();
+
+    void on_finance_back_clicked();
+
+    void on_employeement_back_clicked();
+
+    void on_website_management_clicked();
+
 private:
     QWidget* property_center_widget,* comment_center_widget,*good_property_center_widget;
     QVBoxLayout* lay_property,*lay_comment;
