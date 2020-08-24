@@ -30,6 +30,7 @@ SOURCES += \
     commentitemstatus.cpp \
     commentitemstatusfield.cpp \
     compare.cpp \
+    comparewidget.cpp \
     dashboard.cpp \
     discussionitem.cpp \
     discussionlistwidget.cpp \
@@ -55,6 +56,7 @@ SOURCES += \
     replyviewitem.cpp \
     signup.cpp \
     storage.cpp \
+    tamrini.cpp \
     type.cpp
 
 HEADERS += \
@@ -73,6 +75,7 @@ HEADERS += \
     commentwidget.h \
     commentwidgetfield.h \
     compare.h \
+    comparewidget.h \
     dashboard.h \
     discussionitem.h \
     discussionlistwidget.h \
@@ -97,6 +100,7 @@ HEADERS += \
     replyviewitem.h \
     signup.h \
     storage.h \
+    tamrini.h \
     type.h
 
 FORMS += \
@@ -105,6 +109,7 @@ FORMS += \
     commentlistwidgetitem.ui \
     commentwidget.ui \
     commentwidgetfield.ui \
+    comparewidget.ui \
     dashboard.ui \
     discussionlistwidget.ui \
     goodgenralinfowidget.ui \
@@ -118,7 +123,8 @@ FORMS += \
     questionviewitem.ui \
     replyinputwidget.ui \
     replyviewitem.ui \
-    signup.ui
+    signup.ui \
+    tamrini.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

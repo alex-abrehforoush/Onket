@@ -16,11 +16,11 @@ bool GoodPreviewScrollArea::existGood(const QString &good_id)const
     return true;
 }
 
-void GoodPreviewScrollArea::addGood(const QString &good_id)
+void GoodPreviewScrollArea::addGood(const QString &good_id,bool hide)
 {
     if(this->existGood(good_id)==false)
     {
-        GoodPreviewWidget* good_preview_item=new GoodPreviewWidget(good_id,this);
+        GoodPreviewWidget* good_preview_item=new GoodPreviewWidget(good_id,hide,this);
         this->good_preview.insert(good_id,good_preview_item);
         this->main_lay->addWidget(good_preview_item);
         connect(good_preview_item, SIGNAL(on_good_preview_clicked(const QString&)), this, SLOT(on_good_preview_clicked(const QString& )));
@@ -29,7 +29,7 @@ void GoodPreviewScrollArea::addGood(const QString &good_id)
     }
 }
 
-void GoodPreviewScrollArea::addGoodSortedByPrice(const QString &type_id)
+void GoodPreviewScrollArea::addGoodSortedByPrice(const QString &type_id,bool hide)
 {
     Type::readFile();
     Good::readFile();
@@ -45,13 +45,13 @@ void GoodPreviewScrollArea::addGoodSortedByPrice(const QString &type_id)
         QVector<QString>temp=Good::getSortByPrice(good_id,true);
         for(auto it : temp)
         {
-            this->addGood(it);
+            this->addGood(it,hide);
         }
     }
     good_id.clear();
 }
 
-void GoodPreviewScrollArea::addGoodSortedByDiscount(const QString &type_id)
+void GoodPreviewScrollArea::addGoodSortedByDiscount(const QString &type_id,bool hide)
 {
     Type::readFile();
     Good::readFile();
@@ -67,13 +67,13 @@ void GoodPreviewScrollArea::addGoodSortedByDiscount(const QString &type_id)
         QVector<QString>temp=Good::getSortByDiscount(good_id,false);
         for(auto it : temp)
         {
-            this->addGood(it);
+            this->addGood(it,hide);
         }
     }
     good_id.clear();
 }
 
-void GoodPreviewScrollArea::addGoodSortedByWillingness(const QString &type_id)
+void GoodPreviewScrollArea::addGoodSortedByWillingness(const QString &type_id,bool hide)
 {
     Type::readFile();
     Good::readFile();
@@ -89,7 +89,7 @@ void GoodPreviewScrollArea::addGoodSortedByWillingness(const QString &type_id)
         QVector<QString>temp=Good::getSortByWillingness(good_id,true);
         for(auto it : temp)
         {
-            this->addGood(it);
+            this->addGood(it,hide);
         }
     }
 }
