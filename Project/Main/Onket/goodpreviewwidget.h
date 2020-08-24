@@ -47,7 +47,7 @@ public:
     bool getLoadPictureMode();
     void changeCheckedState(bool mode);
     void update();
-    explicit GoodPreviewWidget(const QString& good_id,QWidget *parent = nullptr);
+    explicit GoodPreviewWidget(const QString& good_id,bool hide=false,QWidget *parent = nullptr);
     ~GoodPreviewWidget();
 
 private slots:

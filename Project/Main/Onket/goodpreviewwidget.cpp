@@ -154,7 +154,7 @@ void GoodPreviewWidget::update()
 }
 
 
-GoodPreviewWidget::GoodPreviewWidget(const QString &good_id,QWidget *parent) :
+GoodPreviewWidget::GoodPreviewWidget(const QString &good_id,bool hide,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::GoodPreviewWidget)
 {
@@ -164,6 +164,10 @@ GoodPreviewWidget::GoodPreviewWidget(const QString &good_id,QWidget *parent) :
     if(Good::existGoodId(good_id)==true)
     {
         this->update();
+        if(hide==true)
+        {
+            ui->checkBox_compare->hide();
+        }
     }
       else
       {
@@ -174,6 +178,7 @@ GoodPreviewWidget::GoodPreviewWidget(const QString &good_id,QWidget *parent) :
           ui->lab_final_price->setHidden(true);
           ui->lab_img->setAlignment(Qt::AlignCenter);
           ui->lab_img->setText("کالای مورد نظر یافت نشد");
+
       }
 }
 

@@ -33,10 +33,10 @@ public slots:
 
 public:
     bool existGood(const QString& good_id)const ;
-    void addGood(const QString& good_id);
-    void addGoodSortedByPrice(const QString& type_id);
-    void addGoodSortedByDiscount(const QString& type_id);
-    void addGoodSortedByWillingness(const QString& type_id);
+    void addGood(const QString& good_id,bool hide=false);
+    void addGoodSortedByPrice(const QString& type_id,bool hide=false);
+    void addGoodSortedByDiscount(const QString& type_id,bool hide=false);
+    void addGoodSortedByWillingness(const QString& type_id,bool hide=false);
     bool removeGood(const QString& good_id);
     GoodPreviewWidget& getGoodPreviewWidget(const QString& good_id);
     explicit GoodPreviewScrollArea(QWidget *parent = nullptr);

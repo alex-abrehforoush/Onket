@@ -286,16 +286,19 @@ void MainWindow::updatePrviewScrollAreas(const QString &type_id)
         QVector<QString>base_type=Type::getBaseTypeId();
         for(auto it : base_type)
         {
-            scroll_price->addGoodSortedByPrice(it);
-            scroll_discount->addGoodSortedByDiscount(it);
-            scroll_willingness->addGoodSortedByWillingness(it);
+            scroll_price->addGoodSortedByPrice(it,true);
+            scroll_discount->addGoodSortedByDiscount(it,true);
+            scroll_willingness->addGoodSortedByWillingness(it,true);
         }
 
 
     }
-    scroll_price->addGoodSortedByPrice(type_id);
-    scroll_discount->addGoodSortedByDiscount(type_id);
-    scroll_willingness->addGoodSortedByWillingness(type_id);
+    else
+    {
+        scroll_price->addGoodSortedByPrice(type_id);
+        scroll_discount->addGoodSortedByDiscount(type_id);
+        scroll_willingness->addGoodSortedByWillingness(type_id);
+    }
     this->main_lay->addWidget(lab_willingnes,0,0);
     this->main_lay->addWidget(lab_discount,1,0);
     this->main_lay->addWidget(lab_price,2,0);
