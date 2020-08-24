@@ -105,6 +105,28 @@ bool Good::existGoodName(const QString &good_name)
     return true;
 }
 
+QVector<QString> Good::getGoodNameList()
+{
+    QVector<QString>res;
+    for(auto it=Good::goods_name.cbegin();it !=Good::goods_name.cend();it++)
+    {
+        res.push_back(it.key());
+    }
+    return res;
+}
+
+QString Good::getIdFromName(const QString &good_name)
+{
+    for(auto it : Good::goods_id)
+    {
+        if(it.getName()==good_name)
+        {
+            return it.getId();
+        }
+    }
+    return "";
+}
+
 QVector<QString> Good::getSortByPrice(const QVector<QString> &input, bool ascending)
 {
     Good::readFile();

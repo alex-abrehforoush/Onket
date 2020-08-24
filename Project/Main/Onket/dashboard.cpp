@@ -30,7 +30,6 @@ Dashboard::Dashboard(User* current_user, QWidget *parent)
         ui->my_orders->hide();
         ui->lists->hide();
         ui->comments->hide();
-        ui->addresses->hide();
         ui->messages->hide();
         ui->last_activities->hide();
         ui->customer_account_info->hide();
@@ -206,12 +205,6 @@ void Dashboard::on_pushButton_11_clicked()
 {
     this->hideCustomerWidgets();
     ui->comments->show();
-}
-
-void Dashboard::on_pushButton_12_clicked()
-{
-    this->hideCustomerWidgets();
-    ui->addresses->show();
 }
 
 void Dashboard::on_pushButton_13_clicked()

@@ -62,6 +62,8 @@ public:
     static bool  existGoodId(const QString& good_id);
     static Good& getGood(const QString& good_id);
     static bool existGoodName(const QString& good_name);
+    static QVector<QString> getGoodNameList();
+    static QString getIdFromName(const QString& good_name);
 
     static QVector<QString> getSortByPrice(const QVector<QString>& input,bool ascending);
     static QVector<QString> getSortByDiscount(const QVector<QString>& input,bool ascending);

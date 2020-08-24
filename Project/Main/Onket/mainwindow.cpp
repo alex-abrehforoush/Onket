@@ -60,11 +60,13 @@ MainWindow::MainWindow(QWidget *parent) :
     {
         main_scroll_area->setParent(this);
     }
-    main_scroll_area->setGeometry(0, 30, 1500, 770);
+    main_scroll_area->setGeometry(0, 105, 1500, 770);
 
     this->setupDynamicMenu(ui->menu);
 
     this->bnt_compare=new QPushButton("مقایسه",this);
+    this->search_results = new QListWidget(this);
+    this->setupSearchResults("none");
 
     this->main_center_widget->setLayout(main_lay);
     main_scroll_area->setWidget(main_center_widget);
@@ -82,6 +84,7 @@ MainWindow::MainWindow(QWidget *parent) :
     main_scroll_area->show();
 
     this->bnt_compare->setGeometry(0,760,200,40);
+    this->search_results->setGeometry(180, 90, 1231, 31);
     this->bnt_compare->hide();
 
 
@@ -97,6 +100,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(scroll_discount,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
     connect(scroll_willingness,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
     connect(bnt_compare,SIGNAL(clicked()),this,SLOT(on_bnt_compare_clicked()));
+    connect(this->search_results, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onSearchResultItemClicked(QListWidgetItem*)));
 
     onket_repository.loadStorage();
 
@@ -143,7 +147,6 @@ void MainWindow::setDashboard(Dashboard *dshbrd)
 void MainWindow::hideMainScrollArea()
 {
     main_scroll_area->hide();
-
     return;
 }
 
@@ -209,6 +212,8 @@ void MainWindow::on_action_triggered()
             dashboard = new Dashboard(current_user, this);
             connect(dashboard, SIGNAL(updateGoodsRequest(const QString&)),this,SLOT(updatePrviewScrollAreas(const QString&)));
             connect(dashboard, SIGNAL(updateTypesRequest()),this, SLOT(setupDynamicMenu()));
+            connect(dashboard, SIGNAL(updateGoodsRequest(const QString&)), this, SLOT(setupSearchResults(const QString&)));
+
         }
 
         MainWindow::hideMainScrollArea();
@@ -263,6 +268,18 @@ void MainWindow::on_bnt_compare_clicked()
     connect(compare_table,SIGNAL(comparingFinished()),this,SLOT(comapre_closed()));
     this->hide_compare_button();
 
+}
+
+void MainWindow::setupSearchResults(const QString &type_id)
+{
+    this->search_results->clear();
+    Good::readFile();
+    QVector<QString>temp=Good::getGoodNameList();
+    for(auto it: temp)
+    {
+        this->search_results->addItem(it);
+    }
+    this->search_results->hide();
 }
 
 void MainWindow::updatePrviewScrollAreas(const QString &type_id)
@@ -345,10 +362,55 @@ void MainWindow::setupDynamicMenu()
     this->setupDynamicMenu(ui->menu);
 }
 
+void MainWindow::onSearchResultItemClicked(QListWidgetItem *itm)
+{
+    ui->search_line_edit->setText(itm->text());
+    this->search_results->hide();
+}
+
 void MainWindow::setupDynamicMenu(QMenu *menu)
 {
     delete base_menu;
     base_menu=new MenuType("");
     base_menu->setUpMenu(menu);
     connect(base_menu,SIGNAL(actionTriggered(const QString& )),this,SLOT(updatePrviewScrollAreas(const QString& )));
+}
+
+void MainWindow::on_search_line_edit_editingFinished()
+{
+
+}
+
+void MainWindow::on_search_line_edit_textChanged(const QString &arg1)
+{
+    if(arg1.isEmpty())
+    {
+        this->search_results->hide();
+        return;
+    }
+    else
+    {
+        this->search_results->show();
+        int show_items = 0;
+        for(int cnt=0;cnt<this->search_results->count();cnt++)
+        {
+            if(this->search_results->item(cnt)->text().contains(arg1))
+            {
+                this->search_results->item(cnt)->setHidden(false);
+                show_items++;
+            }
+            else
+            {
+                this->search_results->item(cnt)->setHidden(true);
+            }
+        }
+        if(show_items <= 10)
+        {
+            this->search_results->setFixedHeight(show_items * 25);
+        }
+        else
+        {
+            this->search_results->setFixedHeight(250);
+        }
+    }
 }
