@@ -14,6 +14,7 @@
 #include "storage.h"
 #include "goodpreviewscrollarea.h"
 #include "goodmainviewwidget.h"
+#include "comparewidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -48,6 +49,8 @@ private slots:
     void showGood(const QString& good_id);
     void show_compare_button();
     void hide_compare_button();
+    void comapre_closed();
+    void on_bnt_compare_clicked();
 public slots:
     void updatePrviewScrollAreas(const QString& type_id);
     void hidePreviewScrollAreas();
@@ -66,6 +69,7 @@ private:
     MenuType* base_menu = nullptr;
     QWidget* main_center_widget = nullptr;
     QGridLayout* main_lay = nullptr;
+    CompareWidget* compare_table=nullptr;
     GoodPreviewScrollArea* scroll_price = nullptr, *scroll_discount = nullptr, *scroll_willingness = nullptr;
     QLabel* lab_price=nullptr,* lab_discount=nullptr,*lab_willingnes=nullptr;
     QPushButton* bnt_compare=nullptr;

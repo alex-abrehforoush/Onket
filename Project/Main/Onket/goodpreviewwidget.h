@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QVector>
+#include <QMap>
 #include <QImage>
 #include <QPixmap>
 #include <QMouseEvent>
@@ -20,7 +21,7 @@ class GoodPreviewWidget : public QWidget
     static QVector<QString> style_sheet;
     static QString style_error;
     static int style_index;
-    static QVector<QString> compare;
+    static QMap<QString,GoodPreviewWidget*> compare;
 
     QString good_id;
     bool id_valid;
@@ -40,9 +41,11 @@ protected:
 
 public:
     static QVector<QString> getCompareList();
+    static void clearCompareList();
     QString getGoodId();
     bool getIdValidMode();
     bool getLoadPictureMode();
+    void changeCheckedState(bool mode);
     void update();
     explicit GoodPreviewWidget(const QString& good_id,QWidget *parent = nullptr);
     ~GoodPreviewWidget();

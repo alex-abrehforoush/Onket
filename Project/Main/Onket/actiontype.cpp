@@ -8,6 +8,7 @@ void ActionType::action_tirggered()
     }
     else
     {
+        Type::setCurrentTypeId(type_id);
         emit this->actionTriggered(type_id);
     }
 }

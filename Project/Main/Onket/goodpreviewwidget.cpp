@@ -7,7 +7,7 @@
 QVector<QString> GoodPreviewWidget::style_sheet={"font: 12pt \"Myanmar Text\";\ncolor: rgb(255, 255, 255);\nbackground-color: rgb(85, 85, 255);","font: 12pt \"Myanmar Text\";\ncolor: rgb(0, 0, 0);\nbackground-color: rgb(255, 255, 0);\n\n","font: 12pt \"Myanmar Text\";\nbackground-color: rgb(0, 255, 0);\ncolor: rgb(255, 255, 255);\n\n"};
 QString GoodPreviewWidget::style_error="font: 12pt \"Myanmar Text\";\nbackground-color: rgb(255, 0, 0);\ncolor: rgb(255, 255, 255);\n\n";
 int GoodPreviewWidget::style_index=0;
-QVector<QString> GoodPreviewWidget::compare;
+QMap<QString,GoodPreviewWidget*> GoodPreviewWidget::compare;
 
 void GoodPreviewWidget::increaseStyleIndex()
 {
@@ -51,7 +51,25 @@ void GoodPreviewWidget::mouseDoubleClickEvent(QMouseEvent *event)
 
 QVector<QString> GoodPreviewWidget::getCompareList()
 {
-    return compare;
+    QVector<QString>res;
+    for(auto it=compare.cbegin();it!=compare.cend();it++)
+    {
+        res.push_back(it.key());
+    }
+    return res;
+}
+
+void GoodPreviewWidget::clearCompareList()
+{
+    QVector<QString> key;
+    for(auto it=compare.cbegin();it !=compare.cend();it++)
+    {
+        key.push_back(it.key());
+    }
+    for(auto it : key)
+    {
+        compare.find(it).value()->changeCheckedState(false);
+    }
 }
 
 QString GoodPreviewWidget::getGoodId()
@@ -67,6 +85,18 @@ bool GoodPreviewWidget::getIdValidMode()
 bool GoodPreviewWidget::getLoadPictureMode()
 {
     return load_picture;
+}
+
+void GoodPreviewWidget::changeCheckedState(bool mode)
+{
+    if(mode==true)
+    {
+        ui->checkBox_compare->setCheckState(Qt::Checked);
+    }
+    else
+    {
+        ui->checkBox_compare->setCheckState(Qt::Unchecked);
+    }
 }
 
 void GoodPreviewWidget::update()
@@ -157,7 +187,7 @@ void GoodPreviewWidget::on_checkBox_compare_stateChanged()
 {
     if(this->ui->checkBox_compare->checkState() == Qt::Unchecked)
     {
-        compare.remove(compare.indexOf(this->getGoodId()));
+        compare.remove(this->good_id);
         if(compare.size()==0)
         {
             emit this->hideCompareButton();
@@ -165,15 +195,34 @@ void GoodPreviewWidget::on_checkBox_compare_stateChanged()
     }
     else
     {
-        if(compare.size() < 5)
+         if(compare.size() < 5&& compare.contains(this->good_id)==false)
         {
-            compare.push_back(this->good_id);
+            compare.insert(this->good_id,this);
         }
         else
         {
-            QMessageBox::information(this, "پیام", "حداکثر پنج کالا را می توان مقایسه کرد");
-            compare.push_back(this->good_id);
-            ui->checkBox_compare->setCheckState(Qt::Unchecked);
+
+
+            if(compare.contains(this->good_id)==true)
+            {
+                GoodPreviewWidget* befor=compare.find(this->good_id).value();
+                ui->checkBox_compare->setCheckState(Qt::Unchecked);
+                QMessageBox::information(this,"پیام","این کالا قبلا به لیست مقایسه اضافه شده است");
+                compare.insert(this->good_id,befor);
+
+
+            }
+            else
+            {
+
+                QMessageBox::information(this, "پیام", "حداکثر پنج کالا را می توان مقایسه کرد");
+                compare.insert(this->good_id,this);
+                ui->checkBox_compare->setCheckState(Qt::Unchecked);
+            }
+
+
+
+
 
         }
         emit this->showCompareButton();

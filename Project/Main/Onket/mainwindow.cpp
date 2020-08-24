@@ -85,6 +85,8 @@ MainWindow::MainWindow(QWidget *parent) :
     this->bnt_compare->hide();
 
 
+
+
     connect(scroll_price,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
     connect(scroll_discount,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
     connect(scroll_willingness,SIGNAL(onGoodPreviewClicked(const QString&)),this,SLOT(showGood(const QString& )));
@@ -94,6 +96,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(scroll_price,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
     connect(scroll_discount,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
     connect(scroll_willingness,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
+    connect(bnt_compare,SIGNAL(clicked()),this,SLOT(on_bnt_compare_clicked()));
 
     onket_repository.loadStorage();
 
@@ -233,6 +236,33 @@ void MainWindow::show_compare_button()
 void MainWindow::hide_compare_button()
 {
     this->bnt_compare->hide();
+    GoodPreviewWidget::clearCompareList();
+}
+
+void MainWindow::comapre_closed()
+{
+    this->compare_table->hide();
+    delete this->compare_table;
+    this->compare_table=nullptr;
+    this->showPreviwScrollAreas();
+
+}
+
+void MainWindow::on_bnt_compare_clicked()
+{
+    this->hidePreviewScrollAreas();
+    if(compare_table!=nullptr)
+    {
+        compare_table->show();
+        return;
+    }
+    QVector<QString> compare_list=GoodPreviewWidget::getCompareList();
+    compare_table=new CompareWidget(compare_list);
+    this->main_lay->addWidget(compare_table,0,0);
+    compare_table->show();
+    connect(compare_table,SIGNAL(comparingFinished()),this,SLOT(comapre_closed()));
+    this->hide_compare_button();
+
 }
 
 void MainWindow::updatePrviewScrollAreas(const QString &type_id)
