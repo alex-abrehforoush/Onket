@@ -143,6 +143,12 @@ private slots:
 
     void on_last_activities_back_clicked();
 
+    void on_my_orders_back_clicked();
+
+    void on_lists_back_clicked();
+
+    void on_messages_back_clicked();
+
 private:
     QWidget* property_center_widget,* comment_center_widget,*good_property_center_widget;
     QVBoxLayout* lay_property,*lay_comment;

@@ -59,39 +59,31 @@ MainWindow::MainWindow(QWidget *parent) :
 
     if(logo_fa == nullptr)
     {
-        logo_fa = new QLabel("آنکت");
+        logo_fa = new QLabel("آنکت", this);
         logo_fa->setStyleSheet("font: 32pt \"B Arshia\";\ncolor: rgb(255, 0, 0);");
-        logo_fa->setGeometry(1420, 0, 61, 41);
+        logo_fa->setGeometry(1420, 30, 61, 41);
     }
 
     if(logo_en == nullptr)
     {
-        logo_en = new QLabel("Onket");
+        logo_en = new QLabel("Onket", this);
         logo_en->setStyleSheet("color: rgb(255, 0, 0);\nfont: 16pt \"Pristina\";");
-        logo_en->setGeometry(1420, 40, 61, 31);
+        logo_en->setGeometry(1420, 70, 61, 31);
     }
 
     if(search_line_edit == nullptr)
     {
-        search_line_edit = new QLineEdit();
+        search_line_edit = new QLineEdit(this);
         search_line_edit->setStyleSheet("font: 11pt \"MS Shell Dlg 2\";");
         search_line_edit->setPlaceholderText("نام کالای مورد نظر را وارد کنید ...");
-        search_line_edit->setGeometry(180, 13, 1231, 41);
+        search_line_edit->setGeometry(180, 43, 1231, 41);
     }
 
     if(show_basket == nullptr)
     {
-        show_basket = new QPushButton("سبد خرید");
+        show_basket = new QPushButton("سبد خرید", this);
         show_basket->setStyleSheet("background-color: rgb(255, 0, 0);");
-        show_basket->setGeometry(20, 13, 151, 41);
-    }
-
-    {
-        if(search_results!=nullptr)
-        {
-            delete search_results;
-        }
-        search_results = new QListWidget;
+        show_basket->setGeometry(20, 43, 151, 41);
     }
 
     if(main_scroll_area == nullptr)
@@ -107,7 +99,17 @@ MainWindow::MainWindow(QWidget *parent) :
     this->setupDynamicMenu(ui->menu);
 
     this->bnt_compare=new QPushButton("مقایسه",this);
-    this->search_results = new QListWidget(this);
+    {
+
+        if(search_results!=nullptr)
+        {
+            delete search_results;
+        }
+        search_results = new QListWidget(this);
+        search_results->hide();
+        search_results->setGeometry(180, 43, 1231, 41);
+
+    }
     this->setupSearchResults("none");
 
     this->main_center_widget->setLayout(main_lay);
@@ -126,7 +128,7 @@ MainWindow::MainWindow(QWidget *parent) :
     main_scroll_area->show();
 
     this->bnt_compare->setGeometry(0,760,200,40);
-    this->search_results->setGeometry(180, 90, 1231, 31);
+    MainWindow::search_results->setGeometry(180, 90, 1231, 31);
     this->bnt_compare->hide();
 
 
@@ -142,7 +144,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(scroll_discount,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
     connect(scroll_willingness,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
     connect(bnt_compare,SIGNAL(clicked()),this,SLOT(on_bnt_compare_clicked()));
-    connect(this->search_results, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onSearchResultItemClicked(QListWidgetItem*)));
+    connect(MainWindow::search_results, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onSearchResultItemClicked(QListWidgetItem*)));
+    connect(MainWindow::search_line_edit, SIGNAL(editingFinished), this, SLOT(on_search_line_edit_editingFinished()));
+    connect(MainWindow::search_line_edit, SIGNAL(textChanged(const QString&)), this, SLOT(on_search_line_edit_textChanged(const QString&)));
 
     onket_repository.loadStorage();
 
@@ -189,12 +193,22 @@ void MainWindow::setDashboard(Dashboard *dshbrd)
 void MainWindow::hideMainScrollArea()
 {
     main_scroll_area->hide();
+    logo_fa->hide();
+    logo_en->hide();
+    show_basket->hide();
+    search_line_edit->hide();
+    search_results->hide();
     return;
 }
 
 void MainWindow::showMainScrollArea()
 {
     main_scroll_area->show();
+    logo_fa->show();
+    logo_en->show();
+    show_basket->show();
+    search_line_edit->show();
+    search_results->hide();
     return;
 }
 
@@ -314,14 +328,14 @@ void MainWindow::on_bnt_compare_clicked()
 
 void MainWindow::setupSearchResults(const QString &type_id)
 {
-    this->search_results->clear();
+    MainWindow::search_results->clear();
     Good::readFile();
     QVector<QString>temp=Good::getGoodNameList();
     for(auto it: temp)
     {
-        this->search_results->addItem(it);
+        MainWindow::search_results->addItem(it);
     }
-    this->search_results->hide();
+    MainWindow::search_results->hide();
 }
 
 void MainWindow::updatePrviewScrollAreas(const QString &type_id)
@@ -374,16 +388,28 @@ void MainWindow::updatePrviewScrollAreas(const QString &type_id)
 
 void MainWindow::hidePreviewScrollAreas()
 {
+    MainWindow::logo_fa->hide();
+    MainWindow::logo_en->hide();
+    MainWindow::show_basket->hide();
+    MainWindow::search_line_edit->hide();
+    MainWindow::search_results->hide();
     this->lab_price->hide();
     this->lab_discount->hide();
     this->lab_willingnes->hide();
     this->scroll_price->hide();
     this->scroll_discount->hide();
     this->lab_willingnes->hide();
+    main_scroll_area->setGeometry(0, 35, 1500, 770);
+
 }
 
 void MainWindow::showPreviwScrollAreas()
 {
+    MainWindow::logo_en->show();
+    MainWindow::logo_fa->show();
+    MainWindow::search_line_edit->show();
+    MainWindow::show_basket->show();
+    MainWindow::search_results->hide();
 
     this->lab_price->show();
     this->lab_discount->show();
@@ -396,7 +422,7 @@ void MainWindow::showPreviwScrollAreas()
 
     MainWindow::main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     MainWindow::main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-
+    main_scroll_area->setGeometry(0, 105, 1500, 770);
 }
 
 void MainWindow::setupDynamicMenu()
@@ -406,8 +432,8 @@ void MainWindow::setupDynamicMenu()
 
 void MainWindow::onSearchResultItemClicked(QListWidgetItem *itm)
 {
-    ui->search_line_edit->setText(itm->text());
-    this->search_results->hide();
+    MainWindow::search_line_edit->setText(itm->text());
+    MainWindow::search_results->hide();
 }
 
 void MainWindow::setupDynamicMenu(QMenu *menu)
@@ -427,32 +453,32 @@ void MainWindow::on_search_line_edit_textChanged(const QString &arg1)
 {
     if(arg1.isEmpty())
     {
-        this->search_results->hide();
+        MainWindow::search_results->hide();
         return;
     }
     else
     {
-        this->search_results->show();
+        MainWindow::search_results->show();
         int show_items = 0;
-        for(int cnt=0;cnt<this->search_results->count();cnt++)
+        for(int cnt=0;cnt<MainWindow::search_results->count();cnt++)
         {
-            if(this->search_results->item(cnt)->text().contains(arg1))
+            if(MainWindow::search_results->item(cnt)->text().contains(arg1))
             {
-                this->search_results->item(cnt)->setHidden(false);
+                MainWindow::search_results->item(cnt)->setHidden(false);
                 show_items++;
             }
             else
             {
-                this->search_results->item(cnt)->setHidden(true);
+                MainWindow::search_results->item(cnt)->setHidden(true);
             }
         }
         if(show_items <= 10)
         {
-            this->search_results->setFixedHeight(show_items * 25);
+            MainWindow::search_results->setFixedHeight(show_items * 25);
         }
         else
         {
-            this->search_results->setFixedHeight(250);
+            MainWindow::search_results->setFixedHeight(250);
         }
     }
 }

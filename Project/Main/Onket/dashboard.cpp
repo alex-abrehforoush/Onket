@@ -865,3 +865,18 @@ void Dashboard::on_last_activities_back_clicked()
 {
     ui->last_activities->hide();
 }
+
+void Dashboard::on_my_orders_back_clicked()
+{
+    ui->my_orders->hide();
+}
+
+void Dashboard::on_lists_back_clicked()
+{
+    ui->lists->hide();
+}
+
+void Dashboard::on_messages_back_clicked()
+{
+    ui->messages->hide();
+}

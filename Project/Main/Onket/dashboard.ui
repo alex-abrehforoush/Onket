@@ -16,7 +16,7 @@
   <widget class="QWidget" name="admin" native="true">
    <property name="geometry">
     <rect>
-     <x>1510</x>
+     <x>0</x>
      <y>0</y>
      <width>1500</width>
      <height>800</height>
@@ -2016,27 +2016,141 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="my_orders" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
      </rect>
     </property>
+    <widget class="QLabel" name="label_60">
+     <property name="geometry">
+      <rect>
+       <x>910</x>
+       <y>10</y>
+       <width>171</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;B Homa&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>سفارش های من</string>
+     </property>
+    </widget>
+    <widget class="QCommandLinkButton" name="my_orders_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_61">
+     <property name="geometry">
+      <rect>
+       <x>910</x>
+       <y>40</y>
+       <width>171</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>__________________________________________________</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="lists" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
      </rect>
     </property>
+    <widget class="QCommandLinkButton" name="lists_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_62">
+     <property name="geometry">
+      <rect>
+       <x>980</x>
+       <y>10</y>
+       <width>101</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 18pt &quot;B Homa&quot;;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>لیست ها</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_63">
+     <property name="geometry">
+      <rect>
+       <x>990</x>
+       <y>40</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>__________________________________________________</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="comments" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -2103,7 +2217,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="messages" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -2161,6 +2275,27 @@ color: rgb(0, 0, 0);</string>
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QCommandLinkButton" name="messages_back">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>80</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>7</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>بازگشت</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="last_activities" native="true">
     <property name="geometry">
@@ -2174,9 +2309,9 @@ color: rgb(0, 0, 0);</string>
     <widget class="QLabel" name="label_18">
      <property name="geometry">
       <rect>
-       <x>1000</x>
+       <x>930</x>
        <y>40</y>
-       <width>81</width>
+       <width>151</width>
        <height>20</height>
       </rect>
      </property>
@@ -2190,9 +2325,9 @@ color: rgb(0, 0, 0);</string>
     <widget class="QLabel" name="label_19">
      <property name="geometry">
       <rect>
-       <x>1000</x>
+       <x>930</x>
        <y>10</y>
-       <width>81</width>
+       <width>151</width>
        <height>40</height>
       </rect>
      </property>
@@ -2204,7 +2339,7 @@ color: rgb(0, 0, 0);</string>
 color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
-      <string>بازدیدها</string>
+      <string>بازدیدهای اخیر</string>
      </property>
     </widget>
     <widget class="QTextBrowser" name="customer_last_activities">
@@ -2245,7 +2380,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="customer_account_info" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -2550,7 +2685,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="customer_account_edit" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
