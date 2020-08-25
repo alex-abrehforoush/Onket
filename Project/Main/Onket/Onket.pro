@@ -22,6 +22,7 @@ SOURCES += \
     Guest.cpp \
     Order.cpp \
     User.cpp \
+    basketview.cpp \
     basketviewitem.cpp \
     commentlistwidget.cpp \
     commentlistwidgetitem.cpp \
@@ -67,6 +68,7 @@ HEADERS += \
     Guest.h \
     Order.h \
     User.h \
+    basketview.h \
     basketviewitem.h \
     commentlistwidget.h \
     commentitemstatus.h \
@@ -104,6 +106,7 @@ HEADERS += \
     type.h
 
 FORMS += \
+    basketview.ui \
     basketviewitem.ui \
     commentlistwidget.ui \
     commentlistwidgetitem.ui \

@@ -24,6 +24,7 @@ public:
     virtual void addAddress(QString address);
     virtual void removeAddressAt(int at);
     virtual QVector<QString>& getOrderIds();
+    virtual QVector<Item>& getBasket();
     virtual void addToBasket(Item itm);
     virtual void removeFromBasket(Item itm);
     virtual int buy(QVector<Item> my_basket);

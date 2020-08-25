@@ -1892,7 +1892,7 @@ color: rgb(0, 0, 0);</string>
   <widget class="QWidget" name="customer" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
+     <x>1510</x>
      <y>0</y>
      <width>1500</width>
      <height>800</height>

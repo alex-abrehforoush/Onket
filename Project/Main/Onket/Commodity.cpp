@@ -145,6 +145,13 @@ unsigned long long int Commodity::inventory()
 
 unsigned long long int Commodity::inventoryOf(QString color)
 {
-	if (this->color.contains(color)) return this->color.value(color);
-	else return 0;
+    if (this->color.contains(color))
+    {
+        int temp=this->color.value(color);
+        return temp;
+    }
+    else
+    {
+        return 0;
+    }
 }

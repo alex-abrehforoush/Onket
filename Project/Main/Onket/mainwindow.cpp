@@ -147,6 +147,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(MainWindow::search_results, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onSearchResultItemClicked(QListWidgetItem*)));
     connect(MainWindow::search_line_edit, SIGNAL(editingFinished), this, SLOT(on_search_line_edit_editingFinished()));
     connect(MainWindow::search_line_edit, SIGNAL(textChanged(const QString&)), this, SLOT(on_search_line_edit_textChanged(const QString&)));
+    connect(MainWindow::show_basket, SIGNAL(clicked()), this, SLOT(on_show_basket_clicked()));
 
     onket_repository.loadStorage();
 
@@ -324,6 +325,21 @@ void MainWindow::on_bnt_compare_clicked()
     connect(compare_table,SIGNAL(comparingFinished()),this,SLOT(comapre_closed()));
     this->hide_compare_button();
 
+}
+
+void MainWindow::on_show_basket_clicked()
+{
+    if(MainWindow::getCurrentUser()->getMode() != 0)
+    {
+        QMessageBox::information(this, "پیام", "شما دسترسی لازم را ندارید");
+        return;
+    }
+    if(this->basket_view != nullptr) return;
+    this->hidePreviewScrollAreas();
+    this->basket_view = new BasketView(this);
+    this->main_lay->addWidget(basket_view,0,0);
+    MainWindow::main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    MainWindow::main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 void MainWindow::setupSearchResults(const QString &type_id)

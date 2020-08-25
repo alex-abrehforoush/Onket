@@ -55,6 +55,12 @@ QVector<QString>& User::getOrderIds()
 
 }
 
+QVector<Item> &User::getBasket()
+{
+    QVector<Item> temp;
+    return temp;
+}
+
 void User::addToBasket(Item itm)
 {
     return;

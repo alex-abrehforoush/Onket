@@ -17,7 +17,7 @@ class BasketViewItem : public QWidget
     QString good_id;
 
 public:
-    explicit BasketViewItem(Item input, QWidget *parent = nullptr);
+    explicit BasketViewItem(const Item& input, QWidget *parent = nullptr);
     ~BasketViewItem();
 
 private slots:

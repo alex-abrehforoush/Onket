@@ -20,6 +20,8 @@
 #include "goodpreviewscrollarea.h"
 #include "goodmainviewwidget.h"
 #include "comparewidget.h"
+#include "basketviewitem.h"
+#include "basketview.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,7 +32,6 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public slots:
-
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -56,6 +57,7 @@ private slots:
     void hide_compare_button();
     void comapre_closed();
     void on_bnt_compare_clicked();
+    void on_show_basket_clicked();
     void setupSearchResults(const QString& type_id);
 
     void on_search_line_edit_editingFinished();
@@ -87,6 +89,7 @@ private:
     QWidget* main_center_widget = nullptr;
     QGridLayout* main_lay = nullptr;
     CompareWidget* compare_table=nullptr;
+    BasketView* basket_view=nullptr;
     GoodPreviewScrollArea* scroll_price = nullptr, *scroll_discount = nullptr, *scroll_willingness = nullptr;
     QLabel* lab_price=nullptr, * lab_discount=nullptr, *lab_willingnes=nullptr;
     QPushButton* bnt_compare = nullptr;
