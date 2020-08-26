@@ -2,6 +2,7 @@
 #include "basketview.h"
 #include "ui_basketview.h"
 #include "Order.h"
+#include "filefunctions.h"
 
 void BasketView::update()
 {
@@ -29,6 +30,8 @@ void BasketView::update()
     }
     this->main_lay->addWidget(btn_buy,row_index+1,0);
     this->main_lay->addWidget(btn_return,row_index,0);
+    this->updateFinalPrice();
+    //this->btn_buy
 }
 
 void BasketView::addItem(const Item &itm)
@@ -41,13 +44,14 @@ void BasketView::addItem(const Item &itm)
     this->items_widget.push_back(temp);
     row_index++;
     connect(temp, SIGNAL(itemRemoved(const Item&)), this, SLOT(removedItem(const Item&)));
+    connect(temp, SIGNAL(totalPriceChanged()), this, SLOT(updateFinalPrice()));
 }
 
 BasketView::BasketView(QWidget *parent) :
     QScrollArea(parent)
     , center_widget(new QWidget(this))
     , main_lay(new QGridLayout(this))
-    , btn_buy(new QPushButton("اتمام خرید", this))
+    , btn_buy(new QPushButton("پرداخت", this))
     ,btn_return(new QPushButton(QIcon("Database/Icons/RightArrow.png"),"بازگشت",this))
     , ui(new Ui::BasketView)
 {
@@ -77,6 +81,17 @@ BasketView::BasketView(QWidget *parent) :
 BasketView::~BasketView()
 {
     delete ui;
+}
+
+void BasketView::updateFinalPrice()
+{
+    int totalPrice=0;
+    for(auto it : this->items_widget)
+    {
+        totalPrice+=it->getTotalPrice();
+    }
+    QString buy_content="پرداخت "+price::number(totalPrice)+" تومان ";
+    this->btn_buy->setText(buy_content);
 }
 
 void BasketView::removedItem(const Item &)

@@ -3,6 +3,11 @@
 #include "mainwindow.h"
 #include <QImage>
 
+int BasketViewItem::getTotalPrice()const
+{
+    return  ui->total_price->text().toInt();
+}
+
 BasketViewItem::BasketViewItem(const Item& input, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::BasketViewItem)
@@ -27,6 +32,7 @@ BasketViewItem::BasketViewItem(const Item& input, QWidget *parent) :
         ui->item_number->setRange(1, max);
         ui->item_number->setValue(input.getNumber());
         this->nmbr = input.getNumber();
+        int a=MainWindow::getOnketRepository().getCommodityOf(input.getItemId()).inventoryOf(input.getItemColor());
         ui->inventory->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(input.getItemId()).inventoryOf(input.getItemColor())) + "عدد در انبار موجود است");
         QString path="Database/GoodPicture/"+g.getId()+".png";
         QImage img;
@@ -54,6 +60,7 @@ void BasketViewItem::on_item_number_valueChanged(const QString &arg1)
     ui->total_price->setText(QString::number(g.getFinalPrice()*ui->item_number->value()));
     Item temp(good_id, ui->color->text(), ui->item_number->value());
     MainWindow::getCurrentUser()->addToBasket(temp);
+    emit this->totalPriceChanged();
 }
 
 void BasketViewItem::on_remove_clicked()

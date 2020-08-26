@@ -315,3 +315,18 @@ QVector<QString> csv_QVector::toQVector(const QString &input)
    }
    return res;
 }
+
+QString price::number(unsigned int input)
+{
+    QString number=QString::number(input);
+    QString res;
+    for( int  cnt=0;cnt <number.size();cnt++)
+    {
+        if((number.size()-cnt)%3==0 && cnt!=0 )
+        {
+            res.append(",");
+        }
+        res.append(number[cnt]);
+    }
+    return res;
+}

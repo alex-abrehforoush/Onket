@@ -32,6 +32,7 @@ public:
     explicit BasketView(QWidget *parent = nullptr);
     ~BasketView();
 private slots:
+    void updateFinalPrice();
     void removedItem(const Item&);
     void on_btn_return_clicked();
     void on_btn_buy_clicked();
