@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <comment_list>
     <comment>
-        <sender_id>a@b.com</sender_id>
+        <sender_id>njkhorasani@gmail.com</sender_id>
         <date>2020_8_26</date>
         <advantages></advantages>
         <disadvantages></disadvantages>
-        <description>مزخرف</description>
-        <items>دوربین_1</items>
-        <users_like>a@a.com_1</users_like>
+        <description>خوب</description>
+        <items>دوربین_0.75</items>
+        <users_like></users_like>
     </comment>
     <comment>
         <sender_id>a@a.com</sender_id>
@@ -19,12 +19,12 @@
         <users_like>a@a.com_0,njkhorasani@gmail.com_0</users_like>
     </comment>
     <comment>
-        <sender_id>njkhorasani@gmail.com</sender_id>
+        <sender_id>a@b.com</sender_id>
         <date>2020_8_26</date>
         <advantages></advantages>
         <disadvantages></disadvantages>
-        <description>خوب</description>
-        <items>دوربین_0.75</items>
-        <users_like></users_like>
+        <description>مزخرف</description>
+        <items>دوربین_1</items>
+        <users_like>a@a.com_1</users_like>
     </comment>
 </comment_list>

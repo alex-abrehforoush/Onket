@@ -782,7 +782,7 @@ void Dashboard::on_username_of_customer_currentTextChanged(const QString &arg1)
         }
         //orders
         ui->customer_orders_log->clear();
-        for(int i = 0; i < temp->getOrderIds().size() - 1; i++)
+        for(int i = 0; i < temp->getOrderIds().size(); i++)
         {
             Order kemp = Order::getOrder(temp->getOrderIds().at(i));
             ui->customer_orders_log->append("کد سفارش: " + kemp.getOrderId() + "\n"

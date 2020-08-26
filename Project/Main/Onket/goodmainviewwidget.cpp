@@ -64,7 +64,7 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
 
    QString bnt_add_content="افزودن به سبد خرید";
    bnt_add_content.append(" )");
-   bnt_add_content.append(QString::number(g.getFinalPrice()));
+   bnt_add_content.append(price::number(g.getFinalPrice()));
    bnt_add_content.append("  تومان  )");
    this->bnt_add_to_basket->setText(bnt_add_content);
 

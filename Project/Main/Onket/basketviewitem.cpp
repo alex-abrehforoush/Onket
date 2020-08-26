@@ -24,7 +24,7 @@ BasketViewItem::BasketViewItem(const Item& input, QWidget *parent) :
     {
         Good& g = Good::getGood(good_id);
         ui->item_name->setText(g.getName());
-        ui->total_price->setText(QString::number(g.getFinalPrice()*ui->item_number->value()));
+        ui->total_price->setText(price::number(g.getFinalPrice()*ui->item_number->value()));
         ui->seller_code->setText(g.getMakerId());
         ui->color->setText(input.getItemColor());
         Commodity current=MainWindow::getOnketRepository().getCommodityOf(input.getItemId());
@@ -32,8 +32,7 @@ BasketViewItem::BasketViewItem(const Item& input, QWidget *parent) :
         ui->item_number->setRange(1, max);
         ui->item_number->setValue(input.getNumber());
         this->nmbr = input.getNumber();
-        int a=MainWindow::getOnketRepository().getCommodityOf(input.getItemId()).inventoryOf(input.getItemColor());
-        ui->inventory->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(input.getItemId()).inventoryOf(input.getItemColor())) + "عدد در انبار موجود است");
+        ui->inventory->setText(QString::number(MainWindow::getOnketRepository().getCommodityOf(input.getItemId()).inventoryOf(Commodity::colorToEnglish(input.getItemColor()))) + "عدد در انبار موجود است ");
         QString path="Database/GoodPicture/"+g.getId()+".png";
         QImage img;
         if(img.load(path)==false)
@@ -57,7 +56,7 @@ BasketViewItem::~BasketViewItem()
 void BasketViewItem::on_item_number_valueChanged(const QString &arg1)
 {
     Good& g = Good::getGood(good_id);
-    ui->total_price->setText(QString::number(g.getFinalPrice()*ui->item_number->value()));
+    ui->total_price->setText(price::number(g.getFinalPrice()*ui->item_number->value()));
     Item temp(good_id, ui->color->text(), ui->item_number->value());
     MainWindow::getCurrentUser()->addToBasket(temp);
     emit this->totalPriceChanged();
