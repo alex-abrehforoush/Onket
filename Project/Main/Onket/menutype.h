@@ -3,6 +3,7 @@
 #include <QMenu>
 #include <QAction>
 #include "actiontype.h"
+#include "actiontypereturn.h"
 
 
 

@@ -18,6 +18,17 @@ QLineEdit* MainWindow::search_line_edit = nullptr;
 QPushButton* MainWindow::show_basket = nullptr;
 QListWidget* MainWindow::search_results = nullptr;
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    QMessageBox::StandardButton resBtn = QMessageBox::question( this, "پیغام",tr("آیا می خواهید از برنامه خارج شوید؟\n"), QMessageBox::No | QMessageBox::Yes);
+        if (resBtn != QMessageBox::Yes)
+        {
+            event->ignore();
+        } else {
+            event->accept();
+        }
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     main_lay(new QGridLayout(this)),
@@ -131,7 +142,6 @@ MainWindow::MainWindow(QWidget *parent) :
     this->bnt_compare->setGeometry(0,760,200,40);
     MainWindow::search_results->setGeometry(180, 90, 1231, 31);
     this->bnt_compare->hide();
-
 
 
 

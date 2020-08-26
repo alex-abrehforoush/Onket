@@ -23,7 +23,7 @@ class CommentListWidget : public QScrollArea
     bool id_valid=false;
     QMap<QString,CommentListWidgetItem*> widgets;
     CommentWidget* c_widget=nullptr;
-    QPushButton* bnt_add_comment=nullptr;
+    QPushButton* bnt_add_comment=nullptr,*bnt_sort=nullptr;
 
 signals:
     void commentsChanged();
@@ -33,6 +33,11 @@ public slots:
 private slots:
    void CommentFinished();
    void commentAdded();
+   void action_sort_by_date_triggered();
+   void action_sort_by_like_triggered();
+   void action_sort_by_view_triggered();
+
+
 public:
 
     bool existCommentSender(const QString& comment_sender)const;
@@ -43,5 +48,6 @@ public:
 private:
     Ui::CommentListWidget *ui;
 };
+
 
 #endif // COMMENTLISTWIDGET_H

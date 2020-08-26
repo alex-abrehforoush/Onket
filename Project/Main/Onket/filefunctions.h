@@ -52,5 +52,9 @@ namespace xml_QMap
 
 };
 
+namespace price
+{
+    QString number(unsigned int input);
+};
 
 #endif // FILEFUNCTIONS_H

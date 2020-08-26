@@ -17,7 +17,10 @@ class BasketViewItem : public QWidget
     QString good_id;
     int nmbr;
 
+signals:
+    void totalPriceChanged();
 public:
+    int getTotalPrice()const;
     explicit BasketViewItem(const Item& input, QWidget *parent = nullptr);
     ~BasketViewItem();
 

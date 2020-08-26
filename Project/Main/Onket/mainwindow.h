@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QCloseEvent>
 #include <QScrollArea>
 #include <QListWidget>
 #include <QPushButton>
@@ -31,7 +32,9 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public slots:
+
+protected slots:
+void closeEvent(QCloseEvent* event);
 
 public:
     MainWindow(QWidget *parent = nullptr);
