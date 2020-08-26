@@ -33,6 +33,10 @@ MenuType::MenuType(const QString &type_id, QWidget *parent):QMenu(parent)
             connect(menu,SIGNAL(actionTriggered(const QString&)),this,SLOT(action_triggered(const QString&)));
         }
     }
+    ActionTypeReturn* act=new ActionTypeReturn(type_id,parent);
+    this->addAction(act);
+    connect(act,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString& )));
+
 
 }
 
@@ -61,6 +65,10 @@ void MenuType::setUpMenu(QMenu *menu, QWidget *parent)
                 connect(menu_type,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString&)));
             }
         }
+        ActionTypeReturn* act=new ActionTypeReturn("none",menu);
+        menu->addAction(act);
+        connect(act,SIGNAL(actionTriggered(const QString& )),this,SLOT(action_triggered(const QString&)));
+
 
 
 }

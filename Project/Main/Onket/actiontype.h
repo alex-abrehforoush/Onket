@@ -13,7 +13,7 @@ class ActionType : public QAction
     bool info_valid=false;
 signals:
     void actionTriggered(const QString& type_id);
-private slots:
+protected slots:
     void action_tirggered();
 public:
     explicit ActionType(const QString& type_id,QWidget *parent = nullptr);

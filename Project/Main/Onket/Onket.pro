@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Admin.cpp \
     actiontype.cpp \
+    actiontypereturn.cpp \
     Customer.cpp \
     Guest.cpp \
     Order.cpp \
@@ -63,6 +64,7 @@ SOURCES += \
 HEADERS += \
     Admin.h \
     actiontype.h \
+    actiontypereturn.h \
     Commodity.h \
     Customer.h \
     Guest.h \
