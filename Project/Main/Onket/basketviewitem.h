@@ -15,6 +15,7 @@ class BasketViewItem : public QWidget
 {
     Q_OBJECT
     QString good_id;
+    int nmbr;
 
 public:
     explicit BasketViewItem(const Item& input, QWidget *parent = nullptr);

@@ -105,6 +105,16 @@ bool Good::existGoodName(const QString &good_name)
     return true;
 }
 
+QVector<QString> Good::getGoodIdList()
+{
+    QVector<QString>res;
+    for(auto it =goods_id.cbegin();it !=goods_id.cend();it++)
+    {
+        res.push_back(it.key());
+    }
+    return res;
+}
+
 QVector<QString> Good::getGoodNameList()
 {
     QVector<QString>res;

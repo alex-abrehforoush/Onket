@@ -24,6 +24,7 @@ public:
     void setBirthday(QDate birthday);
     QDate getBirthday() const;
 	void setPhoneNumber(QString phone_number);
+    int findIndexOfBasketItems(QString good_id, QString color);
     QVector<QString>& getOrderIds();
     QString getPhoneNumber() const;
     QVector<QString>& getAddresses();

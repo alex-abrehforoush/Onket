@@ -62,6 +62,7 @@ public:
     static bool  existGoodId(const QString& good_id);
     static Good& getGood(const QString& good_id);
     static bool existGoodName(const QString& good_name);
+    static QVector<QString> getGoodIdList();
     static QVector<QString> getGoodNameList();
     static QString getIdFromName(const QString& good_name);
 

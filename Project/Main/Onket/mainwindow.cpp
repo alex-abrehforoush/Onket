@@ -145,14 +145,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(scroll_willingness,SIGNAL(hideCompareButton()),this,SLOT(hide_compare_button()));
     connect(bnt_compare,SIGNAL(clicked()),this,SLOT(on_bnt_compare_clicked()));
     connect(MainWindow::search_results, SIGNAL(itemClicked(QListWidgetItem*)), this, SLOT(onSearchResultItemClicked(QListWidgetItem*)));
-    connect(MainWindow::search_line_edit, SIGNAL(editingFinished), this, SLOT(on_search_line_edit_editingFinished()));
+    connect(MainWindow::search_line_edit, SIGNAL(editingFinished()), this, SLOT(on_search_line_edit_editingFinished()));
     connect(MainWindow::search_line_edit, SIGNAL(textChanged(const QString&)), this, SLOT(on_search_line_edit_textChanged(const QString&)));
     connect(MainWindow::show_basket, SIGNAL(clicked()), this, SLOT(on_show_basket_clicked()));
 
     onket_repository.loadStorage();
-
-
-
 }
 
 void MainWindow::setCurrentUser(User *crnt)
@@ -368,6 +365,7 @@ void MainWindow::setupSearchResults(const QString &type_id)
 void MainWindow::updatePrviewScrollAreas(const QString &type_id)
 {
     Type::readFile();
+    Good::readFile();
     if(Type::existTypeId(type_id)==false && type_id!="none")return;
 //    this->main_lay->removeWidget(scroll_price);
 //    this->main_lay->removeWidget(scroll_discount);
@@ -383,15 +381,22 @@ void MainWindow::updatePrviewScrollAreas(const QString &type_id)
     scroll_willingness->clear();
     if(type_id=="none")
     {
-        QVector<QString>base_type=Type::getBaseTypeId();
-        for(auto it : base_type)
-        {
-            scroll_price->addGoodSortedByPrice(it,true);
-            scroll_discount->addGoodSortedByDiscount(it,true);
-            scroll_willingness->addGoodSortedByWillingness(it,true);
-        }
-
-
+       QVector<QString>good_ids=Good::getGoodIdList();
+       QVector<QString> temp_1 = Good::getSortByPrice(good_ids, true);
+       QVector<QString> temp_2 = Good::getSortByDiscount(good_ids, false);
+       QVector<QString> temp_3 = Good::getSortByWillingness(good_ids, false);
+       for(auto it : temp_1)
+       {
+           scroll_price->addGood(it, true);
+       }
+       for(auto it : temp_2)
+       {
+           scroll_discount->addGood(it, true);
+       }
+       for(auto it : temp_3)
+       {
+           scroll_willingness->addGood(it, true);
+       }
     }
     else
     {
@@ -473,7 +478,35 @@ void MainWindow::setupDynamicMenu(QMenu *menu)
 
 void MainWindow::on_search_line_edit_editingFinished()
 {
+    scroll_price->clear();
+    scroll_discount->clear();
+    scroll_willingness->clear();
+    QVector<QString>good_ids;
 
+    for(int cnt=0;cnt <MainWindow::search_results->count();cnt++)
+    {
+        if(MainWindow::search_results->item(cnt)->isHidden()==false)
+        {
+            QString good_name = MainWindow::search_results->item(cnt)->text();
+            good_ids.push_back(Good::getIdFromName(good_name));
+        }
+    }
+
+    QVector<QString> temp_1 = Good::getSortByPrice(good_ids, true);
+    for(auto it : temp_1)
+    {
+        scroll_price->addGood(it,true);
+    }
+    QVector<QString>temp_2=Good::getSortByDiscount(good_ids,false);
+    for(auto it : temp_2)
+    {
+        scroll_discount->addGood(it,true);
+    }
+    QVector<QString> temp_3=Good::getSortByWillingness(good_ids,false);
+    for(auto it : temp_3)
+    {
+        scroll_willingness->addGood(it,true);
+    }
 }
 
 void MainWindow::on_search_line_edit_textChanged(const QString &arg1)

@@ -153,7 +153,7 @@
    <widget class="QWidget" name="goods_management" native="true">
     <property name="geometry">
      <rect>
-      <x>1510</x>
+      <x>40</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>

@@ -29,7 +29,7 @@ void Customer::addToBasket(Item itm)
     {
         if(it->getItemId()==itm.getItemId() && it->getItemColor()==itm.getItemColor())
         {
-            it->setItemNumber(it->getNumber()+itm.getNumber());
+            it->setItemNumber(itm.getNumber());
             return;
         }
     }
@@ -62,6 +62,18 @@ void Customer::setPhoneNumber(QString phone_number)
 {
 	this->phone_number = phone_number;
     return;
+}
+
+int Customer::findIndexOfBasketItems(QString good_id, QString color)
+{
+    for(int i = 0; i < this->basket.size(); i++)
+    {
+        if(this->basket.at(i).getItemId() == good_id && this->basket.at(i).getItemColor() == color)
+        {
+            return i;
+        }
+    }
+    return -1;
 }
 
 QVector<QString>& Customer::getOrderIds()
