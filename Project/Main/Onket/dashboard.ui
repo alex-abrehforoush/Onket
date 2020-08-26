@@ -864,7 +864,7 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>538</x>
-       <y>420</y>
+       <y>430</y>
        <width>521</width>
        <height>71</height>
       </rect>
@@ -880,7 +880,7 @@ color: rgb(0, 0, 0);</string>
      <property name="geometry">
       <rect>
        <x>960</x>
-       <y>390</y>
+       <y>400</y>
        <width>101</width>
        <height>20</height>
       </rect>
@@ -1076,6 +1076,35 @@ color: rgb(0, 0, 0);</string>
      </property>
      <property name="text">
       <string>بازگشت</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_64">
+     <property name="geometry">
+      <rect>
+       <x>960</x>
+       <y>290</y>
+       <width>101</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>آخرین دسترسی:</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="customer_orders_log">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>320</y>
+       <width>521</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
      </property>
     </widget>
    </widget>

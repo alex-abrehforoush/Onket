@@ -193,7 +193,7 @@ User *User::getUser(QString username)
             {
                 pointer_to_user->addAddress(list_3.at(i));
             }
-            QStringList list_4 = list_1.at(1).split("|");
+            QStringList list_4 = list_1.at(1).split("-");
             for(int i = 0; i < list_4.size(); i++)
             {
                 pointer_to_user->getOrderIds().push_back(list_4.at(i));

@@ -1,4 +1,6 @@
 #include "storage.h"
+#include "mainwindow.h"
+
 #include <QFile>
 #include <QDir>
 #include <QTextStream>
@@ -52,8 +54,10 @@ void Storage::removeGood(QString type, QString color, int num)
 {
     if(this->remaining.contains(type))
     {
-        getCommodityOf(type).remove(color, num);
-        Commodity::addCommodity(getCommodityOf(type));
+        getCommodityOf(type).remove(Commodity::colorToEnglish(color), num);
+        Commodity::removeCommodity(getCommodityOf(type));
+        Commodity temp = getCommodityOf(type);
+        return;
     }
     else
     {

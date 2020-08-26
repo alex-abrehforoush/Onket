@@ -162,6 +162,8 @@ Order Order::getOrder(QString order_id)
 
 void Order::addOrder(Order new_order)
 {
+    QDir dir;
+    dir.mkpath("Database/Order");
     QFile data("Database/Order/orders_list.csv");
     if(data.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
     {
@@ -172,7 +174,7 @@ void Order::addOrder(Order new_order)
             << new_order.getDeliverDate().toString() << "," << new_order.getDeliverPrice() << ",";
         for(int i = 0; i<new_order.getBasket().size(); i++)
         {
-            out << new_order.getItemAt(i).getItemId() << "─" << new_order.getItemAt(i).getItemColor() << "─"
+            out << new_order.getItemAt(i).getItemId() << "_" << new_order.getItemAt(i).getItemColor() << "_"
                 << QString::number(new_order.getItemAt(i).getNumber());
             if(i != new_order.getBasket().size()-1) out << "|";
         }

@@ -26,6 +26,7 @@ void Commodity::remove(QString color, unsigned int number)
 	if (this->color.value(color) >= number)
 	{
 		this->color.insert(color, this->color.value(color) - number);
+        return;
     }
 }
 
@@ -37,12 +38,10 @@ int Commodity::commodityExist(QString good_id)
     QTextStream in(&file);
     const QString content = in.readAll();
     QStringList list_1;
-    list_1 << content.split("\n");
-    for(int i = 0; i<list_1.size(); i++)
+    list_1 << content.split(",");
+    for(int i = 0; i < list_1.size(); i++)
     {
-        QStringList list_2;
-        list_2 << list_1.at(i).split(",");
-        if(list_2.at(0)==good_id)
+        if(list_1.at(i) == good_id)
         {
             flag = 1;
             break;
@@ -103,6 +102,31 @@ int Commodity::addCommodity(Commodity new_commodity)
     }
     else return 0;//file didn't open
     return 1;//file created
+}
+
+int Commodity::removeCommodity(Commodity old_commodity)
+{
+    QDir data;
+    data.mkpath("Database/Commodity");
+    if(commodityExist(old_commodity.getCommodityId()))
+    {
+        QFile commodity_personal("Database/Commodity/" + old_commodity.getCommodityId() + ".csv");
+        if(commodity_personal.open(QIODevice::WriteOnly | QIODevice::Text))
+        {
+            QTextStream out(&commodity_personal);
+            for(auto e : old_commodity.color.keys())
+            {
+                out << e << "," << old_commodity.color.value(e) << "\n";
+            }
+            commodity_personal.close();
+        }
+        else return 0;//file didn't open
+        return 1;//file created
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 QString Commodity::colorToFarsi(QString clr)
