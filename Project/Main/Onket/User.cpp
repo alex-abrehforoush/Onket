@@ -199,7 +199,7 @@ User *User::getUser(QString username)
                 pointer_to_user->getOrderIds().push_back(list_4.at(i));
             }
             QStringList list_5 = list_1.at(2).split("|");
-            for(int i = 0; i < list_5.size(); i++)
+            for(int i = 1; i < list_5.size() - 1; i++)
             {
                 QStringList list_6 = list_5.at(i).split("_");
                 if(list_6.size() == 2)
@@ -256,7 +256,7 @@ int User::addUser(User* new_user)
                 for(int i = 0; i < new_user->getLastActivities().size(); i++)
                 {
                     out << new_user->getLastActivities().at(i).toString();
-                    if(i%2 == 0 && i != new_user->getLastActivities().size() - 1) out << "_";
+                    if(i%2 == 0/* && i != new_user->getLastActivities().size() - 1*/) out << "_";
                     if(i%2 == 1) out << "|";
                 }
             }

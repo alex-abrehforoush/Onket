@@ -365,10 +365,11 @@ void Dashboard::on_customer_edit_clicked()
 
 void Dashboard::on_back_clicked()
 {
-    ui->show_password_checkBox->setCheckState(Qt::Unchecked);
-    ui->customer_account_info->hide();
-    ui->customer_account_edit->hide();
-    this->close();
+    MainWindow::setDashboard(nullptr);
+    MainWindow::showMainScrollArea();
+//    ui->show_password_checkBox->setCheckState(Qt::Unchecked);
+//    hideCustomerWidgets();
+//    this->close();
 }
 
 void Dashboard::on_customer_address_number_valueChanged(int arg1)
@@ -387,6 +388,7 @@ void Dashboard::on_logout_clicked()
         QFile data_remove("Database/User/" + MainWindow::getCurrentUser()->getUsername() + ".csv");
         data_remove.remove();
         User::addUser(MainWindow::getCurrentUser());
+        hideCustomerWidgets();
         this->ui->back->click();
         MainWindow::setCurrentUser(new Guest);
         MainWindow::showMainScrollArea();
@@ -749,7 +751,7 @@ void Dashboard::on_logout_2_clicked()
         QFile data_remove("Database/User/" + MainWindow::getCurrentUser()->getUsername() + ".csv");
         data_remove.remove();
         User::addUser(MainWindow::getCurrentUser());
-        this->ui->back->click();
+        this->ui->admin_back->click();
         MainWindow::setCurrentUser(new Guest);
         MainWindow::showMainScrollArea();
     }
@@ -779,10 +781,24 @@ void Dashboard::on_username_of_customer_currentTextChanged(const QString &arg1)
             ui->comboBox_addresses_of_customer->addItem(temp->getAddresses().at(i));
         }
         //orders
-        for(int i = 0; i < temp->getLastActivities().size(); i++)
+        ui->customer_orders_log->clear();
+        for(int i = 0; i < temp->getOrderIds().size() - 1; i++)
         {
-            if(i % 2 == 0) ui->customer_activity_log->append(temp->getLastActivities().at(i).toString() + "-");
-            else ui->customer_activity_log->append(temp->getLastActivities().at(i).toString() + "\n");
+            Order kemp = Order::getOrder(temp->getOrderIds().at(i));
+            ui->customer_orders_log->append("کد سفارش: " + kemp.getOrderId() + "\n"
+                                            + "تاریخ ثبت سفارش: " + kemp.getOrderDate().toString() + "\n" + "کالاهای خریداری شده:");
+            for(int j = 0; j < kemp.getBasket().size(); j++)
+            {
+                ui->customer_orders_log->append(kemp.getBasket().at(j).getItemId() + "|" + kemp.getBasket().at(j).getItemColor()+ "|" + kemp.getBasket().at(j).getNumber());
+            }
+            ui->customer_orders_log->append("آدرس تحویل: " + kemp.getDeliverAddress());
+            ui->customer_orders_log->append("قیمت کل: " + QString::number(kemp.totalPrice()));
+            ui->customer_orders_log->append("تاریخ تحویل: " + kemp.getDeliverDate().toString());
+            ui->customer_orders_log->append("______________________________________________________________________");
+        }
+        for(int i = 0; i < temp->getLastActivities().size(); i+=2)
+        {
+            if(i % 2 == 0) ui->customer_activity_log->append(temp->getLastActivities().at(i).toString() + "-" + temp->getLastActivities().at(i+1).toString());
         }
         return;
     }

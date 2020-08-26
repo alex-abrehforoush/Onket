@@ -101,7 +101,7 @@ int Order::orderExist(QString order_id)
         for(int i = 0; i<list_1.size(); i++)
         {
             QStringList list_2 = list_1.at(i).split(",");
-            if(order_id == list_1.at(0))
+            if(order_id == list_2.at(0))
             {
                 flag = 1;
                 break;
@@ -149,7 +149,7 @@ Order Order::getOrder(QString order_id)
             QVector<Item> temp;
             for(int i = 0; i < list_3.size(); i++)
             {
-                QStringList list_4 = list_3.at(i).split("─");
+                QStringList list_4 = list_3.at(i).split("_");
                 Item kemp(list_4.at(0), list_4.at(1), list_4.at(2).toInt());
                 temp.push_back(kemp);
             }

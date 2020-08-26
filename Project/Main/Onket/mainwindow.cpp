@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle("Onket | An Online Market");
     setWindowFlags(Qt::Widget | Qt::MSWindowsFixedSizeDialogHint);
+    setFixedSize(1500, 800);
     current_user = new Guest();
 
     if(!User::userExist("wwe_alireza.abc2015@yahoo.com"))
