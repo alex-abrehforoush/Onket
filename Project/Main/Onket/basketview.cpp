@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "basketview.h"
 #include "ui_basketview.h"
+#include "Order.h"
 
 void BasketView::update()
 {
@@ -91,5 +92,7 @@ void BasketView::on_btn_return_clicked()
 
 void BasketView::on_btn_buy_clicked()
 {
+    MainWindow::getCurrentUser()->buy(MainWindow::getCurrentUser()->getBasket());
+    QMessageBox::information(this, "پیام", "سفارش شما در سیستم ثبت شد");
     emit this->returningRequested();
 }

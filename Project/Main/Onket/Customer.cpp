@@ -23,11 +23,15 @@ QVector<Item>& Customer::getBasket()
 
 void Customer::addToBasket(Item itm)
 {
-    int temp = this->basket.indexOf(itm);
-    if(temp == -1)
+    for(auto it  = this->basket.begin();it != basket.end();it++)
     {
-        this->basket.push_back(itm);
+        if(it->getItemId()==itm.getItemId() && it->getItemColor()==itm.getItemColor())
+        {
+            it->setItemNumber(it->getNumber()+itm.getNumber());
+            return;
+        }
     }
+    basket.push_back(itm);
     return;
 }
 

@@ -163,7 +163,7 @@ void goodMainViewWidget::setupComboBox()
     }
     if(this->color_selection->currentText().isEmpty()==false)
     {
-        this->item_number->setRange(0,temp.inventoryOf(Commodity::colorToEnglish(color_selection->currentText())));
+        this->item_number->setRange(1,temp.inventoryOf(Commodity::colorToEnglish(color_selection->currentText())));
     }
 }
 
@@ -184,7 +184,8 @@ void goodMainViewWidget::on_bnt_add_to_basket_clicked()
     {
         Item temp(this->good_id, this->color_selection->currentText(), this->item_number->value());
         MainWindow::getCurrentUser()->addToBasket(temp);
-        this->item_number->setValue(0);
+        this->item_number->setMaximum(item_number->maximum()-item_number->value());
+        this->item_number->setValue(1);
         QMessageBox::information(this, "پیام", "کالای مورد نظر به سبد خرید اضافه شد");
     }
 }
@@ -228,7 +229,7 @@ void goodMainViewWidget::color_section_current_text_chenged(const QString &curre
 {
     Commodity temp = MainWindow::getOnketRepository().getCommodityOf(this->good_id);
     int max=temp.inventoryOf(Commodity::colorToEnglish(current_color));
-    this->item_number->setRange(0,max);
+    this->item_number->setRange(1,max);
 }
 
 void goodMainViewWidget::update()
