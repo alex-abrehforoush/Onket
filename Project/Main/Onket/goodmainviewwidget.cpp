@@ -43,6 +43,7 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
         d.mkpath("Database/GoodPicture");
     }
     Good & g=Good::getGood(good_id);
+    g.readComment();
     QString path="Database/GoodPicture/";
     path.append(good_id);
     path.append(".png");
@@ -85,6 +86,7 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
     connect(this->bnt_comment,SIGNAL(clicked()),this,SLOT(on_bnt_comment_clicked()));
     connect(this->bnt_discussion,SIGNAL(clicked()),this,SLOT(on_bnt_discussion_clicked()));
     connect(this->color_selection,SIGNAL(currentTextChanged(const QString&)),this,SLOT(color_section_current_text_chenged(const QString&)));
+    connect(this->comments_area,SIGNAL(commentsChanged()),this->c_status,SLOT(update()));
 }
 
 void goodMainViewWidget::setupSTyleSheet()
@@ -182,6 +184,7 @@ void goodMainViewWidget::on_bnt_add_to_basket_clicked()
     {
         Item temp(this->good_id, this->color_selection->currentText(), this->item_number->value());
         MainWindow::getCurrentUser()->addToBasket(temp);
+        this->item_number->setValue(0);
         QMessageBox::information(this, "پیام", "کالای مورد نظر به سبد خرید اضافه شد");
     }
 }

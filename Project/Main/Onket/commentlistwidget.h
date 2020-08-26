@@ -25,6 +25,8 @@ class CommentListWidget : public QScrollArea
     CommentWidget* c_widget=nullptr;
     QPushButton* bnt_add_comment=nullptr;
 
+signals:
+    void commentsChanged();
 public slots:
    void update();
    void changeUser(const QString& user_id);

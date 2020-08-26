@@ -1076,7 +1076,7 @@ void Good::commentsReadFile()
     goods_id.clear();
     goods_name.clear();
     this->commentSortByDate();
-    QString path="D:/HelpMemory/OnketFile";
+    QString path="Database";
     path.append("/Comments/");
     QDir d(path);
     if(d.exists()==false)
@@ -1180,7 +1180,7 @@ void Good::commentsReadFile()
 void Good::commentsWriteToFile()
 {
     this->commentSortByDate();
-    QString path="D:/HelpMemory/OnketFile";
+    QString path="Database";
     path.append("/Comments/");
     QDir d(path);
     if(d.exists()==false)

@@ -327,6 +327,16 @@ void MainWindow::on_bnt_compare_clicked()
 
 }
 
+void MainWindow::basket_closed()
+{
+    basket_view->hide();
+    delete this->basket_view;
+    this->basket_view=nullptr;
+    this->showPreviwScrollAreas();
+    MainWindow::main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    MainWindow::main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+}
+
 void MainWindow::on_show_basket_clicked()
 {
     if(MainWindow::getCurrentUser()->getMode() != 0)
@@ -340,6 +350,7 @@ void MainWindow::on_show_basket_clicked()
     this->main_lay->addWidget(basket_view,0,0);
     MainWindow::main_scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     MainWindow::main_scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    connect(basket_view,SIGNAL(returningRequested()),this,SLOT(basket_closed()));
 }
 
 void MainWindow::setupSearchResults(const QString &type_id)

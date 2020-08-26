@@ -26,6 +26,7 @@ signals:
 
 public:
     explicit CommentWidget(const QString& good_id,const QString& comment_seder,QWidget *parent = nullptr);
+    Comment getComment();
     ~CommentWidget();
 
 private slots:

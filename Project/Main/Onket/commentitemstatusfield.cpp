@@ -15,6 +15,18 @@ QString CommentItemStatusField::toQString(unsigned int percent)
     return res;
 }
 
+QString CommentItemStatusField::getFieldName()
+{
+    return  this->field_name;
+}
+
+void CommentItemStatusField::setupPercent(unsigned int percent)
+{
+    this->setPercent(percent);
+    lab_rect->setFixedSize(this->percent*3,20);
+    lab_space->setFixedSize(300-this->percent*3,20);
+}
+
 CommentItemStatusField::CommentItemStatusField(const QString& field_name,unsigned int percent,QWidget *parent) : QWidget(parent)
   ,lab_name(new QLabel(this)),lab_rect(new QLabel(this)),lab_space(new QLabel(this)),lab_percent(new QLabel(this))
    ,main_lay(new QHBoxLayout(this))

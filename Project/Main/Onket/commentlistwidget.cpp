@@ -1,5 +1,6 @@
 #include "commentlistwidget.h"
 #include "ui_commentlistwidget.h"
+#include "mainwindow.h"
 
 void CommentListWidget::update()
 {
@@ -43,10 +44,30 @@ void CommentListWidget::changeUser(const QString &user_id)
 
 void CommentListWidget::CommentFinished()
 {
- this->c_widget->close();
- delete this->c_widget;
-  this->c_widget=nullptr;
-    this->update();
+
+    if(Good::existGoodId(good_id)==false)
+    {
+
+        this->c_widget->close();
+        delete this->c_widget;
+        this->c_widget=nullptr;
+        this->update();
+        return;
+    }
+    else
+    {
+        Good& g=Good::getGood(good_id);
+        if(g.existCommentSender(MainWindow::getCurrentUser()->getUsername())==false)
+        {
+            g.addComment(this->c_widget->getComment());
+        }
+        g.commentsWriteToFile();
+        this->c_widget->close();
+        delete this->c_widget;
+        this->c_widget=nullptr;
+        this->update();
+        emit this->commentsChanged();
+    }
 
 }
 
