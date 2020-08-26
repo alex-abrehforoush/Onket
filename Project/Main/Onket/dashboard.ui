@@ -153,7 +153,7 @@
    <widget class="QWidget" name="goods_management" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1082,7 +1082,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="site_settings" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1149,7 +1149,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="finance" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1216,7 +1216,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="employeement" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1283,7 +1283,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="messages_2" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1432,7 +1432,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="foreign_connections" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1499,7 +1499,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="admin_account_info" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>
@@ -1664,7 +1664,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QWidget" name="admin_account_edit" native="true">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>1510</x>
       <y>140</y>
       <width>1130</width>
       <height>500</height>

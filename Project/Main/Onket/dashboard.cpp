@@ -781,7 +781,7 @@ void Dashboard::on_username_of_customer_currentTextChanged(const QString &arg1)
         //orders
         for(int i = 0; i < temp->getLastActivities().size(); i++)
         {
-            if(i % 2 == 0) ui->customer_activity_log->append(temp->getLastActivities().at(i).toString());
+            if(i % 2 == 0) ui->customer_activity_log->append(temp->getLastActivities().at(i).toString() + "-");
             else ui->customer_activity_log->append(temp->getLastActivities().at(i).toString() + "\n");
         }
         return;

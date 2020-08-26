@@ -48,6 +48,20 @@ void Storage::addGood(QString type, QString color, int num)
     return;
 }
 
+void Storage::removeGood(QString type, QString color, int num)
+{
+    if(this->remaining.contains(type))
+    {
+        getCommodityOf(type).remove(color, num);
+        Commodity::addCommodity(getCommodityOf(type));
+    }
+    else
+    {
+        return;
+    }
+    return;
+}
+
 QMap<QString, Commodity> &Storage::getRemaining()
 {
     return this->remaining;

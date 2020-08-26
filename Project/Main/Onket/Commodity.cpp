@@ -116,7 +116,7 @@ QString Commodity::colorToFarsi(QString clr)
     else if(clr == "Brown") return "قهواه ای";
     else if(clr == "Black") return "مشکی";
     else if(clr == "White") return "سفید";
-    else return "";
+    else return clr;
 }
 
 QString Commodity::colorToEnglish(QString clr)
@@ -130,7 +130,7 @@ QString Commodity::colorToEnglish(QString clr)
     else if(clr == "قهوه ای") return "Brown";
     else if(clr == "مشکی") return "Black";
     else if(clr == "سفید") return "White";
-    else return "";
+    else return clr;
 }
 
 unsigned long long int Commodity::inventory()
@@ -147,8 +147,7 @@ unsigned long long int Commodity::inventoryOf(QString color)
 {
     if (this->color.contains(color))
     {
-        int temp=this->color.value(color);
-        return temp;
+        return this->color.value(color);
     }
     else
     {
