@@ -1,5 +1,6 @@
 #include "commentlistwidgetitem.h"
 #include "ui_commentlistwidgetitem.h"
+#include "mainwindow.h"
 
 void CommentListWidgetItem::update()
 {
@@ -16,6 +17,18 @@ Good& g=Good::getGood(good_id);
  this->ui->bnt_like->setText(QString::number(c.getLikeNumber()));
  this->ui->bnt_dislike->setIcon(QIcon("Database/Icons/DislikeBlank.png"));
  this->ui->bnt_dislike->setText(QString::number(c.getDisLikeNumber()));
+ QString sender=" ارسال شده از ";
+ if(MainWindow::getCurrentUser()->getUsername()==this->comment_sender)
+ {
+     sender.append("شما");
+     this->ui->lab_sender->setStyleSheet("background-color: rgb(0, 255, 0);");
+ }
+ else
+ {
+     sender.append(this->comment_sender);
+ }
+ this->ui->lab_sender->setText(sender);
+ this->ui->lab_date->setText(c.getDateCreate().toString());
 
  if(c.existLiker(user_id)==true)
  {

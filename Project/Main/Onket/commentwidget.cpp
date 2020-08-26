@@ -85,6 +85,12 @@ void CommentWidget::on_bnt_save_clicked()
     if(g.existCommentSender(comment_sender)==false)
     {
        Comment c(QDate::currentDate(),comment_sender,ui->le_adv->text(),ui->le_disadv->text(),ui->txt_content->toPlainText());
+       for(auto it = this->fields.cbegin();it != this->fields.cend();it++)
+       {
+           QString item_name=it.key();
+           c.insertItem(item_name);
+           c.setItemValue(item_name,(*it)->getValue());
+       }
        g.addComment(c);
 
     }
@@ -95,13 +101,15 @@ void CommentWidget::on_bnt_save_clicked()
         c.setAdvantages(ui->le_adv->text());
         c.setDisAdvantages(ui->le_disadv->text());
 
+
       for(auto it : this->fields)
       {
           g.CommentSetItemValue(comment_sender,it->getName(),it->getValue());
       }
 
     }
-
+    g.commentsWriteToFile();
+    Good::WriteFile();
     emit this->commentEditingFinished();
 
 }

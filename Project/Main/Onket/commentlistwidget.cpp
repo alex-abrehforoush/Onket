@@ -21,6 +21,7 @@ void CommentListWidget::update()
     this->widgets.clear();
 
     Good &g=Good::getGood(good_id);
+    g.commentsReadFile();
    this->main_lay->addWidget(bnt_add_comment);
 
     for( g.setCommentSeekBegin();g.commentSeekAtEnd()==false;)
@@ -45,29 +46,12 @@ void CommentListWidget::changeUser(const QString &user_id)
 void CommentListWidget::CommentFinished()
 {
 
-    if(Good::existGoodId(good_id)==false)
-    {
+    this->c_widget->close();
+    delete this->c_widget;
+    this->c_widget=nullptr;
+    this->update();
+    emit this->commentsChanged();
 
-        this->c_widget->close();
-        delete this->c_widget;
-        this->c_widget=nullptr;
-        this->update();
-        return;
-    }
-    else
-    {
-        Good& g=Good::getGood(good_id);
-        if(g.existCommentSender(MainWindow::getCurrentUser()->getUsername())==false)
-        {
-            g.addComment(this->c_widget->getComment());
-        }
-        g.commentsWriteToFile();
-        this->c_widget->close();
-        delete this->c_widget;
-        this->c_widget=nullptr;
-        this->update();
-        emit this->commentsChanged();
-    }
 
 }
 
@@ -132,7 +116,6 @@ CommentListWidget::CommentListWidget(const QString& good_id,const QString& user_
         return;
     }
     Good& g=Good::getGood(good_id);
-    g.readComment();
     center_widget->setLayout(main_lay);
     this->setWidget(center_widget);
     this->setWidgetResizable(true);

@@ -43,7 +43,7 @@ goodMainViewWidget::goodMainViewWidget(const QString& good_id,const QString& use
         d.mkpath("Database/GoodPicture");
     }
     Good & g=Good::getGood(good_id);
-    g.readComment();
+    g.commentsReadFile();
     QString path="Database/GoodPicture/";
     path.append(good_id);
     path.append(".png");
@@ -170,6 +170,9 @@ void goodMainViewWidget::setupComboBox()
 void goodMainViewWidget::on_bnt_return_clicked()
 {
     this->hide();
+    Good::WriteFile();
+    if(info_valid==true)
+    Good::getGood(good_id).commentsWriteToFile();
     emit this->updateGoodsRequest();
 }
 
