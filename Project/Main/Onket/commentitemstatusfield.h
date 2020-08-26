@@ -19,6 +19,8 @@ class CommentItemStatusField : public QWidget
     void setPercent(unsigned int percent);
     static QString toQString(unsigned int percent);
 public:
+    QString getFieldName();
+    void setupPercent(unsigned int percent);
     explicit CommentItemStatusField(const QString& field_name,unsigned int percent,QWidget *parent = nullptr);
 
 

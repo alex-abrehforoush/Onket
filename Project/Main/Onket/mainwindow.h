@@ -57,6 +57,7 @@ private slots:
     void hide_compare_button();
     void comapre_closed();
     void on_bnt_compare_clicked();
+    void basket_closed();
     void on_show_basket_clicked();
     void setupSearchResults(const QString& type_id);
 

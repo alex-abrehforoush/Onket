@@ -38,7 +38,7 @@ BasketViewItem::BasketViewItem(const Item& input, QWidget *parent) :
             ui->item_picture->setPixmap(QPixmap::fromImage(img));
             ui->item_picture->setScaledContents(true);
         }
-        this->setFixedSize(1500,350);
+        this->setFixedSize(1460,350);
     }
 }
 

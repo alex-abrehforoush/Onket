@@ -57,6 +57,12 @@ CommentWidget::CommentWidget(const QString& good_id,const QString& comment_seder
 
 }
 
+Comment CommentWidget::getComment()
+{
+  Comment temp(QDate::currentDate(),comment_sender,ui->le_adv->text(),ui->le_disadv->text(),ui->txt_content->toPlainText())  ;
+  return temp;
+}
+
 CommentWidget::~CommentWidget()
 {
     delete ui;

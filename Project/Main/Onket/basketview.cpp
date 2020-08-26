@@ -12,6 +12,7 @@ void BasketView::update()
         this->main_lay->removeWidget(*it);
     }
     this->main_lay->removeWidget(btn_buy);
+    this->main_lay->removeWidget(btn_return);
     for(auto it = this->items_widget.begin(); it != this->items_widget.end(); it++)
     {
         delete *it;
@@ -25,7 +26,8 @@ void BasketView::update()
         this->addItem(it);
 
     }
-    this->main_lay->addWidget(btn_buy,row_index,0);
+    this->main_lay->addWidget(btn_buy,row_index+1,0);
+    this->main_lay->addWidget(btn_return,row_index,0);
 }
 
 void BasketView::addItem(const Item &itm)
@@ -45,6 +47,7 @@ BasketView::BasketView(QWidget *parent) :
     , center_widget(new QWidget(this))
     , main_lay(new QGridLayout(this))
     , btn_buy(new QPushButton("اتمام خرید", this))
+    ,btn_return(new QPushButton(QIcon("Database/Icons/RightArrow.png"),"بازگشت",this))
     , ui(new Ui::BasketView)
 {
     this->center_widget->setLayout(main_lay);
@@ -60,9 +63,14 @@ BasketView::BasketView(QWidget *parent) :
     info_valid = true;
     btn_buy->setStyleSheet("background-color: rgb(255, 47, 47);");
     btn_buy->setFixedSize(200, 40);
+    //btn_return->setStyleSheet("background-color: rgb(255, 255, 255);");
+    btn_return->setFixedSize(200, 40);
     this->update();
     this->setFixedSize(1480, 790);
     ui->setupUi(this);
+
+    connect(btn_buy,SIGNAL(clicked()),this,SLOT(on_btn_buy_clicked()));
+    connect(btn_return,SIGNAL(clicked()),this,SLOT(on_btn_return_clicked()));
 }
 
 BasketView::~BasketView()
@@ -74,4 +82,14 @@ void BasketView::removedItem(const Item &)
 {
     this->update();
     return;
+}
+
+void BasketView::on_btn_return_clicked()
+{
+    emit this->returningRequested();
+}
+
+void BasketView::on_btn_buy_clicked()
+{
+    emit this->returningRequested();
 }

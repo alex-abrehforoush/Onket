@@ -1,5 +1,20 @@
 #include "commentitemstatus.h"
 
+void CommentItemStatus::update()
+{
+    if(id_valid==false)return;
+    Good& g=Good::getGood(good_id);
+    g.commentsReadFile();
+    for(g.setCommentItemSeekBegein();g.CommentItemSeekAtEnd()==false;)
+    {
+        QString itm_name=g.readCommentsItem();
+        if(this->fields.contains(itm_name)==true)
+        {
+            this->fields[itm_name]->setupPercent(g.CommentGetItemValue(itm_name));
+        }
+    }
+}
+
 CommentItemStatus::CommentItemStatus(const QString& good_id,QWidget *parent) :
     QWidget(parent)
     ,main_lay(new QVBoxLayout(this))
@@ -27,6 +42,7 @@ CommentItemStatus::CommentItemStatus(const QString& good_id,QWidget *parent) :
         QString item_name=g.readCommentsItem();
         CommentItemStatusField* cf=new CommentItemStatusField(item_name,g.CommentGetItemValue(item_name)*100,this);
         this->main_lay->addWidget(cf,cnt);
+        this->fields.insert(item_name,cf);
     }
 
     this->setFixedSize(900,100*cnt);
