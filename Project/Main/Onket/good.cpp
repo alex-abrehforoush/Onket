@@ -1073,13 +1073,12 @@ void Good::QuestionSortyByReplyNumber()
 
 void Good::commentsReadFile()
 {
-    goods_id.clear();
-    goods_name.clear();
+
     this->commentSortByDate();
     QString path="Database";
     path.append("/Comments/");
-    QDir d(path);
-    if(d.exists()==false)
+    QDir d;
+    if(d.exists(path)==false)
     {
         d.mkdir(path);
     }
@@ -1182,8 +1181,8 @@ void Good::commentsWriteToFile()
     this->commentSortByDate();
     QString path="Database";
     path.append("/Comments/");
-    QDir d(path);
-    if(d.exists()==false)
+    QDir d;
+    if(d.exists(path)==false)
     {
         d.mkdir(path);
     }

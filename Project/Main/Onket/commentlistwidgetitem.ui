@@ -19,13 +19,25 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>10</y>
+     <x>30</x>
+     <y>40</y>
      <width>501</width>
-     <height>138</height>
+     <height>158</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="2" column="0">
+     <widget class="QLabel" name="lab_disadv_content">
+      <property name="styleSheet">
+       <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 226, 233);
+gridline-color: rgb(0, 255, 0);</string>
+      </property>
+      <property name="text">
+       <string>معایب</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0" colspan="2">
      <widget class="QTextEdit" name="txt_description">
       <property name="styleSheet">
@@ -45,15 +57,14 @@ p, li { white-space: pre-wrap; }
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="lab_disadv_content">
+    <item row="1" column="0">
+     <widget class="QLabel" name="lab_disadv">
       <property name="styleSheet">
-       <string notr="true">font: 75 10pt &quot;MS Shell Dlg 2&quot;;
-background-color: rgb(255, 226, 233);
-gridline-color: rgb(0, 255, 0);</string>
+       <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(255, 0, 0);</string>
       </property>
       <property name="text">
-       <string>معایب</string>
+       <string>نقاط ضعف</string>
       </property>
      </widget>
     </item>
@@ -65,17 +76,6 @@ background-color: rgb(202, 255, 202);</string>
       </property>
       <property name="text">
        <string>مزایا </string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="lab_disadv">
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(255, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string>نقاط ضعف</string>
       </property>
      </widget>
     </item>
@@ -95,8 +95,8 @@ color: rgb(0, 255, 0);</string>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>170</y>
+     <x>30</x>
+     <y>210</y>
      <width>491</width>
      <height>30</height>
     </rect>
@@ -126,6 +126,35 @@ color: rgb(0, 255, 0);</string>
      <widget class="QLabel" name="label_5">
       <property name="text">
        <string>ایا این نظر را می پسندید؟</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>501</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lab_date">
+      <property name="styleSheet">
+       <string notr="true">color: rgb(0, 85, 255);</string>
+      </property>
+      <property name="text">
+       <string>تاریخ</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="lab_sender">
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </item>

@@ -25,6 +25,7 @@ void CommentItemStatusField::setupPercent(unsigned int percent)
     this->setPercent(percent);
     lab_rect->setFixedSize(this->percent*3,20);
     lab_space->setFixedSize(300-this->percent*3,20);
+    lab_percent->setText(CommentItemStatusField::toQString(this->percent));
 }
 
 CommentItemStatusField::CommentItemStatusField(const QString& field_name,unsigned int percent,QWidget *parent) : QWidget(parent)

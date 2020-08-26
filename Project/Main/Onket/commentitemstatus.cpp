@@ -10,7 +10,8 @@ void CommentItemStatus::update()
         QString itm_name=g.readCommentsItem();
         if(this->fields.contains(itm_name)==true)
         {
-            this->fields[itm_name]->setupPercent(g.CommentGetItemValue(itm_name));
+
+            this->fields[itm_name]->setupPercent(g.CommentGetItemValue(itm_name)*100);
         }
     }
 }
